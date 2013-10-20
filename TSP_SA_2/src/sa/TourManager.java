@@ -12,22 +12,24 @@ import java.util.ArrayList;
 
 public class TourManager {
 
-    // Holds our cities
-    private static ArrayList destinationCities = new ArrayList();
+    // Holds our address
+    private static ArrayList destinationAdreces = new ArrayList();
 
-    // Adds a destination city
-    public static void addCity(City city) {
-        destinationCities.add(city);
+    // Adds a destination address
+    public static void addAdreça(Adreça address) {
+        destinationAdreces.add(address);
     }
     
     // Get a city
-    public static City getCity(int index){
-        return (City)destinationCities.get(index);
+    public static Adreça getAdreça(int index){
+        return (Adreça)destinationAdreces.get(index);
     }
     
     // Get the number of destination cities
-    public static int numberOfCities(){
-        return destinationCities.size();
+    public static int numberOfAdreces(){
+        return destinationAdreces.size();
     }
     
+ 
+
 }

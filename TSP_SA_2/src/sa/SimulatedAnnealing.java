@@ -22,46 +22,66 @@ public class SimulatedAnnealing {
 
     public static void main(String[] args) {
         // Create and add our cities
-        City city = new City(60, 200);
-        TourManager.addCity(city);
-        City city2 = new City(180, 200);
-        TourManager.addCity(city2);
-        City city3 = new City(80, 180);
-        TourManager.addCity(city3);
-        City city4 = new City(140, 180);
-        TourManager.addCity(city4);
-        City city5 = new City(20, 160);
-        TourManager.addCity(city5);
-        City city6 = new City(100, 160);
-        TourManager.addCity(city6);
-        City city7 = new City(200, 160);
-        TourManager.addCity(city7);
-        City city8 = new City(140, 140);
-        TourManager.addCity(city8);
-        City city9 = new City(40, 120);
-        TourManager.addCity(city9);
-        City city10 = new City(100, 120);
-        TourManager.addCity(city10);
-        City city11 = new City(180, 100);
-        TourManager.addCity(city11);
-        City city12 = new City(60, 80);
-        TourManager.addCity(city12);
-        City city13 = new City(120, 80);
-        TourManager.addCity(city13);
-        City city14 = new City(180, 60);
-        TourManager.addCity(city14);
-        City city15 = new City(20, 40);
-        TourManager.addCity(city15);
-        City city16 = new City(100, 40);
-        TourManager.addCity(city16);
-        City city17 = new City(200, 40);
-        TourManager.addCity(city17);
-        City city18 = new City(20, 20);
-        TourManager.addCity(city18);
-        City city19 = new City(60, 20);
-        TourManager.addCity(city19);
-        City city20 = new City(160, 20);
-        TourManager.addCity(city20);
+        Adreça address = new Adreça(60, 200);
+        address.afegir_id(1);
+        TourManager.addAdreça(address);
+        Adreça address2 = new Adreça(180, 200);
+        address2.afegir_id(2);
+        TourManager.addAdreça(address2);
+        Adreça address3 = new Adreça(80, 180);
+        address3.afegir_id(3);
+        TourManager.addAdreça(address3);
+        Adreça address4 = new Adreça(140, 180);
+        address4.afegir_id(4);
+        TourManager.addAdreça(address4);
+        Adreça address5 = new Adreça(20, 160);
+        address5.afegir_id(5);
+        TourManager.addAdreça(address5);
+        Adreça address6 = new Adreça(100, 160);
+        address6.afegir_id(6);
+        TourManager.addAdreça(address6);
+        Adreça address7 = new Adreça(200, 160);
+        address7.afegir_id(7);
+        TourManager.addAdreça(address7);
+        Adreça address8 = new Adreça(140, 140);
+        address8.afegir_id(8);
+        TourManager.addAdreça(address8);
+        Adreça address9 = new Adreça(40, 120);
+        address9.afegir_id(9);
+        TourManager.addAdreça(address9);
+        Adreça address10 = new Adreça(100, 120);
+        address10.afegir_id(10);
+        TourManager.addAdreça(address10);
+        Adreça address11 = new Adreça(180, 100);
+        address11.afegir_id(11);
+        TourManager.addAdreça(address11);
+        Adreça address12 = new Adreça(60, 80);
+        address12.afegir_id(12);
+        TourManager.addAdreça(address12);
+        Adreça address13 = new Adreça(120, 80);
+        address13.afegir_id(13);
+        TourManager.addAdreça(address13);
+        Adreça address14 = new Adreça(180, 60);
+        address14.afegir_id(14);
+        TourManager.addAdreça(address4);
+        Adreça address15 = new Adreça(20, 40);
+        address15.afegir_id(15);
+        TourManager.addAdreça(address15);
+        Adreça address16 = new Adreça(100, 40);
+        address16.afegir_id(16);
+        TourManager.addAdreça(address16);
+        Adreça address17 = new Adreça(200, 40);
+        address17.afegir_id(17);
+        TourManager.addAdreça(address17);
+        Adreça address18 = new Adreça(20, 20);
+        address18.afegir_id(18);
+        TourManager.addAdreça(address18);
+        Adreça address19 = new Adreça(60, 20);
+        address19.afegir_id(19);
+        TourManager.addAdreça(address19);
+        Adreça address20 = new Adreça(160, 20);
+        address20.afegir_id(20);
+        TourManager.addAdreça(address20);
 
         // Set initial temp
         double temp = 10000;
@@ -72,8 +92,7 @@ public class SimulatedAnnealing {
         // Initialize intial solution
         Tour currentSolution = new Tour();
         currentSolution.generateIndividual();
-        
-        System.out.println("Initial solution distance: " + currentSolution.getDistance());
+         System.out.println("Initial solution distance: " + currentSolution.getDistance());
 
         // Set as current best
         Tour best = new Tour(currentSolution.getTour());
@@ -88,12 +107,12 @@ public class SimulatedAnnealing {
             int tourPos2 = (int) (newSolution.tourSize() * Math.random());
 
             // Get the cities at selected positions in the tour
-            City citySwap1 = newSolution.getCity(tourPos1);
-            City citySwap2 = newSolution.getCity(tourPos2);
+            Adreça AdreçaSwap1 = newSolution.getAdreça(tourPos1);
+            Adreça AdreçaSwap2 = newSolution.getAdreça(tourPos2);
 
             // Swap them
-            newSolution.setCity(tourPos2, citySwap1);
-            newSolution.setCity(tourPos1, citySwap2);
+            newSolution.setAdreça(tourPos2, AdreçaSwap1);
+            newSolution.setAdreça(tourPos1, AdreçaSwap2);
             
             // Get energy of solutions
             int currentEngery = currentSolution.getDistance();
@@ -112,8 +131,9 @@ public class SimulatedAnnealing {
             // Cool system
             temp *= 1-coolingRate;
         }
-
         System.out.println("Final solution distance: " + best.getDistance());
+        System.out.println(" " + best.escriu_ruta() );
         System.out.println("Tour: " + best);
+        best.representar_tour();
     }
 }

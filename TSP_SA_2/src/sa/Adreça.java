@@ -8,36 +8,37 @@ package sa;
  *
  * @author Carlos
  */
-public class City {
+
+public class Adreça {
     int x;
     int y;
-    
-    // Constructs a randomly placed city
-    public City(){
+    int id;
+    // Crea una nova adreça amb valors random
+    public Adreça(){
         this.x = (int)(Math.random()*200);
         this.y = (int)(Math.random()*200);
     }
     
-    // Constructs a city at chosen x, y location
-    public City(int x, int y){
+    // Crea una adreça donada dos valors
+    public Adreça(int x, int y){
         this.x = x;
         this.y = y;
     }
     
-    // Gets city's x coordinate
+    // Gets address's x coordinate
     public int getX(){
         return this.x;
     }
     
-    // Gets city's y coordinate
+    // Gets address's y coordinate
     public int getY(){
         return this.y;
     }
     
-    // Gets the distance to given city
-    public double distanceTo(City city){
-        int xDistance = Math.abs(getX() - city.getX());
-        int yDistance = Math.abs(getY() - city.getY());
+    // Gets the distance to given address
+    public double distanceTo(Adreça address){
+        int xDistance = Math.abs(getX() - address.getX());
+        int yDistance = Math.abs(getY() - address.getY());
         double distance = Math.sqrt( (xDistance*xDistance) + (yDistance*yDistance) );
         
         return distance;
@@ -47,4 +48,14 @@ public class City {
     public String toString(){
         return getX()+", "+getY();
     }
+
+    public void afegir_id(int iden){
+        id=iden;
+    }
+  
+    public void afegir_id_random(){
+       id=(int)Math.random()*10;
+    }
+ 
+    
 }
