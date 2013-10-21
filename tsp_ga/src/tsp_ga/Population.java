@@ -275,4 +275,42 @@ public class Population {
         
     }
     
+    public void ompla_pesos_jp2(){
+        for (int i = 0; i < 100; ++i){
+            for(int ii = 0; ii <= i; ++ii){
+                if(i == ii) pesos[i][ii] = 0;
+                else{
+                    if(i%2 == 0){ //parell
+                        pesos[i][ii] = pesos[ii][i] = 5;
+                    }
+                    else{
+                        if(ii%2 == 0){
+                            pesos[i][ii] = pesos[ii][i] = 10;
+                        }
+                        else pesos[i][ii] = pesos[ii][i] = 20;
+                    }
+                }
+            }
+        } 
+    }
+    
+    public void ompla_pesos_jp3(){
+        for (int i = 0; i < 1000; ++i){
+            for(int ii = 0; ii <= i; ++ii){
+                if(i == ii) pesos[i][ii] = 0;
+                else{
+                    if(i%2 == 0){ //parell
+                        pesos[i][ii] = pesos[ii][i] = 5;
+                    }
+                    else{
+                        if(ii%2 == 0){
+                            pesos[i][ii] = pesos[ii][i] = 10;
+                        }
+                        else pesos[i][ii] = pesos[ii][i] = 20;
+                    }
+                }
+            }
+        } 
+    }
+    
 }

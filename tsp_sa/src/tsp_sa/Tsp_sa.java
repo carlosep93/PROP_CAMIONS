@@ -16,11 +16,11 @@ public class Tsp_sa {
 
     public static void main(String[] args) {
         //Temperatura inicial
-        double temperature = 1000;
+        double temperature = 10000;
         //Factor por el que se enfria
         double enfriamiento = 0.003;
-        Population pop = new Population(6);
-        pop.ompla_pesos_jp();
+        Population pop = new Population(1000);
+        pop.ompla_pesos_jp3();
         pop.ompla_population_random();
         System.out.println("Distancia inicial: "+ pop.getCost_ruta());
         pop.escriu_population();

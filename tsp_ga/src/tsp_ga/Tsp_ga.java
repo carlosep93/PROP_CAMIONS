@@ -21,17 +21,17 @@ public class Tsp_ga {
         //System.out.println("Escriu el nombre de punts: ");    //lectura del teclat
         //int npunts = in.nextInt();
         
-        int npunts = 6;         //pel joc de proves ja fet                                         
+        int npunts = 1000;         //pel joc de proves ja fet                                         
         
         Population pop = new Population(npunts);
         
-        pop.ompla_pesos_jp();
+        pop.ompla_pesos_jp3();
         pop.ompla_population_random();
         
-        System.out.println("Pesos:");
+        /*System.out.println("Pesos:");
         pop.escriu_pesos();
         System.out.println("Population inicial:");
-        pop.escriu_population();
+        pop.escriu_population();*/
         
         int Fittest = pop.getFittest();
         int Fitness = pop.getFitness(Fittest); 
