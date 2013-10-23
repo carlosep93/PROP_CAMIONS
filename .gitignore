@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/prop/nbproject/private/
+/TSP_SA_2/nbproject/private/
