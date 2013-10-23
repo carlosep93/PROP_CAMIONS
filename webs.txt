@@ -1,3 +1,4 @@
+
 http://david.bookstaber.com/opinion/SATSP.pdf
 
 http://pjwstk.mykhi.org/4sem/NAI/rozne/Comparison%20of%20TSP%20Algorithms/Comparison%20of%20TSP%20Algorithms.PDF
