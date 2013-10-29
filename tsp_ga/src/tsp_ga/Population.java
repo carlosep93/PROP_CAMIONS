@@ -100,8 +100,8 @@ public class Population {
         //Crossover population
         for(int i = elitismOffset; i < numTours; ++i){
             int parent1[], parent2[];
-            parent1 = tournamentSelection();
-            parent2 = tournamentSelection();
+            parent1 = tournamentSelection_roulettewheel();
+            parent2 = tournamentSelection_roulettewheel();
             
             
             /*System.out.println("Pare 1: ");
@@ -158,6 +158,27 @@ public class Population {
             }
         }
         return population[Fittest];
+    }
+    
+    private int[] tournamentSelection_roulettewheel(){
+        int totalFitness = total_fitness();
+        int limit = (int)Math.random() * totalFitness;
+        int point, acom;
+        point = (int)Math.random() * numTours;
+        acom = 0;
+        while(acom < limit){
+            ++point; if(point >= numTours) point = 0;
+            acom += pes_ruta[point];
+        }
+        return population[point];
+    }
+    
+    private int total_fitness(){
+        int totalFitness = 0;
+        for(int i = 0; i < numTours; ++i){
+            totalFitness += pes_ruta[i];
+        }
+        return totalFitness;
     }
     
     private int[] crossover(int[] parent1, int[] parent2){
