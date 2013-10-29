@@ -161,23 +161,20 @@ public class Population {
     }
     
     private int[] tournamentSelection_roulettewheel(){
-        int totalFitness = total_fitness();
-        int limit = (int)Math.random() * totalFitness;
-        int point, acom;
+        int totalFitness, acom; int point;
+        totalFitness = total_fitness();
+        acom = (int)Math.random() * totalFitness;
         point = (int)Math.random() * numTours;
-        acom = 0;
-        while(acom < limit){
+        while(acom > 0){
             ++point; if(point >= numTours) point = 0;
-            acom += pes_ruta[point];
+            acom -=  pes_ruta[point];
         }
         return population[point];
     }
     
     private int total_fitness(){
         int totalFitness = 0;
-        for(int i = 0; i < numTours; ++i){
-            totalFitness += pes_ruta[i];
-        }
+        for(int i = 0; i < numTours; ++i) totalFitness += pes_ruta[i];
         return totalFitness;
     }
     

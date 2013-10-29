@@ -65,8 +65,8 @@ public class Tsp_ga {
         }
         
         //escriu la ruta més òptima
-        System.out.println("La ruta final és: ");
-        pop.escriu_ruta(Fittest);
+        //System.out.println("La ruta final és: ");
+        //pop.escriu_ruta(Fittest);
         
     }
 }
