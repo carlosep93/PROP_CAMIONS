@@ -11,9 +11,10 @@ public class Population {
     int npunts;
     int pesos[][];
     int population[][];
-    int pes_ruta[];
+    double pes_ruta[];
+    double TotalFitness = 0;
     
-    int numTours = 50;              //el valor de la quantitat de toure sobre la qual operarà
+    int numTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
     boolean elitism = true;        //guarda el millor de cada generació a la posició de population
     int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
     double mutationRate = 0.015;    //rati de mutació
@@ -25,7 +26,7 @@ public class Population {
         this.npunts=npunts;
         pesos = new int[npunts][npunts];
         population = new int[numTours][npunts];
-        pes_ruta = new int[numTours];
+        pes_ruta = new double[numTours];
     }
     
     public void ompla_pesos(){
@@ -61,16 +62,23 @@ public class Population {
     }
     
     public int getFittest(){
-        int Fittest=0;
-        int pes_Fittest = pes_ruta[0] = getCost_ruta(0);
+        int Fittest = 0;
+        double pes_Fittest = pes_ruta[0];
         for(int i = 1; i < numTours; ++i){
-            pes_ruta[i] = getCost_ruta(i);
-            if(pes_ruta[i] < pes_Fittest){
-                pes_Fittest=pes_ruta[i];
-                Fittest=i;
+            if(pes_ruta[i] > pes_Fittest){
+                pes_Fittest = pes_ruta[i];
+                Fittest = i;
             }
         }
         return Fittest;
+    }
+    
+    public void ompla_pesosRutes(){
+        TotalFitness = 0;
+        for(int i = 0; i < numTours; ++i){
+            pes_ruta[i] = 1/(double)getCost_ruta(i);
+            TotalFitness += pes_ruta[i];
+        }
     }
     
     private int getCost_ruta(int ruta){
@@ -84,8 +92,8 @@ public class Population {
         return cost;
     }
     
-    public int getFitness(int Fittest){
-        return pes_ruta[Fittest];
+    public double getFitness(int Fittest){
+        return 1/pes_ruta[Fittest];
     }
     
     public void envolvePopulation(){
@@ -118,13 +126,14 @@ public class Population {
             System.out.println("");*/
             
             
-            newpopulation[i]=crossover(parent1,parent2);
+            newpopulation[i] = crossover(parent1,parent2);
         }
         
         for(int i = elitismOffset; i < numTours; ++i){
             newpopulation[i] = mutate(newpopulation[i]);
         }
         population = newpopulation;
+        ompla_pesosRutes();
     }
     
     private int[] mutate(int tour[]){
@@ -149,33 +158,27 @@ public class Population {
             int randomId = (int)(Math.random() * numTours);
             if(!ini){
                 Fittest = randomId;
-                Fitness = getFitness(randomId);
+                Fitness = (int)getFitness(randomId);
                 ini=true;
             }
             else if(Fitness > getFitness(randomId)){
                 Fittest = randomId;
-                Fitness = getFitness(randomId);
+                Fitness = (int)getFitness(randomId);
             }
         }
         return population[Fittest];
     }
     
     private int[] tournamentSelection_roulettewheel(){
-        int totalFitness, acom; int point;
-        totalFitness = total_fitness();
-        acom = (int)Math.random() * totalFitness;
+        double limit, acom; int point;
+        acom = 0;
+        limit = (double)Math.random() * TotalFitness;
         point = (int)Math.random() * numTours;
-        while(acom > 0){
+        while(acom < limit){
             ++point; if(point >= numTours) point = 0;
-            acom -=  pes_ruta[point];
+            acom +=  pes_ruta[point];
         }
         return population[point];
-    }
-    
-    private int total_fitness(){
-        int totalFitness = 0;
-        for(int i = 0; i < numTours; ++i) totalFitness += pes_ruta[i];
-        return totalFitness;
     }
     
     private int[] crossover(int[] parent1, int[] parent2){

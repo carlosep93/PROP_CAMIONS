@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Tsp_ga {
     
     //nombre de generacions sense variar per donar una solució per bona
-    static int stopCondition = 20;
+    static int stopCondition = 50;
     //max de generacions que es crearan
     static int nGeneracions = 1000;
 
@@ -33,8 +33,9 @@ public class Tsp_ga {
         System.out.println("Population inicial:");
         pop.escriu_population();*/
         
+        pop.ompla_pesosRutes();
         int Fittest = pop.getFittest();
-        int Fitness = pop.getFitness(Fittest); 
+        int Fitness = (int)pop.getFitness(Fittest); 
         System.out.println("Generació 0     Fitness: " + Fitness);
 
         int nCicles = 0;
@@ -48,7 +49,7 @@ public class Tsp_ga {
             
             //obtè el millor element de la població i el seu cost total
             Fittest = pop.getFittest();
-            Fitness = pop.getFitness(Fittest);
+            Fitness = (int)pop.getFitness(Fittest);
             System.out.println("Generació " + i + "     Fitness: " + Fitness);
             
             //si fa tantes generacions que no ha cambiat el millor element de
