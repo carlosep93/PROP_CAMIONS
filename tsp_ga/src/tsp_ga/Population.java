@@ -18,7 +18,7 @@ public class Population {
     boolean elitism = true;        //guarda el millor de cada generació a la posició de population
     int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
     double mutationRate = 0.015;    //rati de mutació
-    
+    double mutationSwapProbability = 0.90;
     
     Scanner in = new Scanner(System.in);
     
@@ -92,6 +92,19 @@ public class Population {
         return cost;
     }
     
+    private int getCost_ruta2(int[] Tour){
+        int cost=0;
+         int p, p2;
+        for(int i = 0; i < npunts-1; ++i){
+             cost+=pesos[Tour[i]][Tour[i+1]];
+        }
+        return cost;
+        
+        
+    }
+    
+    
+    
     public double getFitness(int Fittest){
         return 1/pes_ruta[Fittest];
     }
@@ -127,6 +140,8 @@ public class Population {
             
             
             newpopulation[i] = crossover(parent1,parent2);
+                 
+            
         }
         
         for(int i = elitismOffset; i < numTours; ++i){
@@ -150,6 +165,44 @@ public class Population {
         }
         return tour;
     }
+    
+    
+     private int[] mutate2 (int tour[]) {
+        int[] mutated=tour;
+        double chance;
+        // mutate each city in tour with some probability
+        for(int i=0;i<npunts;i++) {
+            chance = Math.random();
+            if (chance<mutationRate) {
+                int punt2 = (int)(Math.random() * npunts);
+                while (punt2 == i) {    // ens asegurem que de que es faci el canvi per un altre
+                    punt2 = (int)(Math.random() * npunts);
+                }
+                int aux = mutated[punt2];
+                mutated[punt2] = mutated[i];
+                mutated[i] = aux;
+            }
+        }
+        double costTour=getCost_ruta2(tour);
+        double costMutated=getCost_ruta2(mutated);
+        // determine whether to return the shorter or longer tour of the two
+        if (Math.random() < mutationSwapProbability) {
+            if (costMutated < costTour) {
+                return mutated;
+            }
+            else return tour;
+        }
+        else {
+             if (costMutated < costTour) {
+                return tour;
+            }
+            else return mutated;
+        }
+    }
+    
+    
+    
+    
     
     private int[] tournamentSelection(){
         int Fittest, Fitness; Fittest = Fitness = 0;
@@ -198,7 +251,6 @@ public class Population {
                 }
             }
         }
-        
         for(int i = 0; i < npunts; ++i){
             if(!containsCity(child,i)){
                 for(int ii = 0; ii < npunts; ++ii){
@@ -212,6 +264,11 @@ public class Population {
         
         return child;
     }
+    
+    
+
+   
+    
     
     private boolean containsCity(int child[], int punt){
         boolean conte = false;
