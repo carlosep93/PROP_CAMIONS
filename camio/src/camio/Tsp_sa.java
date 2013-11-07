@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tsp_sa;
+package camio;
+
+import tsp_sa.Population;
 
 
 public class Tsp_sa {

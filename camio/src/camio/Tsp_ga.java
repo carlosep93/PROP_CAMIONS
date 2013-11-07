@@ -1,8 +1,9 @@
 
-package tsp_ga;
+package camio;
 
 
 //importa llibreries per poder llegir de teclat
+import camio.Population;
 import java.util.Scanner;
 
 public class Tsp_ga {

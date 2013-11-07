@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tsp_ga;
+package camio;
 
 import java.util.Scanner;       //importa llibreries per poder llegir de teclat
 
@@ -103,8 +103,6 @@ public class Population {
         
     }
     
-    
-    
     public double getFitness(int Fittest){
         return 1/pes_ruta[Fittest];
     }
@@ -139,7 +137,7 @@ public class Population {
             System.out.println("");*/
             
             
-            newpopulation[i] = crossover(parent1,parent2);
+            newpopulation[i] = crossover_edgeRecombination(parent1,parent2);
                  
             
         }
@@ -166,8 +164,7 @@ public class Population {
         return tour;
     }
     
-    
-     private int[] mutate2 (int tour[]) {
+    private int[] mutate2 (int tour[]) {
         int[] mutated=tour;
         double chance;
         // mutate each city in tour with some probability
@@ -198,11 +195,7 @@ public class Population {
             }
             else return mutated;
         }
-    }
-    
-    
-    
-    
+    } 
     
     private int[] tournamentSelection(){
         int Fittest, Fitness; Fittest = Fitness = 0;
@@ -263,12 +256,84 @@ public class Population {
         }
         
         return child;
+    }  
+    
+    private int[] crossover_edgeRecombination(int[] parent1, int[] parent2){
+        int child[] = new int[npunts];        
+        int ciutatActual = (int)(Math.random() * npunts);
+        int con1[][] = new int [npunts][4];
+        int con2[][] = new int [npunts][4];
+        
+        for(int i = 0; i < npunts; ++i){
+            for(int ii = 0; ii < 4; ++ii){
+                con1[i][ii] = con2[i][ii] = -1;
+            }
+        }
+        
+        
+        for(int i = 0; i < npunts; ++i){
+            int pos = posCiuX(i, parent1);
+            if(pos == 0){
+                entraCiu(parent1[pos], parent1[pos+1], con1);
+            }
+            else if(pos == npunts-1){
+                entraCiu(parent1[pos], parent1[pos-1], con1);
+            }
+            else{
+                entraCiu(parent1[pos], parent1[pos+1], con1);
+                entraCiu(parent1[pos], parent1[pos-1], con1);
+            }
+            pos = posCiuX(i, parent2);
+            if(pos == 0){
+                entraCiu(parent2[pos], parent2[pos+1], con1);
+            }
+            else if(pos == npunts-1){
+                entraCiu(parent2[pos], parent2[pos-1], con1);
+            }
+            else{
+                entraCiu(parent2[pos], parent2[pos+1], con1);
+                entraCiu(parent2[pos], parent2[pos-1], con1);
+            }
+        }
+        
+        System.out.println("Primer adjacent: ");
+        for(int i = 0; i < npunts; ++i){
+            for(int ii = 0; ii < 4; ++ii){
+                System.out.print(" " + con1[i][ii]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+        
+        System.out.println("Segón adjacent: ");
+        for(int i = 0; i < npunts; ++i){
+            for(int ii = 0; ii < 4; ++ii){
+                System.out.print(" " + con1[i][ii]);
+            }
+            System.out.println();
+        }
+        
+        
+        
+        return child;
     }
     
+    private void entraCiu(int origen, int desti, int[][] con){
+        for(int i = 0; i < 4; ++i){
+            if(con[origen][i] == -1){
+                con[origen][i] = desti;
+            }
+        }
+    }
     
-
-   
-    
+    private int posCiuX(int ciu, int[] vector){
+        int i = 0;
+        while(i < npunts){
+            if(vector[i] == ciu) break;
+            ++i;
+        }
+        return i;
+    }
     
     private boolean containsCity(int child[], int punt){
         boolean conte = false;
@@ -305,7 +370,6 @@ public class Population {
             System.out.println(" " + population[ruta][i]);
         }
     }
-    
     
     //joc de proves
     public void ompla_pesos_jp(){

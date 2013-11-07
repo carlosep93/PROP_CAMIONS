@@ -2,24 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tsp_sa;
+package camio;
 
 //import java.util.Scanner;
 
 
-public class Population {
+public class Population_sa {
     
     int npunts;
     int pesos[][];
     int population[];
     
-    public Population(int npunts) {
+    public Population_sa(int npunts) {
         this.npunts=npunts;
         pesos = new int[npunts][npunts];
         population = new int[npunts];
     }
     
-    public Population(Population p) {
+    public Population_sa(Population_sa p) {
         this.npunts = p.npunts;
         this.pesos = new int[npunts][npunts];
         this.population = new int [npunts];
