@@ -30,8 +30,6 @@ public class Population {
     }
     
     public void ompla_pesos(){
-        
-
         System.out.println("Escriu els valors dels costos d'anar del punt: ");
         for(int i=0;i<npunts;++i){
             for(int ii=0;ii<npunts;++ii){
