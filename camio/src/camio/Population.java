@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package camio;
 
 import java.util.Scanner;       //importa llibreries per poder llegir de teclat
