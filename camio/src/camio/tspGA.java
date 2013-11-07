@@ -8,6 +8,14 @@ public class tspGA {
     static int stopCondition;
     //max de generacions que es crearan
     static int nGeneracions;
+    //numero de ciutats
+    static int nCiutats;
+    
+    static int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
+    static boolean elitism = true;        //guarda el millor de cada generació a la posició de population
+    static int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
+    static double mutationRate = 0.015;    //rati deom mutació
+    static double mutationSwapProbability = 0.90;
     
     public static void tspGA(int Scond, int nGen){
         stopCondition = Scond;
@@ -20,18 +28,13 @@ public class tspGA {
         //System.out.println("Escriu el nombre de punts: ");    //lectura del teclat
         //int npunts = in.nextInt();
 
-        int npunts = 1000;         //pel joc de proves ja fet                                         
+        nCiutats = 1000;         //pel joc de proves ja fet                                         
 
-        Population pop = new Population(npunts);
+        Population pop = new Population(nCiutats, nTours);
 
         pop.ompla_pesos_jp3();
         pop.ompla_population_random();
-
-        /*System.out.println("Pesos:");
-        pop.escriu_pesos();
-        System.out.println("Population inicial:");
-        pop.escriu_population();*/
-
+        
         pop.ompla_pesosRutes();
         int Fittest = pop.getFittest();
         int Fitness = (int)pop.getFitness(Fittest); 
@@ -44,7 +47,7 @@ public class tspGA {
         //iteracions per evolucionar la població
         for(int i = 1; i <= nGeneracions; ++i){
             //evoluciona la població en una generació
-            pop.envolvePopulation();
+            envolvePopulation(pop);
 
             //obtè el millor element de la població i el seu cost total
             Fittest = pop.getFittest();
@@ -70,4 +73,46 @@ public class tspGA {
 
     }
     
+    
+    private static void envolvePopulation(Population pop){
+        int newpopulation[][] = new int[nTours][nCiutats];
+        
+        int elitismOffset = 0;
+        if(elitism){
+            newpopulation[0] = pop.getTour(pop.getFittest());
+            elitismOffset = 1;
+        }
+        
+        //Crossover population
+        for(int i = elitismOffset; i < nTours; ++i){
+            int parent1[], parent2[];
+            parent1 = tournamentSelection.tournamentSelection_roulettewheel(pop);
+            parent2 = tournamentSelection.tournamentSelection_roulettewheel(pop);
+            
+            
+            /*System.out.println("Pare 1: ");
+            for(int ii = 0; ii < npunts; ++ii){
+                System.out.print(" " + parent1[ii]);
+            }
+            System.out.println("");
+            
+            
+            System.out.println("Pare 1: ");
+            for(int ii = 0; ii < npunts; ++ii){
+                System.out.print(" " + parent1[ii]);
+            }
+            System.out.println("");*/
+            
+            
+            newpopulation[i] = crossover.crossover_edgeRecombination(parent1,parent2);
+                 
+            
+        }
+        
+        for(int i = elitismOffset; i < numTours; ++i){
+            newpopulation[i] = mutate(newpopulation[i]);
+        }
+        population = newpopulation;
+        ompla_pesosRutes();
+    }
 }

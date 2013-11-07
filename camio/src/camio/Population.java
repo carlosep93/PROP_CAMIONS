@@ -10,20 +10,21 @@ public class Population {
     int population[][];
     double pes_ruta[];
     double TotalFitness = 0;
+    int nTours;
     
-    int numTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
-    boolean elitism = true;        //guarda el millor de cada generació a la posició de population
-    int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
-    double mutationRate = 0.015;    //rati de mutació
-    double mutationSwapProbability = 0.90;
     
     Scanner in = new Scanner(System.in);
     
-    public Population(int npunts) {
-        this.npunts=npunts;
+    public Population(int npunts, int nTours) {
+        this.npunts = npunts;
+        this.nTours = nTours;
         pesos = new int[npunts][npunts];
-        population = new int[numTours][npunts];
-        pes_ruta = new double[numTours];
+        population = new int[this.nTours][npunts];
+        pes_ruta = new double[this.nTours];
+    }
+    
+    public int[] getTour(int pos){
+        return population[pos];
     }
     
     public void ompla_pesos(){
@@ -56,24 +57,16 @@ public class Population {
         mutationRate = 0.015;
     }
     
-    public int getFittest(){
-        int Fittest = 0;
-        double pes_Fittest = pes_ruta[0];
-        for(int i = 1; i < numTours; ++i){
-            if(pes_ruta[i] > pes_Fittest){
-                pes_Fittest = pes_ruta[i];
-                Fittest = i;
-            }
-        }
-        return Fittest;
-    }
-    
     public void ompla_pesosRutes(){
         TotalFitness = 0;
         for(int i = 0; i < numTours; ++i){
             pes_ruta[i] = 1/(double)getCost_ruta(i);
             TotalFitness += pes_ruta[i];
         }
+    }
+    
+    public double getCostRuta(int ruta){
+        return pes_ruta[ruta];
     }
     
     private int getCost_ruta(int ruta){
@@ -98,50 +91,21 @@ public class Population {
         
     }
     
-    public double getFitness(int Fittest){
-        return 1/pes_ruta[Fittest];
+        
+    public int getFittest(){
+        int Fittest = 0;
+        double pes_Fittest = pes_ruta[0];
+        for(int i = 1; i < numTours; ++i){
+            if(pes_ruta[i] > pes_Fittest){
+                pes_Fittest = pes_ruta[i];
+                Fittest = i;
+            }
+        }
+        return Fittest;
     }
     
-    public void envolvePopulation(){
-        int newpopulation[][] = new int[numTours][npunts];
-        
-        int elitismOffset = 0;
-        if(elitism){
-            newpopulation[0] = population[getFittest()];
-            elitismOffset = 1;
-        }
-        
-        //Crossover population
-        for(int i = elitismOffset; i < numTours; ++i){
-            int parent1[], parent2[];
-            parent1 = tournamentSelection_roulettewheel();
-            parent2 = tournamentSelection_roulettewheel();
-            
-            
-            /*System.out.println("Pare 1: ");
-            for(int ii = 0; ii < npunts; ++ii){
-                System.out.print(" " + parent1[ii]);
-            }
-            System.out.println("");
-            
-            
-            System.out.println("Pare 1: ");
-            for(int ii = 0; ii < npunts; ++ii){
-                System.out.print(" " + parent1[ii]);
-            }
-            System.out.println("");*/
-            
-            
-            newpopulation[i] = crossover_edgeRecombination(parent1,parent2);
-                 
-            
-        }
-        
-        for(int i = elitismOffset; i < numTours; ++i){
-            newpopulation[i] = mutate(newpopulation[i]);
-        }
-        population = newpopulation;
-        ompla_pesosRutes();
+    public double getFitness(int Fittest){
+        return 1/pes_ruta[Fittest];
     }
     
     private int[] mutate(int tour[]){
@@ -192,150 +156,8 @@ public class Population {
         }
     } 
     
-    private int[] tournamentSelection(){
-        int Fittest, Fitness; Fittest = Fitness = 0;
-        boolean ini = false;
-        for(int i = 0; i < tournamentSize; ++i){
-            int randomId = (int)(Math.random() * numTours);
-            if(!ini){
-                Fittest = randomId;
-                Fitness = (int)getFitness(randomId);
-                ini=true;
-            }
-            else if(Fitness > getFitness(randomId)){
-                Fittest = randomId;
-                Fitness = (int)getFitness(randomId);
-            }
-        }
-        return population[Fittest];
-    }
-    
-    private int[] tournamentSelection_roulettewheel(){
-        double limit, acom; int point;
-        acom = 0;
-        limit = (double)Math.random() * TotalFitness;
-        point = (int)Math.random() * numTours;
-        while(acom < limit){
-            ++point; if(point >= numTours) point = 0;
-            acom +=  pes_ruta[point];
-        }
-        return population[point];
-    }
-    
-    private int[] crossover(int[] parent1, int[] parent2){
-        int child[] = new int[npunts];
-        
-        int startPos = (int)(Math.random() * npunts);
-        int endPos = (int)(Math.random() * npunts);
-        
-        for(int i = 0; i < npunts; ++i){
-            child[i]=-1;
-            if(startPos < endPos && i > startPos && i < endPos){
-                child[i] = parent1[i];
-            }
-            else if(startPos > endPos){
-                if(!(i < startPos && i > endPos)){
-                    child[i] = parent1[i];
-                }
-            }
-        }
-        for(int i = 0; i < npunts; ++i){
-            if(!containsCity(child,i)){
-                for(int ii = 0; ii < npunts; ++ii){
-                    if(child[ii] == -1){
-                        child[ii] = i;
-                        break;
-                    }
-                }
-            }
-        }
-        
-        return child;
-    }  
-    
-    private int[] crossover_edgeRecombination(int[] parent1, int[] parent2){
-        int child[] = new int[npunts];        
-        int ciutatActual = (int)(Math.random() * npunts);
-        int con1[][] = new int [npunts][4];
-        int con2[][] = new int [npunts][4];
-        
-        for(int i = 0; i < npunts; ++i){
-            for(int ii = 0; ii < 4; ++ii){
-                con1[i][ii] = con2[i][ii] = -1;
-            }
-        }
-        
-        
-        for(int i = 0; i < npunts; ++i){
-            int pos = posCiuX(i, parent1);
-            if(pos == 0){
-                entraCiu(parent1[pos], parent1[pos+1], con1);
-            }
-            else if(pos == npunts-1){
-                entraCiu(parent1[pos], parent1[pos-1], con1);
-            }
-            else{
-                entraCiu(parent1[pos], parent1[pos+1], con1);
-                entraCiu(parent1[pos], parent1[pos-1], con1);
-            }
-            pos = posCiuX(i, parent2);
-            if(pos == 0){
-                entraCiu(parent2[pos], parent2[pos+1], con1);
-            }
-            else if(pos == npunts-1){
-                entraCiu(parent2[pos], parent2[pos-1], con1);
-            }
-            else{
-                entraCiu(parent2[pos], parent2[pos+1], con1);
-                entraCiu(parent2[pos], parent2[pos-1], con1);
-            }
-        }
-        
-        System.out.println("Primer adjacent: ");
-        for(int i = 0; i < npunts; ++i){
-            for(int ii = 0; ii < 4; ++ii){
-                System.out.print(" " + con1[i][ii]);
-            }
-            System.out.println();
-        }
-        System.out.println();
-        
-        System.out.println("Segón adjacent: ");
-        for(int i = 0; i < npunts; ++i){
-            for(int ii = 0; ii < 4; ++ii){
-                System.out.print(" " + con1[i][ii]);
-            }
-            System.out.println();
-        }
-        
-        
-        
-        return child;
-    }
-    
-    private void entraCiu(int origen, int desti, int[][] con){
-        for(int i = 0; i < 4; ++i){
-            if(con[origen][i] == -1){
-                con[origen][i] = desti;
-            }
-        }
-    }
-    
-    private int posCiuX(int ciu, int[] vector){
-        int i = 0;
-        while(i < npunts){
-            if(vector[i] == ciu) break;
-            ++i;
-        }
-        return i;
-    }
-    
-    private boolean containsCity(int child[], int punt){
-        boolean conte = false;
-        for(int i = 0; i < npunts && !conte; ++i){
-            if(child[i]==punt) conte = true;
-        }
-        return conte;
+    public double getTotalFitness(){
+        return TotalFitness;
     }
     
     public void escriu_pesos(){
