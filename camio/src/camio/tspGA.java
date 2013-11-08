@@ -75,11 +75,11 @@ public class tspGA {
     
     
     private static void envolvePopulation(Population pop){
-        int newpopulation[][] = new int[nTours][nCiutats];
+        Population newPopulation = new Population(nCiutats, nTours);
         
         int elitismOffset = 0;
         if(elitism){
-            newpopulation[0] = pop.getTour(pop.getFittest());
+            newPopulation.addNewTour(0, pop.getTour(pop.getFittest()));
             elitismOffset = 1;
         }
         
@@ -104,13 +104,13 @@ public class tspGA {
             System.out.println("");*/
             
             
-            newpopulation[i] = crossover.crossover_edgeRecombination(parent1,parent2);   
+            newPopulation.addNewTour(i, crossover.crossover_edgeRecombination(parent1,parent2));   
         }
         
         for(int i = elitismOffset; i < nTours; ++i){
-            newpopulation[i] = mutate.mutate2(pop, newpopulation[i]);
+            newPopulation.addNewTour(i, mutate.mutate2(newPopulation.getTour(i),mutationRate, mutationSwapProbability));
         }
-        population = newpopulation;
-        ompla_pesosRutes();
+        pop = newPopulation;
+        pop.ompla_pesosRutes();
     }
 }

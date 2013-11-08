@@ -19,7 +19,7 @@ public class mutate {
         return tour;
     }
     
-    public static int[] mutate2(int tour[], int mutationRate, int mutationSwapProbability) {
+    public static int[] mutate2(int tour[], double mutationRate, double mutationSwapProbability) {
         int[] mutated=tour;
         double chance;
         // mutate each city in tour with some probability

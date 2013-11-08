@@ -27,6 +27,10 @@ public class Population {
         return population[pos];
     }
     
+    public void addNewTour(int pos, int[] Tour){
+        population[pos] = Tour;
+    }
+    
     public void ompla_pesos(){
         System.out.println("Escriu els valors dels costos d'anar del punt: ");
         for(int i=0;i<npunts;++i){
