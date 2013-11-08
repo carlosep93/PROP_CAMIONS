@@ -73,6 +73,20 @@ public class Population_sa {
         }
     }
      
+    public void twoSwap(Population_sa p,int i, int k) {
+        for (int j=0;j<i;++i) {
+            this->population[j] = p.population[j];
+        }
+        int aux = i;
+        for  (int j=k; j>i;--j) {
+            this->polation[j] =p.population[aux];
+            ++aux;
+        }
+        for (int j=k;j<p.tamany();++j) {
+            this->population[j] = p.population[j];
+        }
+    }
+     
   /*  public void ompla_pesos(){
         System.out.println("Escriu els valors dels costos d'anar del punt: ");
         for(int i=0;i<npunts;++i){
