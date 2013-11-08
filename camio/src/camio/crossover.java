@@ -3,7 +3,7 @@ package camio;
 
 public class crossover {
     
-    private int[] crossover(int[] parent1, int[] parent2){
+    public static int[] crossover(int[] parent1, int[] parent2){
         int npunts = parent1.length;
         int child[] = new int[npunts];
         
@@ -35,7 +35,7 @@ public class crossover {
         return child;
     }  
     
-    private int[] crossover_edgeRecombination(int[] parent1, int[] parent2){
+    public static int[] crossover_edgeRecombination(int[] parent1, int[] parent2){
         int npunts = parent1.length;
         int child[] = new int[npunts];        
         int ciutatActual = (int)(Math.random() * npunts);

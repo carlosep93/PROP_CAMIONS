@@ -107,55 +107,7 @@ public class Population {
     public double getFitness(int Fittest){
         return 1/pes_ruta[Fittest];
     }
-    
-    private int[] mutate(int tour[]){
-        for(int i = 0; i < npunts; ++i){
-            if(Math.random() <= mutationRate){
-                //trobar una altra posició random per fer switch
-                int punt2 = (int)(Math.random() * npunts);
-                
-                //un switch de les dues posicions
-                int aux = tour[punt2];
-                tour[punt2] = tour[i];
-                tour[i] = aux;
-            }
-        }
-        return tour;
-    }
-    
-    private int[] mutate2 (int tour[]) {
-        int[] mutated=tour;
-        double chance;
-        // mutate each city in tour with some probability
-        for(int i=0;i<npunts;i++) {
-            chance = Math.random();
-            if (chance<mutationRate) {
-                int punt2 = (int)(Math.random() * npunts);
-                while (punt2 == i) {    // ens asegurem que de que es faci el canvi per un altre
-                    punt2 = (int)(Math.random() * npunts);
-                }
-                int aux = mutated[punt2];
-                mutated[punt2] = mutated[i];
-                mutated[i] = aux;
-            }
-        }
-        double costTour=getCost_ruta2(tour);
-        double costMutated=getCost_ruta2(mutated);
-        // determine whether to return the shorter or longer tour of the two
-        if (Math.random() < mutationSwapProbability) {
-            if (costMutated < costTour) {
-                return mutated;
-            }
-            else return tour;
-        }
-        else {
-             if (costMutated < costTour) {
-                return tour;
-            }
-            else return mutated;
-        }
-    } 
-    
+
     public double getTotalFitness(){
         return TotalFitness;
     }

@@ -104,13 +104,11 @@ public class tspGA {
             System.out.println("");*/
             
             
-            newpopulation[i] = crossover.crossover_edgeRecombination(parent1,parent2);
-                 
-            
+            newpopulation[i] = crossover.crossover_edgeRecombination(parent1,parent2);   
         }
         
-        for(int i = elitismOffset; i < numTours; ++i){
-            newpopulation[i] = mutate(newpopulation[i]);
+        for(int i = elitismOffset; i < nTours; ++i){
+            newpopulation[i] = mutate.mutate2(pop, newpopulation[i]);
         }
         population = newpopulation;
         ompla_pesosRutes();
