@@ -144,6 +144,8 @@ public class Population {
         }
     }
     
+    
+    
     //joc de proves
     public void ompla_pesos_jp(){
         pesos[0][0] = 0;
