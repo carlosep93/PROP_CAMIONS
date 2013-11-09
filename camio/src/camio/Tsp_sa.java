@@ -21,14 +21,15 @@ public class Tsp_sa {
         double temperature = 10000;
         //Factor por el que se enfria
         double enfriamiento = 0.003;
-        Population pop = new Population(1000);
+        Population pop = new Population(1000,3);// 1: best, 2: actual 3: new
         pop.ompla_pesos_jp3();
         pop.ompla_population_random();
-        System.out.println("Distancia inicial: "+ pop.getCost_ruta());
-        pop.escriu_population();
-        Population best = new Population(pop);
+        int cost = pop.getCost_ruta(2);
+        System.out.println("Distancia inicial: "+ cost);
+        //pop.escriu_population();
+        //Population best = new Population(pop);
         while (temperature > 1) {
-            Population newpop = new Population(pop);
+            //Population newpop = new Population(pop);
             //swap de posicions random
             int p1=(int)(Math.random()*newpop.tamany());
             int p2=(int)(Math.random()*newpop.tamany());

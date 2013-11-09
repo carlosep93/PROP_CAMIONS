@@ -31,6 +31,10 @@ public class Population {
         population[pos] = Tour;
     }
     
+    public int getSize() {
+        return npunts;
+    }
+    
     public void ompla_pesos(){
         System.out.println("Escriu els valors dels costos d'anar del punt: ");
         for(int i=0;i<npunts;++i){
@@ -39,6 +43,24 @@ public class Population {
                 pesos[i][ii]=in.nextInt();
                 System.out.println();
             }
+        }
+    }
+    //Funciones para el sa y el 2opt
+    public void clonevec(int x, int y) {
+        //Copia el recorrido x en el recorrido y
+        for (int i=0;i<npunts;++i) {
+            population[y][i] = population[x][i];
+        }
+    }
+    
+    public void twoswap(int i,int j,int p) {
+        int aux = i+(j-i)/2;
+        for (int k=i;k<aux;++j) {
+            int aux2 = population[p][i];
+            population[p][i] = population[p][k];
+            population[p][k] = aux2;
+            ++i;
+            --j;
         }
     }
     
@@ -73,7 +95,7 @@ public class Population {
         return pes_ruta[ruta];
     }
     
-    private int getCost_ruta(int ruta){
+    public int getCost_ruta(int ruta){
         int cost=0;
         int p, p2;
         for(int i = 0; i < npunts-1; ++i){
