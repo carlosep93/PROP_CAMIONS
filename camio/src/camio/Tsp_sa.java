@@ -52,5 +52,6 @@ public class Tsp_sa {
         best.escriu_population();
     }
 }
+
   
     
