@@ -5,27 +5,30 @@
  */
 package camio;
 
+
 /**
  *
  * @author pol
  */
 
-public class Element {
+public final class Element {
     private int id;
     private boolean enabled;
    
    
     public Element() {
-       id = getid();
+       id = assignarID();
        enabled=true;     
     }
-    
-    private int getid(){
-        int id=Id_global;   //L' ID_GLOBAL s'ha de definir al controlador
-        ++Id_global;
-        return id;       
+    public int assignarID(){
+        return getid();
     }
     
+     public void newElement(int id,boolean enabled) {
+       this.id = id;
+       this.enabled=enabled;     
+    }
+     
     
     public int getID(){
         return id;       
@@ -38,7 +41,9 @@ public class Element {
     public void updateEnabled(boolean newvalue){
         enabled=newvalue;
     }
-   
+   public void modifyid(int id){
+       this.id=id;
+   }
     
     
     
