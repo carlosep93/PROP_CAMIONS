@@ -13,10 +13,9 @@ public class twopt {
         int best = p.getCost_ruta(2);
         for (int i=0; i < p.getSize()-1;++i) {
             for (int k = i+1;k <p.getSize();++ k) {
-                pnew.twoSwap(2,i,k);
-                if (pnew.getCost_ruta() < best) {
-                    p.clonevec
-                    best = pnew.getCost_ruta();
+                p.twoSwap(2,i,k);
+                if (p.getCost_ruta(2) < best) {
+                    best = p.getCost_ruta(2);
                 }    
             }
         }

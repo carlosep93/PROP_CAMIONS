@@ -53,7 +53,7 @@ public class Population {
         }
     }
     
-    public void twoswap(int i,int j,int p) {
+    public void twoSwap(int i,int j,int p) {
         int aux = i+(j-i)/2;
         for (int k=i;k<aux;++j) {
             int aux2 = population[p][i];
