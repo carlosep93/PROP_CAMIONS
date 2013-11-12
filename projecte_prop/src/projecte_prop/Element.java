@@ -5,9 +5,6 @@
  */
 package projecte_prop;
 
-import camio.Cjt_Elements;
-
-
 /**
  *
  * @author pol
