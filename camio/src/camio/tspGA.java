@@ -34,7 +34,7 @@ public class tspGA {
 
         pop.ompla_pesos_jp3();
         pop.ompla_population_random();
-        
+        twopt.twoOpt(pop);
         pop.ompla_pesosRutes();
         int Fittest = pop.getFittest();
         int Fitness = (int)pop.getFitness(Fittest); 
@@ -48,7 +48,7 @@ public class tspGA {
         for(int i = 1; i <= nGeneracions; ++i){
             //evoluciona la població en una generació
             envolvePopulation(pop);
-
+                    
             //obtè el millor element de la població i el seu cost total
             Fittest = pop.getFittest();
             Fitness = (int)pop.getFitness(Fittest);

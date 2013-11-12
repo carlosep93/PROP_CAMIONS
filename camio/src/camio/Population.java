@@ -2,7 +2,6 @@
 package camio;
 
 import java.util.Scanner;       //importa llibreries per poder llegir de teclat
-
 public class Population {
 
     int npunts;
@@ -165,6 +164,8 @@ public class Population {
             System.out.println(" " + population[ruta][i]);
         }
     }
+    
+    
     
     //joc de proves
     public void ompla_pesos_jp(){

@@ -2,9 +2,10 @@
 package camio;
 
 public class crossover {
+    static private int npunts;
     
     public static int[] crossover(int[] parent1, int[] parent2){
-        int npunts = parent1.length;
+        npunts = parent1.length;
         int child[] = new int[npunts];
         
         int startPos = (int)(Math.random() * npunts);
@@ -36,43 +37,13 @@ public class crossover {
     }  
     
     public static int[] crossover_edgeRecombination(int[] parent1, int[] parent2){
-        int npunts = parent1.length;
+        npunts = parent1.length;
         int child[] = new int[npunts];        
         int ciutatActual = (int)(Math.random() * npunts);
         int con1[][] = new int [npunts][4];
         int con2[][] = new int [npunts][4];
         
-        for(int i = 0; i < npunts; ++i){
-            for(int ii = 0; ii < 4; ++ii){
-                con1[i][ii] = con2[i][ii] = -1;
-            }
-        }
-        
-        
-        for(int i = 0; i < npunts; ++i){
-            int pos = tour.posCiuX(i, parent1);
-            if(pos == 0){
-                tour.entraCiu(parent1[pos], parent1[pos+1], con1);
-            }
-            else if(pos == npunts-1){
-                tour.entraCiu(parent1[pos], parent1[pos-1], con1);
-            }
-            else{
-                tour.entraCiu(parent1[pos], parent1[pos+1], con1);
-                tour.entraCiu(parent1[pos], parent1[pos-1], con1);
-            }
-            pos = tour.posCiuX(i, parent2);
-            if(pos == 0){
-                tour.entraCiu(parent2[pos], parent2[pos+1], con1);
-            }
-            else if(pos == npunts-1){
-                tour.entraCiu(parent2[pos], parent2[pos-1], con1);
-            }
-            else{
-                tour.entraCiu(parent2[pos], parent2[pos+1], con1);
-                tour.entraCiu(parent2[pos], parent2[pos-1], con1);
-            }
-        }
+        inicialitzaCon(con1, con2, parent1, parent2);
         
         System.out.println("Primer adjacent: ");
         for(int i = 0; i < npunts; ++i){
@@ -91,8 +62,51 @@ public class crossover {
             System.out.println();
         }
         
+        for(int i = 0; i < npunts; ++i){
+            
+        }
+        
         
         
         return child;
+    }
+    
+    private static void inicialitzaCon(int[][] con1, int[][] con2, int[] parent1, int[] parent2){       
+        
+        for(int i = 0; i < npunts; ++i){
+            
+            //inicilitza els vectors con1, con2
+            for(int ii = 0; ii < 4; ++ii){
+                con1[i][ii] = con2[i][ii] = -1;
+            }
+            
+            
+            int pos = tour.posCiuX(i, parent1);
+            if(pos == 0){
+                tour.entraCiu(parent1[pos], parent1[pos+1], con1);
+                tour.entraCiu(parent1[pos], parent1[npunts-1], con1);
+            }
+            else if(pos == npunts-1){
+                tour.entraCiu(parent1[pos], parent1[pos-1], con1);
+                tour.entraCiu(parent1[pos], parent1[0], con1);
+            }
+            else{
+                tour.entraCiu(parent1[pos], parent1[pos+1], con1);
+                tour.entraCiu(parent1[pos], parent1[pos-1], con1);
+            }
+            pos = tour.posCiuX(i, parent2);
+            if(pos == 0){
+                tour.entraCiu(parent2[pos], parent2[pos+1], con2);
+                tour.entraCiu(parent2[pos], parent2[npunts-1], con2);
+            }
+            else if(pos == npunts-1){
+                tour.entraCiu(parent2[pos], parent2[pos-1], con2);
+                tour.entraCiu(parent2[pos], parent2[0], con2);
+            }
+            else{
+                tour.entraCiu(parent2[pos], parent2[pos+1], con2);
+                tour.entraCiu(parent2[pos], parent2[pos-1], con2);
+            }
+        }
     }
 }

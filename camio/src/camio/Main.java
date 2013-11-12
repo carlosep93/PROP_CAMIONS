@@ -1,8 +1,6 @@
 
 package camio;
 
-//importa llibreries
-import camio.Tsp_sa;
 import java.util.Scanner;
 
 public class Main {

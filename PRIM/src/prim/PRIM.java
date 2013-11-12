@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package camio;
+package prim;
+//import java.io.PrintStream;
 /**
  *
  * @author joanbarrosogarrido
  */
-public class mst {
+public class PRIM {
     
     
     
@@ -66,20 +67,5 @@ public class mst {
     
 
 
-public void main() {
-    int[][] M = new int[4][4];
-    for (int i = 0; i < M.length; ++i) {
-        for(int j = 0; j < M.length; ++j) {
-             if (i != j) M[i][j] = i+j;  
-        }
-    }
-    M = AlgPrim(M);
-    for (int i = 0; i < M.length; ++i) {
-        for(int j = 0; j < M.length; ++j) {
-             System.out.print(M[i][j] +" " );  
-        }
-        System.out.println();
-    }
-    
-}
+   
 }
