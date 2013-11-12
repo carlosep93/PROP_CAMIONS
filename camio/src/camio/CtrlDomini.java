@@ -12,5 +12,6 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     
     
     public void iniciarDomini(){
-    
+        
+    }
 }

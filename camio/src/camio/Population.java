@@ -2,7 +2,6 @@
 package camio;
 
 import java.util.Scanner;       //importa llibreries per poder llegir de teclat
-
 public class Population {
 
     int npunts;
