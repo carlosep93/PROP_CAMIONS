@@ -5,7 +5,6 @@ package projecte_prop;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
-import java.util.Scanner;
 
 
 
@@ -74,7 +73,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     public void save_Element(Element elem){   //guardem un element al conjunt d'elements
         
         FileWriter fichero = null;
-        PrintWriter pw = null;
+        PrintWriter pw;
         try
         {
             fichero = new FileWriter("Ficheros/saved_elements.txt");
@@ -86,7 +85,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
             pw.println(valid);
  
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
            try {
            // Nuevamente aprovechamos el finally para 
@@ -94,7 +92,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            if (null != fichero)
               fichero.close();
            } catch (Exception e2) {
-              e2.printStackTrace();
            }
         }
     }
@@ -112,7 +109,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            // while();
  
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
            try {
            // Nuevamente aprovechamos el finally para 
@@ -120,7 +116,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            if (null != fichero)
               fichero.close();
            } catch (Exception e2) {
-              e2.printStackTrace();
            }
         }
     
@@ -128,7 +123,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
     
 /*-------------------------------NO_IMPLEMENTAT-----------------------------*/    
-    
+  /*  
     public int[][] cjt_adjacencies(){
         
         int[][] adjacencies = new int[numElem][numElem];
@@ -166,7 +161,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
 }
     
-    
+    */
      public int getid(){
         int id=Id_global_element;   //L' ID_GLOBAL s'ha de definir al controlador
         ++Id_global_element;
