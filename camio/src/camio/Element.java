@@ -17,13 +17,11 @@ public final class Element {
    
    
     public Element() {
-       id = assignarID();
+       id = Cjt_Elements.Id_global_element;
+       ++Cjt_Elements.Id_global_element;
        enabled=true;     
     }
-    public int assignarID(){
-        return getid();
-    }
-    
+   
      public void newElement(int id,boolean enabled) {
        this.id = id;
        this.enabled=enabled;     

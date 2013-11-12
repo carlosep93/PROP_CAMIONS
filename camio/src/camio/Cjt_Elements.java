@@ -1,11 +1,10 @@
 
  
 package camio;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+
 import java.util.List;
+import java.io.*;
+import java.util.Scanner;
 
 
 
@@ -21,7 +20,7 @@ import java.util.List;
 public final class Cjt_Elements { //conjunt d'elements guardats a disc
     List<Element> cjt_elements; 
     int[][] distancies; 
-    int Id_global_element=0;
+    static int Id_global_element=0;
     int numElem;
     
     /**
@@ -37,8 +36,8 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
     
     
-    public List<Element> saved_elements(){
-        List<Element> saved_elements = new List<Element>(); 
+    public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
+        List<Element> saved_elements; 
         Element elem = new Element();
         try{
         //obrir arxiu
@@ -70,7 +69,64 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     return saved_elements;
     }
 
-/*-------------------------------IMPLEMENTANT-----------------------------*/    
+    
+    public void save_Element(Element elem){   //guardem un element al conjunt d'elements
+        
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("Ficheros/saved_elements.txt");
+            pw = new PrintWriter(fichero);
+            int id_elem = elem.getID();
+            String valid = "false";
+            if (elem.isEnabled()) valid="true";
+            pw.println(id_elem);
+            pw.println(valid);
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
+    
+    public void discatalogue_Element(Element elem){  //invalida un element
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("Ficheros/saved_elements.txt");
+            pw = new PrintWriter(fichero);
+           
+            int id_elem = elem.getID();
+            int id_llegit;
+            whil()
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    
+    }
+    
+    
+/*-------------------------------NO_IMPLEMENTAT-----------------------------*/    
     
     public int[][] cjt_adjacencies(){
         
