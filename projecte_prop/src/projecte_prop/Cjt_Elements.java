@@ -2,7 +2,6 @@
  
 package projecte_prop;
 
-import projecte_prop.Element;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
@@ -110,7 +109,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            
             int id_elem = elem.getID();
             int id_llegit;
-            whil()
+           // while();
  
         } catch (Exception e) {
             e.printStackTrace();
