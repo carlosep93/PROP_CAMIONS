@@ -3,6 +3,7 @@
 package camio;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 
@@ -37,7 +38,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
     
     public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
-        List<Element> saved_elements; 
+        List<Element> saved_elements = new ArrayList<Element>() ; 
         Element elem = new Element();
         try{
         //obrir arxiu
