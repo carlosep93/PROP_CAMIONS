@@ -1,7 +1,7 @@
 
 package projecte_prop;
 
-public class mutate {
+public class Mutate {
     
     public static int[] mutate(int tour[], int mutationRate){
         for(int i = 0; i < tour.length; ++i){

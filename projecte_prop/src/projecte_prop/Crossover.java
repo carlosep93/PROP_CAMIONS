@@ -1,29 +1,37 @@
 
 package projecte_prop;
+/**
+ *
+ * @author josep
+ */
+
 
 public class Crossover {
     static private int npunts;
     
-    public static int[] crossover(int[] parent1, int[] parent2){
-        npunts = parent1.length;
-        int child[] = new int[npunts];
+    public static int[] crossover(Tour parent1, Tour parent2){
+        npunts = parent1.size();
+        Tour child = new Tour();
+        Element E = new Element(-1, false);
         
         int startPos = (int)(Math.random() * npunts);
         int endPos = (int)(Math.random() * npunts);
         
         for(int i = 0; i < npunts; ++i){
-            child[i]=-1;
+            child.addElemetPos(E, i);
             if(startPos < endPos && i > startPos && i < endPos){
-                child[i] = parent1[i];
+                //
+                child.addElementPos(parent1.getElementPos(i), i);
             }
             else if(startPos > endPos){
                 if(!(i < startPos && i > endPos)){
-                    child[i] = parent1[i];
+                    child.addElementPos(parent1.getElementPos(i), i);
                 }
             }
         }
         for(int i = 0; i < npunts; ++i){
-            if(!tour.containsCity(child, i)){
+            E = new Element(i, false);
+            if(!child.containsElement(E)){
                 for(int ii = 0; ii < npunts; ++ii){
                     if(child[ii] == -1){
                         child[ii] = i;

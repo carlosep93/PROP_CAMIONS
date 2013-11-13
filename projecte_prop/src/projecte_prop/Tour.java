@@ -18,6 +18,7 @@ public class Tour {
     
     //constructora del conjunt d'element parcial
     public Tour(){
+        cjtElem = new ArrayList<Element>();
         nElements = 0;
         cost = 0;
         id = data = -1;
@@ -26,6 +27,7 @@ public class Tour {
     
     //constructora del conjunt d'element total
     public Tour(int id, String nom, int data){
+        cjtElem = new ArrayList<Element>();
         nElements = 0;
         cost = 0;
         this.id = id;
@@ -51,7 +53,7 @@ public class Tour {
     }
     
     //inserta l'element E a la posició pos de la llista Ruta
-    public boolean addElementPos(Element E, int pos){
+    public boolean addElement(Element E, int pos){
         if((pos >= 0 && pos <= nElements) || !cjtElem.contains(E)){
             cjtElem.add(pos, E);
             ++nElements;
@@ -72,6 +74,19 @@ public class Tour {
             }
             return true;
         }
+        return false;
+    }
+    
+    //reemplaça l'element E per l'element E2 retorna si l'operació s'ha fet correctament
+    public boolean remplaceElement(Element E, Element E2){
+        int pos = getPosElement(E);
+        if(!containsElement(E) && containsElement(E2) && removeElement(E2) && addElementPos(E,pos)) return true;
+        return false;
+    }
+    
+    //reemplaça l'element de la posició pos per l'element E retorna si l'operació s'ha fet correctament
+    public boolean remplaceElement(Element E, int pos){
+        if(!containsElement(E) && pos >= 0 && pos < nElements && removeElementPos(pos) && addElementPos(E, pos)) return true;
         return false;
     }
     
@@ -112,7 +127,7 @@ public class Tour {
     }
     
     //elimina de la Ruta l'element de la posició pos returna si s'ha borrat correctament
-    public boolean removeElementPos(int pos){
+    public boolean removeElement(int pos){
         if(pos < nElements && pos >= 0){
             if(pos == 0){
                 cost -= Relations.getCost(getElementPos(nElements-1), getElementPos(0));
@@ -143,7 +158,7 @@ public class Tour {
     }
     
     //fa swap de dos elements, retorna si s'ha fet correctament
-    public boolean swapElem(Element E1, Element E2){
+    public boolean swap(Element E1, Element E2){
         if(cjtElem.contains(E1) && cjtElem.contains(E1) && E1 != E2){
             int pos1, pos2;
             pos1 = getPosElement(E1);
@@ -168,7 +183,7 @@ public class Tour {
     }
     
     //fa un swap de pos1 i pos2, retorna si s'ha fet correctament
-    public boolean swapPos(int pos1, int pos2){
+    public boolean swap(int pos1, int pos2){
         if(pos1 >= 0 && pos1 < nElements && pos2 >= 0 && pos2 < nElements && pos1 != pos2){
             Element E1, E2;
             E1 = getElementPos(pos1);
