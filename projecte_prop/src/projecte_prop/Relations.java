@@ -25,14 +25,29 @@ public class Relations {
     
     
     public int getCost(int id1, int id2) {
-            int cost = -1;
-            if (a.get(id2).get(a.size()) == 0 && a.get(id1).get(a.size()) == 0) {
-                 if (a.get(id1).size() >= id2)
-                     cost = a.get(id1).get(id2);
-                 else if (a.get(id2).size() >= id1)
-                     cost = a.get(id2).get(id1);
-            }
-            return cost;
+        int cost = -1;
+        if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
+                a.get(id1).get(a.get(id1).size()-1) == 0) {
+             if (a.get(id1).size() > id2)
+                 cost = a.get(id1).get(id2);
+             else if (a.get(id2).size() > id1)
+                 cost = a.get(id2).get(id1);
+        }
+        return cost;
+    }
+    
+    public int getCost(Element e1,Element e2) {
+        int cost = -1;
+        int id1 = e1.getID();
+        int id2 = e2.getID();
+        if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
+                a.get(id1).get(a.get(id1).size()-1) == 0) {
+             if (a.get(id1).size() > id2)
+                 cost = a.get(id1).get(id2);
+             else if (a.get(id2).size() > id1)
+                 cost = a.get(id2).get(id1);
+        }
+        return cost;
     }
     
     public void erase(int id){
