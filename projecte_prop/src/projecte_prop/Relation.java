@@ -43,6 +43,6 @@ public class Relation {
     
     @Override
     public int hashCode() {
-        return id1*id2;
+        return id1;
     }
 }
