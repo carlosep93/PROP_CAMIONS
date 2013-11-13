@@ -1,5 +1,5 @@
 
-package camio;
+package projecte_prop;
 
 import java.util.Scanner;
 
