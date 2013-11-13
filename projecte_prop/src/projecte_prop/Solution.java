@@ -9,7 +9,7 @@ public class Solution {
 	
 	private int id;
 	private String name;
-	private int cost;
+	private static int cost;
 	private int date;
 	private int[] idElements;
 	private List<Relation> relations;
@@ -46,7 +46,7 @@ public class Solution {
 		/* Post: Returns the modified date of the soluiton. */
 	}
 
-	public int getCost() {
+	public static int getCost() {
 		/* Pre: - */
 		return cost;
 		/* Post: Returns the cost of solution. */
@@ -55,9 +55,10 @@ public class Solution {
 	public int getPositionById(int id) {
 		/* Pre: 'id' must be and id from the elements on the solution. */
 		for (int i = 0; i < idElements.length; ++i) {
-			if (idElements[i] = id) return i;
+			if (idElements[i] == id) return i;
 		}
 		/* Post: Returns the position on the solution form the element with id 'id'. */
+                return -1;
 	}
 
 	public int getIdByPosition(int pos) {
@@ -70,6 +71,7 @@ public class Solution {
 		/* Pre: 'id1' and 'id2' must be ids from elemens on the solution and must be diferent form each other */
 		
 		/* Post: Returns the value of the relation between the elements with ids 'id1' and 'id2' */
+            return -1;
 	}
 
 	public void updateName(String name) {
@@ -80,7 +82,7 @@ public class Solution {
 	
 	public void addElementPosition(int id, int pos) {
 		/* Pre: 'id' must be an id of an element from the solution and 'pos' must be between 1 and the number of elements on the solution. */
-		positions[pos-1] = id;
+		idElements[pos-1] = id;
 		/* Post: Sets the position of the element with id 'id' to 'pos' */
 	}
 
