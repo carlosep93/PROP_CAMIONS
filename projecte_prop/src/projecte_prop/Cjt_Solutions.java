@@ -1,5 +1,4 @@
-package camio;
-
+package projecte_prop;
 import java.util.*;
 /*
  * To change this template, choose Tools | Templates
