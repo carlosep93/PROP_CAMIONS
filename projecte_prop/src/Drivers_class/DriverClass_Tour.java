@@ -16,7 +16,7 @@ public class DriverClass_Tour {
         
         Tour ruta = new Tour();
         int lectura = 0;
-        while(lectura != 18){   
+        while(lectura != 20){   
           System.out.println();
           System.out.println("Tria una opció:");
           System.out.println("1 - Crear un Tour complet");
@@ -36,7 +36,9 @@ public class DriverClass_Tour {
           System.out.println("15 - getData");
           System.out.println("16 - getNom");
           System.out.println("17 - Escriure Tour");
-          System.out.println("18 - Sortir");
+          System.out.println("18 - Reemplaçar Tour");
+          System.out.println("19 - Reemplaçar Tour Pos");
+          System.out.println("20 - Sortir");
           System.out.println();
 
           lectura=sc.nextInt();
@@ -70,7 +72,7 @@ public class DriverClass_Tour {
               int pos = sc.nextInt();
               
               Element E = new Element(id, true);
-              System.out.println("L'ha afegit: " + ruta.addElementPos(E, pos));
+              System.out.println("L'ha afegit: " + ruta.addElement(E, pos));
           }
           else if(lectura == 5){
               System.out.println("id Element:");
@@ -100,7 +102,7 @@ public class DriverClass_Tour {
               System.out.println("pos:");
               int pos = sc.nextInt();
               
-              System.out.println("L'ha borrat: " + ruta.removeElementPos(pos));
+              System.out.println("L'ha borrat: " + ruta.removeElement(pos));
           }
           else if(lectura == 9){
               System.out.println("pos:");
@@ -118,7 +120,7 @@ public class DriverClass_Tour {
               id = sc.nextInt();
               Element E2 = new Element(id, true);
               
-              System.out.println("ha fet swapt: " + ruta.swapElem(E1,E2));
+              System.out.println("ha fet swapt: " + ruta.swap(E1,E2));
           }
           else if(lectura == 11){
               System.out.println("pos1:");
@@ -127,7 +129,7 @@ public class DriverClass_Tour {
               System.out.println("pos2:");
               int pos2 = sc.nextInt();
               
-              System.out.println("ha fet swapt: " + ruta.swapPos(pos1, pos2));
+              System.out.println("ha fet swapt: " + ruta.swap(pos1, pos2));
           }
           else if(lectura == 12){
               System.out.println("Size: " + ruta.size());
@@ -149,6 +151,27 @@ public class DriverClass_Tour {
                   System.out.print(" " + ruta.getElementPos(i).getID());
               }
               System.out.println();
+          }
+          else if(lectura == 18){
+              System.out.println("id Element1:");
+              int id = sc.nextInt();
+              Element E1 = new Element(id, true);
+              
+              System.out.println("id Element2:");
+              id = sc.nextInt();
+              Element E2 = new Element(id, true);
+              
+              System.out.println("L'ha afegit: " + ruta.remplaceElement(E1, E2));
+          }
+          else if(lectura == 19){
+              System.out.println("id Element1:");
+              int id = sc.nextInt();
+              Element E1 = new Element(id, true);
+              
+              System.out.println("pos:");
+              int pos = sc.nextInt();
+              
+              System.out.println("L'ha afegit: " + ruta.remplaceElement(E1, pos));
           }
           
         }  
