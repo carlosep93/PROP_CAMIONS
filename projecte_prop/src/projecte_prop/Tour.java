@@ -10,6 +10,7 @@ package projecte_prop;
  */
 public class Tour {
     private int nElements;
+    private Element[]
     
     //constructora
     public Tour(){
