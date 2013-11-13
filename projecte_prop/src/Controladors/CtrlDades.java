@@ -57,7 +57,7 @@ public class CtrlDades {
     
     
      public static void guardar_adjacencies( List <List<Integer>> adjac){
-        String path= CtrlDomini.path_adjacencies;
+        String path= CtrlDomini.path_adjacencies2;
         PrintWriter salida = null;
         try{
         salida = new PrintWriter(path);
@@ -94,12 +94,7 @@ public class CtrlDades {
         
     }
     
- public static void main(String[] args) {
-     List <List<Integer>> adjacencies = carregar_adjacencies();
-     
-     guardar_adjacencies(adjacencies);
-     
- }   
+
     
  
  
