@@ -18,7 +18,7 @@ public class Tour {
     }
     
     //retorna si l'element "e" està contingut dins el Tour
-    public boolean containsCity(Element e){
+    public boolean containsElement(Element e){
         boolean conte = false;
         for(int i = 0; i < nElements && !conte; ++i){
             if(tour[i]==punt) conte = true;
