@@ -1,44 +1,61 @@
-
- 
-package projecte_prop;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.io.*;
-
-
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
-*/
+ */
+package Controladors;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
- * @author pol
+ * @author Pol
  */
-public final class Cjt_Elements { //conjunt d'elements guardats a disc
-    List<Element> cjt_elements; 
-    int[][] distancies; 
-    static int Id_global_element=0;
-    int numElem;
+
+// s'han de guardar: ELEMENTS, ADJACENCIES, SOLUCIONS
+public class CtrlDades {
     
-    /**
-     *
-     */
-    public Cjt_Elements (){ 
-        cjt_elements = saved_elements();
-        numElem=cjt_elements.size();
-       // distancies = cjt_adjacencies();
+    
+    
+    
+    
+    public List <List<Integer>> cjt_adjacencies(){
         
+        List <List<Integer>> adjacencies = new ArrayList<List<Integer>>();
+        try{
         
+        Scanner sc = new Scanner("Fitxers/saved_adjacencys.txt");    
+           
+        
+       while(sc.hasNext()){             //primer element és num d'elements
+           int num = sc.nextInt();
+           
+           for(int i=0; i<num; ++i){
+               for(int j=0; j<i+1; ++j){
+                   int dist=sc.nextInt();
+                   adjacencies.get(i).set(j,dist);
+                   System.out.println(dist);
+               }
+           }
+       } 
+        //tanquem en arxiu
+     sc.close();
+    }catch (Exception e){
+        System.err.println("Error desconegut " + e.getMessage());
     }
     
+        return adjacencies;   
+    
+}
     
     
+  //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
+    /*
     public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
         List<Element> saved_elements = new ArrayList<Element>() ; 
-
+     
         try{
         //obrir arxiu
         FileInputStream llegir = new FileInputStream("Ficheros/saved_elements.txt");
@@ -48,17 +65,13 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
         BufferedReader buffer = new BufferedReader (new InputStreamReader(entrada));
         
         String strLinea;
-        int i=0;
-        int id_elem= -1;
+        int id_elem;
         boolean active;
+        
         while ((strLinea = buffer.readLine()) != null){
-            if(i%2==0) id_elem = Integer.parseInt(strLinea); // si es un int
-            if (i%2==1){
-                  active = ("true".equals(strLinea)); 
-                  Element elem = new Element(id_elem,active);
-                  saved_elements.add(elem);
-            }
-            ++i;
+           
+             id_elem = Integer.parseInt(strLinea); // si es un int
+            saved_elements.add(new Element(id_elem));
         }
         //tanquem en arxiu
         entrada.close();
@@ -119,59 +132,10 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
         }
     
     }
+  
+
+ 
+*/
     
-    
-/*-------------------------------NO_IMPLEMENTAT-----------------------------*/    
-    /*
-=======
-  /*  
->>>>>>> pol
-    public int[][] cjt_adjacencies(){
-        
-        int[][] adjacencies = new int[numElem][numElem];
-        try{
-        FileInputStream llegir = new FileInputStream("Ficheros/saved_adjacencys.txt");
-        DataInputStream entrada = new DataInputStream(llegir);
-        BufferedReader buffer = new BufferedReader (new InputStreamReader(entrada));
-       
-        FileInputStream llegir2 = new FileInputStream("Ficheros/saved_elements.txt");
-        DataInputStream entrada2 = new DataInputStream(llegir2);
-        BufferedReader buffer2 = new BufferedReader (new InputStreamReader(entrada2));
-        
-          String strLinea;
-          int i=0;
-          int id_elem;
-        while ((strLinea = buffer.readLine()) != null){
-            if(i%2==0){
-                id_elem = Integer.parseInt(strLinea);          
-            }
-            if (i%2==1){
-                int proper;
-             while((proper = buffer.readInt() )!=null){
-                 
-             }
-            }
-            ++i;
-        }
-        //tanquem en arxiu
-     entrada.close();
-    }catch (Exception e){
-        System.err.println("Error desconegut " + e.getMessage());
-    }
-    
-        return adjacencies;   
     
 }
-    
-    */
-     public int getid(){
-        int id=Id_global_element;   //L' ID_GLOBAL s'ha de definir al controlador
-        ++Id_global_element;
-        return id;       
-    }
-}
-
-
-
-
-

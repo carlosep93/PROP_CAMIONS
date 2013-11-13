@@ -21,12 +21,15 @@ public final class Element {
        enabled=true;     
     }
    
-     public void newElement(int id,boolean enabled) {
+     public Element(int id,boolean enabled) {
        this.id = id;
        this.enabled=enabled;     
     }
+    public Element(int id){
+     this.id = id;   
+    }
      
-    
+     
     public int getID(){
         return id;       
     }
