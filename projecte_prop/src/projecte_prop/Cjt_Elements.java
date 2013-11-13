@@ -92,7 +92,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            if (null != fichero)
               fichero.close();
            } catch (Exception e2) {
-              e2.printStackTrace();
            }
         }
     }
@@ -107,7 +106,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            
             int id_elem = elem.getID();
             int id_llegit;
-            
  
         } catch (Exception e) {
         } finally {
@@ -125,6 +123,9 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
 /*-------------------------------NO_IMPLEMENTAT-----------------------------*/    
     /*
+=======
+  /*  
+>>>>>>> pol
     public int[][] cjt_adjacencies(){
         
         int[][] adjacencies = new int[numElem][numElem];
