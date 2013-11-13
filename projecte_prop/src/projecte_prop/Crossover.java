@@ -7,9 +7,10 @@ package projecte_prop;
 
 
 public class Crossover {
+    
     static private int npunts;
     
-    public static int[] crossover(Tour parent1, Tour parent2){
+    public static Tour crossover(Tour parent1, Tour parent2){
         npunts = parent1.size();
         Tour child = new Tour();
         Element E = new Element(-1, false);
@@ -18,23 +19,21 @@ public class Crossover {
         int endPos = (int)(Math.random() * npunts);
         
         for(int i = 0; i < npunts; ++i){
-            child.addElemetPos(E, i);
+            child.addElement(E);
             if(startPos < endPos && i > startPos && i < endPos){
-                //
-                child.addElementPos(parent1.getElementPos(i), i);
+                child.remplaceElement(parent1.getElementPos(i), i);
             }
             else if(startPos > endPos){
                 if(!(i < startPos && i > endPos)){
-                    child.addElementPos(parent1.getElementPos(i), i);
+                    child.remplaceElement(parent1.getElementPos(i), i);
                 }
             }
         }
         for(int i = 0; i < npunts; ++i){
-            E = new Element(i, false);
-            if(!child.containsElement(E)){
+            if(!child.containsElement(parent2.getElementPos(i))){
                 for(int ii = 0; ii < npunts; ++ii){
-                    if(child[ii] == -1){
-                        child[ii] = i;
+                    if(child.getElementPos(ii).getID() == -1){
+                        child.remplaceElement(parent2.getElementPos(i), ii);
                         break;
                     }
                 }
@@ -44,19 +43,19 @@ public class Crossover {
         return child;
     }  
     
-    public static int[] crossover_edgeRecombination(int[] parent1, int[] parent2){
-        npunts = parent1.length;
-        int child[] = new int[npunts];        
+    public static Tour crossover_edgeRecombination(Tour parent1, Tour parent2){
+        npunts = parent1.size();
+        Tour child = new Tour();        
         int ciutatActual = (int)(Math.random() * npunts);
-        int con1[][] = new int [npunts][4];
-        int con2[][] = new int [npunts][4];
+        int costs1[][] = new int [npunts][4];
+        int costs2[][] = new int [npunts][4];
         
-        inicialitzaCon(con1, con2, parent1, parent2);
+        startCosts(costs1, costs2, parent1, parent2);
         
         System.out.println("Primer adjacent: ");
         for(int i = 0; i < npunts; ++i){
             for(int ii = 0; ii < 4; ++ii){
-                System.out.print(" " + con1[i][ii]);
+                System.out.print(" " + costs1[i][ii]);
             }
             System.out.println();
         }
@@ -65,34 +64,33 @@ public class Crossover {
         System.out.println("Segón adjacent: ");
         for(int i = 0; i < npunts; ++i){
             for(int ii = 0; ii < 4; ++ii){
-                System.out.print(" " + con1[i][ii]);
+                System.out.print(" " + costs2[i][ii]);
             }
             System.out.println();
         }
         
         for(int i = 0; i < npunts; ++i){
-            
+            //eliminar el current points dels costs
+            //current point passa a ser el mes curt d'anar des del current point anterir
         }
-        
-        
-        
         return child;
     }
     
-    private static void inicialitzaCon(int[][] con1, int[][] con2, int[] parent1, int[] parent2){       
-        
+    private static void startCosts(int[][] costs1, int[][] costs2, Tour parent1, Tour parent2){       
+        /*
+        Element E;
         for(int i = 0; i < npunts; ++i){
             
             //inicilitza els vectors con1, con2
             for(int ii = 0; ii < 4; ++ii){
-                con1[i][ii] = con2[i][ii] = -1;
+                costs1[i][ii] = costs2[i][ii] = -1;
             }
             
-            
-            int pos = tour.posCiuX(i, parent1);
+            E = new Element(i, true);
+            int pos = parent1.getPosElement(E);
             if(pos == 0){
-                tour.entraCiu(parent1[pos], parent1[pos+1], con1);
-                tour.entraCiu(parent1[pos], parent1[npunts-1], con1);
+                entraCiu(parent1.getElementPos(pos).getID(), parent1[pos+1], con1);
+                entraCiu(parent1[pos], parent1[npunts-1], con1);
             }
             else if(pos == npunts-1){
                 tour.entraCiu(parent1[pos], parent1[pos-1], con1);
@@ -115,6 +113,14 @@ public class Crossover {
                 tour.entraCiu(parent2[pos], parent2[pos+1], con2);
                 tour.entraCiu(parent2[pos], parent2[pos-1], con2);
             }
-        }
+        }*/
     }
+    
+   /* public static void entraCiu(int origen, int desti, int[][] con){
+        for(int i = 0; i < 4; ++i){
+            if(con[origen][i] == -1){
+                con[origen][i] = desti;
+            }
+        }
+    }*/
 }
