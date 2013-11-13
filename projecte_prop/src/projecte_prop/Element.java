@@ -5,7 +5,10 @@
  */
 package projecte_prop;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> pol
 /**
  *
  * @author pol
