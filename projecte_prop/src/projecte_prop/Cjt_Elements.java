@@ -106,11 +106,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
            
             int id_elem = elem.getID();
             int id_llegit;
-<<<<<<< HEAD
-            
-=======
-           // while();
->>>>>>> pol
  
         } catch (Exception e) {
         } finally {
@@ -127,7 +122,6 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
     
 /*-------------------------------NO_IMPLEMENTAT-----------------------------*/    
-<<<<<<< HEAD
     /*
 =======
   /*  
