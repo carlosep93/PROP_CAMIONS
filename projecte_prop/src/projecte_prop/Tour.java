@@ -95,11 +95,6 @@ public class Tour {
         return cjtElem.contains(E);
     }
     
-    //retuorna la posició de l'element E al Tour si retorna -1 hi ha hagut error
-    public int getPosElement(Element E){
-        return cjtElem.indexOf(E);
-    }
-    
     //elimina la ocurrencia d'E al cjtElem retorna si s'ha esborrat correctamen
     public boolean removeElement(Element E){
         if(cjtElem.contains(E)){
@@ -157,26 +152,16 @@ public class Tour {
         return cjtElem.get(pos);
     }
     
+    //retuorna la posició de l'element E al Tour si retorna -1 hi ha hagut error
+    public int getPosElement(Element E){
+        return cjtElem.indexOf(E);
+    }
+    
     //fa swap de dos elements, retorna si s'ha fet correctament
     public boolean swap(Element E1, Element E2){
         if(cjtElem.contains(E1) && cjtElem.contains(E1) && E1 != E2){
-            int pos1, pos2;
-            pos1 = getPosElement(E1);
-            pos2 = getPosElement(E2);
-            
-            if(pos1 > pos2){
-                int posaux = pos1;
-                pos1 = pos2;
-                pos2 = posaux;
-                Element Eaux = E1;
-                E1 = E2;
-                E2= Eaux;
-            }
-            
-            removeElement(E2);
-            addElementPos(E2, pos1+1);
-            removeElement(E1);
-            addElementPos(E1, pos2+1);
+            remplaceElement(E1,E2);
+            remplaceElement(E2,E1);
             return true;
         }
         return false;
@@ -185,22 +170,8 @@ public class Tour {
     //fa un swap de pos1 i pos2, retorna si s'ha fet correctament
     public boolean swap(int pos1, int pos2){
         if(pos1 >= 0 && pos1 < nElements && pos2 >= 0 && pos2 < nElements && pos1 != pos2){
-            Element E1, E2;
-            E1 = getElementPos(pos1);
-            E2 = getElementPos(pos2);
-            if(pos1 > pos2){
-                int posaux = pos1;
-                pos1 = pos2;
-                pos2 = posaux;
-                Element Eaux = E1;
-                E1 = E2;
-                E2 = Eaux;
-            }
-            
-            removeElement(E2);
-            addElementPos(E2, pos1+1);
-            removeElement(E1);
-            addElementPos(E1, pos2+1);
+            remplaceElement(getElementPos(pos1), pos2);
+            remplaceElement(getElementPos(pos2), pos1);
             return true;
         }
         return false;
