@@ -6,7 +6,9 @@ package Controladors;
 
 
 
-import static Controladors.CtrlDomini.*;
+//import static Controladors.CtrlDomini.*;
+
+import  Stubs.Stub_CtrlDomini;
 import java.io.FileNotFoundException;
 
 import java.util.Scanner;
@@ -29,7 +31,7 @@ public class CtrlDades {
         
         List <List<Integer>>  adjacencies = new ArrayList();
         try{
-           String path = path_adjacencies_load;
+           String path = Stub_CtrlDomini.path_adjacencies_load;
            
            File file = new File(path);
            Scanner sc = new Scanner(file);
@@ -60,7 +62,7 @@ public class CtrlDades {
  
         PrintWriter salida = null;
         try{
-        String path = path_adjacencies_store;
+        String path = Stub_CtrlDomini.path_adjacencies_store;
         salida = new PrintWriter(path);
        int mida = adjac.size();
        salida.println(mida);
@@ -99,31 +101,31 @@ public class CtrlDades {
     
     public static void canviar_path_adjacencies_load(String path){
          
-         path_adjacencies_load = path;
+         Stub_CtrlDomini.path_adjacencies_load = path;
         
     }
     
     public static void canviar_path_adjacencies_store(String path){
          
-         path_adjacencies_store = path;
+         Stub_CtrlDomini.path_adjacencies_store = path;
         
     }
     
     public static void path_adjacencies(String SO){ 
        if(SO == "Linux"){
-           path_adjacencies_load = "src/Fitxers/saved_adjacencys.txt‏";
-           path_adjacencies_store = "src/Fitxers/saved_adjacencys.txt‏";
+          Stub_CtrlDomini.path_adjacencies_load = "src/Fitxers/saved_adjacencys.txt‏";
+          Stub_CtrlDomini.path_adjacencies_store = "src/Fitxers/saved_adjacencys.txt‏";
        }
        else{
-           path_adjacencies_load= "src\\Fitxers\\saved_adjacencys.txt";
-           path_adjacencies_store = "src\\Fitxers\\saved_adjacencys.txt";
+           Stub_CtrlDomini.path_adjacencies_load= "src\\Fitxers\\saved_adjacencys.txt";
+           Stub_CtrlDomini.path_adjacencies_store = "src\\Fitxers\\saved_adjacencys.txt";
        } 
     }
     
     
     
     public static void canviar_path_elements(String path){
-         path_elements = path;
+         Stub_CtrlDomini.path_elements = path;
     }
     
     public static String get_path_actual_load(){
