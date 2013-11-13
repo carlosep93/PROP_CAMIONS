@@ -10,7 +10,10 @@ package Controladors;
  */
 public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
    
-    static String path_adjacencies =
+    static String path_adjacencies_store =
+   "src\\Fitxers\\saved_adjacencys.txt";
+    
+     static String path_adjacencies_load =
    "src\\Fitxers\\saved_adjacencys.txt";
     
      
