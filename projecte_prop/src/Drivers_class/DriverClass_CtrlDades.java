@@ -57,18 +57,30 @@ public class DriverClass_CtrlDades {
                 canviar_path_adjacencies(path);
             }
             path_definit =true;
+            System.out.println();
+            System.out.println("Path definit :) ");
             }
         
         
         else if (lectura == 2){
          adjacencies = carregar_adjacencies();
          adja_carregada = true;
+          System.out.println();
+          System.out.println("Adjacencies carregades a MEMORIA :) ");
      }
-        else if(lectura == 3) guardar_adjacencies(adjacencies);
+        else if(lectura == 3){
+            guardar_adjacencies(adjacencies);
+            System.out.println();
+          System.out.println("Adjacencies guardades a DISC  :) ");
+        }
         else if(lectura == 4)  print_list_list(adjacencies);
         
         System.out.println();
+        System.out.print("Prem la tecla Enter per continuar");
+        sc.nextLine();
+        sc.nextLine();
     }    
   }
 }
+
 
