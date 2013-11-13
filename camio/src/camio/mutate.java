@@ -1,6 +1,8 @@
 
 package camio;
 
+import projecte_prop.Solution;
+
 
 public class mutate {
     
