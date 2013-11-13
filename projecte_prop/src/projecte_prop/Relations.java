@@ -22,6 +22,8 @@ public class Relations {
          
     }
     
+    
+    
     public int getCost(int id1, int id2) {
             int cost = -1;
             if (a.get(id2).get(a.size()) == 0 && a.get(id1).get(a.size()) == 0) {
@@ -34,11 +36,13 @@ public class Relations {
     }
     
     public void erase(int id){
+        System.out.println("size "+a.get(id).size());
         int n = a.get(id).size();
-        a.get(id).add(n,-1);
+        a.get(id).remove(n-1);
+        a.get(id).add(-1);
     }
     
-    public void readRelation(int id) {
+    public void addElement(int id) {
         Scanner in = new Scanner(System.in);
         int x;
         List<Integer> aux = new ArrayList<Integer>();
@@ -50,7 +54,31 @@ public class Relations {
         a.add(aux);
     }
     
+    public int [][] toMatrix() {
+        int [][] res = new int [a.size()][a.size()];
+        for (int i=0;i<a.size();++i){
+            for (int j=0;j<a.get(i).size();++j) {
+                res[i][j] = res[j][i] = a.get(i).get(j);
+            }
+        }
+        return res;
+    }
     
+    public void readRelations(int n) {
+        for (int i=0;i<n;++i) {
+            addElement(i);
+        }
+    }
+        
+      public void writeRelations() {
+        for (int i=0;i<a.size();++i){
+            for (int j=0;j<a.get(i).size();++j) {
+                System.out.print(" "+a.get(i).get(j));
+            }
+            System.out.println();
+        }
+            
+    } 
     
   
     
