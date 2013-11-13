@@ -6,7 +6,8 @@ package Controladors;
 
 
 
-import static Controladors.CtrlDomini.*;
+//import static Controladors.CtrlDomini.*;
+import static  Stubs.Stub_CtrlDomini.*;
 import java.io.FileNotFoundException;
 
 import java.util.Scanner;
@@ -29,7 +30,7 @@ public class CtrlDades {
         
         List <List<Integer>>  adjacencies = new ArrayList();
         try{
-           String path = path_adjacencies;
+           String path = get_path_adjacencies_load();
            
            File file = new File(path);
            Scanner sc = new Scanner(file);
@@ -60,7 +61,7 @@ public class CtrlDades {
  
         PrintWriter salida = null;
         try{
-        String path = path_adjacencies;
+        String path = get_path_adjacencies_store();
         salida = new PrintWriter(path);
        int mida = adjac.size();
        salida.println(mida);
@@ -97,27 +98,43 @@ public class CtrlDades {
     
 
     
-    public static void canviar_path_adjacencies(String path){
+    public static void canviar_path_adjacencies_load(String path){
          
-         path_adjacencies = path;
+         edit_path_adjacencies_load(path);
         
     }
     
-    public static void path_adjacencies_Windows(){
-      path_adjacencies= "src\\Fitxers\\saved_adjacencys.txt";
-      
+    public static void canviar_path_adjacencies_store(String path){
+         
+         edit_path_adjacencies_store(path);
+        
     }
     
-    public static void path_adjacencies_Linux(){ 
-       path_adjacencies = "src/Fitxers/saved_adjacencys.txt‏";
+    public static void path_adjacencies(String SO){ 
+       if(SO == "Linux"){
+          edit_path_adjacencies_store("src/Fitxers/saved_adjacencys.txt‏");
+          edit_path_adjacencies_load("src/Fitxers/saved_adjacencys.txt‏");
+       }
+       else{
+          edit_path_adjacencies_load("src\\Fitxers\\saved_adjacencys.txt");
+           edit_path_adjacencies_store("src\\Fitxers\\saved_adjacencys.txt");
+       } 
     }
+    
+    
     
     public static void canviar_path_elements(String path){
-         path_elements = path;
+         edit_path_elements_load(path);
+         edit_path_elements_store(path);
+         
+    }
+    
+    public static String get_path_actual_load(){
+        return get_path_adjacencies_load();      
     }
  
-    public static String get_path_actual(){
-        return path_adjacencies;      
+    public static String get_path_actual_store(){
+        return get_path_adjacencies_store();      
     }
  
  

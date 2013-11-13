@@ -22,23 +22,42 @@ public class Relations {
          
     }
     
+    
+    
     public int getCost(int id1, int id2) {
-            int cost = -1;
-            if (a.get(id2).get(a.size()) == 0 && a.get(id1).get(a.size()) == 0) {
-                 if (a.get(id1).size() >= id2)
-                     cost = a.get(id1).get(id2);
-                 else if (a.get(id2).size() >= id1)
-                     cost = a.get(id2).get(id1);
-            }
-            return cost;
+        int cost = -1;
+        if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
+                a.get(id1).get(a.get(id1).size()-1) == 0) {
+             if (a.get(id1).size() > id2)
+                 cost = a.get(id1).get(id2);
+             else if (a.get(id2).size() > id1)
+                 cost = a.get(id2).get(id1);
+        }
+        return cost;
+    }
+    
+    public int getCost(Element e1,Element e2) {
+        int cost = -1;
+        int id1 = e1.getID();
+        int id2 = e2.getID();
+        if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
+                a.get(id1).get(a.get(id1).size()-1) == 0) {
+             if (a.get(id1).size() > id2)
+                 cost = a.get(id1).get(id2);
+             else if (a.get(id2).size() > id1)
+                 cost = a.get(id2).get(id1);
+        }
+        return cost;
     }
     
     public void erase(int id){
+        System.out.println("size "+a.get(id).size());
         int n = a.get(id).size();
-        a.get(id).add(n,-1);
+        a.get(id).remove(n-1);
+        a.get(id).add(-1);
     }
     
-    public void readRelation(int id) {
+    public void addElement(int id) {
         Scanner in = new Scanner(System.in);
         int x;
         List<Integer> aux = new ArrayList<Integer>();
@@ -50,7 +69,31 @@ public class Relations {
         a.add(aux);
     }
     
+    public int [][] toMatrix() {
+        int [][] res = new int [a.size()][a.size()];
+        for (int i=0;i<a.size();++i){
+            for (int j=0;j<a.get(i).size();++j) {
+                res[i][j] = res[j][i] = a.get(i).get(j);
+            }
+        }
+        return res;
+    }
     
+    public void readRelations(int n) {
+        for (int i=0;i<n;++i) {
+            addElement(i);
+        }
+    }
+        
+      public void writeRelations() {
+        for (int i=0;i<a.size();++i){
+            for (int j=0;j<a.get(i).size();++j) {
+                System.out.print(" "+a.get(i).get(j));
+            }
+            System.out.println();
+        }
+            
+    } 
     
   
     

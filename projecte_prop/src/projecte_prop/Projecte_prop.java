@@ -15,8 +15,5 @@ public class Projecte_prop {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Relations r = new Relations();
-        r.print();
-        
     }
 }
