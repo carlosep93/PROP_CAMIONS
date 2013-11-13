@@ -136,7 +136,7 @@ public class DriverClass_Tour {
               System.out.println("Cost: " + ruta.getCost());
           }
           else if(lectura == 14){
-              System.out.println("ID: " + ruta.getID());
+              System.out.println("ID: " + ruta.getId());
           }
           else if(lectura == 15){
               System.out.println("Data: " + ruta.getData());
