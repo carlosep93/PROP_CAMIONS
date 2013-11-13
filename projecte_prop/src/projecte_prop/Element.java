@@ -9,6 +9,7 @@ package projecte_prop;
  *
  * @author pol
  */
+import Controladors.CtrlDomini;
 
 public final class Element {
     private int id;

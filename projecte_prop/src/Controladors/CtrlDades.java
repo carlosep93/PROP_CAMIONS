@@ -6,7 +6,7 @@ package Controladors;
 
 
 
-import static Controladors.CtrlDomini.path_adjacencies;
+import static Controladors.CtrlDomini.*;
 import java.io.FileNotFoundException;
 
 import java.util.Scanner;
@@ -23,15 +23,14 @@ import java.io.File;
 // s'han de guardar: ELEMENTS, ADJACENCIES, SOLUCIONS
 public class CtrlDades {
     
-    
-    
-    
-    
+      
+   
     public static List<List<Integer>> carregar_adjacencies(){
         
         List <List<Integer>>  adjacencies = new ArrayList();
         try{
-           String path= CtrlDomini.path_adjacencies;
+           String path = path_adjacencies;
+           
            File file = new File(path);
            Scanner sc = new Scanner(file);
           
@@ -58,9 +57,10 @@ public class CtrlDades {
     
     
      public static void guardar_adjacencies( List <List<Integer>> adjac){
-        String path= CtrlDomini.path_adjacencies2;
+ 
         PrintWriter salida = null;
         try{
+        String path = path_adjacencies;
         salida = new PrintWriter(path);
        int mida = adjac.size();
        salida.println(mida);
@@ -97,16 +97,28 @@ public class CtrlDades {
     
 
     
-    public static  void canviar_path_adjacencies(String path){
-         CtrlDomini.path_adjacencies = path;
+    public static void canviar_path_adjacencies(String path){
+         
+         path_adjacencies = path;
         
     }
-     public static void canviar_path_elements(String path){
-        CtrlDomini.path_elements = path;
-        
+    
+    public static void path_adjacencies_Windows(){
+      path_adjacencies= "src\\Fitxers\\saved_adjacencys.txt";
+      
+    }
+    
+    public static void path_adjacencies_Linux(){ 
+       path_adjacencies = "src/Fitxers/saved_adjacencys.txt‏";
+    }
+    
+    public static void canviar_path_elements(String path){
+         path_elements = path;
     }
  
- 
+    public static String get_path_actual(){
+        return path_adjacencies;      
+    }
  
  
  
