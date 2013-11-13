@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projecte_prop;
 
 /**
@@ -19,7 +16,7 @@ public class Tour {
     private String nom;
     List<Element> cjtElem;
     
-    //constructora
+    //constructora del conjunt d'element parcial
     public Tour(){
         nElements = 0;
         cost = 0;
@@ -27,6 +24,7 @@ public class Tour {
         nom = null;
     }
     
+    //constructora del conjunt d'element total
     public Tour(int id, String nom, int data){
         nElements = 0;
         cost = 0;
@@ -35,17 +33,17 @@ public class Tour {
         this.data = data;
     }
     
-    //inserta l'element E al final de la llista Ruta retorna si s'ha inserit be
-    public boolean insertaElement(Element E){
+    //inserta l'element E al final de la llista cjtElem retorna si s'ha inserit be
+    public boolean addElement(Element E){
         if(!cjtElem.contains(E) && cjtElem.add(E)){
             ++nElements;
-            if(nElements == 1){
-                cost += 2 * Relations.getCost(E.getID(), getElementPos(0).getID());
+            if(nElements == 2){
+                cost += 2 * Relations.getCost(E, getElementPos(0));
             }
-            else{
-                cost -= Relations.getCost(getElementPos(0).getID(), getElementPos(nElements-2).getID());
-                cost += Relations.getCost(E.getID(), getElementPos(0).getID());
-                cost += Relations.getCost(E.getID(), getElementPos(nElements-2).getID());
+            else if(nElements > 2){
+                cost -= Relations.getCost(getElementPos(0), getElementPos(nElements-2));
+                cost += Relations.getCost(getElementPos(0), E);
+                cost += Relations.getCost(E, getElementPos(nElements-2));
             }
             return true;
         }
@@ -53,17 +51,24 @@ public class Tour {
     }
     
     //inserta l'element E a la posició pos de la llista Ruta
-    public boolean insertElementPos(Element E, int pos){
+    public boolean addElementPos(Element E, int pos){
         if((pos >= 0 && pos <= nElements) || !cjtElem.contains(E)){
             cjtElem.add(pos, E);
             ++nElements;
-            if(nElements == 1){
-                cost += 2 * Relations.getCost(E.getID(), getElementPos(0).getID());
+            if(pos == 0){
+                cost -= Relations.getCost(getElementPos(1), getElementPos(nElements-1));
+                cost += Relations.getCost(getElementPos(nElements-1), getElementPos(pos));
+                cost += Relations.getCost(getElementPos(pos), getElementPos(pos+1));
+            }
+            else if(pos == nElements-1){
+                cost -= Relations.getCost(getElementPos(0), getElementPos(nElements-2));
+                cost += Relations.getCost(getElementPos(pos-1), getElementPos(pos));
+                cost += Relations.getCost(getElementPos(0), getElementPos(pos));
             }
             else{
-                cost -= Relations.getCost(getElementPos(0).getID(), getElementPos(nElements-2).getID());
-                cost += Relations.getCost(E.getID(), getElementPos(0).getID());
-                cost += Relations.getCost(E.getID(), getElementPos(nElements-2).getID());
+                cost -= Relations.getCost(getElementPos(0), getElementPos(nElements-1));
+                cost += Relations.getCost(getElementPos(pos-1), getElementPos(pos));
+                cost += Relations.getCost(getElementPos(pos), getElementPos(pos+1));
             }
             return true;
         }
@@ -82,23 +87,24 @@ public class Tour {
     
     //elimina la ocurrencia d'E al cjtElem retorna si s'ha esborrat correctamen
     public boolean removeElement(Element E){
-        if(cjtElem.remove(E)){
+        if(cjtElem.contains(E)){
             if(getPosElement(E) == 0){
-                cost -= Relations.getCost(E.getID(), getElementPos(1).getID());
-                cost -= Relations.getCost(E.getID(), getElementPos(nElements-1).getID());
-                cost += Relations.getCost(getElementPos(1), getElementPos(nElements-1).getID());
+                cost -= Relations.getCost(getElementPos(nElements-1), E);
+                cost -= Relations.getCost(E, getElementPos(1));
+                cost += Relations.getCost(getElementPos(nElements-1), getElementPos(1));
             }
             else if(getPosElement(E) == nElements-1){
-                cost -= Relations.getCost(E.getID(), getElementPos(0).getID());
-                cost -= Relations.getCost(E.getID(), getElementPos(nElements-2).getID());
-                cost += Relations.getCost(getElementPos(0), getElementPos(nElements-2).getID());
+                cost -= Relations.getCost(getElementPos(nElements-2), E);
+                cost -= Relations.getCost(E, getElementPos(0));
+                cost += Relations.getCost(getElementPos(nElements-2), getElementPos(0));
             }
             else{
-                cost -= Relations.getCost(E.getID(), getElementPos(getPosElement(E)-1).getID());
-                cost -= Relations.getCost(E.getID(), getElementPos(getPosElement(E)+1).getID());
-                cost += Relations.getCost(getElementPos(getPosElement(E)-1).getID(), getElementPos(getPosElement(E)+1).getID());
+                cost -= Relations.getCost(getElementPos(getPosElement(E)-1), E);
+                cost -= Relations.getCost(E, getElementPos(getPosElement(E)+1));
+                cost += Relations.getCost(getElementPos(getPosElement(E)-1), getElementPos(getPosElement(E)+1));
                 
             }
+            cjtElem.remove(E);
             --nElements;
             return true;
         }
@@ -108,23 +114,23 @@ public class Tour {
     //elimina de la Ruta l'element de la posició pos returna si s'ha borrat correctament
     public boolean removeElementPos(int pos){
         if(pos < nElements && pos >= 0){
-            cjtElem.remove(pos);
             if(pos == 0){
-                cost -= Relations.getCost(getElementPos(pos).getID(), getElementPos(1).getID());
-                cost -= Relations.getCost(getElementPos(pos).getID(), getElementPos(nElements-1).getID());
-                cost += Relations.getCost(getElementPos(1), getElementPos(nElements-1).getID());
+                cost -= Relations.getCost(getElementPos(nElements-1), getElementPos(0));
+                cost -= Relations.getCost(getElementPos(0), getElementPos(1));
+                cost += Relations.getCost(getElementPos(nElements-1), getElementPos(1));
             }
             else if(pos == nElements-1){
-                cost -= Relations.getCost(getElementPos(pos).getID(), getElementPos(0).getID());
-                cost -= Relations.getCost(getElementPos(pos).getID(), getElementPos(nElements-2).getID());
-                cost += Relations.getCost(getElementPos(0), getElementPos(nElements-2).getID());
+                cost -= Relations.getCost(getElementPos(nElements-2), getElementPos(nElements-1));
+                cost -= Relations.getCost(getElementPos(nElements-1), getElementPos(0));
+                cost += Relations.getCost(getElementPos(nElements-2), getElementPos(0));
             }
             else{
-                cost -= Relations.getCost(getElementPos(pos).getID(), getElementPos(pos-1).getID());
-                cost -= Relations.getCost(getElementPos(pos).getID(), getElementPos(pos+1).getID());
-                cost += Relations.getCost(getElementPos(pos-1).getID(), getElementPos(pos+1).getID());
+                cost -= Relations.getCost(getElementPos(pos-1), getElementPos(pos));
+                cost -= Relations.getCost(getElementPos(pos), getElementPos(pos+1));
+                cost += Relations.getCost(getElementPos(pos-1), getElementPos(pos+1));
                 
             }
+            cjtElem.remove(pos);
             --nElements;
             return true;
         }
@@ -137,23 +143,50 @@ public class Tour {
     }
     
     //fa swap de dos elements, retorna si s'ha fet correctament
-    public boolean swapElem(Element E, Element E2){
-        if(cjtElem.contains(E) && cjtElem.contains(E)){
+    public boolean swapElem(Element E1, Element E2){
+        if(cjtElem.contains(E1) && cjtElem.contains(E1) && E1 != E2){
             int pos1, pos2;
-            pos1 = cjtElem.indexOf(E); pos2 = cjtElem.indexOf(E2);  //s'obtè les posicions dels dos elements
-            Element Eaux = cjtElem.get(pos1);                       //s'assigna a una variable auxiliar E1
-            cjtElem.add(pos1, cjtElem.get(pos2));
-            cjtElem.add(pos2, Eaux);
+            pos1 = getPosElement(E1);
+            pos2 = getPosElement(E2);
+            
+            if(pos1 > pos2){
+                int posaux = pos1;
+                pos1 = pos2;
+                pos2 = posaux;
+                Element Eaux = E1;
+                E1 = E2;
+                E2= Eaux;
+            }
+            
+            removeElement(E2);
+            addElementPos(E2, pos1+1);
+            removeElement(E1);
+            addElementPos(E1, pos2+1);
+            return true;
         }
         return false;
     }
     
     //fa un swap de pos1 i pos2, retorna si s'ha fet correctament
     public boolean swapPos(int pos1, int pos2){
-        if(pos1 >= 0 && pos1 < nElements && pos2 >= 0 && pos2 < nElements){
-            Element Eaux = cjtElem.get(pos1);
-            cjtElem.add(pos1, cjtElem.get(pos2));
-            cjtElem.add(pos2, Eaux);
+        if(pos1 >= 0 && pos1 < nElements && pos2 >= 0 && pos2 < nElements && pos1 != pos2){
+            Element E1, E2;
+            E1 = getElementPos(pos1);
+            E2 = getElementPos(pos2);
+            if(pos1 > pos2){
+                int posaux = pos1;
+                pos1 = pos2;
+                pos2 = posaux;
+                Element Eaux = E1;
+                E1 = E2;
+                E2 = Eaux;
+            }
+            
+            removeElement(E2);
+            addElementPos(E2, pos1+1);
+            removeElement(E1);
+            addElementPos(E1, pos2+1);
+            return true;
         }
         return false;
     }
