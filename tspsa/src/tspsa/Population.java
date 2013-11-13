@@ -1,7 +1,8 @@
 
-package camio;
+package tspsa;
 
 import java.util.Scanner;       //importa llibreries per poder llegir de teclat
+
 public class Population {
 
     int npunts;
@@ -54,10 +55,10 @@ public class Population {
     
     public void twoSwap(int i,int j,int p) {
         int aux = i+(j-i)/2;
-        for (int k=i;k<aux;++j) {
+        for (int k=i;k<aux;++k) {
             int aux2 = population[p][i];
-            population[p][i] = population[p][k];
-            population[p][k] = aux2;
+            population[p][i] = population[p][j];
+            population[p][j] = aux2;
             ++i;
             --j;
         }
@@ -66,12 +67,13 @@ public class Population {
     public void ompla_population_random(){
         
         //omplim la population
-        for(int i=0;i<numTours;++i){
+        for(int i=0;i<nTours;++i){
             for(int ii=0;ii<npunts;++ii){
                 population[i][ii]=ii;
             }
         }
-        
+    }    
+    /*    
         //es fa un suffle de la population inicial
         mutationRate = 0.4;
         for(int i = 0; i < 10; ++i){
@@ -90,6 +92,7 @@ public class Population {
         }
     }
     
+    */
     public double getCostRuta(int ruta){
         return pes_ruta[ruta];
     }
@@ -116,7 +119,7 @@ public class Population {
         
     }
     
-        
+    /*    
     public int getFittest(){
         int Fittest = 0;
         double pes_Fittest = pes_ruta[0];
@@ -136,7 +139,7 @@ public class Population {
     public double getTotalFitness(){
         return TotalFitness;
     }
-    
+    */
     public void escriu_pesos(){
         //escriu els pesos
         for(int i=0;i<npunts;++i){
@@ -151,7 +154,7 @@ public class Population {
     public void escriu_population(){
         //escriu la population
         for(int ii=0;ii<npunts;++ii){
-            for(int i=0;i<numTours;++i){
+            for(int i=0;i<nTours;++i){
                 System.out.print(" "+population[i][ii]);
             }
             System.out.println();
@@ -164,8 +167,6 @@ public class Population {
             System.out.println(" " + population[ruta][i]);
         }
     }
-    
-    
     
     //joc de proves
     public void ompla_pesos_jp(){

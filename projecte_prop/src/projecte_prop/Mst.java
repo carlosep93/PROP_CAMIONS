@@ -8,15 +8,8 @@ package projecte_prop;
  *
  * @author joanbarrosogarrido
  */
-public class mst {
-        public static int[][] prim(int[][] M) {
-            boolean[] visited = new boolean[M.length];
-            int vertex = 0;
-            int[][] finalM = new int[M.length][M.length];
-            finalM = mst_prim(M,visited,vertex,finalM);
-            return finalM;
-        }
-    
+public class Mst {
+
     private static int[][] mst_prim(int[][] M, boolean[] visited,int vertex,int[][] finalM) {
         int aux = -1;
         visited[vertex] = true;
@@ -42,8 +35,7 @@ public class mst {
                     for(int j = 0; j < M.length; ++j) {
                         if (M[i][j] == aux) {
                             if(!visited[j]) {
-                                finalM[i][j] = aux;
-                                finalM[j][j] = aux;
+                                //finalM[i][j] = finalM[j][i] = aux;
                                 return mst_prim(M,visited,j,finalM);
                             }
                         }

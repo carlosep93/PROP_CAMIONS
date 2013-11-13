@@ -38,7 +38,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
     
     public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
         List<Element> saved_elements = new ArrayList<Element>() ; 
-        Element elem = new Element();
+
         try{
         //obrir arxiu
         FileInputStream llegir = new FileInputStream("Ficheros/saved_elements.txt");
@@ -55,7 +55,7 @@ public final class Cjt_Elements { //conjunt d'elements guardats a disc
             if(i%2==0) id_elem = Integer.parseInt(strLinea); // si es un int
             if (i%2==1){
                   active = ("true".equals(strLinea)); 
-                  elem.newElement(id_elem,active);
+                  Element elem = new Element(id_elem,active);
                   saved_elements.add(elem);
             }
             ++i;

@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package camio;
+package tspsa;
 
-import tsp_sa.Population;
+
 
 
 public class Tsp_sa {
@@ -29,14 +29,14 @@ public class Tsp_sa {
         //pop.escriu_population();
         //Population best = new Population(pop);
         while (temperature > 1) {
-            //Population newpop = new Population(pop);
+            /*Population newpop = new Population(pop);
             //swap de posicions random
             int p1=(int)(Math.random()*newpop.tamany());
             int p2=(int)(Math.random()*newpop.tamany());
             newpop.swap(p1, p2);
-            
+            */
             //calcula si s'accepta la nova solució
-            int ener = pop.getCost_ruta();
+            int ener = pop.getCost_ruta(1);
             int newener = newpop.getCost_ruta();
             if (Acceptar(ener,newener,temperature)> Math.random()){
                 pop = newpop;

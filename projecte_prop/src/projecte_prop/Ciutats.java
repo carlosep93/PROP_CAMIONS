@@ -6,8 +6,8 @@ package projecte_prop;
 
 /**
  *
- * @author joanbarrosogarrido
+ * @author Carlos2
  */
-public class Twoapp {
+public class Ciutats {
     
 }

@@ -8,6 +8,6 @@ package projecte_prop;
  *
  * @author joanbarrosogarrido
  */
-public class Twoapp {
+public class Cjt_tours {
     
 }
