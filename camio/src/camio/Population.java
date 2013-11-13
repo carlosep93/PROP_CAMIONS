@@ -12,7 +12,7 @@ public class Population {
     int nTours;
     
     
-    Scanner in = new Scanner(System.in);
+    
     
     public Population(int npunts, int nTours) {
         this.npunts = npunts;
