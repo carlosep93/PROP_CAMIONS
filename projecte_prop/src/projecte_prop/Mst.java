@@ -10,42 +10,43 @@ package projecte_prop;
  */
 public class Mst {
 
-    private static int[][] mst_prim(int[][] M, boolean[] visited,int vertex,int[][] finalM) {
-        int aux = -1;
-        visited[vertex] = true;
-        if (!allvisited(visited, M.length)) {
-            for (int i = 0; i < visited.length; ++i) {
-                if (visited[i]) {
-                    for(int j = 0; j < M.length; ++j) {
-                        if(M[i][j] != 0) {
-                            if (!visited[j]) {
-                                if (aux == -1) {
-                                    aux = M[i][j];
+    public static int[][] mst_prim(int[][] M, boolean[] visited,int vertex,int[][] finalM) {
+        if (M.length > 0) {
+            int aux = -1;
+            visited[vertex] = true;
+            if (!allvisited(visited, M.length)) {
+                for (int i = 0; i < visited.length; ++i) {
+                    if (visited[i]) {
+                        for(int j = 0; j < M.length; ++j) {
+                            if(M[i][j] != 0) {
+                                if (!visited[j]) {
+                                    if (aux == -1) {
+                                        aux = M[i][j];
+                                    }
+                                    else {
+                                        aux = Math.min(aux, M[i][j]);
+                                    }
                                 }
-                                else {
-                                    aux = Math.min(aux, M[i][j]);
+                            }
+                        }
+                    }
+                }
+                for(int i = 0; i < visited.length; ++i) {
+                    if (visited[i]) {
+                        for(int j = 0; j < M.length; ++j) {
+                            if (M[i][j] == aux) {
+                                if(!visited[j]) {
+                                    finalM[i][j] = finalM[j][i] = aux;
+                                    return mst_prim(M,visited,j,finalM);
                                 }
                             }
                         }
                     }
                 }
             }
-            for(int i = 0; i < visited.length; ++i) {
-                if (visited[i]) {
-                    for(int j = 0; j < M.length; ++j) {
-                        if (M[i][j] == aux) {
-                            if(!visited[j]) {
-                                //finalM[i][j] = finalM[j][i] = aux;
-                                return mst_prim(M,visited,j,finalM);
-                            }
-                        }
-                    }
-                }
-            }
+            return finalM;
         }
-        return finalM;
     }
-    
     private static boolean allvisited(boolean[] visited, int length) {
         boolean v = true;
         for(int i = 0; i < length && v; i++) {     //salimos si llegamos al final o vemos que no se ha visitado alguno.
