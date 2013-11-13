@@ -1,18 +1,13 @@
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package camio;
+package projecte_prop;
 
-import java.io.*;
 /**
  *
- * @author pol
+ * @author joanbarrosogarrido
  */
-public class Driver_Dades {  //mirar la funció scanner
-    
-   
-}
+public class twoapp {
     
 }
