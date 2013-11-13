@@ -4,7 +4,12 @@
  */
 package Controladors;
 
+
+
+import java.io.FileNotFoundException;
+
 import java.util.Scanner;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
@@ -21,27 +26,25 @@ public class CtrlDades {
     
     
     
-    public static List <List<Integer>> cjt_adjacencies(){
+    public static List<List<Integer>> carregar_adjacencies(){
         
-        List <List<Integer>> adjacencies = new ArrayList<List<Integer>>();
+        List <List<Integer>>  adjacencies = new ArrayList();
         try{
-        
-           
-           File file = new File("./saved_adjacencys");
-           Scanner sc = new Scanner(file); 
-           System.out.println(sc.nextInt());
-           
-       while(sc.hasNext()){             //primer element és num d'elements
+           String path= CtrlDomini.path_adjacencies;
+           File file = new File(path);
+           Scanner sc = new Scanner(file);
+          
+           while(sc.hasNext()){             //primer element és num d'elements
            int num = sc.nextInt();
-           
            for(int i=0; i<num; ++i){
+               List<Integer> temp = new ArrayList<Integer>();
                for(int j=0; j<i+1; ++j){
                    int dist=sc.nextInt();
-                   adjacencies.get(i).set(j,dist);
-                   System.out.println(dist);
+                   temp.add(dist);
                }
+               adjacencies.add(temp);
            }
-       } 
+       }
         //tanquem en arxiu
      sc.close();
     }catch (Exception e){
@@ -51,11 +54,61 @@ public class CtrlDades {
         return adjacencies;   
     
 }
+    
+    
+     public static void guardar_adjacencies( List <List<Integer>> adjac){
+        String path= CtrlDomini.path_adjacencies;
+        PrintWriter salida = null;
+        try{
+        salida = new PrintWriter(path);
+       int mida = adjac.size();
+       salida.println(mida);
+        
+        for(int i=0; i<mida; ++i){
+            List<Integer> aux = adjac.get(i);
+             for(int j=0; j<aux.size(); ++j)  salida.print(aux.get(j) + " ");
+             salida.println();
+        }
+         salida.flush();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {         
+            salida.close();
+        }
+       
+        
+  }
+    
+    
+    
+    public static void print_list_list(List<List<Integer>> per_printar){
+        int mida= per_printar.size();
+        System.out.println(mida);
+        for(int i=0; i<mida; ++i){
+            List<Integer> aux = per_printar.get(i);
+             for(int j=0; j<aux.size(); ++j){
+                 System.out.print(aux.get(j) + " ");
+             }
+             System.out.println();
+        }
+        
+    }
+    
  public static void main(String[] args) {
-     List <List<Integer>> adjacencies = cjt_adjacencies();
+     List <List<Integer>> adjacencies = carregar_adjacencies();
+     
+     guardar_adjacencies(adjacencies);
      
  }   
     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
     /*
     public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
