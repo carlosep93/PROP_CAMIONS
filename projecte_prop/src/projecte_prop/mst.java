@@ -42,8 +42,7 @@ public class mst {
                     for(int j = 0; j < M.length; ++j) {
                         if (M[i][j] == aux) {
                             if(!visited[j]) {
-                                finalM[i][j] = aux;
-                                finalM[j][j] = aux;
+                                finalM[i][j] = finalM[j][i] = aux;
                                 return mst_prim(M,visited,j,finalM);
                             }
                         }
