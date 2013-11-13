@@ -25,12 +25,5 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         
     }
     
-    public void canviar_path_adjacencies(String path){
-        path_adjacencies = path;
-        
-    }
-     public void canviar_path_elements(String path){
-        path_elements = path;
-        
-    }
+    
 }

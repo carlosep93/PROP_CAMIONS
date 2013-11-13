@@ -6,6 +6,7 @@ package Controladors;
 
 
 
+import static Controladors.CtrlDomini.path_adjacencies;
 import java.io.FileNotFoundException;
 
 import java.util.Scanner;
@@ -96,7 +97,14 @@ public class CtrlDades {
     
 
     
- 
+    public static  void canviar_path_adjacencies(String path){
+         CtrlDomini.path_adjacencies = path;
+        
+    }
+     public static void canviar_path_elements(String path){
+        CtrlDomini.path_elements = path;
+        
+    }
  
  
  

@@ -26,7 +26,8 @@ public class DriverClass_CtrlDades {
         System.out.println("1 - Carregar Adjacencies de Disc");
         System.out.println("2 - Guardar Adjacencies a Disc");
         System.out.println("3 - Imprimir per Pantalla Adjacencies");
-        System.out.println("4 - Sortir");
+        System.out.println("4 - Canviar path de fichers");
+        System.out.println("5 - Sortir");
         System.out.println();
         
         lectura=sc.nextInt();
@@ -35,6 +36,11 @@ public class DriverClass_CtrlDades {
      if(lectura == 1) adjacencies = carregar_adjacencies();
      if(lectura == 2) guardar_adjacencies(adjacencies);
      if(lectura == 3)  print_list_list(adjacencies);
+     if(lectura == 4){
+         System.out.println("escriu el nou path");
+         String path = sc.nextLine();
+         canviar_path_adjacencies(path);
+     }
     }   
     
   }
