@@ -42,9 +42,12 @@ public class Cjt_tours {
         return cjtTours[idTour];
     }
     
-    //Copiem el tour de la posició id2 en la posicio id1
+    //Copiem el Tour de la posició id2 en la posicio id1
     public void copyTour(int id1, int id2) {
-        
+        for(int i = 0; i < cjtTours[id1].size(); ++i) {
+            cjtTours[id1].removeElementPos(i);                                  //elimina l'element de la posició i del Tour id1
+            cjtTours[id1].addElementPos(cjtTours[id2].getElementPor(i), i);     //copiem l'Element del tour de id2 de la possició i, en el tour id1 en la possició i
+        }
     }
     
     
