@@ -7,7 +7,7 @@ package Controladors;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.File;
 
 /**
  *
@@ -21,14 +21,16 @@ public class CtrlDades {
     
     
     
-    public List <List<Integer>> cjt_adjacencies(){
+    public static List <List<Integer>> cjt_adjacencies(){
         
         List <List<Integer>> adjacencies = new ArrayList<List<Integer>>();
         try{
         
-        Scanner sc = new Scanner("Fitxers/saved_adjacencys.txt");    
            
-        
+           File file = new File("./saved_adjacencys");
+           Scanner sc = new Scanner(file); 
+           System.out.println(sc.nextInt());
+           
        while(sc.hasNext()){             //primer element és num d'elements
            int num = sc.nextInt();
            
@@ -49,7 +51,10 @@ public class CtrlDades {
         return adjacencies;   
     
 }
-    
+ public static void main(String[] args) {
+     List <List<Integer>> adjacencies = cjt_adjacencies();
+     
+ }   
     
   //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
     /*
