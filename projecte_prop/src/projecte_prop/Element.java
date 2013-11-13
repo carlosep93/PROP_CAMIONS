@@ -5,20 +5,21 @@
  */
 package projecte_prop;
 
+import static Controladors.CtrlDomini.*;
+
 /**
  *
  * @author pol
  */
-import Controladors.CtrlDomini;
 
-public final class Element {
+
+public  class Element {
     private int id;
     private boolean enabled;
    
    
     public Element() {
-       id = Cjt_Elements.Id_global_element;
-       ++Cjt_Elements.Id_global_element;
+       id = getnewID();
        enabled=true;     
     }
    
