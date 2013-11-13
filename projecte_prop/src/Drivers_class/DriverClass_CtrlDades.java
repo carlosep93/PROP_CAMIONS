@@ -56,7 +56,7 @@ public class DriverClass_CtrlDades {
         if((lectura == 2 || lectura == 3) && adjacencies == null)
         System.out.println("Adjacencies no carregades, primer opcio 1");
         
-        if (lectura == 1) {
+        else if (lectura == 1) {
             String path = get_path_actual_load();
                 System.out.println();
                 System.out.println("Vols canviar el PATH del fixer d' entrada? (1-> si 2-> no)");

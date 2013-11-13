@@ -80,13 +80,13 @@ public class Tour {
     //reemplaça l'element E per l'element E2 retorna si l'operació s'ha fet correctament
     public boolean remplaceElement(Element E, Element E2){
         int pos = getPosElement(E);
-        if(!containsElement(E) && containsElement(E2) && removeElement(E2) && addElementPos(E,pos)) return true;
+        if(!containsElement(E) && containsElement(E2) && removeElement(E2) && addElement(E,pos)) return true;
         return false;
     }
     
     //reemplaça l'element de la posició pos per l'element E retorna si l'operació s'ha fet correctament
     public boolean remplaceElement(Element E, int pos){
-        if(!containsElement(E) && pos >= 0 && pos < nElements && removeElementPos(pos) && addElementPos(E, pos)) return true;
+        if(!containsElement(E) && pos >= 0 && pos < nElements && removeElement(pos) && addElement(E, pos)) return true;
         return false;
     }
     
