@@ -23,14 +23,19 @@ public class Cjt_tours {
         cjtTours[pos] = T;
     }
     
+    //salva un tour al cjt de tours ----> No està clar.
+    public void saveTour(int posTour, Tour T) {
+        cjtTours[posTour] = T;
+    }
+    
     //As retorna el tour "idtour"
     public Tour getTour(int idTour) {
         return cjtTours[idTour];
     }
     
     //Ens retorna el cost d'un Tour
-    public getCostTour(int idTour) {
-            
+    public int getCostTour(int idTour) {
+        return cjtTours[idTour].getCost();
     }
     
     //Ens retorna el Tour amb el pes minim
@@ -44,11 +49,10 @@ public class Cjt_tours {
     
     //Copiem el Tour de la posició id2 en la posicio id1
     public void copyTour(int id1, int id2) {
-        for(int i = 0; i < cjtTours[id1].size(); ++i) {
-            cjtTours[id1].removeElementPos(i);                                  //elimina l'element de la posició i del Tour id1
-            cjtTours[id1].addElementPos(cjtTours[id2].getElementPor(i), i);     //copiem l'Element del tour de id2 de la possició i, en el tour id1 en la possició i
-        }
+        cjtTours[id2] = cjtTours[id1];
     }
+    
+    
     
     
     
