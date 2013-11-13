@@ -13,13 +13,13 @@ public class Cjt_tours {
     private Tour[] cjtTours;
     
     //Es crea un conjunt de tours de mida nTours, buit
-    public cjtTours(int nTours) {
+    public void cjtTours(int nTours) {
         this.nTours = nTours;
         cjtTours = new Tour[nTours];
     }
     
     //S'afegeix un tour al conjunt de tours
-    public addTour(int pos, Tour T) {
+    public void addTour(int pos, Tour T) {
         cjtTours[pos] = T;
     }
     
