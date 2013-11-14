@@ -22,6 +22,11 @@ public  class Element {
        id = getnewID();
        enabled=true;     
     }
+    
+    public Element(int id){
+        this.id = id;
+        enabled = true;
+    }
    
      public Element(int id,boolean enabled) {
        this.id = id;
