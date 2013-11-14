@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controladors;
+package Gestor_Domini;
 
 
 
@@ -22,7 +22,7 @@ import java.io.File;
  */
 
 // s'han de guardar: ELEMENTS, ADJACENCIES, SOLUCIONS
-public class CtrlDades {
+public class Gestor_Dades {
     
       
    
@@ -57,7 +57,7 @@ public class CtrlDades {
 }
     
     
-     public static void guardar_adjacencies( List <List<Integer>> adjac){
+    public static void guardar_adjacencies( List <List<Integer>> adjac){
  
         PrintWriter salida = null;
         try{
@@ -81,8 +81,7 @@ public class CtrlDades {
         
   }
     
-    
-    
+   
     public static void print_list_list(List<List<Integer>> per_printar){
         int mida= per_printar.size();
         System.out.println(mida);
@@ -96,7 +95,18 @@ public class CtrlDades {
         
     }
     
-
+    public static String list_list_ToString(List<List<Integer>> per_printar){
+        String result = null;
+        int mida= per_printar.size();
+        System.out.println(mida);
+        for(int i=0; i<mida; ++i){
+            List<Integer> aux = per_printar.get(i);
+             for(int j=0; j<aux.size(); ++j){
+                 System.out.print(aux.get(j) + " ");
+             }
+        }
+        return result;
+    }
     
     public static void canviar_path_adjacencies_load(String path){
          
@@ -120,8 +130,6 @@ public class CtrlDades {
            edit_path_adjacencies_store("src\\Fitxers\\saved_adjacencys.txt");
        } 
     }
-    
-    
     
     public static void canviar_path_elements(String path){
          edit_path_elements_load(path);
