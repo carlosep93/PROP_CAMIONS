@@ -8,6 +8,7 @@ package projecte_prop;
  *
  * @author joanbarrosogarrido
  */
+import Stubs.Tour;
 public class CjtTours {
     private int nTours;
     private Tour[] cjtTours;
@@ -23,7 +24,7 @@ public class CjtTours {
     public void addTour(int pos, Tour T) {
         cjtTours[pos] = T;
     }
-    public int Fitness() {
+    public int getFitness() {
         return getFittestTour().getCost();
     }
     //As retorna el tour "idtour"
@@ -40,7 +41,7 @@ public class CjtTours {
     public  Tour getFittestTour() { 
         int idTour = 0;
         for (int i = 1; i < nTours; ++i) {
-            if (getCost(cjtTours[idTour]) > getCost(cjtTours[i]) idTour = i);
+            if (cjtTours[idTour].getCost() > cjtTours[i].getCost()) idTour = i;
         }
         return cjtTours[idTour];
     }
@@ -52,12 +53,12 @@ public class CjtTours {
     
     //Fem un swap de dos tours en el conjunt de tours
     public void swapTours(int pos1,int pos2) {
-        Tour T = new Tour();
+        Tour T;
         T = cjtTours[pos1];
         cjtTours[pos1] = cjtTours[pos2];
         cjtTours[pos2] = T;
     }
-    public int sizeTours() {
+    public int sizeCjtTours() {
         return nTours;
     }
 }

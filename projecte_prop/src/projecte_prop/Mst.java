@@ -44,8 +44,9 @@ public class Mst {
                     }
                 }
             }
-            return finalM;
         }
+        
+            return finalM;
     }
     private static boolean allvisited(boolean[] visited, int length) {
         boolean v = true;
