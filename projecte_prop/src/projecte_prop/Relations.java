@@ -16,10 +16,10 @@ import java.util.Scanner;
 
 public class Relations {
     
-    List <List<Integer>> a = new ArrayList <List<Integer>>();
+    List <List<Integer>> a; 
     
     public Relations() {
-         
+         a = new ArrayList <List<Integer>>();
     }
     
     

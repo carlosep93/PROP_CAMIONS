@@ -50,4 +50,17 @@ public class Mutate {
             else return mutated;
         }
     } 
+    public static void  mutate3 (Tour t, Relations r) {
+        int max1 = r.getCost(t.getElementPos(0), t.getElementPos(1));
+        int max2 = 0;
+        int aux;
+        for (int i=1; i < t.size()-1;++i) {
+            aux = r.getCost(t.getElementPos(i), t.getElementPos(i+1));
+            if (max1 < aux) 
+                max1 = aux;
+            else if (max2 < aux)
+                max2 = aux;
+        }
+        t.swap(max1,max2);
+    }
 }
