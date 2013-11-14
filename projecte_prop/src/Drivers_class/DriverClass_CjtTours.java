@@ -61,7 +61,7 @@ public class DriverClass_CjtTours {
                     T = ct.getFittestTour();
                     int cost = T.getCost();
                     System.out.println("es retorna el cost del Tour, per veure que es el millor:" + cost);
-                    for (int i = 0; i < ct.sizeTours(); ++i) {
+                    for (int i = 0; i < ct.sizeCjtTours(); ++i) {
                         cost = ct.getTour(i).getCost();
                         System.out.println("El cost del tour" + i + "es " + cost);
                     }
