@@ -12,17 +12,8 @@ public  class Element {
     int id;
     boolean enabled;
     
-<<<<<<< HEAD
+
     public Element() {
-       int id = 1;
-       boolean enabled=true;     
-    }
-    
-    public Element(int id){
-        
-    }
-=======
-      public Element() {
        id = 1;
        enabled=true;     
     }
@@ -45,9 +36,4 @@ public  class Element {
    public void modifyid(int id){
        this.id=id;
    }
-   
-   
-         
-      
->>>>>>> pol
 }

@@ -24,6 +24,8 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     
     static public int Id_global_element;
     
+    static public int Id_global_Solution;
+    
     public void iniciarDomini(){
         
     }
@@ -31,6 +33,11 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     public static int getnewID(){
     int id = Id_global_element;
     ++Id_global_element;
+    return id;
+    }
+    public static int getnewID_solution(){
+    int id = Id_global_Solution;
+    ++Id_global_Solution;
     return id;
     }
     

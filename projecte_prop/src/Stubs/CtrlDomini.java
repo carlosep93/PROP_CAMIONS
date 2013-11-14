@@ -4,15 +4,13 @@
  */
 package Stubs;
 
-import static Controladors.CtrlDomini.Id_global_element;
-
 /**
  *
  * @author pol
  */
-public class Stub_CtrlDomini {
-    
-      static String path_adjacencies_store =
+public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
+   
+    static String path_adjacencies_store =
    "src\\Fitxers\\saved_adjacencys.txt";
     
     static String path_adjacencies_load =
@@ -26,6 +24,8 @@ public class Stub_CtrlDomini {
     
     static public int Id_global_element;
     
+    static public int Id_global_Solution;
+    
     public void iniciarDomini(){
         
     }
@@ -33,6 +33,11 @@ public class Stub_CtrlDomini {
     public static int getnewID(){
     int id = Id_global_element;
     ++Id_global_element;
+    return id;
+    }
+    public static int getnewID_solution(){
+    int id = Id_global_Solution;
+    ++Id_global_Solution;
     return id;
     }
     

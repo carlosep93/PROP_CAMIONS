@@ -42,7 +42,7 @@ public  class Element {
         return enabled;       
     }
     
-    public void updateEnabled(boolean newvalue){
+    public void modifyEnabled(boolean newvalue){
         enabled=newvalue;
     }
    public void modifyid(int id){

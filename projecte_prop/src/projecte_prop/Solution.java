@@ -6,18 +6,22 @@ package projecte_prop;
  * @author pol
  */
 import java.util.Date;
-
+import static Controladors.CtrlDomini.*;
 
 public class Solution {
-    private int id;
-    String nom;
+    int id;
+    String nom;  //El nom de la solució serà el nom de la ciutat-sol_i
     Tour tour;
     Date fecha;
     int cost;
 
-    public Solution(int id, String nom,int cost){
+    public Solution (){
+    fecha = new Date ();
+    }
+    
+    public Solution(String nom,int cost){
         fecha = new Date ();
-        this.id = id;
+        id = getnewID_solution();
         this.nom = nom;
         tour = new Tour();
         this.cost = cost;

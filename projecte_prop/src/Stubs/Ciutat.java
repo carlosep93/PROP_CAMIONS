@@ -6,9 +6,11 @@ package Stubs;
 
 /**
  *
- * @author josep
+ * @author pol
  */
+
 public class Ciutat {
+    String nom;
     Relations rel;
     
     public Ciutat(){
@@ -17,5 +19,8 @@ public class Ciutat {
     
     public Relations getRelation(){
         return rel;
+    }
+    public String getNom(){
+        return nom;
     }
 }
