@@ -30,8 +30,7 @@ public  class Element {
     public Element(int id){
      this.id = id;   
     }
-     
-     
+    
     public int getID(){
         return id;       
     }
