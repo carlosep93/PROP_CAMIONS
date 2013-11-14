@@ -10,8 +10,12 @@ package Stubs;
  */
 public  class Element {
     
-      public Element() {
+    public Element() {
        int id = 1;
        boolean enabled=true;     
+    }
+    
+    public Element(int id){
+        
     }
 }
