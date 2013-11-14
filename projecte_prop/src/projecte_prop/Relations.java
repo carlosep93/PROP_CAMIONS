@@ -51,7 +51,6 @@ public class Relations {
     }
     
     public void erase(int id){
-        System.out.println("size "+a.get(id).size());
         int n = a.get(id).size();
         a.get(id).remove(n-1);
         a.get(id).add(-1);
