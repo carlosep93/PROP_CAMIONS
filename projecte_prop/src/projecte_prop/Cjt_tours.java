@@ -14,7 +14,7 @@ public class Cjt_tours {
     
     
     //Es crea un conjunt de tours de mida nTours, buit
-    public void cjtTours(int nTours) {
+    public Cjt_tours(int nTours) {
         this.nTours = nTours;
         cjtTours = new Tour[nTours];
     }
@@ -24,7 +24,7 @@ public class Cjt_tours {
         cjtTours[pos] = T;
     }
     public int Fitness() {
-        return getCost(getFittestTour());
+        return getFittestTour().getCost();
     }
     //As retorna el tour "idtour"
     public Tour getTour(int idTour) {
@@ -47,6 +47,14 @@ public class Cjt_tours {
     
     //Copiem el Tour de la posició id2 en la posicio id1
     public void copyTour(int id1, int id2) {
-        cjtTours[id2] = cjtTours[id1];
-    }   
+        cjtTours[id2] = cjtTours[id1]; //alomejor peta
+    }
+    
+    //Fem un swap de dos tours en el conjunt de tours
+    public void swapTours(int pops1,int pos2) {
+        Tour T = new Tour();
+        T = cjtTours[pos1];
+        cjtTours[pos1] = cjtTours[pos2];
+        cjtTours[pos2] = T;
+    }
 }
