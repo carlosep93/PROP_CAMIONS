@@ -1,5 +1,9 @@
 
 package projecte_prop;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author josep
@@ -20,11 +24,9 @@ public class Ciutat {
         
     }
     
-    public boolean addPunt(Element E){
-        return CjtPunts.addElement(E);
+    public boolean addPunt(List<Integer> aux){
+        return CjtPunts.addElement(aux);
     }
     
-    public void addRelation(){
-        
-    }
+    
 }
