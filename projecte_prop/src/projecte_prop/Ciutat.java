@@ -22,17 +22,7 @@ public class Ciutat {
         Rel = new Relations();
         
     }
-    
-    public void addElement(List<Integer> aux){
-        Rel.addElement(aux);
-        CjtPunts.addElement(new Element());
-    }
-    
-    public void removeElement(Element elem){
-        CjtPunts.removeElement(elem);
-        Rel.erase(elem.getID());
-    }
-    
+     
     public int num_Elements(){
         return CjtPunts.size();     
     }
@@ -44,6 +34,17 @@ public class Ciutat {
     public Tour get_Tour(){
         return CjtPunts;
     }
+    public void addSolution(Solution sol){
+    this.sol = sol;
+    }
+      public void addElement(List<Integer> aux){
+        Rel.addElement(aux);
+        CjtPunts.addElement(new Element());
+    }
     
+    public void removeElement(Element elem){
+        CjtPunts.removeElement(elem);
+        Rel.erase(elem.getID());
+    }
     
 }

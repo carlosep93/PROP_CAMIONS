@@ -6,7 +6,7 @@ package projecte_prop;
  * @author pol
  */
 import java.util.Date;
-
+import static Controladors.CtrlDomini.*;
 
 public class Solution {
     private int id;
