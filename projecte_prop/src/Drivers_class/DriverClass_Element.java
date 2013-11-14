@@ -4,8 +4,8 @@
  */
 package Drivers_class;
 
-import static Controladors.CtrlDades.get_path_actual_load;
-import static Controladors.CtrlDades.get_path_actual_store;
+import static Gestor_Domini.Gestor_Dades.get_path_actual_load;
+import static Gestor_Domini.Gestor_Dades.get_path_actual_store;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,10 +26,8 @@ public class DriverClass_Element {
         
         System.out.println("-------  Informació  -------");
         System.out.println();
-        System.out.println("PATH actual de LOAD: "  + get_path_actual_load());
-        System.out.println("PATH actual de STORE: "  + get_path_actual_store());
         System.out.println();
-        System.out.print("Adjacencies carregades ");
+     
        
        
         
@@ -37,4 +35,6 @@ public class DriverClass_Element {
     }
     
     
+}
+
 }

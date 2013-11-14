@@ -4,24 +4,30 @@
  */
 package projecte_prop;
 
-import tsp_sa.Population;
 
 
-public class Tsp_sa {
+
+public class TspSA {
+    static double temperature;
+    static double cooling;
    
-    public static double Acceptar(int energy, int newEnergy, double temp) {
+    public static double Acceptar(int energy, int newEnergy) {
         if (newEnergy < energy) {
             return 1.0;
         }
         return Math.exp ((energy - newEnergy)/ temp);
     }
 
-    public static void main(String[] args) {
+    public static void TspSA(double temp, double cool,Ciutat c) {
         //Temperatura inicial
-        double temperature = 10000;
+        temperature = temp;
         //Factor por el que se enfria
-        double enfriamiento = 0.003;
-        Population pop = new Population(1000,3);// 1: best, 2: actual 3: new
+        cooling = cool;
+        Cjt_tours ct = new Cjt_tours(3);
+        for (int i=0;i<3;++i) {
+            ct.addTour(i, c.get_Tour());
+        }
+        // 1: best, 2: actual 3: new
         pop.ompla_pesos_jp3();
         pop.ompla_population_random();
         int cost = pop.getCost_ruta(2);

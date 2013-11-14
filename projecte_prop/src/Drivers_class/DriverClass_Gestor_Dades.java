@@ -4,14 +4,14 @@
  */
 package Drivers_class;
 
-import static Controladors.CtrlDades.*;
+import static Gestor_Domini.Gestor_Dades.*;
 import java.util.List;
 import java.util.Scanner;
 /**
  *
  * @author Pol
  */
-public class DriverClass_CtrlDades {
+public class DriverClass_Gestor_Dades {
 
     
      

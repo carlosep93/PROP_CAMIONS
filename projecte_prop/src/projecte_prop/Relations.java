@@ -51,22 +51,30 @@ public class Relations {
     }
     
     public void erase(int id){
-        System.out.println("size "+a.get(id).size());
         int n = a.get(id).size();
         a.get(id).remove(n-1);
         a.get(id).add(-1);
     }
     
-    public void addElement(int id) {
+      public void addElement(int id) {
         Scanner in = new Scanner(System.in);
         int x;
         List<Integer> aux = new ArrayList<Integer>();
         for (int i=0; i<id;++i) {
-            x = in.nextInt();
-            aux.add(x);
+            if (a.get(i).get(a.get(i).size()-1) != 0) 
+                aux.add(-1);
+            else {
+                x = in.nextInt();
+                aux.add(x);
+            }   
         }
         aux.add(0);
         a.add(aux);
+    }
+    
+    public void addElement(List<Integer> l) {
+        l.add(0);
+        a.add(l);
     }
     
     public int [][] toMatrix() {
@@ -79,23 +87,18 @@ public class Relations {
         return res;
     }
     
+    public int size() {
+        return a.size();
+    }
+    
     public void readRelations(int n) {
         for (int i=0;i<n;++i) {
             addElement(i);
         }
     }
         
-      public void writeRelations() {
-        for (int i=0;i<a.size();++i){
-            for (int j=0;j<a.get(i).size();++j) {
-                System.out.print(" "+a.get(i).get(j));
-            }
-            System.out.println();
-        }
-            
+    public String toString(int id) {
+        return a.get(id).toString();        
     } 
-    
-  
-    
-    
+
 }

@@ -17,7 +17,7 @@ public class TspGA {
     static double mutationRate = 0.015;    //rati deom mutació
     static double mutationSwapProbability = 0.90;
     
-    public static void tspGA(int Scond, int nGen){
+    public static Tour tspGA(int Scond, int nGen){
         stopCondition = Scond;
         nGeneracions = nGen;
         
@@ -30,7 +30,7 @@ public class TspGA {
 
         nCiutats = 1000;         //pel joc de proves ja fet                                         
 
-        Population pop = new Population(nCiutats, nTours);
+        Cjt_tours pop = new Cjt_tours(nTours);
 
         pop.ompla_pesos_jp3();
         pop.ompla_population_random();
@@ -69,7 +69,7 @@ public class TspGA {
 
         //escriu la ruta més òptima
         //System.out.println("La ruta final és: ");
-        //pop.escriu_ruta(Fittest);
+        return pop.getFittestTour();
 
     }
     
