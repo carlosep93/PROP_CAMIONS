@@ -15,7 +15,7 @@ public class TspSA {
         if (newEnergy < energy) {
             return 1.0;
         }
-        return Math.exp ((energy - newEnergy)/ temp);
+        return Math.exp ((energy - newEnergy)/ temperature);
     }
 
     public static void TspSA(double temp, double cool,Ciutat c) {
@@ -23,20 +23,16 @@ public class TspSA {
         temperature = temp;
         //Factor por el que se enfria
         cooling = cool;
-        Cjt_tours ct = new Cjt_tours(3);
+        Cjt_tours ct = new Cjt_tours(3); //0: best, 1: actual, 2: new               
         for (int i=0;i<3;++i) {
             ct.addTour(i, c.get_Tour());
         }
-        // 1: best, 2: actual 3: new
-        pop.ompla_pesos_jp3();
-        pop.ompla_population_random();
-        int cost = pop.getCost_ruta(2);
+        Relations r = new Relations();
+        r = c.get_Relations();
+        int cost = ct.getCostTour(cost);
         System.out.println("Distancia inicial: "+ cost);
-        //pop.escriu_population();
-        //Population best = new Population(pop);
+        int tamany = ct
         while (temperature > 1) {
-            //Population newpop = new Population(pop);
-            //swap de posicions random
             int p1=(int)(Math.random()*newpop.tamany());
             int p2=(int)(Math.random()*newpop.tamany());
             newpop.swap(p1, p2);

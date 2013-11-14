@@ -33,19 +33,20 @@ public class TspGA {
         mutationRate = MutationRate;
         mutationSwapProbability = MutationSwapProbability;
 
-        nPunts = C.num_Tours();                                         
+        nPunts = C.num_Elements();                                         
 
         Cjt_tours pop = new Cjt_tours(nTours);
 
         
         ompla_pop(pop);
         
-        int Fittest = pop.getFittest();
-        int Fitness = (int)pop.getFitness(Fittest); 
-        System.out.println("Generació 0     Fitness: " + Fitness);
+        Tour Fittest = new Tour();
+        Fittest = pop.getFittestTour();
+        int Fitness = pop.Fitness(); 
 
         int nCicles = 0;
-        int bFittest = Fittest;
+        Tour bFittest = new Tour();
+        bFittest = Fittest;
         int bFitness= Fitness;
 
         //iteracions per evolucionar la població
@@ -78,8 +79,8 @@ public class TspGA {
     }
     
     
-    private static void envolvePopulation(Population pop){
-        Population newPopulation = new Population(nCiutats, nTours);
+    private static void envolvePopulation(Cjt_tours pop){
+        Cjt_tours newPopulation = new Cjt_tours(nCiutats, nTours);
         
         int elitismOffset = 0;
         if(elitism){
@@ -119,7 +120,7 @@ public class TspGA {
     }
     
     
-    private void ompla_population(Cjt_tours pop){
+    private static void ompla_pop(Cjt_tours pop){
         
         //omplim la population
         Tour tour = new Tour();
@@ -133,6 +134,13 @@ public class TspGA {
         }
         
         //es fa un suffle de la population inicial
-        
+        for(int i = 0; i < nPunts/4; ++i){
+            int pos1, pos2;
+            pos1 = (int)Math.random() * nPunts;
+            pos2 = (int)Math.random() * nPunts;
+            for(int ii = 0; ii < nTours; ++i){
+                pop.swapTours(pos1, pos2);
+            }
+        }
     }
 }
