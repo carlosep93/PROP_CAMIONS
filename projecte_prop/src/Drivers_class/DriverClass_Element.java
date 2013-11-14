@@ -4,14 +4,14 @@
  */
 package Drivers_class;
 
-import static Gestor_Domini.Gestor_Dades.get_path_actual_load;
-import static Gestor_Domini.Gestor_Dades.get_path_actual_store;
+
 import java.util.List;
 import java.util.Scanner;
+import Stubs.Element;
 
 /**
  *
- * @author helewt
+ * @author pol
  */
 public class DriverClass_Element {
     
@@ -20,17 +20,24 @@ public class DriverClass_Element {
           Scanner sc = new Scanner(System.in);
           boolean Sistema_definit = false;
           int lectura = 0;
-     
+          
+          Element elem;
+          
      while(lectura != 5){   
         System.out.println();
-        
         System.out.println("-------  Informació  -------");
         System.out.println();
         System.out.println();
      
        
+         System.out.println("Trua una opció: ");
+         System.out.println("1- Crea un nou element");
        
         
+         
+          lectura = sc.nextInt();
+     if(lectura == 1) elem = new Element();
+     
         
     }
     

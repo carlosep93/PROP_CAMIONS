@@ -28,7 +28,7 @@ public  class Element {
         enabled = true;
     }
    
-     public Element(int id,boolean enabled) {
+   private Element(int id,boolean enabled) {
        this.id = id;
        this.enabled=enabled;     
     }
