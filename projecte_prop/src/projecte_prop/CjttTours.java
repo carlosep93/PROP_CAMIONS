@@ -8,13 +8,13 @@ package projecte_prop;
  *
  * @author joanbarrosogarrido
  */
-public class Cjt_tours {
+public class CjtTours {
     private int nTours;
     private Tour[] cjtTours;
     
     
     //Es crea un conjunt de tours de mida nTours, buit
-    public Cjt_tours(int nTours) {
+    public CjtTours(int nTours) {
         this.nTours = nTours;
         cjtTours = new Tour[nTours];
     }
@@ -51,10 +51,13 @@ public class Cjt_tours {
     }
     
     //Fem un swap de dos tours en el conjunt de tours
-    public void swapTours(int pops1,int pos2) {
+    public void swapTours(int pos1,int pos2) {
         Tour T = new Tour();
         T = cjtTours[pos1];
         cjtTours[pos1] = cjtTours[pos2];
         cjtTours[pos2] = T;
+    }
+    public int sizeTours() {
+        return nTours;
     }
 }
