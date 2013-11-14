@@ -5,37 +5,41 @@ import java.util.Scanner;
 
 public class TspGA {
     //nombre de generacions sense variar per donar una solució per bona
-    static int stopCondition;
+    private static int stopCondition;
     //max de generacions que es crearan
-    static int nGeneracions;
-    //numero de ciutats
-    static int nCiutats;
+    private static int nGeneracions;
+    //numero de punts
+    private static int nPunts;
     
-    static int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
-    static boolean elitism = true;        //guarda el millor de cada generació a la posició de population
-    static int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
-    static double mutationRate = 0.015;    //rati deom mutació
-    static double mutationSwapProbability = 0.90;
+    private static int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
+    private static boolean elitism = true;        //guarda el millor de cada generació a la posició de population
+    private static int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
+    private static double mutationRate = 0.015;    //rati deom mutació
+    private static double mutationSwapProbability = 0.90;
     
-    public static Tour tspGA(int Scond, int nGen){
-        stopCondition = Scond;
-        nGeneracions = nGen;
+    
+    //passant una ciutat, una condició de parada, el nombre de generacions màximes,
+    //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
+    //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
+    public static Tour tspGA(Ciutat C, int StopCondition, int NGeneracions, int NTours, 
+            boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
+            boolean Mutate2, int MutationRate, int MutationSwapProbability){
         
-        //inicialització de la variable per llegir de la entrada estàndart
-        Scanner in = new Scanner(System.in);
+        stopCondition = StopCondition;
+        nGeneracions = NGeneracions;
+        nTours = NTours;
+        elitism = Elitism;
+        tournamentSize = TournamentSize;
+        mutationRate = MutationRate;
+        mutationSwapProbability = MutationSwapProbability;
 
-
-        //System.out.println("Escriu el nombre de punts: ");    //lectura del teclat
-        //int npunts = in.nextInt();
-
-        nCiutats = 1000;         //pel joc de proves ja fet                                         
+        nPunts = C.num_Tours();                                         
 
         Cjt_tours pop = new Cjt_tours(nTours);
 
-        pop.ompla_pesos_jp3();
-        pop.ompla_population_random();
-        twopt.twoOpt(pop);
-        pop.ompla_pesosRutes();
+        
+        ompla_pop(pop);
+        
         int Fittest = pop.getFittest();
         int Fitness = (int)pop.getFitness(Fittest); 
         System.out.println("Generació 0     Fitness: " + Fitness);
@@ -112,5 +116,23 @@ public class TspGA {
         }
         pop = newPopulation;
         pop.ompla_pesosRutes();
+    }
+    
+    
+    private void ompla_population(Cjt_tours pop){
+        
+        //omplim la population
+        Tour tour = new Tour();
+        Element E;
+        for(int i = 0; i < nTours; ++i){
+            for(int ii = 0; ii < nPunts; ++ii){
+                E = new Element(ii);
+                tour.addElement(E, ii);
+            }
+            pop.addTour(i, tour);
+        }
+        
+        //es fa un suffle de la population inicial
+        
     }
 }
