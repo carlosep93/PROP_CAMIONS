@@ -57,7 +57,7 @@ public class Relations {
         a.get(id).add(-1);
     }
     
-    public void addElement(int id) {
+      public void addElement(int id) {
         Scanner in = new Scanner(System.in);
         int x;
         List<Integer> aux = new ArrayList<Integer>();
@@ -71,6 +71,11 @@ public class Relations {
         }
         aux.add(0);
         a.add(aux);
+    }
+    
+    public void addElement(List<Integer> l) {
+        l.add(0);
+        a.add(l);
     }
     
     public int [][] toMatrix() {
