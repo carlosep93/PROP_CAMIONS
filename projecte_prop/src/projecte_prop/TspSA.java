@@ -46,14 +46,13 @@ public class TspSA {
                 ct.addTour(1, t);
             }
             //actualitza si cal la nova solució
-            if (best > )
-                best = pop;
+            if (best > t.getCost()) {
+                best = t.getCost();
+                ct.addTour(0,t);
+            }    
             //Enfriamiento
-            temperature *= 1-enfriamiento;
+            temperature *= 1-cooling;
         }
-        System.out.println("Distancia de la solucíó final "+best.getCost_ruta());
-        System.out.println("Ruta final ");
-        best.escriu_population();
     }
 }
 
