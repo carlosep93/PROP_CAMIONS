@@ -10,20 +10,23 @@ package Stubs;
  */
 public class Tour {
     private int cost;
-    private int id;
+    int size;
     private int[] cjtElem;
     
     
     public Tour(){
+        int size;
         cjtElem = new int [10];
         cost = (int)(Math.random() *100);
-        this.id = id;
         for (int i = 0; i < 10; ++i) {
             cjtElem[i] = id = i; 
         }
     }
     public int getCost() {
         return cost;
+    }
+    public int size() {
+        return size;
     }
     
     

@@ -64,7 +64,7 @@ public class DriverClass_CjtTours {
                     for (int i = 0; i < ct.sizeCjtTours(); ++i) {
                         cost = ct.getTour(i).getCost();
                         System.out.println("El cost del tour" + i + "es " + cost);
-                    }
+                    }1
                 }
             
                 else if (opt == 5) {
