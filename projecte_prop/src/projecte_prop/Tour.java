@@ -78,14 +78,14 @@ public class Tour {
     }
     
     //reemplaça l'element E per l'element E2 retorna si l'operació s'ha fet correctament
-    public boolean remplaceElement(Element E, Element E2){
+    public boolean replaceElement(Element E, Element E2){
         int pos = getPosElement(E);
         if(!containsElement(E) && containsElement(E2) && removeElement(E2) && addElement(E,pos)) return true;
         return false;
     }
     
     //reemplaça l'element de la posició pos per l'element E retorna si l'operació s'ha fet correctament
-    public boolean remplaceElement(Element E, int pos){
+    public boolean replaceElement(Element E, int pos){
         if(!containsElement(E) && pos >= 0 && pos < nElements && removeElement(pos) && addElement(E, pos)) return true;
         return false;
     }
@@ -160,8 +160,8 @@ public class Tour {
     //fa swap de dos elements, retorna si s'ha fet correctament
     public boolean swap(Element E1, Element E2){
         if(cjtElem.contains(E1) && cjtElem.contains(E1) && E1 != E2){
-            remplaceElement(E1,E2);
-            remplaceElement(E2,E1);
+            replaceElement(E1,E2);
+            replaceElement(E2,E1);
             return true;
         }
         return false;
@@ -170,8 +170,8 @@ public class Tour {
     //fa un swap de pos1 i pos2, retorna si s'ha fet correctament
     public boolean swap(int pos1, int pos2){
         if(pos1 >= 0 && pos1 < nElements && pos2 >= 0 && pos2 < nElements && pos1 != pos2){
-            remplaceElement(getElementPos(pos1), pos2);
-            remplaceElement(getElementPos(pos2), pos1);
+            replaceElement(getElementPos(pos1), pos2);
+            replaceElement(getElementPos(pos2), pos1);
             return true;
         }
         return false;
