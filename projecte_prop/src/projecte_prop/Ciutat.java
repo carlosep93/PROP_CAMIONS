@@ -10,22 +10,39 @@ import java.util.List;
  */
 
 public class Ciutat {
-    
-    private int nPunts;
+ 
     private String nom;
     private Relations Rel;
     private Tour CjtPunts;
     
     
-    public Ciutat(int nPunts){
-        this.nPunts = nPunts;
+    public Ciutat(String nom){
+        this.nom = nom;
         CjtPunts = new Tour();
         Rel = new Relations();
         
     }
     
-    public boolean addPunt(List<Integer> aux){
-        return CjtPunts.addElement(aux);
+    public void addElement(List<Integer> aux){
+        Rel.addElement(aux);
+        CjtPunts.addElement(new Element());
+    }
+    
+    public void removeElement(Element elem){
+        CjtPunts.removeElement(elem);
+        Rel.erase(elem.getID());
+    }
+    
+    public int num_Elements(){
+        return CjtPunts.size();     
+    }
+    
+    public Relations get_Relations(){
+       return Rel;
+    }
+    
+    public Tour get_Tour(){
+        return CjtPunts;
     }
     
     
