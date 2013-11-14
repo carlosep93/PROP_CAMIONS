@@ -3,17 +3,24 @@ package projecte_prop;
 
 /**
  *
- * @author josep
+ * @author pol
  */
+import java.util.Date;
+
+
 public class Solution {
     private int id;
-    private String nom;
+    String nom;
     Tour tour;
-    
-    public Solution(int id, String nom){
+    Date fecha;
+    int cost;
+
+    public Solution(int id, String nom,int cost){
+        fecha = new Date ();
         this.id = id;
         this.nom = nom;
         tour = new Tour();
+        this.cost = cost;
     }
     
     public Tour getTour(){
@@ -31,4 +38,13 @@ public class Solution {
     public String getNom(){
         return nom;
     }
+    
+    public int getCostSolution(){
+       return cost;
+    }
+    
+    public String getData(){
+       return (fecha.toString());   
+    }
+    
 }

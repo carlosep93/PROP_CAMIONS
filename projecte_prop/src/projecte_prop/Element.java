@@ -27,11 +27,13 @@ public  class Element {
        this.id = id;
        this.enabled=enabled;     
     }
+
+    
     public Element(int id){
      this.id = id;   
     }
-     
-     
+    
+
     public int getID(){
         return id;       
     }

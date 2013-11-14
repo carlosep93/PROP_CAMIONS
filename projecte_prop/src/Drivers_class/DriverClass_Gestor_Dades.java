@@ -91,8 +91,7 @@ public class DriverClass_Gestor_Dades {
         System.out.println();
         System.out.print("Prem la tecla Enter per continuar");
         sc.nextLine();
-        sc.nextLine();
-        
+        sc.nextLine();      
     }    
   }
 }
