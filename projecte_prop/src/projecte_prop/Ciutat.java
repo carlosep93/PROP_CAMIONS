@@ -14,7 +14,7 @@ public class Ciutat {
     private String nom;
     private Relations Rel;
     private Tour CjtPunts;
-    
+    private Solution sol;
     
     public Ciutat(String nom){
         this.nom = nom;

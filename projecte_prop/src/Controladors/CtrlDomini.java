@@ -23,15 +23,24 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
    "src\\Fitxers\\saved_elements.txt";
     
     static public int Id_global_element;
+    static public int Id_global_solution;
     
     public void iniciarDomini(){
-        
+      Id_global_element = 0;
+      Id_global_solution = 0;
     }
     
     public static int getnewID(){
     int id = Id_global_element;
     ++Id_global_element;
     return id;
+    }
+    
+    public static int getID_sol(){
+       int id = Id_global_solution;
+    ++Id_global_solution;
+    return id;   
+        
     }
     
     public static String get_path_adjacencies_store(){

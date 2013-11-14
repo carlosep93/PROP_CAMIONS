@@ -15,9 +15,9 @@ public class Solution {
     Date fecha;
     int cost;
 
-    public Solution(int id, String nom,int cost){
+    public Solution(String nom,int cost){
         fecha = new Date ();
-        this.id = id;
+        id = getID_sol();
         this.nom = nom;
         tour = new Tour();
         this.cost = cost;
