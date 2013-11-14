@@ -10,16 +10,17 @@ import java.util.Date;
 
 public class Solution {
     private int id;
-    private String nom;
+    String nom;
     Tour tour;
     Date fecha;
-   
+    int cost;
 
-    public Solution(int id, String nom){
+    public Solution(int id, String nom,int cost){
         fecha = new Date ();
         this.id = id;
         this.nom = nom;
         tour = new Tour();
+        this.cost = cost;
     }
     
     public Tour getTour(){
@@ -39,7 +40,7 @@ public class Solution {
     }
     
     public int getCostSolution(){
-       return tour.getCost();
+       return cost;
     }
     
     public String getData(){
