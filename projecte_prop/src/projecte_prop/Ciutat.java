@@ -15,7 +15,15 @@ public class Ciutat {
     private Relations Rel;
     private Tour CjtPunts;
     private Solution sol;
-
+    
+    public Ciutat(){
+     nom = "SenseNom";
+     CjtPunts = new Tour();
+     Rel = new Relations ();
+     sol = new Solution();   
+        
+    }
+    
     public Ciutat(String nom){
         this.nom = nom;
         CjtPunts = new Tour();
@@ -32,17 +40,20 @@ public class Ciutat {
        return Rel;
     }
     
+    public Solution getSolution(){
+    return sol;
+    }
+    
     public Tour get_Tour(){
         return CjtPunts;
-    }
-    public void addSolution(Solution sol){
-    this.sol = sol;
     }
    
     public String get_Nom(){
         return nom;
     }
     
+
+     
      public void add_Solution(Solution sol){
         this.sol = sol;
     }
