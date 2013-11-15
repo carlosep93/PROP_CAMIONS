@@ -15,8 +15,7 @@ public class Ciutat {
     private Relations Rel;
     private Tour CjtPunts;
     private Solution sol;
-    
-    
+
     public Ciutat(String nom){
         this.nom = nom;
         CjtPunts = new Tour();
@@ -36,7 +35,10 @@ public class Ciutat {
     public Tour get_Tour(){
         return CjtPunts;
     }
-    
+    public void addSolution(Solution sol){
+    this.sol = sol;
+    }
+   
     public String get_Nom(){
         return nom;
     }
@@ -54,6 +56,5 @@ public class Ciutat {
         CjtPunts.removeElement(elem);
         Rel.erase(elem.getID());
     }
-    
-    
+
 }

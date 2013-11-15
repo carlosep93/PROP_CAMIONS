@@ -4,14 +4,14 @@
  */
 package Drivers_class;
 
-import java.util.Scanner;
-import projecte_prop.Ciutat;
-
 /**
  *
  * @author pol
  */
+import java.util.Scanner;
+
 public class DriverClass_Ciutat {
+  
      public static void main(String[] args) {
           Scanner sc = new Scanner(System.in);
           boolean Sistema_definit = false;
@@ -61,3 +61,4 @@ public class DriverClass_Ciutat {
     }
   }
 }
+
