@@ -10,6 +10,15 @@ package projecte_prop;
  */
 public class Mst {
 
+    public static int[][] prim(int[][] M) {
+        boolean[] visited = new boolean[M.length];
+        int vertex = 0;
+        int[][] finalM = new int[M.length][M.length];
+        finalM = mst_prim(M,visited,vertex,finalM);
+        return finalM;
+    }
+    
+    
     public static int[][] mst_prim(int[][] M, boolean[] visited,int vertex,int[][] finalM) {
         if (M.length > 0) {
             int aux = -1;

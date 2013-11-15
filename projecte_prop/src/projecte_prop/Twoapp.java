@@ -8,6 +8,15 @@ package projecte_prop;
  *
  * @author joanbarrosogarrido
  */
+
+
 public class Twoapp {
     
+    public static int[] Twoapp(int[][] M) {
+        int [][] mst = new int[M.length][M.length];
+        mst = Mst.prim(M);
+        
+        int [] etour = new int[mst.length];
+        return etour;
+    }
 }
