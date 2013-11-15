@@ -2,6 +2,7 @@
 package projecte_prop;
 
 import java.util.Scanner;
+import Controladors.CtrlDomini;
 
 public class TspGA {
     //nombre de generacions sense variar per donar una solució per bona
@@ -18,10 +19,10 @@ public class TspGA {
     private static double mutationSwapProbability = 0.90;
     
     
-    //passant una ciutat, una condició de parada, el nombre de generacions màximes,
+    //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    public static Tour tspGA(Ciutat C, int StopCondition, int NGeneracions, int NTours, 
+    public static Tour tspGA(int StopCondition, int NGeneracions, int NTours, 
             boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
             boolean Mutate2, int MutationRate, int MutationSwapProbability){
         
@@ -33,7 +34,7 @@ public class TspGA {
         mutationRate = MutationRate;
         mutationSwapProbability = MutationSwapProbability;
 
-        nPunts = C.num_Elements();                                         
+        nPunts = CtrlDomini.getCity().num_Elements();                                         
 
         CjtTours pop = new CjtTours(nTours);
 
@@ -41,28 +42,21 @@ public class TspGA {
         ompla_pop(pop);
         
         Tour Fittest = pop.getFittestTour();
-        int Fitness = pop.Fitness(); 
-
+        int Fitness = pop.getFitness(); 
         int nCicles = 0;
-        Tour bFittest = new Tour();
-        bFittest = Fittest;
-        int bFitness= Fitness;
 
         //iteracions per evolucionar la població
         for(int i = 1; i <= nGeneracions; ++i){
-            //evoluciona la població en una generació
-            envolvePopulation(pop);
+            //evoluciona la població en una generació 
+            envolvePopulation(pop, Rouletewheel_TS, Edge_crossover, Mutate2);
                     
-            //obtè el millor element de la població i el seu cost total
-            Fittest = pop.getFittest();
-            Fitness = (int)pop.getFitness(Fittest);
-            System.out.println("Generació " + i + "     Fitness: " + Fitness);
+            //System.out.println("Generació " + i + "     Fitness: " + Fitness);
 
             //si fa tantes generacions que no ha cambiat el millor element de
             //la població com defineix "stopCondition" no crea més generacions
-            if(bFitness > Fitness){
-                bFittest = Fittest;
-                bFitness = Fitness;
+            if(Fitness > pop.getFitness()){
+                Fittest = pop.getFittestTour();
+                Fitness = pop.getFitness();
                 nCicles = 0;
             }
             else{
@@ -73,12 +67,11 @@ public class TspGA {
 
         //escriu la ruta més òptima
         //System.out.println("La ruta final és: ");
-        return pop.getFittestTour();
-
+        return Fittest;
     }
     
     
-    private static void envolvePopulation(CjtTours pop){
+    private static void envolvePopulation(CjtTours pop, boolean  Rouletewheel_TS, boolean Edge_crossover, boolean Mutate2){
         CjtTours newPopulation = new CjtTours(nTours);
         
         int elitismOffset = 0;
@@ -92,22 +85,23 @@ public class TspGA {
             Tour parent1 = new Tour();
             Tour parent2 = new Tour();
             if(Rouletewheel_TS){
-                parent1 = tournamentSelection_roulettewheel(pop);
-                parent2 = tournamentSelection_roulettewheel(pop);
+                parent1 = TournamentSelection.tournamentSelection_roulettewheel(pop);
+                parent2 = TournamentSelection.tournamentSelection_roulettewheel(pop);
             }
             else{
-                parent1 = tournamentSelection(pop, tournamentSize);
-                parent2 = tournamentSelection(pop, tournamentSize);
+                parent1 = TournamentSelection.tournamentSelection(pop, tournamentSize);
+                parent2 = TournamentSelection.tournamentSelection(pop, tournamentSize);
             }
          
-            newPopulation.addTour(i, Crossover.crossover_edgeRecombination(parent1,parent2));   
+            if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(parent1,parent2));
+            else newPopulation.addTour(i, Crossover.crossover(parent1,parent2));
         }
         
         for(int i = elitismOffset; i < nTours; ++i){
-            newPopulation.addNewTour(i, mutate.mutate2(newPopulation.getTour(i),mutationRate, mutationSwapProbability));
+            if(Mutate2) newPopulation.addTour(i, Mutate.mutate2(newPopulation.getTour(i),mutationRate, mutationSwapProbability));
+            else newPopulation.addTour(i, Mutate.mutate(newPopulation.getTour(i),mutationRate));
         }
         pop = newPopulation;
-        pop.ompla_pesosRutes();
     }
     
     
@@ -125,7 +119,7 @@ public class TspGA {
         }
         
         //es fa un suffle de la population inicial
-        for(int i = 0; i < nPunts/4; ++i){
+        for(int i = 0; i < 10; ++i){
             int pos1, pos2;
             pos1 = (int)Math.random() * nPunts;
             pos2 = (int)Math.random() * nPunts;
