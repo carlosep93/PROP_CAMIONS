@@ -129,7 +129,7 @@ public class Tour {
     //retorna el cost de la ruta
     public int getCost(){
         if(cost == -1){
-            Relations R = getRelations();
+            Relations R = CtrlDomini.getRelations();
             cost = 0;
             for(int i = 0; i < nElements-1; ++i){
                 cost += R.getCost(cjtElem.get(i), cjtElem.get(i+1));

@@ -40,8 +40,7 @@ public class TspGA {
         
         ompla_pop(pop);
         
-        Tour Fittest = new Tour();
-        Fittest = pop.getFittestTour();
+        Tour Fittest = pop.getFittestTour();
         int Fitness = pop.Fitness(); 
 
         int nCicles = 0;
