@@ -132,7 +132,7 @@ public class DriverClass_Mutate {
     else if (lectura == 6){
         System.out.println();
         Tour newtour = tour;
-        Mutate.mutate3(tour, rel);
+        Mutate.mutate3(tour);
         System.out.println("El tour origina és ");
         write_Tour(tour);
         System.out.println();
