@@ -11,12 +11,7 @@ package Stubs;
 public  class Element {
     int id;
     boolean enabled;
-<<<<<<< HEAD
-    
 
-=======
-   
->>>>>>> pol
     public Element() {
        id = 1;
        enabled=true;     

@@ -3,7 +3,7 @@ package Drivers_class;
 
 import projecte_prop.Tour;
 import projecte_prop.Element;
-import Stubs.Relations;
+import projecte_prop.Relations;
 import java.util.Scanner;
 
 /**

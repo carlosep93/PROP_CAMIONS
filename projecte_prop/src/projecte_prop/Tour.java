@@ -126,5 +126,8 @@ public class Tour {
         cost += R.getCost(cjtElem.get(0),cjtElem.get(nElements-1));
         return cost;
     }
+    public int getCostTour (){
+      return cost;  
+    }
     
 }

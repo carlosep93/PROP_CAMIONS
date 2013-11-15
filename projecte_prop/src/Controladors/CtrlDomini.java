@@ -23,9 +23,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
    "src\\Fitxers\\saved_elements.txt";
     
     static public int Id_global_element;
-    
-    
-    static public int Id_global_Solution;
+    static public int Id_global_solution;
     
     public void iniciarDomini(){
       Id_global_element = 0;
