@@ -22,9 +22,8 @@ public class CjtTours {
     
     //S'afegeix un tour al conjunt de tours
     public void addTour(int pos, Tour T) {
-        cjtTours[pos] = T;
         for (int i = 0; i < T.size();++i) {
-            cjtTours[pos].addElement(T.getElementpos(i),i);
+            cjtTours[pos].addElement(T.getElementPos(i),i);
         }
     }
     public int getFitness() {
