@@ -15,6 +15,11 @@ import projecte_prop.Element;
  */
 public class DriverClass_Solution {
     
+    
+     private static void write_Tour(Tour tour){
+     for(int i=0; i<tour.size(); ++i) System.out.print(" " + tour.getElementPos(i).getID());
+       }
+    
      public static void main(String[] args) {
           Scanner sc = new Scanner(System.in);
           boolean Sistema_definit = false;
@@ -57,7 +62,7 @@ public class DriverClass_Solution {
          System.out.println("Id: " + sol.getid());
          System.out.println("Nom : " + sol.getNom());
          System.out.print("Tour:");
-         for(int i=0; i<tour.size(); ++i) System.out.print(" " + tour.getElementPos(i).getID());
+         write_Tour(tour);
          System.out.println();
          System.out.println("El Tour té mida: " + tour.size());
          System.out.println("La solució es va crear el:  " + sol.getData());

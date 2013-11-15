@@ -16,16 +16,26 @@ public class Solution {
     int cost;
 
     public Solution (){
-    fecha = new Date ();
+        fecha = new Date ();
+        id = getID_sol();
+        nom = "Sense_Nom";
+        tour = new Tour();
+        cost = -1;
     }
-    
+    public Solution(String nom){
+        fecha = new Date ();
+        id = getID_sol();
+        this.nom = nom;
+        tour = new Tour();
+        cost = -1;
+    }
     public Solution(String nom,int cost){
         fecha = new Date ();
         id = getID_sol();
-
         this.nom = nom;
-        tour = new Tour();
         this.cost = cost;
+        tour = new Tour();
+        
     }
     
     public Tour getTour(){

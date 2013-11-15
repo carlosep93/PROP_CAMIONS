@@ -28,32 +28,31 @@ public class Ciutat {
         this.nom = nom;
         CjtPunts = new Tour();
         Rel = new Relations ();
-        sol = new Solution();
+        sol = new Solution(nom);
         
     }
+    
+     public String get_Nom(){
+        return nom;
+    }
+    public Relations get_Relations(){
+       return Rel;
+    }
+    
+     public Tour get_Tour(){
+        return CjtPunts;
+    }
+   
+     public Solution get_Solution(){
+    return sol;
+    }
+    
      
     public int num_Elements(){
         return CjtPunts.size();     
     }
     
-    public Relations get_Relations(){
-       return Rel;
-    }
-    
-    public Solution getSolution(){
-    return sol;
-    }
-    
-    public Tour get_Tour(){
-        return CjtPunts;
-    }
-   
-    public String get_Nom(){
-        return nom;
-    }
-    
 
-     
      public void add_Solution(Solution sol){
         this.sol = sol;
     }
