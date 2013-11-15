@@ -8,8 +8,8 @@ package projecte_prop;
 
 import java.util.List;
 import java.util.ArrayList;
-//import Stubs.CtrlDomini;            //import Controladors.CtrlDomini;
-//import Stubs.Relations;             //a l'execució del controladors
+import Controladors.CtrlDomini;         //import Stubs.CtrlDomini;
+//import Stubs.Relations;               //a l'execució del controladors
 
 public class Tour {
     private int nElements, cost;
