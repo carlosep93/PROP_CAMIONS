@@ -3,7 +3,7 @@ package projecte_prop;
 
 public class Mutate {
     
-    public Tour mutate(Tour tour, int mutationRate){
+    public static Tour mutate(Tour tour,double mutationRate){
         int mida = tour.size();
         for(int i = 0; i < mida; ++i){
             if(Math.random() <= mutationRate){
@@ -17,7 +17,7 @@ public class Mutate {
         return tour;
     }
     
-    public Tour mutate2(Tour tour, double mutationRate, double mutationSwapProbability) {
+    public static Tour mutate2(Tour tour, double mutationRate, double mutationSwapProbability) {
         Tour mutated=tour;
         double chance;
         int mida = tour.size();
