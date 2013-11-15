@@ -32,8 +32,8 @@ public class Mutate {
                 mutated.swap(punt, i);
             }
         }
-        int costTour = tour.getCostTour();     //sha de fer un objecte de tipus solutions
-        int costMutated = mutated.getCostTour();
+        int costTour = tour.getCost();     //sha de fer un objecte de tipus solutions
+        int costMutated = mutated.getCost();
         // determine whether to return the shorter or longer tour of the two
         if (Math.random() < mutationSwapProbability) {
             if (costMutated < costTour) {

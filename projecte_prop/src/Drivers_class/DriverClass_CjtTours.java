@@ -8,7 +8,7 @@ package Drivers_class;
  * @author joanbarrosogarrido
  */
 import projecte_prop.CjtTours;
-import Stubs.Tour;
+import projecte_prop.Tour;
 import java.util.Scanner;
 
 

@@ -118,7 +118,7 @@ public class Tour {
     
     //pre: nElements >= 2
     //retorna el cost de la ruta
-    public int getCost(Relations R){
+    public int getCost_withRelation(Relations R){
         cost = 0;
         for(int i = 0; i < nElements-1; ++i){
             cost += R.getCost(cjtElem.get(i), cjtElem.get(i+1));
@@ -126,7 +126,11 @@ public class Tour {
         cost += R.getCost(cjtElem.get(0),cjtElem.get(nElements-1));
         return cost;
     }
-    public int getCostTour (){
+    
+    
+    //JOSEEEEEEP AQUESTA CLASSE NO LI CAMBIS EL NOM NI LI AFAGEIXIS PARAMETRES D ENTRADA
+    //QUE LA FAN SERVIR MOLTES ALTRES CLASSES I STUBS
+    public int getCost(){
       return cost;  
     }
     
