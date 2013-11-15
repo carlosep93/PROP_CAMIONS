@@ -9,7 +9,7 @@ package projecte_prop;
 import java.util.List;
 import java.util.ArrayList;
 
-import Stubs.Relations;
+//import Stubs.Relations;
 
 public class Tour {
     private int nElements, cost;
