@@ -30,7 +30,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     static public int Id_global_element;
     static public int Id_global_solution;
     
-    static Ciutat ciutat;
+     private static Ciutat ciutat;
     
     public void iniciarDomini(Ciutat city){
       Id_global_element = 0;
@@ -59,7 +59,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     }
     
     public static Solution getSolution(){
-        return ciutat.getSolution();
+        return ciutat.get_Solution();
     }
     
     
