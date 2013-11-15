@@ -30,12 +30,12 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     static public int Id_global_element;
     static public int Id_global_solution;
     
-    Ciutat ciutat = new Ciutat();
+    static Ciutat ciutat;
     
     public void iniciarDomini(Ciutat city){
       Id_global_element = 0;
       Id_global_solution = 0;
-      ciutat = city;
+      ciutat = new Ciutat();
     }
     
     public static int getnewID(){ //asignar un nou id a Element
@@ -50,15 +50,15 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     return id;       
     }
     
-    public Ciutat getCity(){
+    public static Ciutat getCity(){
         return ciutat;
     }
     
-    public  Relations getRelations(){
+    public static  Relations getRelations(){
         return ciutat.get_Relations();
     }
     
-    public Solution getSolution(){
+    public static Solution getSolution(){
         return ciutat.getSolution();
     }
     
