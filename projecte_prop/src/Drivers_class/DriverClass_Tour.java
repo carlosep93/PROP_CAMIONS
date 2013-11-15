@@ -3,7 +3,7 @@ package Drivers_class;
 
 import projecte_prop.Tour;
 import projecte_prop.Element;
-import Stubs.Relations;
+import projecte_prop.Relations;
 import java.util.Scanner;
 
 /**
@@ -149,7 +149,7 @@ public class DriverClass_Tour {
                 System.out.println("Size: " + ruta.size());
             }
             else if(lectura == 14){
-                System.out.println("Cost: " + ruta.getCost(R));
+                System.out.println("Cost: " + ruta.getCost());
             }
             System.out.println();
         }
@@ -160,6 +160,6 @@ public class DriverClass_Tour {
             System.out.print(" " + T.getElementPos(i).getID());
         }
         System.out.println();
-        System.out.println(T.getCost(R));
+        System.out.println(T.getCost());
     }
 }

@@ -11,7 +11,7 @@ public class TspGA {
     //numero de punts
     private static int nPunts;
     
-    private static int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
+    public static int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
     private static boolean elitism = true;        //guarda el millor de cada generació a la posició de population
     private static int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
     private static double mutationRate = 0.015;    //rati deom mutació
@@ -35,13 +35,12 @@ public class TspGA {
 
         nPunts = C.num_Elements();                                         
 
-        Cjt_tours pop = new Cjt_tours(nTours);
+        CjtTours pop = new CjtTours(nTours);
 
         
         ompla_pop(pop);
         
-        Tour Fittest = new Tour();
-        Fittest = pop.getFittestTour();
+        Tour Fittest = pop.getFittestTour();
         int Fitness = pop.Fitness(); 
 
         int nCicles = 0;
@@ -79,37 +78,29 @@ public class TspGA {
     }
     
     
-    private static void envolvePopulation(Cjt_tours pop){
-        Cjt_tours newPopulation = new Cjt_tours(nCiutats, nTours);
+    private static void envolvePopulation(CjtTours pop){
+        CjtTours newPopulation = new CjtTours(nTours);
         
         int elitismOffset = 0;
         if(elitism){
-            newPopulation.addNewTour(0, pop.getTour(pop.getFittest()));
+            newPopulation.addTour(0, pop.getFittestTour());
             elitismOffset = 1;
         }
         
         //Crossover population
         for(int i = elitismOffset; i < nTours; ++i){
-            int parent1[], parent2[];
-            parent1 = TournamentSelection.tournamentSelection_roulettewheel(pop);
-            parent2 = TournamentSelection.tournamentSelection_roulettewheel(pop);
-            
-            
-            /*System.out.println("Pare 1: ");
-            for(int ii = 0; ii < npunts; ++ii){
-                System.out.print(" " + parent1[ii]);
+            Tour parent1 = new Tour();
+            Tour parent2 = new Tour();
+            if(Rouletewheel_TS){
+                parent1 = tournamentSelection_roulettewheel(pop);
+                parent2 = tournamentSelection_roulettewheel(pop);
             }
-            System.out.println("");
-            
-            
-            System.out.println("Pare 1: ");
-            for(int ii = 0; ii < npunts; ++ii){
-                System.out.print(" " + parent1[ii]);
+            else{
+                parent1 = tournamentSelection(pop, tournamentSize);
+                parent2 = tournamentSelection(pop, tournamentSize);
             }
-            System.out.println("");*/
-            
-            
-            newPopulation.addNewTour(i, Crossover.crossover_edgeRecombination(parent1,parent2));   
+         
+            newPopulation.addTour(i, Crossover.crossover_edgeRecombination(parent1,parent2));   
         }
         
         for(int i = elitismOffset; i < nTours; ++i){
@@ -120,7 +111,7 @@ public class TspGA {
     }
     
     
-    private static void ompla_pop(Cjt_tours pop){
+    private static void ompla_pop(CjtTours pop){
         
         //omplim la population
         Tour tour = new Tour();

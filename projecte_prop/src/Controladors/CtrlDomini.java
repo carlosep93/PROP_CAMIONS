@@ -8,6 +8,11 @@ package Controladors;
  *
  * @author pol
  */
+import projecte_prop.Ciutat;
+import projecte_prop.Relations;
+import projecte_prop.Solution;
+
+
 public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
    
     static String path_adjacencies_store =
@@ -23,16 +28,41 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
    "src\\Fitxers\\saved_elements.txt";
     
     static public int Id_global_element;
+    static public int Id_global_solution;
     
-    public void iniciarDomini(){
-        
+    static Ciutat ciutat;
+    
+    public void iniciarDomini(Ciutat city){
+      Id_global_element = 0;
+      Id_global_solution = 0;
+      ciutat = new Ciutat();
     }
     
-    public static int getnewID(){
+    public static int getnewID(){ //asignar un nou id a Element
     int id = Id_global_element;
     ++Id_global_element;
     return id;
     }
+      
+    public static int getID_sol(){ //assignar un nou id a Solution
+       int id = Id_global_solution;
+    ++Id_global_solution;
+    return id;       
+    }
+    
+    public static Ciutat getCity(){
+        return ciutat;
+    }
+    
+    public static  Relations getRelations(){
+        return ciutat.get_Relations();
+    }
+    
+    public static Solution getSolution(){
+        return ciutat.getSolution();
+    }
+    
+    
     
     public static String get_path_adjacencies_store(){
         return path_adjacencies_store;

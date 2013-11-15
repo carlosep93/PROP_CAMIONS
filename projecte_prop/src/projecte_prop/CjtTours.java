@@ -8,7 +8,6 @@ package projecte_prop;
  *
  * @author joanbarrosogarrido
  */
-import Stubs.Tour;
 public class CjtTours {
     private int nTours;
     private Tour[] cjtTours;
