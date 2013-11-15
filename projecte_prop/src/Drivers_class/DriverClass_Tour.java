@@ -3,7 +3,7 @@ package Drivers_class;
 
 import projecte_prop.Tour;
 import projecte_prop.Element;
-import projecte_prop.Relations;
+import Stubs.Relations;
 import java.util.Scanner;
 
 /**
@@ -49,7 +49,7 @@ public class DriverClass_Tour {
                 Element E = new Element(id);
 
                 ruta.addElement(E);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 3){
                 System.out.println("id Element:");
@@ -60,7 +60,7 @@ public class DriverClass_Tour {
                 Element E = new Element(id);
 
                 ruta.addElement(E, pos);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 4){
                 System.out.println("id Element:");
@@ -91,14 +91,14 @@ public class DriverClass_Tour {
                 Element E = new Element(id);
 
                 ruta.removeElement(E);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 8){
                 System.out.println("Pos:");
                 int pos = sc.nextInt();
 
                 ruta.removeElement(pos);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 9){
                 System.out.println("id Element1:");
@@ -110,7 +110,7 @@ public class DriverClass_Tour {
                 Element E2 = new Element(id);
 
                 ruta.replaceElement(E1, E2);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 10){
                 System.out.println("id Element1:");
@@ -121,7 +121,7 @@ public class DriverClass_Tour {
                 int pos = sc.nextInt();
 
                 ruta.replaceElement(E1, pos);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 11){
                 System.out.println("id Element1:");
@@ -133,7 +133,7 @@ public class DriverClass_Tour {
                 Element E2 = new Element(id);
 
                 ruta.swap(E1,E2);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 12){
                 System.out.println("pos1:");
@@ -143,7 +143,7 @@ public class DriverClass_Tour {
                 int pos2 = sc.nextInt();
 
                 ruta.swap(pos1, pos2);
-                escriureTour(ruta, R);
+                escriureTour(ruta);
             }
             else if(lectura == 13){
                 System.out.println("Size: " + ruta.size());
@@ -155,7 +155,7 @@ public class DriverClass_Tour {
         }
     }
     
-    private static void escriureTour(Tour T, Relations R){
+    private static void escriureTour(Tour T){
         for(int i = 0; i < T.size(); ++i){
             System.out.print(" " + T.getElementPos(i).getID());
         }
