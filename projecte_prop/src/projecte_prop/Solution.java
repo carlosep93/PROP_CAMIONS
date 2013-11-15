@@ -3,17 +3,39 @@ package projecte_prop;
 
 /**
  *
- * @author josep
+ * @author pol
  */
+import java.util.Date;
+import static Controladors.CtrlDomini.*;
+
 public class Solution {
-    private int id;
-    private String nom;
+    int id;
+    String nom;  //El nom de la solució serà el nom de la ciutat-sol_i
     Tour tour;
-    
-    public Solution(int id, String nom){
-        this.id = id;
+    Date fecha;
+    int cost;
+
+    public Solution (){
+        fecha = new Date ();
+        id = getID_sol();
+        nom = "Sense_Nom";
+        tour = new Tour();
+        cost = -1;
+    }
+    public Solution(String nom){
+        fecha = new Date ();
+        id = getID_sol();
         this.nom = nom;
         tour = new Tour();
+        cost = -1;
+    }
+    public Solution(String nom,int cost){
+        fecha = new Date ();
+        id = getID_sol();
+        this.nom = nom;
+        this.cost = cost;
+        tour = new Tour();
+        
     }
     
     public Tour getTour(){
@@ -31,4 +53,13 @@ public class Solution {
     public String getNom(){
         return nom;
     }
+    
+    public int getCostSolution(){
+       return cost;
+    }
+    
+    public String getData(){
+       return (fecha.toString());   
+    }
+    
 }

@@ -7,7 +7,7 @@ package Gestor_Domini;
 
 
 //import static Controladors.CtrlDomini.*;
-import static  Stubs.Stub_CtrlDomini.*;
+import static  Stubs.CtrlDomini.*;
 import java.io.FileNotFoundException;
 
 import java.util.Scanner;
