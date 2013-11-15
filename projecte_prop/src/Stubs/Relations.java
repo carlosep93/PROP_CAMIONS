@@ -21,7 +21,7 @@ public class Relations {
     }
     
     public int getCost(int id1, int id2) {
-        return 0;
+        return 1;
     }
     
     public int getCost(Element e1,Element e2) {

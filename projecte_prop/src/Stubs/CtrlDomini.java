@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 package Stubs;
-
 /**
  *
  * @author pol
  */
+
 public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
    
     static String path_adjacencies_store =
@@ -23,22 +23,33 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
    "src\\Fitxers\\saved_elements.txt";
     
     static public int Id_global_element;
+    static public int Id_global_solution;
     
-    static public int Id_global_Solution;
+     private static Ciutat ciutat;
     
-    public void iniciarDomini(){
-        
+    public void iniciarDomini(Ciutat city){
+      ciutat = new Ciutat();
     }
     
-    public static int getnewID(){
-    int id = Id_global_element;
-    ++Id_global_element;
-    return id;
+    public static int getnewID(){ //asignar un nou id a Element
+    return 0;
     }
-    public static int getnewID_solution(){
-    int id = Id_global_Solution;
-    ++Id_global_Solution;
-    return id;
+      
+    public static int getID_sol(){ //assignar un nou id a Solution
+    return 0;       
+    }
+    
+    public static Ciutat getCity(){
+        return ciutat;
+    }
+    
+    public static  Relations getRelations(){
+        Relations R = new Relations();
+        return R;
+    }
+    
+    public static Solution getSolution(){
+        return ciutat.get_Solution();
     }
     
     public static String get_path_adjacencies_store(){
