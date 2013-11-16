@@ -168,12 +168,8 @@ public class Gestor_Dades {
          while(sc.hasNext()){             //primer element és num d'elements
            int num = sc.nextInt();
            for(int i=0; i<num; ++i){
-               List<Integer> temp = new ArrayList<Integer>();
-               for(int j=0; j<i+1; ++j){
-                   int dist=sc.nextInt();
-                   temp.add(dist);
-               }
-               saved_elements.add(temp);
+              Element temp = new Element(sc.nextInt(),true);
+              saved_elements.add(temp);
            }
          }
         //tanquem en arxiu
