@@ -57,9 +57,9 @@ public class Ciutat {
         this.sol = sol;
     }
     
-    public void addElement(List<Integer> aux){ //et pasen el conjunt de relacions del element
+    public void addElement(Element E, List<Integer> aux){ //et pasen el conjunt de relacions del element
         Rel.addElement(aux);
-        CjtPunts.addElement(new Element());
+        CjtPunts.addElement(E);
     }
     
     public void removeElement(Element elem){

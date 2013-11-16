@@ -55,6 +55,10 @@ public class DriverClass_TspGA {
         Tour T;
         T = TspGA.TspGA(StopCondition, NGeneracions, NTours, Elitism, Rouletewheel_TS, TournamentSize, 
         Edge_crossover, Mutate2, MutationRate, MutationSwapProbability);
+        
+        for(int i = 0; i < T.size(); ++i){
+            T.getElementPos(i).getNom();
+        }
     }
 }
   

@@ -13,7 +13,7 @@ public class Crossover {
     public static Tour crossover(Tour parent1, Tour parent2){
         npunts = parent1.size();
         Tour child = new Tour();
-        Element E = new Element(-1, false);
+        Element E = new Element(-1);
         
         int startPos = (int)(Math.random() * npunts);
         int endPos = (int)(Math.random() * npunts);
