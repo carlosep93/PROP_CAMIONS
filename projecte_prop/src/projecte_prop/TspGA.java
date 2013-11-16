@@ -1,8 +1,12 @@
 
 package projecte_prop;
 
-import java.util.Scanner;
 import Controladors.CtrlDomini;
+
+//quan usem el driver de TspGA:
+    import Stubs.CjtTours;
+    import Stubs.Tour;
+//
 
 public class TspGA {
     //nombre de generacions sense variar per donar una solució per bona
@@ -22,7 +26,7 @@ public class TspGA {
     //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    public static Tour tspGA(int StopCondition, int NGeneracions, int NTours, 
+    public static Tour TspGA(int StopCondition, int NGeneracions, int NTours, 
             boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
             boolean Mutate2, int MutationRate, int MutationSwapProbability){
         
