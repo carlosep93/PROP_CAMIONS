@@ -18,20 +18,19 @@ public class TspSA {
         return Math.exp ((energy - newEnergy)/ temperature);
     }
 
-    public static Tour TspSA(double temp, double cool,Ciutat c) {
+    public static Tour TspSA(double temp, double cool,Tour t,int p) {
         //Temperatura inicial
         temperature = temp;
         //Factor por el que se enfria
         cooling = cool;
-        Tour t;
         CjtTours ct = new CjtTours(2); //0: best, 1: actual               
         for (int i=0;i<2;++i) {
-            ct.addTour(i, c.get_Tour());
+            ct.addTour(i, t);
         }
+        int n = 0;
         int best = ct.getTour(0).getCost();
-        System.out.println("Distancia inicial: "+ best);
         int tamany = ct.sizeCjtTours();
-        while (temperature > 1) {
+        while (temperature > 1 && n < p) {
             //int p1=(int)(Math.random()*tamany);
             //int p2=(int)(Math.random()*tamany);
             t = ct.getTour(1);
@@ -46,9 +45,10 @@ public class TspSA {
             //actualitza si cal la nova solució
             if (best >  t.getCost()) {
                 best = t.getCost();
-                System.out.println("best > t "+best);
                 ct.addTour(0,t);
-            }    
+                n = 0;
+            }
+            else ++n;
             //Enfriamiento
             temperature *= 1-cooling;
         }
