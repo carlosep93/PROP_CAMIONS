@@ -62,6 +62,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         return ciutat.get_Solution();
     }
     
+    public static void add Element
     
     
     public static String get_path_adjacencies_store(){

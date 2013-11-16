@@ -8,6 +8,8 @@ package Stubs;
  *
  * @author joan
  */
+
+
 public class Tour {
     private int cost;
     int size;
@@ -15,7 +17,7 @@ public class Tour {
     
     
     public Tour(){
-        size = 0;
+        size = 10;
         cjtElem = new int [10];
         cost = (int)(Math.random() *100);
         for (int i = 0; i < 10; ++i) {
@@ -25,9 +27,23 @@ public class Tour {
     public int getCost() {
         return cost;
     }
+    
+    public int getCost_withRelation (Relations R) {
+        return cost;
+    }
+    
     public int size() {
         return size;
     }
+    
+    public Element getElementPos(int pos) {
+        return new Element();
+    }
+    
+    public int getPosElement(Element E) {
+        return 0;
+    }
+    
     
     
 }

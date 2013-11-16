@@ -9,9 +9,9 @@ package Drivers_class;
  * @author Carlos2
  */
 import projecte_prop.TspSA;
-import projecte_prop.Ciutat;
-import projecte_prop.Tour;
-import projecte_prop.Relations;
+import Stubs.Ciutat;
+import Stubs.Tour;
+import Stubs.Relations;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,7 +28,6 @@ public class DriverClass_TspSA {
         int n = 0;
         Scanner sc = new Scanner(System.in);
         int lectura = 0;
-        Ciutat c = new Ciutat("Barcelona");
         while (lectura != 3) {
             System.out.println("------Informació------");
             System.out.println("1-Afegir element a la ciutat");
