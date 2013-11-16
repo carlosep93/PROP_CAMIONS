@@ -56,6 +56,17 @@ public class Tour {
         cost = -1;
     }
     
+    public void removeElement(String nom){
+        for(int i = 0; i < nElements; ++i){
+            if(cjtElem.get(i).getNom() == nom){
+                cjtElem.remove(i);
+                break;
+            }
+        }
+        --nElements;
+        cost = -1;
+    }
+    
     //reemplaça l'element E per l'element E2 retorna si l'operació s'ha fet correctament
     public void replaceElement(Element E, Element E2){
         int pos = getPosElement(E);
@@ -68,6 +79,17 @@ public class Tour {
     public void replaceElement(Element E, int pos){
         removeElement(pos);
         addElement(E, pos);
+        cost = -1;
+    }
+    
+    public void replaceElement(Element E, String nom){
+        for(int i = 0; i < nElements; ++i){
+            if(cjtElem.get(i).getNom() == nom){
+                cjtElem.remove(i);
+                cjtElem.add(i, E);
+                break;
+            }
+        }
         cost = -1;
     }
     
@@ -88,7 +110,7 @@ public class Tour {
         return cjtElem.get(pos);
     }
     
-    //retuorna la posició de l'element E al Tour si retorna -1 hi ha hagut error
+    //retorna la posició de l'element E al Tour si retorna -1 hi ha hagut error
     public int getPosElement(Element E){
         int pos = -1;
         for(int i = 0; i < nElements; ++i){
@@ -98,6 +120,18 @@ public class Tour {
             }
         }
         return pos;
+    }
+    
+    //retorna l'element amb el nom 
+    public Element getElementNom(String nom){
+        Element E = cjtElem.get(0);
+        for(int i = 0; i < nElements; ++i){
+            if(cjtElem.get(i).getNom() == nom){
+                E = cjtElem.get(i);
+                break;
+            }
+        }
+        return E;
     }
     
     //fa swap de dos elements, retorna si s'ha fet correctament

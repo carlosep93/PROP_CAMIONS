@@ -1,13 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controladors;
 
+package Controladors;
 /**
  *
  * @author pol
  */
+
+import projecte_prop.Solution;
+
 public class Ctrl_Algorithm {
-    
+    public static Solution inicialitzaAlgorithm(){
+        Solution S = ...;
+        
+        return S;
+    }
 }

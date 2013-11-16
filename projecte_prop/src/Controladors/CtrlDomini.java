@@ -33,9 +33,9 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     static public int Id_global_element;
     static public int Id_global_solution;
     
-     private static Ciutat ciutat;
+    private static Ciutat ciutat;
     
-    public void iniciarDomini(Ciutat city){
+    public static void iniciarDomini(){
       Id_global_element = 0;
       Id_global_solution = 0;
       ciutat = new Ciutat();
@@ -69,24 +69,24 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         return ciutat.get_Solution();
     }
     
-    public static void addElement(List<Integer> pesos_resta){
-        ciutat.addElement(pesos_resta);
+    public static void addElement(Element E, List<Integer> pesos_resta){
+        ciutat.addElement(E, pesos_resta);
     }
     
-    public static Element consultaElement(){
-       
+    public static Element consultaElement(String nom){
+        return ciutat.get_Tour().getElementNom(nom);
     }
     
-    public static void modificaElement(){
-        
+    public static void modificaElement(Element E, String nom){
+        ciutat.get_Tour().replaceElement(E, nom);
     }
     
-    public static void eliminaElement(){
-        
+    public static void eliminaElement(String nom){
+        ciutat.get_Tour().removeElement(nom);
     }
     
-    public static Tour generaCami(){
-        
+    public static Solution generaCami(){
+        return Ctrl_Algorithm.inicialitzaAlgorithm();
     }
     
     
@@ -119,7 +119,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     }
     public static void edit_path_elements_load(String st){
         path_elements_load = st;
-}
+    }   
 }
     
     
