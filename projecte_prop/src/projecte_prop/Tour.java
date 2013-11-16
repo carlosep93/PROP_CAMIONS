@@ -142,4 +142,19 @@ public class Tour {
         }
         return cost;
     }
+      public int getCost_withRelation(Relations R){
+        if(cost == -1){
+            if (nElements == 0) return 0;
+            else{
+                cost = 0;
+                for(int i = 0; i < nElements-1; ++i){
+                    cost += R.getCost(cjtElem.get(i), cjtElem.get(i+1));
+                }
+                cost += R.getCost(cjtElem.get(0),cjtElem.get(nElements-1));
+            }
+
+        }
+        return cost;
+    }
+    
 }

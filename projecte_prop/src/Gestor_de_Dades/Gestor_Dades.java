@@ -2,14 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gestor_Domini;
+package Gestor_de_Dades;
 
 
 
 //import static Controladors.CtrlDomini.*;
-import static  Stubs.CtrlDomini.*;
-import java.io.FileNotFoundException;
+import static  Controladors.CtrlDomini.*;
+import  projecte_prop.Element;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -150,90 +151,81 @@ public class Gestor_Dades {
  
  
   //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
-    /*
+   
     public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
         List<Element> saved_elements = new ArrayList<Element>() ; 
      
         try{
-        //obrir arxiu
-        FileInputStream llegir = new FileInputStream("Ficheros/saved_elements.txt");
-        //creem objecte entrada
-        DataInputStream entrada = new DataInputStream(llegir);
-        //creem buffer de lectura
-        BufferedReader buffer = new BufferedReader (new InputStreamReader(entrada));
+         String path = get_path_elements_load();
+           
+           File file = new File(path);
+           Scanner sc = new Scanner(file);
         
         String strLinea;
         int id_elem;
         boolean active;
         
-        while ((strLinea = buffer.readLine()) != null){
-           
-             id_elem = Integer.parseInt(strLinea); // si es un int
-            saved_elements.add(new Element(id_elem));
-        }
+         while(sc.hasNext()){             //primer element és num d'elements
+           int num = sc.nextInt();
+           for(int i=0; i<num; ++i){
+               List<Integer> temp = new ArrayList<Integer>();
+               for(int j=0; j<i+1; ++j){
+                   int dist=sc.nextInt();
+                   temp.add(dist);
+               }
+               saved_elements.add(temp);
+           }
+         }
         //tanquem en arxiu
-        entrada.close();
+     sc.close();
     }catch (Exception e){
         System.err.println("Error desconegut " + e.getMessage());
     }
-
-    return saved_elements;
-    }
+    
+        return saved_elements;   
+    
+}
 
     
     public void save_Element(Element elem){   //guardem un element al conjunt d'elements
+        PrintWriter salida = null;
+        try{
+        String path = get_path_adjacencies_store();
+        salida = new PrintWriter(path);
+        salida.println(elem.getID());
         
-        FileWriter fichero = null;
-        PrintWriter pw;
-        try
-        {
-            fichero = new FileWriter("Ficheros/saved_elements.txt");
-            pw = new PrintWriter(fichero);
-            int id_elem = elem.getID();
-            String valid = "false";
-            if (elem.isEnabled()) valid="true";
-            pw.println(id_elem);
-            pw.println(valid);
- 
-        } catch (Exception e) {
-        } finally {
-           try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-           }
+         salida.flush();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {         
+            salida.close();
         }
+       
     }
     
     public void discatalogue_Element(Element elem){  //invalida un element
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter("Ficheros/saved_elements.txt");
-            pw = new PrintWriter(fichero);
-           
-            int id_elem = elem.getID();
-            int id_llegit;
- 
-        } catch (Exception e) {
-        } finally {
-           try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-           }
+       PrintWriter salida = null;
+        try{
+        String path = get_path_adjacencies_store();
+        salida = new PrintWriter(path);
+        while(/*No trobem element ID*/ true){
+       
+       //mirem elements
+        
+            
+        }
+        //borrem element
+        
+        
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {         
+            salida.close();
         }
     
     }
   
 
- 
-*/
     
     
 }

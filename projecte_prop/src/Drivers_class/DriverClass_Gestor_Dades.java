@@ -4,7 +4,7 @@
  */
 package Drivers_class;
 
-import static Gestor_Domini.Gestor_Dades.*;
+import static Gestor_de_Dades.Gestor_Dades.*;
 import java.util.List;
 import java.util.Scanner;
 /**

@@ -11,6 +11,7 @@ package Drivers_class;
 import projecte_prop.TspSA;
 import projecte_prop.Ciutat;
 import projecte_prop.Tour;
+import projecte_prop.Relations;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -48,7 +49,7 @@ public class DriverClass_TspSA {
                 
             }
             else if (lectura == 2) {
-                System.out.println("Distancia inicial: "+c.get_Tour().getCost());
+                System.out.println("Distancia inicial: "+ c.get_Tour().getCost());
                 Tour t = TspSA.TspSA(1000,0.03,c);
                 System.out.println("Distancia final: "+t.getCost());
                  write(t);

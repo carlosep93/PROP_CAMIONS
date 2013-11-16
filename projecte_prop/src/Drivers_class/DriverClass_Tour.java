@@ -18,7 +18,7 @@ public class DriverClass_Tour {
         Relations R = new Relations();
         Tour ruta = new Tour();
         int lectura = 0;
-        while(lectura != 16){   
+        while(lectura != 15){   
             System.out.println();
             System.out.println("Tria una opció:");
             System.out.println("1 - Crear un Tour");

@@ -18,6 +18,7 @@ public class DriverClass_CjtTours {
             Scanner sc = new Scanner(System.in);
             int opt = 0;
             boolean opt1fet = false;
+            System.out.println("Tria una mida del Cjt de Tours:");
             int size = sc.nextInt();
             CjtTours ct =  new CjtTours(size);
             while (opt != 10) {

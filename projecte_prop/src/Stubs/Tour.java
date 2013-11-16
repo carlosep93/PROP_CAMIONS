@@ -15,11 +15,11 @@ public class Tour {
     
     
     public Tour(){
-        int size;
+        size = 0;
         cjtElem = new int [10];
         cost = (int)(Math.random() *100);
         for (int i = 0; i < 10; ++i) {
-            cjtElem[i] = id = i; 
+            cjtElem[i] = i; 
         }
     }
     public int getCost() {
