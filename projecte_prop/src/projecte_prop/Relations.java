@@ -26,7 +26,8 @@ public class Relations {
     
     public int getCost(int id1, int id2) {
         int cost = -1;
-        if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
+        if (a.isEmpty());
+        else if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
                 a.get(id1).get(a.get(id1).size()-1) == 0) {
              if (a.get(id1).size() > id2)
                  cost = a.get(id1).get(id2);
