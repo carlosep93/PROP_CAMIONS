@@ -42,6 +42,8 @@ public class DriverClass_Mutate {
         }
         return r;
     }
+     
+    
     
  public static void main(String[] args) {
         
@@ -102,46 +104,31 @@ public class DriverClass_Mutate {
      }
      else if(lectura == 4){  
         System.out.println();
-        Tour newtour = Mutate.mutate(tour, mutationRate);
         System.out.println("El tour origina és ");
         write_Tour(tour);
         System.out.println();
+        Tour newtour;
+        newtour = Mutate.mutate(tour, mutationRate);
+       
         System.out.println("El tour NOU és ");
         write_Tour(newtour);
-        System.out.println();
-        System.out.println("Vols reemplaçar el Tour original per el NOU?");
-        String opc = sc.next();
-        if("si".equals(opc)) tour = newtour;
         System.out.println();
         
      }
      else if (lectura == 5){
         System.out.println();
-        Tour newtour = Mutate.mutate2(tour, mutationRate,mutationSwapProbability);
+        tour = Mutate.mutate2(tour, mutationRate,mutationSwapProbability);
         System.out.println("El tour origina és ");
         write_Tour(tour);
         System.out.println();
-        System.out.println("El tour NOU és ");
-        write_Tour(newtour);
-        System.out.println();
-        System.out.println("Vols reemplaçar el Tour original per el NOU?");
-        String opc = sc.next();
-        if("si".equals(opc)) tour = newtour;
-        System.out.println();
+       
      }
     else if (lectura == 6){
         System.out.println();
-        Tour newtour = tour;
         Mutate.mutate3(tour, rel);
         System.out.println("El tour origina és ");
         write_Tour(tour);
-        System.out.println();
-        System.out.println("El tour NOU és ");
-        write_Tour(newtour);
-        System.out.println("Vols reemplaçar el Tour original per el NOU?");
-        String opc = sc.next();
-        if("no".equals(opc)) tour = newtour;
-        System.out.println();
+      
      }
      
      System.out.println();

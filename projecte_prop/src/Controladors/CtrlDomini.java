@@ -59,7 +59,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     }
     
     public static Solution getSolution(){
-        return ciutat.getSolution();
+        return ciutat.get_Solution();
     }
     
     
