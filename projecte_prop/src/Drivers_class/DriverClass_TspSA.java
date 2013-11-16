@@ -49,8 +49,14 @@ public class DriverClass_TspSA {
                 
             }
             else if (lectura == 2) {
+                System.out.println("Introdueix la temperatura del sistema: ");
+                double temp = sc.nextDouble();
+                System.out.println("Introdueix el factor de refredament: ");
+                double cool = sc.nextDouble();
+                System.out.println("Introdueix les iteracions sense millorar fins la parada: ");
+                int p = sc.nextInt();
                 System.out.println("Distancia inicial: "+ c.get_Tour().getCost());
-                Tour t = TspSA.TspSA(1000,0.03,c);
+                Tour t = TspSA.TspSA(temp,cool,c.get_Tour(),p);
                 System.out.println("Distancia final: "+t.getCost());
                  write(t);
             }
