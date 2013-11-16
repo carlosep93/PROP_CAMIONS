@@ -8,9 +8,12 @@ package Controladors;
  *
  * @author pol
  */
+import java.util.List;
 import projecte_prop.Ciutat;
 import projecte_prop.Relations;
 import projecte_prop.Solution;
+import projecte_prop.Tour;
+import projecte_prop.Element;
 
 
 public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
@@ -58,11 +61,36 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         return ciutat.get_Relations();
     }
     
+    public static Tour getCjtElement(){
+        return ciutat.get_Tour();
+    }
+    
     public static Solution getSolution(){
         return ciutat.get_Solution();
     }
     
-    public static void add Element
+    public static void addElement(List<Integer> pesos_resta){
+        ciutat.addElement(pesos_resta);
+    }
+    
+    public static Element consultaElement(){
+       
+    }
+    
+    public static void modificaElement(){
+        
+    }
+    
+    public static void eliminaElement(){
+        
+    }
+    
+    public static Tour generaCami(){
+        
+    }
+    
+    
+    
     
     
     public static String get_path_adjacencies_store(){

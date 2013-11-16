@@ -4,8 +4,8 @@ package projecte_prop;
 import Controladors.CtrlDomini;
 
 //quan usem el driver de TspGA:
-    import Stubs.CjtTours;
-    import Stubs.Tour;
+//    import Stubs.CjtTours;
+//    import Stubs.Tour;
 //
 
 public class TspGA {
