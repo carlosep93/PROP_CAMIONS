@@ -13,17 +13,57 @@ import java.util.ArrayList;
 public class TwoApp {
     
     
-        public static int[] Twoapp(int[][] M) {
-        int [][] mst = new int[M.length][M.length];
-        mst = Mst.prim(M);
+    public static int[] Twoapp(int[][] M) {
+        int [][] mst = Mst.prim(M);
         List<Integer> l = new ArrayList<Integer>();
-        int[] etour = getEtour(mst,l);
-        Stack s = new Stack();
-        int [] etour = new int[mst.length];
-        return etour;
+        getEpath(mst,l,0);
+        getEtour(mst.length,l);
     }
         
-        private int[] getEtour (int[][] mst,List<Integer> L) {
-            
+    private static void getEpath(int[][] mst,List<Integer> l, int pos) {
+        if (mst[pos][pos] != -1) {
+            l.add(pos);
+            if(child(mst[pos])) {
+                for(int i = 0; i < mst.length ; ++i) {
+                    if(mst[pos][i] > 0) {
+                        mst[pos][i] = 0;
+                        getEtour(mst,l,i);
+                    }
+                }
+            }
         }
+    }
+    private static boolean child(int[] mst) {
+        for(int i = 0; i < mst.length ;++i) {
+            if (mst[i] > 0) return true;
+        }
+        return false;
+    }
+    
+         private static List<Integer> getFinalTour(int size,List<Integer> l) {
+        System.out.println("el camino final de 2 app es:");
+        Tour t = new Tour();
+        Element E = new Element();
+        boolean[] visited = new boolean[size];
+        List<Integer> f = new ArrayList<Integer>();
+        if (visited[0] == false) System.out.println("me inicializo en falso!");
+        while (!l.isEmpty()) {
+            if (!visited[l.get(0)]) {
+                //int z = l.get(0);
+                f.add(l.get(0));
+                //E = Element(l.get(0));
+                //t.addElement(E);
+                visited[l.get(0)] = true;
+                l.remove(0);
+            }
+            else {
+                l.remove(0);
+            }
+        }
+        for (int i = 0; i < size; ++i) {
+            System.out.print(" " + f.get(i));
+        }
+        System.out.println();
+        return f;
+    }
 }
