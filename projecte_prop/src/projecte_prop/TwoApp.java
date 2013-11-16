@@ -40,11 +40,9 @@ public class TwoApp {
     }
     
         private static Tour getEtour(int size,List<Integer> l) {
-        System.out.println("el camino final de 2 app es:");
         Tour t = new Tour();
         Element E;
         boolean[] visited = new boolean[size];
-        if (visited[0] == false) System.out.println("me inicializo en falso!");
         while (!l.isEmpty()) {
             if (!visited[l.get(0)]) {
                 E = new Element(l.get(0));
