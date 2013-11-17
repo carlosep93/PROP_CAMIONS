@@ -39,7 +39,7 @@ public  class Element {
      this.id = id;   
     }
     
-    public int assign_id(){
+    public static int assign_id(){
         return getnewID();
     }
 

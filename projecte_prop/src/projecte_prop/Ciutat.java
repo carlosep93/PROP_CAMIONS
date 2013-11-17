@@ -9,13 +9,19 @@ import java.util.List;
  * @author pol
  */
 
+
+
 public class Ciutat {
- 
     private String nom;
     private Relations Rel;
     private Tour CjtPunts;
     private Solution sol;
     
+    
+    /** @brief Creadora de Ciutat 
+     \pre NULL
+     \post  
+  **/
     public Ciutat(){
      nom = "SenseNom";
      CjtPunts = new Tour();
@@ -23,7 +29,10 @@ public class Ciutat {
      sol = new Solution();   
         
     }
-    
+    /** @brief descripció curta 
+     \pre
+     \post 
+  **/
     public Ciutat(String nom){
         this.nom = nom;
         CjtPunts = new Tour();

@@ -145,7 +145,8 @@ public class DriverClass_Ciutat {
       System.out.println("Quina posicó x,y tindrà ?" );
       int x = sc.nextInt();
       int y = sc.nextInt();
-      Element elem = new Element(assign_id(),nom,x,y,true );
+      int id = Element.assign_id();
+      Element elem = new Element(id,nom,x,y,true );
       city.addElement(elem,elems);  
       
      }

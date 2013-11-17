@@ -1,0 +1,55 @@
+Clases:
+
+Joan:
+    Class:
+        CjtTours
+        Mst
+        twoApp
+  
+Pol:       
+    Class:
+        Mutate
+        Ciutat
+        Solution
+        Element
+        Gestor_Dades
+        CtrlDomini
+    
+Carlos:
+    Class:
+        TspSA
+        Relations
+
+
+Josep:
+    Class:
+        TspGA
+        Crossover
+        Tour
+        TournamentSelection
+
+
+Drivers:
+
+Joan:
+  Drivers:
+        DriverClass_CjtTours
+        DriverClass_TwoApp
+         DriverClass_Mst
+Pol:
+    Drivers:
+        DriverClass_Ciutat
+        DriverClass_Element
+        DriverClass_Gestor_Dades
+        DriverClass_Mutate
+        DriverClass_Solutions
+
+Carlos:
+    Drivers:
+         DriverClass_Relations
+         DriverClass_TspSA
+
+Josep:
+    Drivers:
+         DriverClass_Tour
+          DriverClass_GA
