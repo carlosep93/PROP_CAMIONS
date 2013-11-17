@@ -11,8 +11,8 @@ public class Crossover {
     static private int npunts;
     
     public static Tour crossover(Tour parent1, Tour parent2){
-        npunts = parent1.size();
         Tour child = new Tour();
+        npunts = parent1.size();
         Element E = new Element(-1);
         
         int startPos = (int)(Math.random() * npunts);

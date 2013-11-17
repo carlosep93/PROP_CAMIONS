@@ -30,8 +30,15 @@ public class CjtTours {
         \post   
     */
     public void addTour(int pos, Tour T) {
-        for (int i = 0; i < T.size();++i) {
-            cjtTours[pos].addElement(T.getElementPos(i));
+        if(cjtTours[pos].size() == T.size()){
+            for (int i = 0; i < T.size();++i) {
+                cjtTours[pos].replaceElementPos(T.getElementPos(i), i);
+            }
+        }
+        else{
+            for(int i = 0; i < T.size(); ++i){
+                cjtTours[pos].addElement(T.getElementPos(i));
+            }
         }
     }
     

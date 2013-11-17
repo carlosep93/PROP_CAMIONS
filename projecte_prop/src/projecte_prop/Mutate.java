@@ -6,7 +6,7 @@ import Controladors.CtrlDomini;
 
 public class Mutate {
     
-    public static Tour mutate(Tour tour,double mutationRate){
+    public static Tour mutate(Tour tour, double mutationRate){
         int mida = tour.size();
         for(int i = 0; i < mida; ++i){
             if(Math.random() <= mutationRate){
