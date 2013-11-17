@@ -102,7 +102,7 @@ public class DriverClass_CtrlDomini {
                 escriureRelations(CtrlDomini.getRelations());
             }
             else if(lectura == 6){
-                System.out.println("1, SA// 2, GA:");
+                System.out.println("1, SistemAnnealing// 2, GeneticAlgorithm:");
                 int alg = sc.nextInt();
                 if(alg == 1){
                     System.out.println("Nom de la solucio:");
@@ -140,7 +140,7 @@ public class DriverClass_CtrlDomini {
                     boolean Elitism = true;// sc.nextBoolean();
                     
                     //System.out.println("RouletteWheel_TS:");
-                    boolean RouletteWheel_TS = false;//= sc.nextBoolean();
+                    boolean RouletteWheel_TS = true;//= sc.nextBoolean();
                     
                     int TournamentSize = 0;
                     if(!RouletteWheel_TS){

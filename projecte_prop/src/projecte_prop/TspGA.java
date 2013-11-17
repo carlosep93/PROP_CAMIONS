@@ -116,7 +116,10 @@ public class TspGA {
        return newPopulation;
     }
     
-    
+    /** @brief  Procès que ompla el CjtTours
+        \pre    El CjtTours és buit i la ciutat del CtrlDomini contè algún Element
+        \post   S'ha omplert el CjtTours pop amb els Elements de la Ciutat del CtrlDomini, i després s'han desordenat de manera aleatòria
+    */
     private static void ompla_pop(CjtTours pop){
         //omplim la population
         Tour t = CtrlDomini.getCjtElement();
@@ -132,13 +135,5 @@ public class TspGA {
                 pop.getTour(ii).swap(pos1, pos2);
             }
         }
-    }
-    
-    private static void escriureCjtElem(Tour t){
-        for(int i = 0; i < t.size(); ++i){
-            System.out.print(" " + t.getElementPos(i).getID());
-        }
-        System.out.print("          cost: " + t.getCost());
-        System.out.println();
     }
 }
