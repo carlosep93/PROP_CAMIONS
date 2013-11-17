@@ -41,17 +41,16 @@ public class DriverClass_Relations {
         Scanner sc = new Scanner(System.in);
         int lectura = 0;
         Relations r = new Relations();
-        while(lectura != 7) {
+        while(lectura != 6) {
             System.out.println();
             System.out.println("------Informació--------");
             System.out.println("Tria una opció:");
-            System.out.println("1- Llegir un nou Relations de teclat");
-            System.out.println("2- Llegir un nou Relaions de fitxer");
-            System.out.println("3- Esborrar un Punt");
-            System.out.println("4- Consultar una relació");
-            System.out.println("5- Afegir un nou element");
-            System.out.println("6- Tranformar Relation a matriu");
-            System.out.println("7- Sortir");
+            System.out.println("1- Llegir un nou Relations");
+            System.out.println("2- Esborrar un Punt");
+            System.out.println("3- Consultar una relació");
+            System.out.println("4- Afegir un nou element");
+            System.out.println("5- Tranformar Relation a matriu");
+            System.out.println("6- Sortir");
             
             lectura = sc.nextInt();
             if (lectura == 1) {
@@ -59,22 +58,27 @@ public class DriverClass_Relations {
                 r.readRelations(n);
                 write(r);
             }
-            else if (lectura == 2) {}
-            else if (lectura == 3) {
+            else if (lectura == 2) {
                 int aux = sc.nextInt();
                 r.erase(aux);
                 write(r);
-            }
-            else if (lectura == 4) {
+                 int [][] res = r.toMatrix();
+                for (int i=0;i<res.length;++i) {
+                    for (int j=0;j<res.length;++j) {
+                        System.out.print(" "+res[i][j]);
+                    }
+                }
+            }    
+            else if (lectura == 3) {
                 int id1 = sc.nextInt();
                 int id2 = sc.nextInt();
                 System.out.println("Cost: "+r.getCost(id1, id2));
             }        
-            else if (lectura == 5) {
+            else if (lectura == 4) {
                 r.addElement(r.size());
                 write(r);
             }
-            else if (lectura == 6) {
+            else if (lectura == 5) {
                 int [][] res = r.toMatrix();
                 for (int i=0;i<res.length;++i) {
                     for (int j=0;j<res.length;++j) {
