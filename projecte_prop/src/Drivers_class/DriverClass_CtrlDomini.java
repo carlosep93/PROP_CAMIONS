@@ -123,52 +123,53 @@ public class DriverClass_CtrlDomini {
                     CtrlDomini.tspSA(nom, tmp, fact, par);                    
                 }
                 else{
-                    System.out.println("Nom de la solucio:");
-                    sc.nextLine();
-                    String nom = sc.nextLine();
+                    //System.out.println("Nom de la solucio:");
+                    //sc.nextLine();
+                    String nom = "hola"; //sc.nextLine();
                     
-                    System.out.println("StopCondition:");
+                    //System.out.println("StopCondition:");
                     int StopCondition = 20; //sc.nextInt();
                     
-                    System.out.println("NGeneracions:");
+                    //System.out.println("NGeneracions:");
                     int Ngeneracions = 1000; //sc.nextInt();
                     
-                    System.out.println("NTours:");
+                    //System.out.println("NTours:");
                     int NTours = 50;//sc.nextInt();
                     
-                    System.out.println("Elitism:");
+                    //System.out.println("Elitism:");
                     boolean Elitism = true;// sc.nextBoolean();
                     
-                    System.out.println("RouletteWheel_TS:");
+                    //System.out.println("RouletteWheel_TS:");
                     boolean RouletteWheel_TS = false;//= sc.nextBoolean();
                     
                     int TournamentSize = 0;
                     if(!RouletteWheel_TS){
-                        System.out.println("TournamentSize:");
-                        TournamentSize = 1;//sc.nextInt();
+                      //  System.out.println("TournamentSize:");
+                        TournamentSize = 2;//sc.nextInt();
                     }
                     
-                    System.out.println("Edge_crossover:");
+                   // System.out.println("Edge_crossover:");
                     boolean Edge_crossover = false;//sc.nextBoolean();
                     
-                    System.out.println("Mutate2:");
-                    boolean Mutate2 = false;//sc.nextBoolean();
+                   // System.out.println("Mutate2:");
+                    boolean Mutate2 = true;//sc.nextBoolean();
                     
-                    System.out.println("MutationRate:");
+                    //System.out.println("MutationRate:");
                     double MutationRate = 0.015;//sc.nextDouble();
                     
                     double MutationSwapProbability = 0;
                     if(Mutate2){
-                        System.out.println("MutationSwapProbability:");
-                        MutationSwapProbability = sc.nextDouble();
+                       // System.out.println("MutationSwapProbability:");
+                        MutationSwapProbability = 0.9; //sc.nextDouble();
                     }
                     
-                    TspGA.TspGA(StopCondition, Ngeneracions, NTours, Elitism, 
-                            RouletteWheel_TS, TournamentSize, Edge_crossover, 
-                            Mutate2, MutationRate, MutationSwapProbability);
+                    CtrlDomini.tspGA(nom, StopCondition, Ngeneracions, 
+                            NTours, Elitism, RouletteWheel_TS, TournamentSize, 
+                            Edge_crossover, Mutate2, MutationRate, 
+                            MutationSwapProbability);
                     
                 }
-                escriureSolucio(CtrlDomini.getSolution());
+                escriureSolucio();
             }
             
             
@@ -176,15 +177,15 @@ public class DriverClass_CtrlDomini {
         }
     }
     
-    private static void escriureCjtElem(Tour cjtElem){
+    public static void escriureCjtElem(Tour cjtElem){
         Tour t = CtrlDomini.getCity().get_Tour();
         for(int i = 0; i < t.size(); ++i){
-            System.out.print(" " + t.getElementPos(i).getNom());
+            System.out.print(" " + t.getElementPos(i).getID());
         }
         System.out.println();
     }
     
-    private static void escriureRelations(Relations R){
+    public static void escriureRelations(Relations R){
         Relations r = CtrlDomini.getCity().get_Relations();
         for(int i = 0; i < r.size(); ++i){
             System.out.println(r.toString(i));
@@ -192,11 +193,11 @@ public class DriverClass_CtrlDomini {
         System.out.println();
     }
     
-    private static void escriureSolucio(Solution S){
+    public static void escriureSolucio(){
         Solution sol = CtrlDomini.getSolution();
         System.out.println("Nom solució: " + sol.getNom());
         for(int i = 0; i < sol.getTour().size(); ++i){
-            System.out.print(" " + sol.getTour().getElementPos(i).getNom());
+            System.out.print(" " + sol.getTour().getElementPos(i).getID());
         }
         System.out.println();
     }
