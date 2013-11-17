@@ -100,9 +100,11 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         
         
             Solution S = new Solution(nomSolution);
+            
             S.addTour(TspGA.TspGA(StopCondition, NGeneracions, NTours, Elitism,
                     Rouletewheel_TS, TournamentSize, Edge_crossover, Mutate2,
                     MutationRate, MutationSwapProbability));
+            
             S.addCost(S.getTour().getCost());
             ciutat.add_Solution(S);
             return S;
