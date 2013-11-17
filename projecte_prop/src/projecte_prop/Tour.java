@@ -7,9 +7,9 @@ package projecte_prop;
 
 import java.util.List;
 import java.util.ArrayList;
-import Controladors.CtrlDomini;         //import Stubs.CtrlDomini;
-//import Stubs.Relations;
-//a l'execució del controladors
+//import Controladors.CtrlDomini;         //import Stubs.CtrlDomini;
+import Stubs.Relations;
+import Stubs.CtrlDomini;
 
 public class Tour {
     private int nElements, cost;
@@ -46,13 +46,13 @@ public class Tour {
         cost = -1;
     }
     
-    /** @brief  Elimina l'element E del Tour
-        \pre    L'element E està dins del Tour
-        \post   Busca al Tour l'Element que tingui el mateix id que E i l'elimina
+    /** @brief  Elimina l'Element amb identificador igual a id del Tour
+        \pre    L'Element amb identificador id està dins del Tour
+        \post   Busca al Tour l'Element que tingui el mateix identificador que id i l'elimina
     */
-    public void removeElement(Element E){
+    public void removeElement(int id){
         for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getID() == E.getID()){
+            if(cjtElem.get(i).getID() == id){
                 cjtElem.remove(i);
                 break;
             }
@@ -65,7 +65,7 @@ public class Tour {
         \pre    El Tour te la posició pos
         \post   S'ha esborrat l'Element E de la posició pos
     */
-    public void removeElement(int pos){
+    public void removeElementPos(int pos){
         cjtElem.remove(pos);
         --nElements;
         cost = -1;
@@ -100,8 +100,8 @@ public class Tour {
     */
     public void replaceElementId(Element E, int id){
         int pos = getPosElement(id);
-        removeElement(pos);
-        addElement(E, pos);
+        cjtElem.remove(pos);
+        cjtElem.add(pos, E);
         cost = -1;
     }
     
@@ -110,8 +110,8 @@ public class Tour {
         \post   S'ha esborrat l'Element de la posició pos i s'ha afegit al seu lloc l'Element E
     */
     public void replaceElementPos(Element E, int pos){
-        removeElement(pos);
-        addElement(E, pos);
+        cjtElem.remove(pos);
+        cjtElem.add(pos, E);
         cost = -1;
     }
     
@@ -152,7 +152,7 @@ public class Tour {
     public boolean containsElement(String nom){
         boolean trobat = false;
         for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getNom() == nom){
+            if(cjtElem.get(i).getNom().equals(nom)){
                 trobat = true;
                 break;
             }
