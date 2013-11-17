@@ -11,6 +11,8 @@ package Drivers_class;
 import projecte_prop.TwoApp;
 import projecte_prop.Tour;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 public class DriverClass_TwoApp {
     
         public static void main(String[] args) {
@@ -22,6 +24,7 @@ public class DriverClass_TwoApp {
                 System.out.println("Tamany de les files i les columnes: ");
                 int size = sc.nextInt();
                 int[][] M = new int[size][size];
+                List<Integer> id = new ArrayList<Integer>();
                 System.out.println("¿vols que el contingut de la matriu sigui aleatori? 1 --> si, 0 --> no");
                 int r = sc.nextInt();
                 if (r == 1) {
@@ -32,6 +35,9 @@ public class DriverClass_TwoApp {
                             }
                         }
                     }
+                    for(int i = 0; i < M.length;++i) {
+                        id.add(i);
+                    }
                 }
                 else  {
                     System.out.println("entra les dades de la matriu:");
@@ -40,9 +46,17 @@ public class DriverClass_TwoApp {
                             M[i][ii] = M[ii][i] = sc.nextInt();
                         }
                     }
+                    System.out.println("la matriu que estas entrant, ha tingut elements eliminats? 1 --> si, 2 --> no");
+                    int d = sc.nextInt();
+                    if (d == 1) {
+                        System.out.println("Entra els id reals de cada posició de la matriu (el primer nombre que entris serà el id real de la posició 0, el següent el de la 1, etc...");
+                        for(int i = 0; i < M.length; ++i) {
+                            id.add(sc.nextInt());
+                        }
+                    }
                 }
                 System.out.println("Amb aquestes dades, cridem a la funcio twoapp:");
-                Tour t = TwoApp.Twoapp(M);
+                Tour t = TwoApp.Twoapp(M,id);
                 for (int i = 0; i < M.length; ++i) {
                     System.out.print(t.getElementPos(i).getID() +" ");
                 }

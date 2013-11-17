@@ -16,7 +16,7 @@ public class TwoApp {
         int [][] mst = Mst.prim(M);
         List<Integer> l = new ArrayList<Integer>();
         getEpath(mst,l,0);
-        return getEtour(mst.length,l);
+        return getEtour(mst.length,l,id);
     }
         
     private static void getEpath(int[][] mst,List<Integer> l, int pos) {
@@ -39,13 +39,13 @@ public class TwoApp {
         return false;
     }
     
-        private static Tour getEtour(int size,List<Integer> l) {
+        private static Tour getEtour(int size,List<Integer> l,List<Integer> id) {
         Tour t = new Tour();
         Element E;
         boolean[] visited = new boolean[size];
         while (!l.isEmpty()) {
             if (!visited[l.get(0)]) {
-                E = new Element(l.get(0));
+                E = new Element(id.get(l.get(0)));
                 t.addElement(E);
                 visited[l.get(0)] = true;
                 l.remove(0);
