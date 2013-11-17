@@ -1,12 +1,16 @@
 
 package projecte_prop;
+/**
+ *
+ * @author josep
+ */
 
 import Controladors.CtrlDomini;
 
-//quan usem el driver de TspGA:
-//    import Stubs.CjtTours;
-//    import Stubs.Tour;
-//
+/*quan usem el driver de TspGA:
+    import Stubs.CjtTours;
+    import Stubs.Tour;
+*/
 
 public class TspGA {
     //nombre de generacions sense variar per donar una solució per bona
@@ -42,8 +46,9 @@ public class TspGA {
 
         CjtTours pop = new CjtTours(nTours);
 
-        
+        System.out.println("Omplo la population:");
         ompla_pop(pop);
+        System.out.println("Acabo d'omplir Population:");
         
         Tour Fittest = pop.getFittestTour();
         int Fitness = pop.getFitness(); 
@@ -110,25 +115,21 @@ public class TspGA {
     
     
     private static void ompla_pop(CjtTours pop){
-        
         //omplim la population
-        Tour tour = new Tour();
-        Element E;
+        Element E = new Element();
         for(int i = 0; i < nTours; ++i){
             for(int ii = 0; ii < nPunts; ++ii){
-                E = new Element(ii);
-                tour.addElement(E, ii);
+                E.modifyid(ii);
+                pop.addElementTour(i, ii, E);
             }
-            pop.addTour(i, tour);
         }
-        
         //es fa un suffle de la population inicial
         for(int i = 0; i < 10; ++i){
             int pos1, pos2;
             pos1 = (int)Math.random() * nPunts;
             pos2 = (int)Math.random() * nPunts;
-            for(int ii = 0; ii < nTours; ++i){
-                pop.swapTours(pos1, pos2);
+            for(int ii = 0; ii < nTours; ++ii){
+                pop.getTour(ii).swap(pos1, pos2);
             }
         }
     }
