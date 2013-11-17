@@ -88,7 +88,7 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     
     public static Solution tspSA(String nomSolution, double tmp, double fact, int parada){
         Solution S = new Solution(nomSolution);
-        S.addTour(TspSA.TspSA(tmp, fact, ciutat.get_Tour(), parada));
+        S.addTour(TspSA.TspSA(tmp, fact, parada));
         S.addCost(S.getTour().getCost());
         ciutat.add_Solution(S);
         return S;
