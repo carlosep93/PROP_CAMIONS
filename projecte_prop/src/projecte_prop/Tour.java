@@ -58,13 +58,17 @@ public class Tour {
     
     public void removeElement(String nom){
         for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getNom() == nom){
+            if(cjtElem.get(i).getNom().equals(nom)){
                 cjtElem.remove(i);
                 break;
             }
         }
         --nElements;
         cost = -1;
+    }
+    
+    public void inhabilitaElement(int pos){
+        cjtElem.get(pos).modifyEnabled(false);
     }
     
     //reemplaça l'element E per l'element E2 retorna si l'operació s'ha fet correctament
@@ -84,7 +88,7 @@ public class Tour {
     
     public void replaceElement(Element E, String nom){
         for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getNom() == nom){
+            if(cjtElem.get(i).getNom().equals(nom)){
                 cjtElem.remove(i);
                 cjtElem.add(i, E);
                 break;
@@ -126,8 +130,9 @@ public class Tour {
     public Element getElementNom(String nom){
         Element E = cjtElem.get(0);
         for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getNom() == nom){
+            if(cjtElem.get(i).getNom().equals(nom)){
                 E = cjtElem.get(i);
+                System.out.println(E.getNom());
                 break;
             }
         }

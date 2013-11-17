@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author josep
+ * @author pol
  */
 
 public class Ciutat {
@@ -62,9 +62,18 @@ public class Ciutat {
         CjtPunts.addElement(E);
     }
     
-    public void removeElement(Element elem){
-        CjtPunts.removeElement(elem);
-        Rel.erase(elem.getID());
+    public void removeElement(String nom){
+        int id = CjtPunts.getElementNom(nom).getID();
+        CjtPunts.inhabilitaElement(id);
+        Rel.erase(id);
+    }
+    
+    public boolean[] getActius(){
+        boolean b[] = new boolean[CjtPunts.size()];
+        for(int i = 0; i < CjtPunts.size(); ++i){
+            b[i] = CjtPunts.getElementPos(i).isEnabled();
+        }
+        return b;
     }
 
 }

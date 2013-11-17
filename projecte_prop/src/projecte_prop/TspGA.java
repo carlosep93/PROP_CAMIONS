@@ -28,7 +28,7 @@ public class TspGA {
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
     public static Tour TspGA(int StopCondition, int NGeneracions, int NTours, 
             boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
-            boolean Mutate2, int MutationRate, int MutationSwapProbability){
+            boolean Mutate2, double MutationRate, double MutationSwapProbability){
         
         stopCondition = StopCondition;
         nGeneracions = NGeneracions;

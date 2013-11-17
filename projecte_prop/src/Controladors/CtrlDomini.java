@@ -9,11 +9,8 @@ package Controladors;
  * @author pol
  */
 import java.util.List;
-import projecte_prop.Ciutat;
-import projecte_prop.Relations;
-import projecte_prop.Solution;
-import projecte_prop.Tour;
-import projecte_prop.Element;
+import projecte_prop.*;
+import java.util.Date;
 
 
 public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
@@ -69,6 +66,10 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         return ciutat.get_Solution();
     }
     
+    public static boolean[] getActius(){
+        return ciutat.getActius();
+    }
+    
     public static void addElement(Element E, List<Integer> pesos_resta){
         ciutat.addElement(E, pesos_resta);
     }
@@ -82,11 +83,29 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     }
     
     public static void eliminaElement(String nom){
-        ciutat.get_Tour().removeElement(nom);
+        ciutat.removeElement(nom);
     }
     
-    public static Solution generaCami(){
-        return Ctrl_Algorithm.inicialitzaAlgorithm();
+    public static Solution tspSA(String nomSolution, double tmp, double fact, int parada){
+        Solution S = new Solution(nomSolution);
+        S.addTour(TspSA.TspSA(tmp, fact, ciutat.get_Tour(), parada));
+        S.addCost(S.getTour().getCost());
+        ciutat.add_Solution(S);
+        return S;
+    }
+    
+    public static Solution tspGA(String nomSolution, int StopCondition, int NGeneracions, int NTours, 
+            boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
+            boolean Mutate2, double MutationRate, double MutationSwapProbability){
+        
+        
+            Solution S = new Solution(nomSolution);
+            S.addTour(TspGA.TspGA(StopCondition, NGeneracions, NTours, Elitism,
+                    Rouletewheel_TS, TournamentSize, Edge_crossover, Mutate2,
+                    MutationRate, MutationSwapProbability));
+            S.addCost(S.getTour().getCost());
+            ciutat.add_Solution(S);
+            return S;
     }
     
     
