@@ -1,6 +1,5 @@
 
 package projecte_prop;
-
 /**
  *
  * @author josep
@@ -16,28 +15,41 @@ public class Tour {
     private int nElements, cost;
     List<Element> cjtElem;
     
-    //constructora del conjunt d'element parcial
+    
+    /** @brief  Constructora de la classe Tour
+        \pre
+        \post   S'inicialitza el conjunt d'elements  
+    */
     public Tour(){
         cjtElem = new ArrayList<Element>();
         nElements = 0;
         cost = -1;
     }
     
-    //inserta l'element E al final de la llista cjtElem retorna si s'ha inserit be
+    /** @brief  Afegeix un objecte Element al l'objecte Tour
+        \pre    L'element no sigui buit i l'element E no està al Tour
+        \post   S'ha afegit l'Element E a la última posició del Tour
+    */
     public void addElement(Element E){
         cjtElem.add(E);
         ++nElements;
         cost = -1;
     }
     
-    //inserta l'element E a la posició pos de la llista Ruta
+    /** @brief  Afegeix l'element E a la pos p
+        \pre    L'element E està dins del Tour, i la posició pos és una posició vàlida(0 a nElements)
+        \post   S'ha afegit l'element E a la posició pos del Tour, si hi havia un element a la posició pos s'afegeix davant d'aquest
+    */
     public void addElement(Element E, int pos){
         cjtElem.add(pos, E);
         ++nElements;
         cost = -1;
     }
     
-    //elimina la ocurrencia d'E al cjtElem retorna si s'ha esborrat correctamen
+    /** @brief  Elimina l'element E del Tour
+        \pre    L'element E està dins del Tour
+        \post   Busca al Tour l'Element que tingui el mateix id que E i l'elimina
+    */
     public void removeElement(Element E){
         for(int i = 0; i < nElements; ++i){
             if(cjtElem.get(i).getID() == E.getID()){
@@ -49,13 +61,20 @@ public class Tour {
         cost = -1;
     }
     
-    //elimina de la Ruta l'element de la posició pos returna si s'ha borrat correctament
+    /** @brief  Elimina l'element en la posició
+        \pre    El Tour te la posició pos
+        \post   S'ha esborrat l'Element E de la posició pos
+    */
     public void removeElement(int pos){
         cjtElem.remove(pos);
         --nElements;
         cost = -1;
     }
     
+    /** @brief  Esborra l'Element del Tour que el seu nom sigui igual al paràmetre nom
+        \pre    El Tour contè un Element el qual el seu nom és igual a nom
+        \post   S'ha esborrat l'Element el qual el seu nom és igual a nom
+    */
     public void removeElement(String nom){
         for(int i = 0; i < nElements; ++i){
             if(cjtElem.get(i).getNom().equals(nom)){
@@ -67,25 +86,39 @@ public class Tour {
         cost = -1;
     }
     
+    /** @brief  Inhabilita l'Element de la posició pos
+        \pre    Existeix un Element a la posició pos
+        \post   L'Element de la posició pos ha estat inhabilitat(s'ha posat el paràmetre Enabled de l'element a false)
+    */
     public void inhabilitaElement(int pos){
         cjtElem.get(pos).modifyEnabled(false);
     }
     
-    //reemplaça l'element E per l'element E2 retorna si l'operació s'ha fet correctament
-    public void replaceElement(Element E, Element E2){
-        int pos = getPosElement(E);
-        removeElement(E);
-        addElement(E2, pos);
-        cost = -1;
-    }
-    
-    //reemplaça l'element de la posició pos per l'element E retorna si l'operació s'ha fet correctament
-    public void replaceElement(Element E, int pos){
+    /** @brief  Substitueix l'Element de Tour amb identificador igual a id per l'Element E1
+        \pre    El Tour no contè l'Element E i no contè un Element amb identificador igual a id
+        \post   L'Element del Tour amb identificador id ha estat substituït per l'element E
+    */
+    public void replaceElementId(Element E, int id){
+        int pos = getPosElement(id);
         removeElement(pos);
         addElement(E, pos);
         cost = -1;
     }
     
+    /** @brief  Substitueix l'Element de la posició pos per l'Element E
+        \pre    El Tour contè l'Element de la posició pos
+        \post   S'ha esborrat l'Element de la posició pos i s'ha afegit al seu lloc l'Element E
+    */
+    public void replaceElementPos(Element E, int pos){
+        removeElement(pos);
+        addElement(E, pos);
+        cost = -1;
+    }
+    
+    /** @brief  Substitueix l'Element amb el nom i és substitueix per E
+        \pre    El Tour contè un Element amb nom igual a nom
+        \post   S'ha esborrat l'Element amb nom igual a nom i s'ha afegit a la seva posició l'Element E
+    */
     public void replaceElement(Element E, String nom){
         for(int i = 0; i < nElements; ++i){
             if(cjtElem.get(i).getNom().equals(nom)){
@@ -97,11 +130,14 @@ public class Tour {
         cost = -1;
     }
     
-    //retorna si l'element "e" està contingut dins el Tour
-    public boolean containsElement(Element E){
+    /** @brief  Comprova si hi ha un element al Tour amb identificador id
+        \pre    
+        \post   Retorna true si Tour contè un element amb identificador id altrament false
+    */
+    public boolean containsElement(int id){
         boolean trobat = false;
         for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getID() == E.getID()){
+            if(cjtElem.get(i).getID() == id){
                 trobat = true;
                 break;
             }
@@ -109,24 +145,33 @@ public class Tour {
         return trobat;
     }
     
-    //obtè l'element cjtElem[pos]
+    /** @brief  Comprova si hi ha un element al Tour amb nom
+        \pre    
+        \post   Retorna true si Tour contè un element amb nom igual a nom altrament false
+    */
+    public boolean containsElement(String nom){
+        boolean trobat = false;
+        for(int i = 0; i < nElements; ++i){
+            if(cjtElem.get(i).getNom() == nom){
+                trobat = true;
+                break;
+            }
+        }
+        return trobat;
+    }
+    
+    /** @brief  Obtè un Element a partir de la posició
+        \pre    Tour contè la posició pos
+        \post   Retorna l'Element de la posició pos dins del Tour
+    */
     public Element getElementPos(int pos){
         return cjtElem.get(pos);
     }
     
-    //retorna la posició de l'element E al Tour si retorna -1 hi ha hagut error
-    public int getPosElement(Element E){
-        int pos = -1;
-        for(int i = 0; i < nElements; ++i){
-            if(cjtElem.get(i).getID() == E.getID()){
-                pos = i;
-                break;
-            }
-        }
-        return pos;
-    }
-    
-    //retorna l'element amb el nom 
+    /** @brief  Obtè l'Element amb nom igual a nom
+        \pre    Tour contè un Element amb nom igual a nom
+        \post   Retorna la posició de l'Element amb nom igual a nom
+    */
     public Element getElementNom(String nom){
         Element E = cjtElem.get(0);
         for(int i = 0; i < nElements; ++i){
@@ -139,37 +184,65 @@ public class Tour {
         return E;
     }
     
-    //fa swap de dos elements, retorna si s'ha fet correctament
-    public void swap(Element E1, Element E2){
+    /** @brief  Obté l'Element a partir de l'id d'una altre Element
+        \pre    
+        \post   Si existeix un Element amb l'identificador id retorna la seva posició altrament retorna -1
+    */
+    public int getPosElement(int id){
+        int pos = -1;
+        for(int i = 0; i < nElements; ++i){
+            if(cjtElem.get(i).getID() == id){
+                pos = i;
+                break;
+            }
+        }
+        return pos;
+    }
+    
+    /** @brief  Fa swap de dos Elements del Tour
+        \pre    Existeixen dos Elements els quals els seus identificadors són id1 i id2, i aquests són diferents
+        \post   S'han intercanviat les posicions entre els Elements del Tour que els seus identificadors són id
+    */
+    public void swapId(int id1, int id2){
         int pos1, pos2;
-        pos1 = getPosElement(E1);
-        pos2 = getPosElement(E2);
-        replaceElement(E1,pos2);
-        replaceElement(E2,pos1);
+        pos1 = getPosElement(id1);
+        pos2 = getPosElement(id2);
+        Element E1, E2;
+        E1 = getElementPos(pos1);
+        E2 = getElementPos(pos2);
+        replaceElementPos(E1,pos2);
+        replaceElementPos(E2,pos1);
         cost = -1;
     }
     
-    //fa un swap de pos1 i pos2, retorna si s'ha fet correctament
+    /** @brief  Fa swap de dos Elemets del Tour
+        \pre    Les posicions pos1 i pos2 són vàlides dins del Tour
+        \post   S'ham intercanviat les posicions entre els Elements del Tour que les seves posicions fòssin pos1 i pos2
+    */
     public void swap(int pos1, int pos2){
         Element E1, E2;
         E1 = getElementPos(pos1);
         E2 = getElementPos(pos2);
-        replaceElement(E1, pos2);
-        replaceElement(E2, pos1);
+        replaceElementPos(E1, pos2);
+        replaceElementPos(E2, pos1);
         cost = -1;
     }
     
-    //retorna el tamany del tour
+    /** @brief  Funció per sonultar el nombre d'Elements del Tour
+        \pre    
+        \post   Retorna el nombre d'elements continguts al Tour
+    */
     public int size(){
         return nElements;
     }
     
-    //pre: nElements >= 2
-    //retorna el cost de la ruta
-
+    /** @brief  Retorna el cost de recòrrer el Tour
+        \pre    
+        \post   Retorna el cost de recòrrer tots els Elements del Tour en l'ordre
+    */
     public int getCost(){
         if(cost == -1){
-            if (nElements == 0) return 0;
+            if (nElements == 0 || nElements == 1) return 0;
             else{
                 Relations R = CtrlDomini.getRelations();
                 cost = 0;

@@ -21,19 +21,19 @@ public class Crossover {
         for(int i = 0; i < npunts; ++i){
             child.addElement(E);
             if(startPos < endPos && i > startPos && i < endPos){
-                child.replaceElement(parent1.getElementPos(i), i);
+                child.replaceElementPos(parent1.getElementPos(i), i);
             }
             else if(startPos > endPos){
                 if(!(i < startPos && i > endPos)){
-                    child.replaceElement(parent1.getElementPos(i), i);
+                    child.replaceElementPos(parent1.getElementPos(i), i);
                 }
             }
         }
         for(int i = 0; i < npunts; ++i){
-            if(!child.containsElement(parent2.getElementPos(i))){
+            if(!child.containsElement(parent2.getElementPos(i).getID())){
                 for(int ii = 0; ii < npunts; ++ii){
                     if(child.getElementPos(ii).getID() == -1){
-                        child.replaceElement(parent2.getElementPos(i), ii);
+                        child.replaceElementPos(parent2.getElementPos(i), ii);
                         break;
                     }
                 }
