@@ -196,7 +196,7 @@ public class DriverClass_CtrlDomini {
         Solution sol = CtrlDomini.getSolution();
         System.out.println("Nom solució: " + sol.getNom());
         for(int i = 0; i < sol.getTour().size(); ++i){
-            System.out.print(" " + sol.getTour().getElementPos(i).getNom());
+            System.out.print(" " + sol.getTour().getElementPos(i).getID());
         }
         System.out.println();
     }
