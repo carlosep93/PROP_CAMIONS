@@ -7,9 +7,10 @@ package projecte_prop;
 
 import java.util.List;
 import java.util.ArrayList;
-//import Controladors.CtrlDomini;         //import Stubs.CtrlDomini;
-import Stubs.Relations;
-import Stubs.CtrlDomini;
+import Controladors.CtrlDomini;
+
+/*import Stubs.Relations;
+import Stubs.CtrlDomini;*/
 
 public class Tour {
     private int nElements, cost;
