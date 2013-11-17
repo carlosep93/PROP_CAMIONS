@@ -12,24 +12,10 @@ import java.util.ArrayList;
 public class TwoApp {
     
     
-    public static Tour Twoapp(int[][] M) {
-        for (int i = 0; i < M.length; ++i) {
-            for (int j = 0; j < M.length; ++j) {
-                System.out.print(" " + M[i][j]);
-            }
-            System.out.println();
-        }
+    public static Tour Twoapp(int[][] M, List<Integer> id) {
         int [][] mst = Mst.prim(M);
-        System.out.println("La matriu mst es:");
         List<Integer> l = new ArrayList<Integer>();
-        for (int i = 0; i < M.length; ++i) {
-            for (int j = 0; j < M.length; ++j) {
-                System.out.print(" " + mst[i][j]);
-            }
-            System.out.println();
-        }
         getEpath(mst,l,0);
-        
         return getEtour(mst.length,l);
     }
         
