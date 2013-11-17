@@ -23,8 +23,8 @@ public class TspSA {
         temperature = temp;
         //Factor por el que se enfria
         cooling = cool;
-        CjtTours ct = new CjtTours(2); //0: best, 1: actual               
-        for (int i=0;i<2;++i) {
+        CjtTours ct = new CjtTours(3); //0: best, 1: actual               
+        for (int i=0;i<3;++i) {
             ct.addTour(i, t);
         }
         int n = 0;
@@ -33,19 +33,20 @@ public class TspSA {
         while (temperature > 1 && n < p) {
             //int p1=(int)(Math.random()*tamany);
             //int p2=(int)(Math.random()*tamany);
-            t = ct.getTour(1);
-            Mutate.mutate3(t);
-            
+            System.out.println("Abans " + ct.getTour(1).getCost());
+            Mutate.mutate3(ct.getTour(2));
+            System.out.println("Despres " + ct.getTour(1).getCost());
             //calcula si s'accepta la nova solució
             int ener = ct.getTour(1).getCost();
-            int newener = t.getCost();
+            int newener = ct.getTour(2).getCost();
             if (Acceptar(ener,newener)> Math.random()){
-                ct.addTour(1, t);
+                ct.copyTour(2,1);
             }
             //actualitza si cal la nova solució
-            if (best >  t.getCost()) {
-                best = t.getCost();
-                ct.addTour(0,t);
+            if (best >  ct.getTour(1).getCost()) {
+                System.out.println("Ha millorat");
+                best = ct.getTour(1).getCost();
+                ct.copyTour(1,0);
                 n = 0;
             }
             else ++n;
