@@ -140,15 +140,20 @@ public class DriverClass_Ciutat {
      }
      else if(lectura == 4){   //afegim un element
       List elems = Read_NewElement(city.num_Elements());
-      city.addElement(elems);  
+      System.out.println("Quin nom vols per l'element? " );
+      String nom = sc.next();
+      System.out.println("Quina posicó x,y tindrà ?" );
+      int x = sc.nextInt();
+      int y = sc.nextInt();
+      Element elem = new Element(assign_id(),nom,x,y,true );
+      city.addElement(elem,elems);  
       
      }
      else if (lectura == 5){
-     System.out.println("Quin element vols eliminar? (escriu id) " );
-     lectura = sc.nextInt();
-     Element elem = new Element(lectura);
+     System.out.println("Quin element vols eliminar? (escriu nom) " );
+     String elem = sc.next();
      city.removeElement(elem);
-     System.out.println("Element amb ID " + lectura + " s'ha eliminat" );
+     System.out.println("Element amb nom " + elem + " s'ha eliminat" );
      
      }
      

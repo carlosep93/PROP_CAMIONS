@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author josep
+ * @author pol
  */
 
 public class Ciutat {

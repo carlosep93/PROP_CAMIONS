@@ -34,10 +34,14 @@ public  class Element {
     }
 
     
+    
     public Element(int id){
      this.id = id;   
     }
     
+    public int assign_id(){
+        return getnewID();
+    }
 
     public int getID(){
         return id;       
