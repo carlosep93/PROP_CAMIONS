@@ -46,6 +46,10 @@ public class Solution {
         this.tour = tour;
     }
     
+    public void addCost(int cost){
+        this.cost = cost;
+    }
+    
     public int getid(){
         return id;
     }

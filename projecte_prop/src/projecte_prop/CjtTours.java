@@ -17,12 +17,13 @@ public class CjtTours {
     public CjtTours(int nTours) {
         this.nTours = nTours;
         cjtTours = new Tour[nTours];
+        for(int i = 0; i < nTours; ++i) cjtTours[i] = new Tour();
     }
     
     //S'afegeix un tour al conjunt de tours
     public void addTour(int pos, Tour T) {
         for (int i = 0; i < T.size();++i) {
-            cjtTours[pos].addElement(T.getElementPos(i),i);
+            cjtTours[pos].addElement(T.getElementPos(i));
         }
     }
     public int getFitness() {
