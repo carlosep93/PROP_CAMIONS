@@ -65,7 +65,7 @@ public class Relations {
    
     /** @brief  Agefeix un element a la Relation
         \pre    La Relation ha de estar inicialitzada    
-        \post   La Relation conté les rela
+        \post   La Relation conté les relacions anteriors més la nova
     */    
     public void addElement(int id) {
         Scanner in = new Scanner(System.in);
@@ -83,6 +83,10 @@ public class Relations {
         a.add(aux);
     }
     
+     /** @brief  Afegeix un element de la Relations
+        \pre    La Relation ha de contenir elements    
+        \post   L'element indicat per el parametre id es marca com esborrat
+    */
     public void addElement(List<Integer> l) {
         l.add(0);
         a.add(l);
@@ -91,33 +95,35 @@ public class Relations {
     public int [][] toMatrix() {
         int n = 0;
         boolean [] b = new boolean [a.size()];
-        for (int j=0;j < a.size(); ++j) {
+        for (int j=0;j < a.size(); ++j) {   //calcula vector de bools
             if (a.get(j).get(a.get(j).size()-1) == -1) {
-                System.out.println(j);
                 b[j] = true;
                 ++n;
             }
-        }
+        }    
         int [][] aux = new int [a.size()][a.size()];
-        for (int i=0;i<a.size()-n;++i){
+       
+        for (int i=0;i<a.size();++i){    //matriu gran
             for (int j=0;j <= i;++j) {
                 aux[i][j] = aux[j][i] = a.get(i).get(j);
             }
         }
         int [][] res = new int [a.size()-n][a.size()-n];
         int a1 = 0;
-        int a2;
-        for (int i=0;i<a.size();++i){
-            a2 = 0;
-            for (int j=0;j<=i;++j) {
-                if (!b[i] && !b[j]) {
-                    //System.out.println("i: "+i+"j: "+j );
-                    res [a1][a2] = res[a2][a1]= aux[i][j];
-                    ++a2;
-                }
+        int a2 = 0; 
+        for(int i=0; i<aux.length ; ++i){
+            if(!b[i]){
+                
+            for(int j=0; j<aux.length; ++j){
+              if(!b[j]){
+                res[a1][a2] = aux[i][j];
+                ++a2;
+              }
             }
-            if(!b[i]) ++a1;
-        }
+            ++a1;
+            a2=0;
+         }
+      }    
         return res;
     }
     
