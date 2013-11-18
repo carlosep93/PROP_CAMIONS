@@ -17,8 +17,8 @@ public class DriverClass_TwoApp {
     
         public static void main(String[] args) {
             Scanner sc = new Scanner (System.in);
+            System.out.println("1 - Per fer una crida a Twoapp envia un 1, per sortir entra qualsevol altre numero.");
             int opt = sc.nextInt();
-            System.out.println("1 - Per fer una crida a Twoapp envia un 1");
             while (opt == 1) {
                 System.out.println("entra una matriu, indica el tamany (es cuadrada)");
                 System.out.println("Tamany de les files i les columnes: ");
@@ -46,13 +46,18 @@ public class DriverClass_TwoApp {
                             M[i][ii] = M[ii][i] = sc.nextInt();
                         }
                     }
-                    System.out.println("la matriu que estas entrant, ha tingut elements eliminats? 1 --> si, 2 --> no");
+                    System.out.println("la matriu que estas entrant, ha tingut elements eliminats? 1 --> si, 0 --> no");
                     int d = sc.nextInt();
                     if (d == 1) {
                         System.out.println("Entra els id reals de cada posició de la matriu (el primer nombre que entris serà el id real de la posició 0, el següent el de la 1, etc...");
                         for(int i = 0; i < M.length; ++i) {
                             id.add(sc.nextInt());
                         }
+                    }
+                    else {
+                       for(int i = 0; i < M.length; ++i) {
+                            id.add(i);
+                        } 
                     }
                 }
                 System.out.println("Amb aquestes dades, cridem a la funcio twoapp:");
