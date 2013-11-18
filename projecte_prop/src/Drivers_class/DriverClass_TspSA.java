@@ -9,9 +9,7 @@ package Drivers_class;
  * @author Carlos2
  */
 import projecte_prop.TspSA;
-import Stubs.Ciutat;
 import Stubs.Tour;
-import Stubs.Relations;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -27,38 +25,24 @@ public class DriverClass_TspSA {
     public static void main(String[] args) {
         int n = 0;
         Scanner sc = new Scanner(System.in);
-        int lectura = 0;
-        while (lectura != 3) {
-            System.out.println("------Informació------");
-            System.out.println("1-Afegir element a la ciutat");
-            System.out.println("2-Calcular un camí");
-            System.out.println("3-Sortir");
+        double temp;
+        double cool;
+        int p;
             
-            lectura = sc.nextInt();
-            if (lectura == 1) {
-                int x;
-                List<Integer> aux = new ArrayList<Integer>();
-                for (int i=0;i<n;++i) {
-                    x = sc.nextInt();
-                    aux.add(x);
-                }
-                ++n;
-                c.addElement(aux);
-                write(c.get_Tour());
-                
-            }
-            else if (lectura == 2) {
-                System.out.println("Introdueix la temperatura del sistema: ");
-                double temp = sc.nextDouble();
-                System.out.println("Introdueix el factor de refredament: ");
-                double cool = sc.nextDouble();
-                System.out.println("Introdueix les iteracions sense millorar fins la parada: ");
-                int p = sc.nextInt();
-                System.out.println("Distancia inicial: "+ c.get_Tour().getCost());
-                Tour t = TspSA.TspSA(temp,cool,c.get_Tour(),p);
-                System.out.println("Distancia final: "+t.getCost());
-                 write(t);
-            }
+        System.out.println("Temperatura inicial:" );
+        temp = sc.nextDouble();
+        
+        System.out.println("Factor de refredament:");
+        cool = sc.nextDouble();
+        
+        System.out.println("Iteracions sense millorar solució abans de parar:");
+        p = sc.nextInt();
+        
+        Tour T;
+        T = TspSA.TspSA(temp, cool, p);
+        
+        for (int i=0;i<T.size();++i) {
+            T.getElementPos(i).getNom();
         }
     }
     

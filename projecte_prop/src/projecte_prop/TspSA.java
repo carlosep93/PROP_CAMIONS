@@ -5,7 +5,11 @@
 package projecte_prop;
 
 import Controladors.CtrlDomini;
-
+/*import Stubs.Tour;
+import Stubs.CtrlDomini;
+import Stubs.CjtTours;
+import Stubs.Mutate;
+import Stubs.TwoApp;*/
 
 public class TspSA {
     static double temperature;
