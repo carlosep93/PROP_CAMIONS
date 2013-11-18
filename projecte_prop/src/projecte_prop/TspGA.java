@@ -7,10 +7,15 @@ package projecte_prop;
 
 import Controladors.CtrlDomini;
 
-/*quan usem el driver de TspGA:
-    import Stubs.CjtTours;
+//quan usem el driver de TspGA:
+/*  import Stubs.CjtTours;
     import Stubs.Tour;
-*/
+    import Stubs.TournamentSelection;
+    import Stubs.Crossover;
+    import Stubs.Mutate;
+    import Stubs.CtrlDomini;
+    import Stubs.Ciutat;*/
+
 
 public class TspGA {
     //nombre de generacions sense variar per donar una solució per bona

@@ -29,4 +29,8 @@ public class Ciutat {
     public Solution get_Solution(){
         return S;
     }
+    
+    public int num_Elements(){
+        return 0;
+    }
 }
