@@ -40,7 +40,8 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     }
     
     public static Ciutat getCity(){
-        return ciutat;
+        Ciutat c = new Ciutat();
+        return c;
     }
     
     public static  Relations getRelations(){
@@ -50,6 +51,11 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     
     public static Solution getSolution(){
         return ciutat.get_Solution();
+    }
+    
+    public static Tour getCjtElement(){
+        Tour T = new Tour();
+        return T;
     }
     
     public static String get_path_adjacencies_store(){

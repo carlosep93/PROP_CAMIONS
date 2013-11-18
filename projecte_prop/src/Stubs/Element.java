@@ -36,4 +36,8 @@ public  class Element {
    public void modifyid(int id){
        this.id=id;
    }
+   
+   public String getNom(){
+       return "a";
+   }
 }

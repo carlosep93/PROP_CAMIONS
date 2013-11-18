@@ -44,6 +44,8 @@ public class Tour {
         return 0;
     }
     
-    
+    public void swap(int pos1, int pos2){
+        
+    }
     
 }

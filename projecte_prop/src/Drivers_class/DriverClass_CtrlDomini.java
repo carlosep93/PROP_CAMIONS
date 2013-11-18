@@ -140,7 +140,7 @@ public class DriverClass_CtrlDomini {
                     boolean Elitism = true;// sc.nextBoolean();
                     
                     //System.out.println("RouletteWheel_TS:");
-                    boolean RouletteWheel_TS = true;//= sc.nextBoolean();
+                    boolean RouletteWheel_TS = false;//= sc.nextBoolean();
                     
                     int TournamentSize = 0;
                     if(!RouletteWheel_TS){
