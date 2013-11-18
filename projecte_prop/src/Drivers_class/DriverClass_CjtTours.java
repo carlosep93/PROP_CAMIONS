@@ -21,9 +21,9 @@ public class DriverClass_CjtTours {
             System.out.println("Tria una mida del Cjt de Tours:");
             int size = sc.nextInt();
             CjtTours ct =  new CjtTours(size);
-            while (opt != 10) {
+            while (opt != 11) {
                 System.out.println();
-                System.out.println("tria una opcio:");
+                System.out.println("1- tria una opcio:");
                 System.out.println("2 - Afegir un nou tour al conjunt"); 
                 System.out.println("3 - Seleccionar un Tour");
                 System.out.println("4 - Obtenir el tour amb menor cost");
@@ -32,7 +32,8 @@ public class DriverClass_CjtTours {
                 System.out.println("7 - copiar un tour en un altre possició del conjunt de tours");
                 System.out.println("8 - Swap de dos tours");
                 System.out.println("9 - Consultar el tamany del conjunt");
-                System.out.println("10 - Sortir");
+                System.out.println("10- afegir un nou tour al conjunt, en una posició budia");
+                System.out.println("11 - Sortir");
                 
                 opt = sc.nextInt();
                 System.out.println("Has escollit " + opt);
@@ -51,9 +52,7 @@ public class DriverClass_CjtTours {
                     System.out.println("indica l'id (posicio) del Tour");
                     int pos = sc.nextInt();
                     Tour T = ct.getTour(pos);
-                    System.out.println("per saber si es el correcte, et retorno el seu cost!");
-                    int cost = T.getCost();
-                    System.out.println("el seu cost es" + cost);
+                    System.out.println("Tot correcte");
                 }
                  
                  else if (opt == 4) {
@@ -116,6 +115,13 @@ public class DriverClass_CjtTours {
                 else if (opt == 9) {
                     int s = ct.sizeCjtTours();
                     System.out.println("El tamany del conjunt és:" + s);
+                }
+                
+                else if (opt == 10) {
+                    System.out.println("Diguem una posició del conjunt de tours i se li afegià un tour random");
+                    int pos = sc.nextInt();
+                    Tour T = new Tour();
+                    ct.addTourEmpty(pos, T);
                 }
             } 
         }
