@@ -45,7 +45,6 @@ public class TspSA {
             }
             //actualitza si cal la nova solució
             if (best >  ct.getTour(1).getCost()) {
-                System.out.println("Ha millorat");
                 best = ct.getTour(1).getCost();
                 ct.copyTour(1,0);
                 n = 0;

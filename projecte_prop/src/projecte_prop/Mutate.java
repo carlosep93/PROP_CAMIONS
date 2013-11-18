@@ -52,23 +52,25 @@ public class Mutate {
         }
     } 
     public static void  mutate3 (Tour t ) {
-        int max1 = CtrlDomini.getRelations().getCost(t.getElementPos(0).getID(),
-                t.getElementPos(1).getID());        
-        int max2 = 0;
-        int aux;
-        int pos1 = 0;
-        int pos2 = 1;
-        for (int i=1; i < t.size()-1;++i) {
-            aux = CtrlDomini.getRelations().getCost(t.getElementPos(i).getID(),
-                t.getElementPos(i+1).getID());
-            if (max1 < aux) {
-                max2 = max1;
-                max1 = aux;
-                pos2 = pos1;
-                pos1 = i;
-                
-            }        
+        if (t.size()>=1){ 
+            int max1 = CtrlDomini.getRelations().getCost(t.getElementPos(0).getID(),
+                    t.getElementPos(1).getID());        
+            int max2 = 0;
+            int aux;
+            int pos1 = 0;
+            int pos2 = 1;
+            for (int i=1; i < t.size()-1;++i) {
+                aux = CtrlDomini.getRelations().getCost(t.getElementPos(i).getID(),
+                    t.getElementPos(i+1).getID());
+                if (max1 < aux) {
+                    max2 = max1;
+                    max1 = aux;
+                    pos2 = pos1;
+                    pos1 = i;
+
+                }        
+            }
+            t.swap(pos1,pos2);
         }
-        t.swap(pos1,pos2);
     }
 }
