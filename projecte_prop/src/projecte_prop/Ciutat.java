@@ -65,6 +65,11 @@ public class Ciutat {
      public void add_Solution(Solution sol){
         this.sol = sol;
     }
+     
+     public void add_Relations(Relations rel){
+        this.Rel = rel;
+        this.CjtPunts = new Tour(rel.size());
+    }
     
     public void addElement(Element E, List<Integer> aux){ //et pasen el conjunt de relacions del element
         Rel.addElement(aux);

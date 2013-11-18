@@ -22,7 +22,9 @@ public class Relations {
          a = new ArrayList <List<Integer>>();
     }
     
-    
+    public Relations(List<List<Integer>> an) {
+         a = an;
+    }
     
     public int getCost(int id1, int id2) {
         int cost = -1;
@@ -145,7 +147,11 @@ public class Relations {
             addElement(i);
         }
     }
-        
+    
+    public List<List<Integer>> getList(){
+        return a;
+    }
+    
     public String toString(int id) {
         return a.get(id).toString();        
     } 

@@ -20,14 +20,16 @@ public class DriverClass_Gestor_Dades {
           List <List<Integer>> adjacencies = null;
           boolean Sistema_definit = false;
           int lectura = 0;
-     
+           String pathload= get_path_actual_load();
+         String pathstore = get_path_actual_store();
      while(lectura != 5){   
         System.out.println();
         
         System.out.println("-------  Informació  -------");
          System.out.println();
-        System.out.println("PATH actual de LOAD: "  + get_path_actual_load());
-        System.out.println("PATH actual de STORE: "  + get_path_actual_store());
+        
+        System.out.println("PATH actual de LOAD: "  +pathload );
+        System.out.println("PATH actual de STORE: "  + pathstore);
          System.out.println();
         System.out.print("Adjacencies carregades ");
         if(adjacencies == null) System.out.println( "--> CAP");
@@ -65,9 +67,9 @@ public class DriverClass_Gestor_Dades {
                 if (SI == 1){
                 System.out.println("Entra el nou PATH amb el format correcte");
                  path = sc.next();
-                canviar_path_adjacencies_load(path);
+                
                 }
-                adjacencies = carregar_adjacencies();
+                adjacencies = carregar_adjacencies(pathload);
                 System.out.println("Adjacencies carregades desde el fixer " + path + " :) ");
          }
         else if (lectura == 2){
@@ -81,7 +83,7 @@ public class DriverClass_Gestor_Dades {
                 path = sc.next();
                 canviar_path_adjacencies_store(path);
                 }
-                guardar_adjacencies(adjacencies);
+                guardar_adjacencies(adjacencies,pathstore);
                 System.out.println("Adjacencies guardades a " + path + " :)" );
      }
        
