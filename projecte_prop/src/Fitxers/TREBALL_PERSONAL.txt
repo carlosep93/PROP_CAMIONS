@@ -53,3 +53,4 @@ Josep:
     Drivers:
          DriverClass_Tour
           DriverClass_GA
+          DriverClass_CtrlDomini
