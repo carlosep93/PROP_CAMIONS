@@ -162,18 +162,18 @@ public class Relations {
             addElement(i);
         }
     }
-<<<<<<< HEAD
+
     /** @brief  Transforma les relacions d'un element.
         \pre    La relations ha d'estar inicialitzada  
         \post   Retorna les relacions d'un element a un Strings
     */    
-=======
+
     
     public List<List<Integer>> getList(){
         return a;
     }
     
->>>>>>> pol
+
     public String toString(int id) {
         return a.get(id).toString();        
     } 
