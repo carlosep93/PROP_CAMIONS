@@ -36,10 +36,19 @@ public class CjtTours {
             }
         }
         else{
-            for(int i = 0; i < T.size(); ++i){
+          for(int i = 0; i < T.size(); ++i){
+                cjtTours[pos].addElement(T.getElementPos(i));
+            }  
+        }
+    }
+        /** @brief
+        \pre    
+        \post   
+    */
+    public void addTourEmpty(int pos, Tour T) {
+          for(int i = 0; i < T.size(); ++i){
                 cjtTours[pos].addElement(T.getElementPos(i));
             }
-        }
     }
     
     
