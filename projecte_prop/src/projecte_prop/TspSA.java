@@ -27,7 +27,7 @@ public class TspSA {
         Tour ti = TwoApp.Twoapp(CtrlDomini.getRelations().toMatrix(),
                     CtrlDomini.getRelations().Actius());
         for (int i=0;i<3;++i) {
-            ct.addTour(i, ti);
+            ct.addTourEmpty(i, ti);
         }
         int n = 0;
         int best = ct.getTour(0).getCost();
@@ -39,6 +39,9 @@ public class TspSA {
             int newener = ct.getTour(2).getCost();
             if (Acceptar(ener,newener)> Math.random()){
                 ct.copyTour(2,1);
+            }
+            else {
+                ct.copyTour(1,2);
             }
             //actualitza si cal la nova solució
             if (best >  ct.getTour(1).getCost()) {
