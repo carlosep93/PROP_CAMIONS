@@ -9,7 +9,8 @@ package Drivers_class;
  * @author Carlos2
  */
 import projecte_prop.TspSA;
-import Stubs.Tour;
+//import Stubs.Tour;
+import projecte_prop.Tour;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;

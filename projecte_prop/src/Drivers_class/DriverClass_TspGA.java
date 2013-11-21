@@ -7,7 +7,8 @@ package Drivers_class;
 
 import projecte_prop.TspGA;
 import java.util.Scanner;
-import Stubs.Tour;
+import projecte_prop.Tour;
+//import Stubs.Tour;
 
 public class DriverClass_TspGA {
     public static void main(String[] args) {

@@ -6,7 +6,7 @@ package Stubs;
 
 /**
  *
- * @author Carlos2
+ * @author Joan
  */
 public class CjtTours {
     private int nTours;

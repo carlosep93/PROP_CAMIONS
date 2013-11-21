@@ -27,6 +27,13 @@ public class Tour {
         cost = -1;
     }
     
+     public Tour(int mida){
+        cjtElem = new ArrayList<Element>();
+        for(int i=0; i<mida; ++i)cjtElem.add(new Element(i));
+        nElements = mida;
+        cost = -1;
+    }
+    
     /** @brief  Afegeix un objecte Element al l'objecte Tour
         \pre    L'element no sigui buit i l'element E no està al Tour
         \post   S'ha afegit l'Element E a la última posició del Tour

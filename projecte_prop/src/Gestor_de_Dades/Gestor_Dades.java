@@ -27,11 +27,11 @@ public class Gestor_Dades {
     
       
    
-    public static List<List<Integer>> carregar_adjacencies(){
+    public static List<List<Integer>> carregar_adjacencies(String path){
         
         List <List<Integer>>  adjacencies = new ArrayList();
         try{
-           String path = get_path_adjacencies_load();
+           //String path = get_path_adjacencies_load();
            
            File file = new File(path);
            Scanner sc = new Scanner(file);
@@ -58,11 +58,11 @@ public class Gestor_Dades {
 }
     
     
-    public static void guardar_adjacencies( List <List<Integer>> adjac){
+    public static void guardar_adjacencies( List <List<Integer>> adjac,String path){
  
         PrintWriter salida = null;
         try{
-        String path = get_path_adjacencies_store();
+       // String path = get_path_adjacencies_store();
         salida = new PrintWriter(path);
        int mida = adjac.size();
        salida.println(mida);
@@ -168,7 +168,7 @@ public class Gestor_Dades {
          while(sc.hasNext()){             //primer element és num d'elements
            int num = sc.nextInt();
            for(int i=0; i<num; ++i){
-              Element temp = new Element(sc.nextInt(),true);
+              Element temp = new Element(sc.nextInt());
               saved_elements.add(temp);
            }
          }

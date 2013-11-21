@@ -13,6 +13,7 @@ import projecte_prop.*;
 import java.util.Date;
 
 
+
 public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
    
     static String path_adjacencies_store =
@@ -70,6 +71,10 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
         return ciutat.getActius();
     }
     
+    public static void addrelation(Relations rel){
+        ciutat.add_Relations(rel);
+    }
+    
     public static void addElement(Element E, List<Integer> pesos_resta){
         ciutat.addElement(E, pesos_resta);
     }
@@ -80,6 +85,10 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     
     public static void modificaElement(Element E, String nom){
         ciutat.get_Tour().replaceElement(E, nom);
+    }
+    
+    public static void modificarRelationsCity(Relations r){
+        ciutat.add_Relations(r);
     }
     
     public static void eliminaElement(String nom){

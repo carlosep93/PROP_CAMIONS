@@ -43,6 +43,7 @@ Pol:
         DriverClass_Gestor_Dades
         DriverClass_Mutate
         DriverClass_Solutions
+        Generador_jocs_prova
 
 Carlos:
     Drivers:
@@ -53,3 +54,4 @@ Josep:
     Drivers:
          DriverClass_Tour
           DriverClass_GA
+          DriverClass_CtrlDomini
