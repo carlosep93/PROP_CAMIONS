@@ -15,23 +15,23 @@ public class Solution {
     Date fecha;
     int cost;
 
-    public Solution (){
+    public Solution (int id){
         fecha = new Date ();
-        id = getID_sol();
+        this.id = id;
         nom = "Sense_Nom";
         tour = new Tour();
         cost = -1;
     }
-    public Solution(String nom){
+    public Solution(int id, String nom){
         fecha = new Date ();
-        id = getID_sol();
+        this.id = id;
         this.nom = nom;
         tour = new Tour();
         cost = -1;
     }
-    public Solution(String nom,int cost){
+    public Solution(int id, String nom, int cost){
         fecha = new Date ();
-        id = getID_sol();
+        this.id = id;
         this.nom = nom;
         this.cost = cost;
         tour = new Tour();
