@@ -17,26 +17,24 @@ public class DriverClass_CtrlDomini {
         public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String pathload = "src/Fitxers/";
+        CtrlDomini Ctrl = new CtrlDomini();;
         
         int lectura = 0;
         while(lectura != 8){   
             System.out.println();
             System.out.println("Tria una opció:");
-            System.out.println("1 - Inicia Domini");
-            System.out.println("2 - Afegir Element");
-            System.out.println("3 - Consultar Element");
-            System.out.println("4 - Modificar Element");
-            System.out.println("5 - Eliminar Element");
-            System.out.println("6 - Carregar adjacencies de Memoria");
-            System.out.println("7 - Generar Camí");
-            System.out.println("8 - Sortir");
+            System.out.println("1 - Afegir Element");
+            System.out.println("2 - Consultar Element");
+            System.out.println("3 - Modificar Element");
+            System.out.println("4 - Eliminar Element");
+            System.out.println("5 - Carregar adjacencies de Memoria");
+            System.out.println("6 - Generar Camí");
+            System.out.println("7 - Sortir");
             lectura=sc.nextInt();
 
+
             if(lectura == 1){
-                CtrlDomini.iniciarDomini();
-            }
-            else if(lectura == 2){
-                int id = CtrlDomini.getnewID();
+                int id = Ctrl.getnewID();
                 
                 System.out.println("Nom:");
                 sc.nextLine();
@@ -51,29 +49,29 @@ public class DriverClass_CtrlDomini {
                 
                 Element E = new Element(id, nom, x, y, enabled);
                 
-                boolean[] b = CtrlDomini.getActius();
+                boolean[] b = Ctrl.getActius();
                 List<Integer> ll = new ArrayList<Integer>();
                 
                 for(int i = 0; i < b.length; ++i){
                     if(b[i]){
                         System.out.println("Pes de l'element a : " + 
-                            CtrlDomini.getCity().get_Tour().getElementPos(i).getNom());
+                            Ctrl.getCity().get_Tour().getElementPos(i).getNom());
                         ll.add(sc.nextInt());
                     }
                     else ll.add(-1);
                 }
-                CtrlDomini.addElement(E, ll);
+                Ctrl.addElement(E, ll);
                 
-                escriureCjtElem(CtrlDomini.getCjtElement());
-                escriureRelations(CtrlDomini.getRelations());
+                escriureCjtElem(Ctrl, Ctrl.getCjtElement());
+                escriureRelations(Ctrl, Ctrl.getRelations());
             }
-            else if(lectura == 3){
+            else if(lectura == 2){
                /* System.out.println("Nom:");
                 String nom = sc.nextLine();
                 
                 CtrlDomini.consultaElement(nom);*/
             }
-            else if(lectura == 4){
+            else if(lectura == 3){
                 /*int id = CtrlDomini.getnewID();
                 
                 System.out.println("Nom:");
@@ -94,28 +92,28 @@ public class DriverClass_CtrlDomini {
                 
                 CtrlDomini.modificaElement(E, nom);*/
             }
-            else if(lectura == 5){
+            else if(lectura == 4){
                 System.out.println("Nom:");
                 sc.nextLine();
                 String nom = sc.nextLine();
                 
-                CtrlDomini.eliminaElement(nom);
+                Ctrl.eliminaElement(nom);
                 
-                escriureCjtElem(CtrlDomini.getCjtElement());
-                escriureRelations(CtrlDomini.getRelations());
+                escriureCjtElem(Ctrl, Ctrl.getCjtElement());
+                escriureRelations(Ctrl, Ctrl.getRelations());
             }
-             else if(lectura == 6){
+             else if(lectura == 5){
                   System.out.println("Ubuntu(1) o windows(2) ?");
                   if( sc.nextInt()==2 ) pathload = "src\\Fitxers\\";
                   System.out.println("Quin fitxer vols?");
                   String aux = sc.next();
                   pathload = pathload+aux;
                   Relations rela = new Relations (Gestor_Dades.carregar_adjacencies(pathload)); 
-                  CtrlDomini.modificarRelationsCity(rela);
+                  Ctrl.modificarRelationsCity(rela);
              } 
             
             
-            else if(lectura == 7){
+            else if(lectura == 6){
                 boolean predef = true;
                 System.out.println("1, SistemAnnealing// 2, GeneticAlgorithm:");
                  int alg = sc.nextInt();
@@ -150,7 +148,7 @@ public class DriverClass_CtrlDomini {
                     System.out.println("parada: (recomanat: 25) ");
                     par = sc.nextInt();
                     }
-                    CtrlDomini.tspSA(nom, tmp, fact, par);                    
+                    Ctrl.tspSA(nom, tmp, fact, par);                    
                 }
                 else{
                     
@@ -219,13 +217,13 @@ public class DriverClass_CtrlDomini {
                         MutationSwapProbability = sc.nextDouble();
                     }
                     }
-                    CtrlDomini.tspGA(nom, StopCondition, Ngeneracions, 
+                    Ctrl.tspGA(nom, StopCondition, Ngeneracions, 
                             NTours, Elitism, RouletteWheel_TS, TournamentSize, 
                             Edge_crossover, Mutate2, MutationRate, 
                             MutationSwapProbability);
                     
                 }
-                escriureSolucio();
+                escriureSolucio(Ctrl);
             }
             
             
@@ -233,24 +231,24 @@ public class DriverClass_CtrlDomini {
         }
     }
     
-    public static void escriureCjtElem(Tour cjtElem){
-        Tour t = CtrlDomini.getCity().get_Tour();
+    public static void escriureCjtElem(CtrlDomini Ctrl, Tour cjtElem){
+        Tour t = Ctrl.getCity().get_Tour();
         for(int i = 0; i < t.size(); ++i){
             System.out.print(" " + t.getElementPos(i).getID());
         }
         System.out.println();
     }
     
-    public static void escriureRelations(Relations R){
-        Relations r = CtrlDomini.getCity().get_Relations();
+    public static void escriureRelations(CtrlDomini Ctrl, Relations R){
+        Relations r = Ctrl.getCity().get_Relations();
         for(int i = 0; i < r.size(); ++i){
             System.out.println(r.toString(i));
         }
         System.out.println();
     }
     
-    public static void escriureSolucio(){
-        Solution sol = CtrlDomini.getSolution();
+    public static void escriureSolucio(CtrlDomini Ctrl){
+        Solution sol = Ctrl.getSolution();
         System.out.println("Nom solució: " + sol.getNom());
         for(int i = 0; i < sol.getTour().size(); ++i){
             System.out.print(" " + sol.getTour().getElementPos(i).getID());

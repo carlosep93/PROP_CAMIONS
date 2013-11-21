@@ -35,7 +35,7 @@ public class TspGA {
     //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    public static Tour TspGA(int StopCondition, int NGeneracions, int NTours, 
+    public static Tour TspGA(Ciutat C, int StopCondition, int NGeneracions, int NTours, 
             boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
             boolean Mutate2, double MutationRate, double MutationSwapProbability){
         
@@ -47,29 +47,29 @@ public class TspGA {
         mutationRate = MutationRate;
         mutationSwapProbability = MutationSwapProbability;
 
-        nPunts = CtrlDomini.getCity().num_Elements();                                         
+        nPunts = C.num_Elements();                                         
 
         CjtTours pop = new CjtTours(nTours);
 
-        ompla_pop(pop);
+        ompla_pop(C, pop);
         
-        Tour Fittest = pop.getFittestTour();
-        int Fitness = pop.getFitness(); 
+        Tour Fittest = pop.getFittestTour(C);
+        int Fitness = pop.getFitness(C); 
         int nCicles = 0;
 
         //iteracions per evolucionar la població
         for(int i = 1; i <= nGeneracions; ++i){
             //evoluciona la població en una generació
             
-            pop = envolvePopulation(pop, Rouletewheel_TS, Edge_crossover, Mutate2);
+            pop = envolvePopulation(C, pop, Rouletewheel_TS, Edge_crossover, Mutate2);
                     
             System.out.println("Generació " + i + "     Fitness: " + Fitness);
 
             //si fa tantes generacions que no ha cambiat el millor element de
             //la població com defineix "stopCondition" no crea més generacions
-            if(Fitness > pop.getFitness()){
-                Fittest = pop.getFittestTour();
-                Fitness = pop.getFitness();
+            if(Fitness > pop.getFitness(C)){
+                Fittest = pop.getFittestTour(C);
+                Fitness = pop.getFitness(C);
                 nCicles = 0;
             }
             else{
@@ -84,12 +84,12 @@ public class TspGA {
     }
     
     
-    private static CjtTours envolvePopulation(CjtTours pop, boolean  Rouletewheel_TS, boolean Edge_crossover, boolean Mutate2){
+    private static CjtTours envolvePopulation(Ciutat C, CjtTours pop, boolean  Rouletewheel_TS, boolean Edge_crossover, boolean Mutate2){
         CjtTours newPopulation = new CjtTours(nTours);
         Tour T = new Tour();
         int elitismOffset = 0;
         if(elitism){
-            newPopulation.addTour(0, pop.getFittestTour());
+            newPopulation.addTour(0, pop.getFittestTour(C));
             elitismOffset = 1;
         }
         
@@ -98,12 +98,12 @@ public class TspGA {
             Tour parent1 = new Tour();
             Tour parent2 = new Tour();
             if(Rouletewheel_TS){
-                parent1 = TournamentSelection.tournamentSelection_roulettewheel(pop);
-                parent2 = TournamentSelection.tournamentSelection_roulettewheel(pop);
+                parent1 = TournamentSelection.tournamentSelection_roulettewheel(C, pop);
+                parent2 = TournamentSelection.tournamentSelection_roulettewheel(C, pop);
             }
             else{
-                parent1 = TournamentSelection.tournamentSelection(pop, tournamentSize);
-                parent2 = TournamentSelection.tournamentSelection(pop, tournamentSize);
+                parent1 = TournamentSelection.tournamentSelection(C, pop, tournamentSize);
+                parent2 = TournamentSelection.tournamentSelection(C, pop, tournamentSize);
             }
             if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(parent1,parent2));
             else {
@@ -112,7 +112,7 @@ public class TspGA {
             } 
         }
         for(int i = elitismOffset; i < nTours; ++i){
-            if(Mutate2) newPopulation.addTour(i, Mutate.mutate2(newPopulation.getTour(i),mutationRate, mutationSwapProbability));
+            if(Mutate2) newPopulation.addTour(i, Mutate.mutate2(C, newPopulation.getTour(i),mutationRate, mutationSwapProbability));
             else{
                 T = Mutate.mutate(T, mutationRate);
                 newPopulation.addTour(i, T);
@@ -125,9 +125,9 @@ public class TspGA {
         \pre    El CjtTours és buit i la ciutat del CtrlDomini contè algún Element
         \post   S'ha omplert el CjtTours pop amb els Elements de la Ciutat del CtrlDomini, i després s'han desordenat de manera aleatòria
     */
-    private static void ompla_pop(CjtTours pop){
+    private static void ompla_pop(Ciutat C, CjtTours pop){
         //omplim la population
-        Tour t = CtrlDomini.getCjtElement();
+        Tour t = C.get_Tour();
         for(int i = 0; i < nTours; ++i){
             pop.addTour(i,t);
         }

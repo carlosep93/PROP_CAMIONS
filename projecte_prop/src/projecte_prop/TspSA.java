@@ -22,25 +22,25 @@ public class TspSA {
         return Math.exp ((energy - newEnergy)/ temperature);
     }
 
-    public static Tour TspSA(double temp, double cool,int p) {
+    public static Tour TspSA(Ciutat C, double temp, double cool,int p) {
         //Temperatura inicial
         temperature = temp;
         //Factor por el que se enfria
         cooling = cool;
         CjtTours ct = new CjtTours(3); //0: best, 1: actual
-        Tour ti = TwoApp.Twoapp(CtrlDomini.getRelations().toMatrix(),
-                    CtrlDomini.getRelations().Actius());
+        Tour ti = TwoApp.Twoapp(C.get_Relations().toMatrix(),
+                    C.get_Relations().Actius());
         for (int i=0;i<3;++i) {
             ct.addTourEmpty(i, ti);
         }
         int n = 0;
-        int best = ct.getTour(0).getCost();
+        int best = ct.getTour(0).getCost(C);
         int tamany = ct.sizeCjtTours();
         while (temperature > 1 && n < p) {
-            Mutate.mutate3(ct.getTour(2));
+            Mutate.mutate3(C, ct.getTour(2));
             //calcula si s'accepta la nova solució
-            int ener = ct.getTour(1).getCost();
-            int newener = ct.getTour(2).getCost();
+            int ener = ct.getTour(1).getCost(C);
+            int newener = ct.getTour(2).getCost(C);
             if (Acceptar(ener,newener)> Math.random()){
                 ct.copyTour(2,1);
             }
@@ -48,8 +48,8 @@ public class TspSA {
                 ct.copyTour(1,2);
             }
             //actualitza si cal la nova solució
-            if (best >  ct.getTour(1).getCost()) {
-                best = ct.getTour(1).getCost();
+            if (best >  ct.getTour(1).getCost(C)) {
+                best = ct.getTour(1).getCost(C);
                 ct.copyTour(1,0);
                 n = 0;
             }
