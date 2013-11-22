@@ -48,10 +48,8 @@ public class TspGA {
         mutationSwapProbability = MutationSwapProbability;
 
         nPunts = C.num_Elements();                                         
-
-        CjtTours pop = new CjtTours(nTours);
-
-        ompla_pop(C, pop);
+        
+        CjtTours pop = ompla_pop(C);
         
         Tour Fittest = pop.getFittestTour(C);
         int Fitness = pop.getFitness(C); 
@@ -105,7 +103,7 @@ public class TspGA {
                 parent1 = TournamentSelection.tournamentSelection(C, pop, tournamentSize);
                 parent2 = TournamentSelection.tournamentSelection(C, pop, tournamentSize);
             }
-            if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(parent1,parent2));
+            if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(C, parent1,parent2));
             else {
                 T = Crossover.crossover(parent1, parent2);
                 newPopulation.addTour(i, T);
@@ -125,20 +123,23 @@ public class TspGA {
         \pre    El CjtTours és buit i la ciutat del CtrlDomini contè algún Element
         \post   S'ha omplert el CjtTours pop amb els Elements de la Ciutat del CtrlDomini, i després s'han desordenat de manera aleatòria
     */
-    private static void ompla_pop(Ciutat C, CjtTours pop){
+    private static CjtTours ompla_pop(Ciutat C){
+        //Creem la populaiton
+        CjtTours pop = new CjtTours(nTours);
+        
         //omplim la population
         Tour t = C.get_Tour();
         for(int i = 0; i < nTours; ++i){
             pop.addTour(i,t);
         }
+
         //es fa un suffle de la population inicial
-        for(int i = 0; i < 10; ++i){
-            int pos1, pos2;
-            pos1 = (int)Math.random() * nPunts;
-            pos2 = (int)Math.random() * nPunts;
+        for(int i = 0; i < nPunts/4; ++i){
+            Tour T = new Tour();
             for(int ii = 0; ii < nTours; ++ii){
-                pop.getTour(ii).swap(pos1, pos2);
+                pop.getTour(ii).swap((int)(Math.random() * nPunts), (int)(Math.random() * nPunts));
             }
         }
+        return pop;
     }
 }

@@ -17,7 +17,7 @@ public class DriverClass_CtrlDomini {
         public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String pathload = "src/Fitxers/";
-        CtrlDomini Ctrl = new CtrlDomini();;
+        CtrlDomini Ctrl = new CtrlDomini();
         
         int lectura = 0;
         while(lectura != 8){   
@@ -114,11 +114,10 @@ public class DriverClass_CtrlDomini {
             
             
             else if(lectura == 6){
-                boolean predef = true;
                 System.out.println("1, SistemAnnealing// 2, GeneticAlgorithm:");
-                 int alg = sc.nextInt();
-                 System.out.println("Vols usar els paràmetres predefinits?");
-                 if(sc.next() == "no") predef = false;
+                int alg = sc.nextInt();
+                System.out.println("Vols usar els paràmetres predefinits?(true/false)");
+                boolean predef = sc.nextBoolean();
                
                
                 if(alg == 1){
@@ -151,7 +150,6 @@ public class DriverClass_CtrlDomini {
                     Ctrl.tspSA(nom, tmp, fact, par);                    
                 }
                 else{
-                    
                     String nom = "Sense_nom";
                     int StopCondition = 20;
                     int Ngeneracions = 1000;
@@ -159,74 +157,57 @@ public class DriverClass_CtrlDomini {
                     boolean Elitism = true;
                     boolean RouletteWheel_TS = true;
                     int TournamentSize = 0;
-                    boolean Edge_crossover = false;
+                    boolean Edge_crossover = true;
                     boolean Mutate2 = true;
                     double MutationRate = 0.15;
                     double MutationSwapProbability = 0.9;
-                    
-                     if(predef){
-                    nom = "Sense_nom";
-                    StopCondition = 20;
-                    Ngeneracions = 1000;
-                    NTours = 50;
-                   Elitism = true;
-                    RouletteWheel_TS = true;
-                    TournamentSize = 0;
-                    Edge_crossover = false;
-                    Mutate2 = true;
-                    MutationRate = 0.15;
-                    MutationSwapProbability = 0.9;
-                    } 
-                    else{
-                    System.out.println("Nom de la solucio:");
-                    sc.nextLine();
-                    nom = sc.nextLine();
-                    System.out.println("StopCondition: (recomanat: 20) ");
-                    StopCondition = sc.nextInt();
-                    
-                    System.out.println("NGeneracions: (recomanat: 1000)");
-                    Ngeneracions = sc.nextInt();
-                    
-                    System.out.println("NTours: (recomanat: 50)");
-                    NTours = sc.nextInt();
-                    
-                    System.out.println("Elitism: (recomanat: true )");
-                    Elitism = sc.nextBoolean();
-                    
-                    System.out.println("RouletteWheel_TS: (Recomanat: true) ");
-                    RouletteWheel_TS = sc.nextBoolean();
-                    
-                    
-                    if(!RouletteWheel_TS){
-                      System.out.println("TournamentSize: (recomanat: 2)");
-                        TournamentSize = sc.nextInt();
-                    }
-                    
-                    System.out.println("Edge_crossover: (recomanat: false)");
-                    Edge_crossover = sc.nextBoolean();
-                    
-                    System.out.println("Mutate2: (recomanat: true)");
-                    Mutate2 = sc.nextBoolean();
-                    
-                    System.out.println("MutationRate: (recomanat: 0.015)");
-                     MutationRate = sc.nextDouble();
-                    
-                    
-                    if(Mutate2){
-                       System.out.println("MutationSwapProbability: (recomanat: 0.9)");
-                        MutationSwapProbability = sc.nextDouble();
-                    }
+                    if(!predef){
+                        System.out.println("Nom de la solucio:");
+                        sc.nextLine();
+                        nom = sc.nextLine();
+                        System.out.println("StopCondition: (recomanat: 20) ");
+                        StopCondition = sc.nextInt();
+
+                        System.out.println("NGeneracions: (recomanat: 1000)");
+                        Ngeneracions = sc.nextInt();
+
+                        System.out.println("NTours: (recomanat: 50)");
+                        NTours = sc.nextInt();
+
+                        System.out.println("Elitism: (recomanat: true )");
+                        Elitism = sc.nextBoolean();
+
+                        System.out.println("RouletteWheel_TS: (Recomanat: true) ");
+                        RouletteWheel_TS = sc.nextBoolean();
+
+
+                        if(!RouletteWheel_TS){
+                          System.out.println("TournamentSize: (recomanat: 2)");
+                            TournamentSize = sc.nextInt();
+                        }
+
+                        System.out.println("Edge_crossover: (recomanat: true)");
+                        Edge_crossover = sc.nextBoolean();
+
+                        System.out.println("Mutate2: (recomanat: true)");
+                        Mutate2 = sc.nextBoolean();
+
+                        System.out.println("MutationRate: (recomanat: 0.015)");
+                         MutationRate = sc.nextDouble();
+
+
+                        if(Mutate2){
+                           System.out.println("MutationSwapProbability: (recomanat: 0.9)");
+                            MutationSwapProbability = sc.nextDouble();
+                        }
                     }
                     Ctrl.tspGA(nom, StopCondition, Ngeneracions, 
                             NTours, Elitism, RouletteWheel_TS, TournamentSize, 
                             Edge_crossover, Mutate2, MutationRate, 
                             MutationSwapProbability);
-                    
                 }
                 escriureSolucio(Ctrl);
             }
-            
-            
             System.out.println();
         }
     }

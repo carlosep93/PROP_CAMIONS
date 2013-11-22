@@ -5,6 +5,8 @@ package projecte_prop;
  * @author josep
  */
 
+import java.util.List;
+import java.util.ArrayList;
 
 public class Crossover {
     
@@ -38,89 +40,96 @@ public class Crossover {
                     }
                 }
             }
-        }
-        
+        }        
         return child;
     }  
     
-    public static Tour crossover_edgeRecombination(Tour parent1, Tour parent2){
+    public static Tour crossover_edgeRecombination(Ciutat C, Tour parent1, Tour parent2){
         npunts = parent1.size();
         Tour child = new Tour();        
         int ciutatActual = (int)(Math.random() * npunts);
-        int costs1[][] = new int [npunts][4];
-        int costs2[][] = new int [npunts][4];
+        Element E = new Element(ciutatActual);
         
-        startCosts(costs1, costs2, parent1, parent2);
+        ArrayList<ArrayList<Integer>> costs = startCosts(C, parent1, parent2);
+        boolean[] visitat = new boolean[npunts];
         
-        System.out.println("Primer adjacent: ");
-        for(int i = 0; i < npunts; ++i){
-            for(int ii = 0; ii < 4; ++ii){
-                System.out.print(" " + costs1[i][ii]);
+        while(true){
+            //borra la ciutat actual de les altres ocurrencies
+            for(int ii = 0; ii < npunts; ++ii){
+                for(int iii = 0; iii < costs.get(ii).size(); ++iii){
+                    if(costs.get(ii).get(iii) == ciutatActual){
+                        costs.get(ii).remove(iii);
+                    }
+                }
             }
-            System.out.println();
-        }
-        System.out.println();
-        
-        System.out.println("Segón adjacent: ");
-        for(int i = 0; i < npunts; ++i){
-            for(int ii = 0; ii < 4; ++ii){
-                System.out.print(" " + costs2[i][ii]);
+            /*
+            System.out.println("imprimeixo l'estat dels costos;;; l'element actual " + ciutatActual);
+            for(int x = 0; x < npunts; ++x){
+                for(int y = 0; y < costs.get(x).size(); ++y){
+                    System.out.print(" " + costs.get(x).get(y));
+                }
+                System.out.println();
+            }*/
+            
+            E = new Element(ciutatActual);
+            //System.out.println("element actual: " +  E.getID());
+            child.addElement(E);
+            visitat[ciutatActual] = true;
+            if(!costs.get(ciutatActual).isEmpty()) ciutatActual = costs.get(ciutatActual).get(0);
+            else{
+                boolean algun = false;
+                for(int i = 0; i < npunts; ++i) if(!visitat[i]){ ciutatActual = i; algun = true; }
+                if(!algun) break;
             }
-            System.out.println();
-        }
-        
-        for(int i = 0; i < npunts; ++i){
-            //eliminar el current points dels costs
+            
             //current point passa a ser el mes curt d'anar des del current point anterir
-        }
+        }        
         return child;
     }
     
-    private static void startCosts(int[][] costs1, int[][] costs2, Tour parent1, Tour parent2){       
-        /*
-        Element E;
+    private static ArrayList<ArrayList<Integer>> startCosts(Ciutat C, Tour parent1, Tour parent2){
+        
+        ArrayList<ArrayList<Integer>> costs = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> aux = new ArrayList<Integer>();
+    
         for(int i = 0; i < npunts; ++i){
+            costs.add(i, new ArrayList());
             
-            //inicilitza els vectors con1, con2
-            for(int ii = 0; ii < 4; ++ii){
-                costs1[i][ii] = costs2[i][ii] = -1;
-            }
+            //s'afegeixes les adjacencies del pare 1
+            int posActual = parent1.getPosElement(i);
+            int idAnt, idSeg;
+            if(posActual == 0) idAnt = parent1.getElementPos(npunts-1).getID();
+            else idAnt = parent1.getElementPos(posActual-1).getID();            
+            costs.get(i).add(idAnt);
             
-            E = new Element(i, true);
-            int pos = parent1.getPosElement(E);
-            if(pos == 0){
-                entraCiu(parent1.getElementPos(pos).getID(), parent1[pos+1], con1);
-                entraCiu(parent1[pos], parent1[npunts-1], con1);
-            }
-            else if(pos == npunts-1){
-                tour.entraCiu(parent1[pos], parent1[pos-1], con1);
-                tour.entraCiu(parent1[pos], parent1[0], con1);
-            }
-            else{
-                tour.entraCiu(parent1[pos], parent1[pos+1], con1);
-                tour.entraCiu(parent1[pos], parent1[pos-1], con1);
-            }
-            pos = tour.posCiuX(i, parent2);
-            if(pos == 0){
-                tour.entraCiu(parent2[pos], parent2[pos+1], con2);
-                tour.entraCiu(parent2[pos], parent2[npunts-1], con2);
-            }
-            else if(pos == npunts-1){
-                tour.entraCiu(parent2[pos], parent2[pos-1], con2);
-                tour.entraCiu(parent2[pos], parent2[0], con2);
-            }
-            else{
-                tour.entraCiu(parent2[pos], parent2[pos+1], con2);
-                tour.entraCiu(parent2[pos], parent2[pos-1], con2);
-            }
-        }*/
+            if(posActual == npunts-1) idSeg = parent1.getElementPos(0).getID();
+            else idSeg = parent1.getElementPos(posActual+1).getID();
+            entraCiu(C, i, idSeg, costs);
+            
+            
+            //s'afegeixen les adjacencies del pare 2
+            posActual = parent2.getPosElement(i);
+            if(posActual == 0) idAnt = parent2.getElementPos(npunts-1).getID();
+            else idAnt = parent2.getElementPos(posActual-1).getID();
+            entraCiu(C, i, idAnt, costs);
+            
+            
+            if(posActual == npunts-1) idSeg = parent2.getElementPos(0).getID();
+            else idSeg = parent2.getElementPos(posActual+1).getID();
+            entraCiu(C, i, idSeg, costs);
+            
+        }
+        return costs;
     }
     
-   /* public static void entraCiu(int origen, int desti, int[][] con){
-        for(int i = 0; i < 4; ++i){
-            if(con[origen][i] == -1){
-                con[origen][i] = desti;
+    public static void entraCiu(Ciutat C, int origen, int desti, ArrayList<ArrayList<Integer>> con){
+        boolean introduit = con.get(origen).contains(desti);
+        for(int i = 0; i < 4 && !introduit; ++i){
+            if(i == con.get(origen).size() || C.get_Relations().getCost(origen, con.get(origen).get(i)) 
+                    > C.get_Relations().getCost(origen, desti)){
+                con.get(origen).add(i, desti);
+                introduit = true;
             }
         }
-    }*/
+    }
 }
