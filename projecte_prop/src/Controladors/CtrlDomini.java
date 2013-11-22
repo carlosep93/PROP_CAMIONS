@@ -8,6 +8,7 @@ package Controladors;
  *
  * @author pol
  */
+
 import java.util.List;
 import projecte_prop.*;
 
