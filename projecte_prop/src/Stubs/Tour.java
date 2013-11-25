@@ -43,7 +43,18 @@ public class Tour {
     public int getPosElement(Element E) {
         return 0;
     }
+    public void addElement(){}
     
+<<<<<<< HEAD
+=======
+    public void replaceElementPos(Element E, int pos) {}
+    
+    public void addElement(Element E){}
+    
+    public void addElement(Element E, int pos) {}
+    
+    
+>>>>>>> 7618d18a534ffeb3de90f6f627a6a3a0c2c20141
     public void swap(int pos1, int pos2){
         
     }

@@ -26,8 +26,6 @@ public class Ciutat {
      nom = "SenseNom";
      CjtPunts = new Tour();
      Rel = new Relations ();
-     sol = new Solution();   
-        
     }
     /** @brief descripció curta 
      \pre
@@ -37,8 +35,6 @@ public class Ciutat {
         this.nom = nom;
         CjtPunts = new Tour();
         Rel = new Relations ();
-        sol = new Solution(nom);
-        
     }
     
      public String get_Nom(){
@@ -53,7 +49,7 @@ public class Ciutat {
     }
    
      public Solution get_Solution(){
-    return sol;
+         return sol;
     }
     
      
@@ -64,6 +60,11 @@ public class Ciutat {
 
      public void add_Solution(Solution sol){
         this.sol = sol;
+    }
+     
+     public void add_Relations(Relations rel){
+        this.Rel = rel;
+        this.CjtPunts = new Tour(rel.size());
     }
     
     public void addElement(Element E, List<Integer> aux){ //et pasen el conjunt de relacions del element

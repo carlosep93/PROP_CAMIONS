@@ -49,6 +49,10 @@ public class Relations {
         return 0;
     }
     
+    public List<Integer> Actius() {
+        return new ArrayList<Integer>();
+    }
+    
     public void readRelations(int n) {
         
     }

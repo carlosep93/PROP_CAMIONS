@@ -22,7 +22,9 @@ public class Relations {
          a = new ArrayList <List<Integer>>();
     }
     
-    
+    public Relations(List<List<Integer>> an) {
+         a = an;
+    }
     
     public int getCost(int id1, int id2) {
         int cost = -1;
@@ -92,6 +94,10 @@ public class Relations {
         a.add(l);
     }
     
+    /** @brief  Transforma la relations en una matriu
+        \pre    La relations ha d'estar inicialitzada  
+        \post   Retorna una matriu de les relacions del elements actius
+    */
     public int [][] toMatrix() {
         int n = 0;
         boolean [] b = new boolean [a.size()];
@@ -127,10 +133,18 @@ public class Relations {
         return res;
     }
     
+    /** @brief  Nombre de punts de la Relations
+        \pre    La Relation ha estat inicialitzada  
+        \post   Retorna el tamany de la Relations
+    */
     public int size() {
         return a.size();
     }
     
+    /** @brief  Elements actius
+        \pre    La Relation ha d'estar inicialitzada  
+        \post   Retorna una llista amb el elements actius ordenats per ID
+    */
     public List<Integer> Actius() {
         List<Integer> l = new ArrayList<Integer>();
         for (int i=0;i<a.size();++i) {
@@ -139,13 +153,27 @@ public class Relations {
         }
         return l;
     }
-    
+    /** @brief  LLegeix la Relation de tecla
+        \pre    La relations ha d'estar inicialitzada  
+        \post   La Relation conté els elements introduits.
+    */
     public void readRelations(int n) {
         for (int i=0;i<n;++i) {
             addElement(i);
         }
     }
-        
+
+    /** @brief  Transforma les relacions d'un element.
+        \pre    La relations ha d'estar inicialitzada  
+        \post   Retorna les relacions d'un element a un Strings
+    */    
+
+    
+    public List<List<Integer>> getList(){
+        return a;
+    }
+    
+
     public String toString(int id) {
         return a.get(id).toString();        
     } 

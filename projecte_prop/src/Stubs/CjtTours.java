@@ -6,7 +6,7 @@ package Stubs;
 
 /**
  *
- * @author Carlos2
+ * @author Joan
  */
 public class CjtTours {
     private int nTours;
@@ -31,5 +31,13 @@ public class CjtTours {
     }
     public Tour getFittestTour() {
         return new Tour();
+    }
+    public void addTourEmpty(int pos, Tour T) {
+    }
+     public int sizeCjtTours() {
+        return 1;
+    }
+    public void copyTour(int id1, int id2) {
+
     }
 }

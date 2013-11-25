@@ -27,6 +27,13 @@ public class Tour {
         cost = -1;
     }
     
+     public Tour(int mida){
+        cjtElem = new ArrayList<Element>();
+        for(int i=0; i<mida; ++i)cjtElem.add(new Element(i));
+        nElements = mida;
+        cost = -1;
+    }
+    
     /** @brief  Afegeix un objecte Element al l'objecte Tour
         \pre    L'element no sigui buit i l'element E no està al Tour
         \post   S'ha afegit l'Element E a la última posició del Tour
@@ -241,11 +248,11 @@ public class Tour {
         \pre    
         \post   Retorna el cost de recòrrer tots els Elements del Tour en l'ordre
     */
-    public int getCost(){
+    public int getCost(Ciutat C){
         if(cost == -1){
             if (nElements == 0 || nElements == 1) return 0;
             else{
-                Relations R = CtrlDomini.getRelations();
+                Relations R = C.get_Relations();
                 cost = 0;
                 for(int i = 0; i < nElements-1; ++i){
                     cost += R.getCost(cjtElem.get(i), cjtElem.get(i+1));

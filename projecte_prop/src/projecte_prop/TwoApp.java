@@ -20,14 +20,12 @@ public class TwoApp {
     }
         
     private static void getEpath(int[][] mst,List<Integer> l, int pos) {
-        if (mst[pos][pos] != -1) {
-            l.add(pos);
-            if(child(mst[pos])) {
-                for(int i = 0; i < mst.length ; ++i) {
-                    if(mst[pos][i] > 0) {
-                        mst[pos][i] = 0;
-                        getEpath(mst,l,i);
-                    }
+        l.add(pos);
+        if(child(mst[pos])) {
+            for(int i = 0; i < mst.length ; ++i) {
+                if(mst[pos][i] > 0) {
+                    mst[pos][i] = 0;
+                    getEpath(mst,l,i);
                 }
             }
         }
@@ -42,6 +40,7 @@ public class TwoApp {
         private static Tour getEtour(int size,List<Integer> l,List<Integer> id) {
         Tour t = new Tour();
         Element E;
+        int pos;
         boolean[] visited = new boolean[size];
         while (!l.isEmpty()) {
             if (!visited[l.get(0)]) {
