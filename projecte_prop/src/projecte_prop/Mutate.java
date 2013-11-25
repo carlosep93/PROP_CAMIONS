@@ -20,7 +20,7 @@ public class Mutate {
         return tour;
     }
     
-    public static Tour mutate2(Tour tour, double mutationRate, double mutationSwapProbability) {
+    public static Tour mutate2(Ciutat C, Tour tour, double mutationRate, double mutationSwapProbability) {
         Tour mutated=tour;
         double chance;
         int mida = tour.size();
@@ -35,8 +35,8 @@ public class Mutate {
                 mutated.swap(punt, i);
             }
         }
-        int costTour = tour.getCost();     //sha de fer un objecte de tipus solutions
-        int costMutated = mutated.getCost();
+        int costTour = tour.getCost(C);     //sha de fer un objecte de tipus solutions
+        int costMutated = mutated.getCost(C);
         // determine whether to return the shorter or longer tour of the two
         if (Math.random() < mutationSwapProbability) {
             if (costMutated < costTour) {
@@ -51,16 +51,16 @@ public class Mutate {
             else return mutated;
         }
     } 
-    public static void  mutate3 (Tour t ) {
+    public static void  mutate3 (Ciutat C, Tour t) {
         if (t.size()>=1){ 
-            int max1 = CtrlDomini.getRelations().getCost(t.getElementPos(0).getID(),
+            int max1 = C.get_Relations().getCost(t.getElementPos(0).getID(),
                     t.getElementPos(1).getID());        
             int max2 = 0;
             int aux;
             int pos1 = 0;
             int pos2 = 1;
             for (int i=1; i < t.size()-1;++i) {
-                aux = CtrlDomini.getRelations().getCost(t.getElementPos(i).getID(),
+                aux = C.get_Relations().getCost(t.getElementPos(i).getID(),
                     t.getElementPos(i+1).getID());
                 if (max1 < aux) {
                     max2 = max1;

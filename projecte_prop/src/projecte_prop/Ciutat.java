@@ -26,8 +26,6 @@ public class Ciutat {
      nom = "SenseNom";
      CjtPunts = new Tour();
      Rel = new Relations ();
-     sol = new Solution();   
-        
     }
     /** @brief descripció curta 
      \pre
@@ -37,8 +35,6 @@ public class Ciutat {
         this.nom = nom;
         CjtPunts = new Tour();
         Rel = new Relations ();
-        sol = new Solution(nom);
-        
     }
     
      public String get_Nom(){
@@ -53,7 +49,7 @@ public class Ciutat {
     }
    
      public Solution get_Solution(){
-    return sol;
+         return sol;
     }
     
      

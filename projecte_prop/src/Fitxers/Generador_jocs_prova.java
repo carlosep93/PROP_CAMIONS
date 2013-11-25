@@ -1,19 +1,22 @@
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
+ *  @author Pol
+
  */
 package Fitxers;
 
-import Gestor_de_Dades.Gestor_Dades;
+
+
+
 import java.util.List;
 import Gestor_de_Dades.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import projecte_prop.Relations;
-/**
- *
- * @author Pol
- */
+
+
+
 public class Generador_jocs_prova {
     
      
@@ -22,9 +25,14 @@ public class Generador_jocs_prova {
          Scanner sc = new Scanner(System.in);
          String path;
          List <List<Integer>> lists = new ArrayList <List<Integer>>();
+
          System.out.println("Ubuntu(1) o windows(2) o definir path(3)?");
         if( sc.nextInt()==2 ) pathload = "src\\Fitxers\\";
         else if( sc.nextInt()==3 ) pathload = sc.next();  
+
+         System.out.println("Ubuntu(1) o windows(2) ?");
+        if( sc.nextInt()==2 ) pathload = "src\\Fitxers\\";
+
         System.out.println("Quin nom fitxer vols crear? (acavat amb .txt) ");
         String aux = sc.next();
         pathload = pathload+aux;

@@ -19,11 +19,6 @@ public  class Element {
     private String nom;
     private int x, y;
    
-   
-    public Element() {
-       id = getnewID();
-       enabled=true;     
-    }
     
     public Element(int id, String nom, int x, int y, boolean enabled) {
        this.id = id;
@@ -32,15 +27,9 @@ public  class Element {
        this.y = y;
        this.enabled=enabled;     
     }
-
-    
-    
+ 
     public Element(int id){
      this.id = id;   
-    }
-    
-    public static int assign_id(){
-        return getnewID();
     }
 
     public int getID(){

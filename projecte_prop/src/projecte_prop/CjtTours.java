@@ -71,8 +71,14 @@ public class CjtTours {
         \post   Es retorna el Tour que té el cost minim en tot el conjunt de Tours.
     */
     
+
     public int getFitness() {
         return getFittestTour().getCost();
+    }
+    
+    public int getFitness(Ciutat C) {
+        return getFittestTour(C).getCost(C);
+
     }
     
     //As retorna el tour "idtour"
@@ -91,8 +97,8 @@ public class CjtTours {
         \post   retorna el cost del tour situat en la posició idTour en el cjtTour
     */
     
-    public int getCostTour(int idTour) {
-        return cjtTours[idTour].getCost();
+    public int getCostTour(Ciutat C, int idTour) {
+        return cjtTours[idTour].getCost(C);
     }
     
     //Ens retorna el Tour amb el pes minim
@@ -101,10 +107,10 @@ public class CjtTours {
         \post   es retorna el Tour amb el cost de pasar per tots els seus elements és el més baix del conjunt
     */
     
-    public  Tour getFittestTour() { 
+    public  Tour getFittestTour(Ciutat C){ 
         int idTour = 0;
         for (int i = 1; i < nTours; ++i) {
-            if (cjtTours[idTour].getCost() > cjtTours[i].getCost()) idTour = i;
+            if (cjtTours[idTour].getCost(C) > cjtTours[i].getCost(C)) idTour = i;
         }
         return cjtTours[idTour];
     }

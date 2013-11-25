@@ -20,15 +20,16 @@ public class DriverClass_Gestor_Dades {
           List <List<Integer>> adjacencies = null;
           boolean Sistema_definit = false;
           int lectura = 0;
+
          String pathload= "/src/Fitxers";
          String pathstore = "/src/Fitxers";
     
          while(lectura != 5){   
        
-        System.out.println();     
+
         System.out.println("-------  Informació  -------");
-        System.out.println();
-        
+         System.out.println();
+ 
         System.out.println("PATH actual de LOAD: "  +pathload );
         System.out.println("PATH actual de STORE: "  + pathstore);
          System.out.println();
@@ -65,10 +66,22 @@ public class DriverClass_Gestor_Dades {
         
         else if (lectura == 1) {
                 System.out.println();
+
                 System.out.println("Quin nom de fitxer?");               
                 pathload = pathload+sc.next();
                 adjacencies = carregar_adjacencies(pathload);
                 System.out.println("Adjacencies carregades desde el fixer " + pathload + " :) ");
+       System.out.println("Vols canviar el PATH del fixer d' entrada? (1-> si 2-> no)");
+                 
+                int SI = sc.nextInt();
+                if (SI == 1){
+                System.out.println("Entra el nou PATH amb el format correcte");
+                 pathload = sc.next();
+                
+                }
+                adjacencies = carregar_adjacencies(pathload);
+                System.out.println("Adjacencies carregades desde el fixer " + pathload + " :) ");
+
          }
         else if (lectura == 2){
           String path = get_path_actual_store();
