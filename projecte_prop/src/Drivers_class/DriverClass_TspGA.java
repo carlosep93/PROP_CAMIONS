@@ -13,7 +13,8 @@ public class DriverClass_TspGA {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        int StopCondition, NGeneracions, NTours, TournamentSize, MutationRate, MutationSwapProbability;
+        int StopCondition, NGeneracions, NTours, TournamentSize;
+        double MutationRate, MutationSwapProbability;
         boolean Elitism, Rouletewheel_TS, Edge_crossover, Mutate2;
         
         System.out.println("Stop Condition:");
@@ -41,14 +42,14 @@ public class DriverClass_TspGA {
         Edge_crossover = sc.nextBoolean();
         
         System.out.println("MutationRate:");
-        MutationRate = sc.nextInt();
+        MutationRate = sc.nextDouble();
         
         System.out.println("Mutate2:");
         Mutate2 = sc.nextBoolean();
         
         if(Mutate2){
             System.out.println("MutationSwapProbability");
-            MutationSwapProbability = sc.nextInt();
+            MutationSwapProbability = sc.nextDouble();
         }
         else MutationSwapProbability = 0;
         
