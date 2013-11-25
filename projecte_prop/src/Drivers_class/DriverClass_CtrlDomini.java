@@ -144,34 +144,27 @@ public class DriverClass_CtrlDomini {
                
                
                 if(alg == 1){
-                    String nom;
-                    double tmp;
-                    double fact;
-                     int par;
-                    if(predef){
-                       nom = "sense_nom"; 
-                       tmp = 1000;
-                       fact = 0.03;
-                       par = 25;
-                    }
-                    else{
-                    System.out.println("Nom de la solucio:");
-                    sc.nextLine();
-                    nom = sc.nextLine();
-                    
-                    
-                    System.out.println("Temperatura inicial (recomanat:1000) : ");
-                    tmp = sc.nextDouble();
-                    
-                    System.out.println("factor de pèrdua de temp: (recomanat: 0.03) :");
-                    fact = sc.nextDouble();
-                    
-                    
-                    System.out.println("parada: (recomanat: 25) ");
-                    par = sc.nextInt();
-                    }
+                    String nom = "sense_nom";
+                    double tmp = 1000;
+                    double fact = 0.03;
+                    int par = 25;
+                    if(!predef){
+                        System.out.println("Nom de la solucio:");
+                        sc.nextLine();
+                        nom = sc.nextLine();
 
-                    Ctrl.tspSA(nom, tmp, fact, par);
+
+                        System.out.println("Temperatura inicial (recomanat:1000) : ");
+                        tmp = sc.nextDouble();
+
+                        System.out.println("factor de pèrdua de temp: (recomanat: 0.03) :");
+                        fact = sc.nextDouble();
+
+
+                        System.out.println("parada: (recomanat: 25) ");
+                        par = sc.nextInt();
+                        }
+                    Ctrl.tspSA(nom, tmp, fact, par);                    
                 }
                
                 else{
@@ -280,8 +273,7 @@ public class DriverClass_CtrlDomini {
             System.out.print(" " + sol.getTour().getElementPos(i).getID());
           if(i%10==0)  System.out.println();
         }
-         System.out.println();
-         System.out.println("Cost = " + sol.getCostSolution());
-         System.out.println();
+        System.out.println();
+        System.out.println("cost de la solucio: " + Ctrl.getSolution().getCostSolution());
     }
 }
