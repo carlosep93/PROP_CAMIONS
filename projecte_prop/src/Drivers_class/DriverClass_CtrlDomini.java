@@ -144,6 +144,7 @@ public class DriverClass_CtrlDomini {
                
                
                 if(alg == 1){
+<<<<<<< HEAD
                     String nom = "sense_nom";
                     double tmp = 1000;
                     double fact = 0.03;
@@ -165,6 +166,36 @@ public class DriverClass_CtrlDomini {
                         par = sc.nextInt();
                         }
                     Ctrl.tspSA(nom, tmp, fact, par);                    
+=======
+                    String nom;
+                    double tmp;
+                    double fact;
+                     int par;
+                    if(predef){
+                       nom = "sense_nom"; 
+                       tmp = 1000;
+                       fact = 0.03;
+                       par = 25;
+                    }
+                    else{
+                    System.out.println("Nom de la solucio:");
+                    sc.nextLine();
+                    nom = sc.nextLine();
+                    
+                    
+                    System.out.println("Temperatura inicial (recomanat:1000) : ");
+                    tmp = sc.nextDouble();
+                    
+                    System.out.println("factor de pèrdua de temp: (recomanat: 0.03) :");
+                    fact = sc.nextDouble();
+                    
+                    
+                    System.out.println("parada: (recomanat: 25) ");
+                    par = sc.nextInt();
+                    }
+
+                    Ctrl.tspSA(nom, tmp, fact, par);
+>>>>>>> pol
                 }
                
                 else{
@@ -215,10 +246,13 @@ public class DriverClass_CtrlDomini {
                     RouletteWheel_TS = sc.nextBoolean();
                     
 <<<<<<< HEAD
+<<<<<<< HEAD
                     //System.out.println("RouletteWheel_TS:");
                     boolean RouletteWheel_TS = false;//= sc.nextBoolean();
 =======
 >>>>>>> 7618d18a534ffeb3de90f6f627a6a3a0c2c20141
+=======
+>>>>>>> pol
                     
                     if(!RouletteWheel_TS){
                       System.out.println("TournamentSize: (recomanat: 2)");
@@ -278,7 +312,13 @@ public class DriverClass_CtrlDomini {
             System.out.print(" " + sol.getTour().getElementPos(i).getID());
           if(i%10==0)  System.out.println();
         }
+<<<<<<< HEAD
         System.out.println();
         System.out.println("cost de la solucio: " + Ctrl.getSolution().getCostSolution());
+=======
+         System.out.println();
+         System.out.println("Cost = " + sol.getCostSolution());
+         System.out.println();
+>>>>>>> pol
     }
 }

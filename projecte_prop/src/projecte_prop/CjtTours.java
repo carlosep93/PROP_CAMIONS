@@ -72,11 +72,23 @@ public class CjtTours {
     */
     
 
+<<<<<<< HEAD
     public int getFitness(Ciutat C) {
         return getFittestTour(C).getCost(C);
     }
     
     
+=======
+    public int getFitness() {
+        return getFittestTour().getCost();
+    }
+    
+    public int getFitness(Ciutat C) {
+        return getFittestTour(C).getCost(C);
+
+    }
+    
+>>>>>>> pol
     //As retorna el tour "idtour"
     /** @brief retorna un tour
         \pre    0 >= idTour < nTours
