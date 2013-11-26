@@ -22,6 +22,7 @@ import java.awt.Graphics.*;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.swing.JFileChooser;
+import javax.swing.GroupLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -31,8 +32,9 @@ public class VistaPrincipal {
     
     private JFrame vista = new JFrame("Vista Principal");
     private JTextArea text = new JTextArea();
-    private JPanel container1 = new JPanel();
-    private JPanel container2 = new JPanel();
+    private JPanel panel1 = new JPanel();
+    private JPanel panel2 = new JPanel();
+    private JPanel panel3 = new JPanel();
     private Canvas can = new Canvas();
     
     
@@ -44,19 +46,16 @@ public class VistaPrincipal {
         JFrame.setDefaultLookAndFeelDecorated(true);
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vista.setLayout(new BorderLayout());
-        container1 = new JPanel();
-        container2 = new JPanel();
-        vista.setSize(600,500);
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+        vista.setSize(800,700);
         vista.setResizable(false);
         Menu m = new Menu();
         vista.setJMenuBar(m);
         vista.setVisible(true);
         
     }
-    
-    public void ActivatC1() {
-        
-    }
+   
     
     public class Vigila implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -74,13 +73,13 @@ public class VistaPrincipal {
                     try {
                         BufferedImage bmp;
                         JLabel label = new JLabel();
-                        container1.setSize(10,10);
+                        panel1.setSize(10,10);
                         label.setSize(10,10);
                         File image = select.getSelectedFile();
                         bmp = ImageIO.read(image);
                         label.setIcon(new ImageIcon(bmp));
-                        container1.add(label);
-                        vista.add(container1);
+                        panel1.add(label);
+                        vista.add(panel1);
                         vista.getContentPane();
                         vista.setVisible(true);
                     }
@@ -88,9 +87,147 @@ public class VistaPrincipal {
                         
                 }
                 
-            }   
+            }
+            else if (aux.equals("SA options")) {
+                optionssa();
+            }
+            else if (aux.equals("GA options")) {
+                optionsga();
+            }
         }
     }   
+    
+    public void optionssa() {
+        JLabel l1 = new JLabel("Simulated Annealing's options: ");
+        JLabel l2 = new JLabel ("Initial temperature: ");
+        JTextArea t1 = new JTextArea(1,10);
+        JLabel l3 = new JLabel ("Cooling factor: ");
+        JTextArea t2 = new JTextArea(1,10);
+        JLabel l4 = new JLabel ("Stop Condition: ");
+        JTextArea t3 = new JTextArea(1,10);
+        GroupLayout layout = new GroupLayout(panel2);
+        panel2.setLayout(layout);
+       layout.setHorizontalGroup(layout
+				.createSequentialGroup()
+				.addGap(10, 10, 10)
+				.addGroup(
+						layout.createParallelGroup()
+								.addComponent(l1)
+								.addComponent(l2)
+                                                                .addComponent(t1)
+                                                                .addComponent(l3)
+                                                                .addComponent(t2)
+                                                                .addComponent(l4)
+                                                                .addComponent(t3))		
+                                                                .addGap(10, 10, 10));
+        layout.setVerticalGroup(layout
+				.createSequentialGroup()
+				.addGap(10, 10, 10)
+				.addComponent(l1)
+				.addGap(10, 10, 10)
+				.addComponent(l2)
+				.addGap(10, 10, 10)
+				.addComponent(t1)
+				.addGap(10, 10, 10)   
+                                .addComponent(l3)
+				.addGap(10, 10, 10)
+                                .addComponent(t2)
+				.addGap(10, 10, 10)
+                                .addComponent(l4)
+				.addGap(10, 10, 10)
+                                .addComponent(t3)
+				.addGap(10, 10, 10)); 
+                
+        vista.add(panel2);
+        vista.setVisible(true);
+    }
+    
+    public void optionsga() {
+        JLabel l1 = new JLabel("Genetic algorithm's options");
+        JLabel l2 = new JLabel("Stop Condtion: ");
+        JTextArea t1 = new JTextArea();
+        JLabel l3 = new JLabel("Number of generations: ");
+        JTextArea t2  = new JTextArea();
+        JLabel l4 = new JLabel("Number of tours");
+        JTextArea t3 = new JTextArea();
+        JLabel l5 = new JLabel("Elitism");
+        JTextArea t4 = new JTextArea();
+        JLabel l6 = new JLabel("Roulette Wheel");
+        JTextArea t5 = new JTextArea();
+        JLabel l7 = new JLabel("Tournament size");
+        JTextArea t6 = new JTextArea();
+        JLabel l8 = new JLabel("Edge Crossover");
+        JTextArea t7 = new JTextArea(); 
+        JLabel l9 = new JLabel("Mutation Rate");
+        JTextArea t8 = new JTextArea();
+        GroupLayout layout = new GroupLayout(panel3);
+        panel3.setLayout(layout);
+        layout.setHorizontalGroup(layout
+				.createSequentialGroup()
+				.addGap(10, 10, 10)
+				.addGroup(
+						layout.createParallelGroup()
+								.addComponent(l1)
+								.addComponent(l2)
+                                                                .addComponent(t1)
+                                                                .addComponent(l3)
+                                                                .addComponent(t2)
+                                                                .addComponent(l4)
+                                                                .addComponent(t3)
+                                                                .addComponent(l5)
+                                                                .addComponent(t4)
+                                                                .addComponent(l6)
+                                                                .addComponent(t5)
+                                                                .addComponent(l7)
+                                                                .addComponent(t6)
+                                                                .addComponent(l8)
+                                                                .addComponent(t7)
+                                                                .addComponent(l9)
+                                                                .addComponent(t8))
+                                                                .addGap(10, 10, 10));
+        layout.setVerticalGroup(layout
+				.createSequentialGroup()
+				.addGap(10, 10, 10)
+				.addComponent(l1)
+				.addGap(10, 10, 10)
+				.addComponent(l2)
+				.addGap(10, 10, 10)
+				.addComponent(t1)
+				.addGap(10, 10, 10)   
+                                .addComponent(l3)
+				.addGap(10, 10, 10)
+                                .addComponent(t2)
+				.addGap(10, 10, 10)
+                                .addComponent(l4)
+				.addGap(10, 10, 10)
+                                .addComponent(t3)
+                                .addGap(10, 10, 10)
+				.addComponent(l5)
+				.addGap(10, 10, 10)
+				.addComponent(t4)
+				.addGap(10, 10, 10)
+				.addComponent(l6)
+				.addGap(10, 10, 10)  
+                                .addComponent(t5)
+                                .addGap(10, 10, 10)
+				.addComponent(l7)
+				.addGap(10, 10, 10)
+				.addComponent(t6)
+				.addGap(10, 10, 10)
+				.addComponent(l8)
+				.addGap(10, 10, 10)  
+                                .addComponent(t7)
+				.addGap(10, 10, 10)
+				.addComponent(l9)
+				.addGap(10, 10, 10)
+				.addComponent(t8)
+				.addGap(10, 10, 10)); 
+        vista.add(panel3);
+        vista.setVisible(true);
+        
+        
+        
+    }
     
    /*class ChooseImage extends FileFilter {
     @Override   
@@ -124,10 +261,16 @@ class Menu extends JMenuBar {
             Help = new JMenu("Help");
             JMenuItem exit = new JMenuItem("Exit");
             JMenuItem image = new JMenuItem("Choose image");
+            JMenuItem ga = new JMenuItem("GA options");
+            JMenuItem sa = new JMenuItem("SA options");
             exit.addActionListener(new Vigila());
             image.addActionListener(new Vigila());
+            ga.addActionListener(new Vigila());
+            sa.addActionListener(new Vigila());
             File.add(image);
             File.add(exit);
+            Algorithm.add(ga);
+            Algorithm.add(sa);
             add(File);
             add(Algorithm);
             add(Help);
