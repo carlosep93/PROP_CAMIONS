@@ -117,11 +117,10 @@ public class DriverClass_CtrlDomini {
                   
 
              else if(lectura == 6){
-                  
                   System.out.println("Ubuntu(1) o windows(2) o definir path(3) ?");
-                  sc.next();
-                  if( sc.nextInt()==2 ) pathload = "src\\Fitxers\\";
-                  else if( sc.nextInt()==3 ) pathload = sc.next();
+                  int auxx = sc.nextInt();
+                  if(auxx == 2) pathload = "src\\Fitxers\\";
+                  else if(auxx == 3) pathload = sc.next();
 
                   System.out.println("Quin fitxer vols?");
                   String aux = sc.next();
@@ -133,18 +132,15 @@ public class DriverClass_CtrlDomini {
             
             
             else if(lectura == 7){
-                boolean predef = true;
                 System.out.println("1, SistemAnnealing// 2, GeneticAlgorithm:");
-                 int alg = sc.nextInt();
-                 System.out.println("Vols usar els paràmetres predefinits? (true / false) ");
-                
-                 if( sc.nextBoolean()) predef = true;
+                int alg = sc.nextInt();
+                System.out.println("Vols usar els paràmetres predefinits? (true / false) ");
+                boolean predef = sc.nextBoolean();
 
                
                
                
                 if(alg == 1){
-<<<<<<< HEAD
                     String nom = "sense_nom";
                     double tmp = 1000;
                     double fact = 0.03;
@@ -166,38 +162,7 @@ public class DriverClass_CtrlDomini {
                         par = sc.nextInt();
                         }
                     Ctrl.tspSA(nom, tmp, fact, par);                    
-=======
-                    String nom;
-                    double tmp;
-                    double fact;
-                     int par;
-                    if(predef){
-                       nom = "sense_nom"; 
-                       tmp = 1000;
-                       fact = 0.03;
-                       par = 25;
-                    }
-                    else{
-                    System.out.println("Nom de la solucio:");
-                    sc.nextLine();
-                    nom = sc.nextLine();
-                    
-                    
-                    System.out.println("Temperatura inicial (recomanat:1000) : ");
-                    tmp = sc.nextDouble();
-                    
-                    System.out.println("factor de pèrdua de temp: (recomanat: 0.03) :");
-                    fact = sc.nextDouble();
-                    
-                    
-                    System.out.println("parada: (recomanat: 25) ");
-                    par = sc.nextInt();
-                    }
-
-                    Ctrl.tspSA(nom, tmp, fact, par);
->>>>>>> pol
                 }
-               
                 else{
 
                     String nom = "Sense_nom";
@@ -213,66 +178,44 @@ public class DriverClass_CtrlDomini {
                     double MutationRate = 0.15;
                     double MutationSwapProbability = 0.9;
                     
-                     if(predef){
-                    nom = "Sense_nom";
-                    StopCondition = 20;
-                    Ngeneracions = 1000;
-                    NTours = 50;
-                   Elitism = true;
-                    RouletteWheel_TS = true;
-                    TournamentSize = 0;
-                    Edge_crossover = false;
-                    Mutate2 = true;
-                    MutationRate = 0.15;
-                    MutationSwapProbability = 0.9;
-                    } 
-                    else{
-                    System.out.println("Nom de la solucio:");
-                    sc.nextLine();
-                    nom = sc.nextLine();
-                    System.out.println("StopCondition: (recomanat: 20) ");
-                    StopCondition = sc.nextInt();
-                    
-                    System.out.println("NGeneracions: (recomanat: 1000)");
-                    Ngeneracions = sc.nextInt();
-                    
-                    System.out.println("NTours: (recomanat: 50)");
-                    NTours = sc.nextInt();
-                    
-                    System.out.println("Elitism: (recomanat: true )");
-                    Elitism = sc.nextBoolean();
-                    
-                    System.out.println("RouletteWheel_TS: (Recomanat: true) ");
-                    RouletteWheel_TS = sc.nextBoolean();
-                    
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    //System.out.println("RouletteWheel_TS:");
-                    boolean RouletteWheel_TS = false;//= sc.nextBoolean();
-=======
->>>>>>> 7618d18a534ffeb3de90f6f627a6a3a0c2c20141
-=======
->>>>>>> pol
-                    
-                    if(!RouletteWheel_TS){
-                      System.out.println("TournamentSize: (recomanat: 2)");
-                        TournamentSize = sc.nextInt();
-                    }
-                    
-                    System.out.println("Edge_crossover: (recomanat: false)");
-                    Edge_crossover = sc.nextBoolean();
-                    
-                    System.out.println("Mutate2: (recomanat: true)");
-                    Mutate2 = sc.nextBoolean();
-                    
-                    System.out.println("MutationRate: (recomanat: 0.015)");
-                     MutationRate = sc.nextDouble();
-                    
-                    
-                    if(Mutate2){
-                       System.out.println("MutationSwapProbability: (recomanat: 0.9)");
-                        MutationSwapProbability = sc.nextDouble();
-                    }
+                    if(!predef){
+                        System.out.println("Nom de la solucio:");
+                        sc.nextLine();
+                        nom = sc.nextLine();
+                        System.out.println("StopCondition: (recomanat: 20) ");
+                        StopCondition = sc.nextInt();
+
+                        System.out.println("NGeneracions: (recomanat: 1000)");
+                        Ngeneracions = sc.nextInt();
+
+                        System.out.println("NTours: (recomanat: 50)");
+                        NTours = sc.nextInt();
+
+                        System.out.println("Elitism: (recomanat: true )");
+                        Elitism = sc.nextBoolean();
+
+                        System.out.println("RouletteWheel_TS: (Recomanat: true) ");
+                        RouletteWheel_TS = sc.nextBoolean();
+
+                        if(!RouletteWheel_TS){
+                          System.out.println("TournamentSize: (recomanat: 2)");
+                            TournamentSize = sc.nextInt();
+                        }
+
+                        System.out.println("Edge_crossover: (recomanat: true)");
+                        Edge_crossover = sc.nextBoolean();
+
+                        System.out.println("Mutate2: (recomanat: true)");
+                        Mutate2 = sc.nextBoolean();
+
+                        System.out.println("MutationRate: (recomanat: 0.015)");
+                         MutationRate = sc.nextDouble();
+
+
+                        if(Mutate2){
+                           System.out.println("MutationSwapProbability: (recomanat: 0.9)");
+                            MutationSwapProbability = sc.nextDouble();
+                        }
                     }
                     
                      Ctrl.tspGA(nom, StopCondition, Ngeneracions, NTours, Elitism, RouletteWheel_TS,
@@ -312,13 +255,8 @@ public class DriverClass_CtrlDomini {
             System.out.print(" " + sol.getTour().getElementPos(i).getID());
           if(i%10==0)  System.out.println();
         }
-<<<<<<< HEAD
-        System.out.println();
-        System.out.println("cost de la solucio: " + Ctrl.getSolution().getCostSolution());
-=======
          System.out.println();
          System.out.println("Cost = " + sol.getCostSolution());
          System.out.println();
->>>>>>> pol
     }
 }

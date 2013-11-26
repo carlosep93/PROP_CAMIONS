@@ -16,11 +16,6 @@ import Controladors.CtrlDomini;
     import Stubs.CtrlDomini;
     import Stubs.Ciutat;*/
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7618d18a534ffeb3de90f6f627a6a3a0c2c20141
-
 public class TspGA {
     //nombre de generacions sense variar per donar una solució per bona
     private static int stopCondition;
