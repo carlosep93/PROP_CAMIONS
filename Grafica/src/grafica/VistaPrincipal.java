@@ -64,6 +64,9 @@ public class VistaPrincipal {
             if (aux.equals("Exit"))
                 System.exit(0);
             else if (aux.equals("Choose image")) {
+                panel1.removeAll();
+                vista.remove(panel2);
+                vista.remove(panel3);
                 JFileChooser select = new JFileChooser();
                 select.setDialogTitle("Selecciona una imagen");
                 FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG","jpg");
@@ -81,6 +84,7 @@ public class VistaPrincipal {
                         panel1.add(label);
                         vista.add(panel1);
                         vista.getContentPane();
+                        vista.repaint();
                         vista.setVisible(true);
                     }
                     catch(Exception i) {}
@@ -98,13 +102,24 @@ public class VistaPrincipal {
     }   
     
     public void optionssa() {
+        vista.remove(panel1);
+        vista.remove(panel3);
         JLabel l1 = new JLabel("Simulated Annealing's options: ");
         JLabel l2 = new JLabel ("Initial temperature: ");
-        JTextArea t1 = new JTextArea(1,10);
+        JTextField t1 = new JTextField();
+        t1.setMinimumSize(new Dimension(300,25));
+        t1.setPreferredSize(t1.getMinimumSize());
+        t1.setMaximumSize(t1.getMinimumSize());
         JLabel l3 = new JLabel ("Cooling factor: ");
-        JTextArea t2 = new JTextArea(1,10);
+        JTextField t2 = new JTextField();
+        t2.setMinimumSize(new Dimension(300,25));
+        t2.setPreferredSize(t2.getMinimumSize());
+        t2.setMaximumSize(t2.getMinimumSize());
         JLabel l4 = new JLabel ("Stop Condition: ");
-        JTextArea t3 = new JTextArea(1,10);
+        JTextField t3 = new JTextField();
+        t3.setMinimumSize(new Dimension(300,25));
+        t3.setPreferredSize(t3.getMinimumSize());
+        t3.setMaximumSize(t3.getMinimumSize());
         GroupLayout layout = new GroupLayout(panel2);
         panel2.setLayout(layout);
        layout.setHorizontalGroup(layout
@@ -139,10 +154,13 @@ public class VistaPrincipal {
 				.addGap(10, 10, 10)); 
                 
         vista.add(panel2);
+        vista.repaint();
         vista.setVisible(true);
     }
     
     public void optionsga() {
+        vista.remove(panel1);
+        vista.remove(panel2);
         JLabel l1 = new JLabel("Genetic algorithm's options");
         JLabel l2 = new JLabel("Stop Condtion: ");
         JTextArea t1 = new JTextArea();
@@ -223,6 +241,7 @@ public class VistaPrincipal {
 				.addComponent(t8)
 				.addGap(10, 10, 10)); 
         vista.add(panel3);
+        vista.repaint();
         vista.setVisible(true);
         
         
