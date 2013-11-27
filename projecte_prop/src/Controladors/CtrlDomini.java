@@ -39,6 +39,11 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
       ciutat = new Ciutat();
     }
     
+    public static String RETORNEMUNAMERDA(String n){
+        
+        return n+" ??? vaia merda de nom!! xdd";
+    }
+    
     public int getnewID(){ //asignar un nou id a Element
     int id = Id_global_element;
     ++Id_global_element;
@@ -50,6 +55,8 @@ public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, 
     ++Id_global_solution;
     return id;       
     }
+    
+    
     
     public Ciutat getCity(){
         return ciutat;
