@@ -1,51 +1,27 @@
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package projecte_prop;
-
-import static Controladors.CtrlDomini.*;
-
-/**
- *
- * @author pol
- */
 
 
 public  class Element {
+    static private int id_glob;
     private int id;
     private boolean enabled;
-    private String nom;
-    private int x, y;
    
-    
-    public Element(int id, String nom, int x, int y, boolean enabled) {
-       this.id = id;
-       this.nom = nom;
-       this.x = x;
-       this.y = y;
-       this.enabled=enabled;     
+   
+    public Element() {
+        id = id_glob;
+        ++id_glob;
+        enabled = true;     
     }
- 
-    public Element(int id){
-     this.id = id;   
+    
+   public Element(boolean newenabled) {
+        id = id_glob;
+        ++id_glob;
+        enabled = newenabled;
     }
 
     public int getID(){
-        return id;       
-    }
-    
-    public String getNom(){
-        return nom;
-    }
-    
-    public int getX(){
-        return x;
-    }
-    
-    public int getY(){
-        return y;
+        return id;     
     }
     
     public boolean isEnabled(){
@@ -53,10 +29,10 @@ public  class Element {
     }
     
     public void modifyEnabled(boolean newvalue){
-        enabled=newvalue;
+        enabled = newvalue;
     }
-        
-    public void modifyid(int id){
-       this.id=id;
+    
+    public void modifyid(int newid){
+        id = newid;
     }
 }
