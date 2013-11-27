@@ -14,10 +14,14 @@ public  class Element {
         enabled = true;     
     }
     
-   public Element(boolean newenabled) {
+    public Element(boolean newenabled) {
         id = id_glob;
         ++id_glob;
         enabled = newenabled;
+    }
+    
+    public void iniElements(){
+        id_glob = 0;
     }
 
     public int getID(){
