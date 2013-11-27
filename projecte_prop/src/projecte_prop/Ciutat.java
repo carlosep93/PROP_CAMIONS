@@ -66,16 +66,16 @@ public class Ciutat {
         this.Rel = rel;
         this.CjtPunts = new Tour(rel.size());
     }
-    
-    public void addElement(Element E, List<Integer> aux){ //et pasen el conjunt de relacions del element
-        Rel.addElement(aux);
-        CjtPunts.addElement(E);
-    }
-    
+     
     public void removeElement(String nom){
         int id = CjtPunts.getElementNom(nom).getID();
         CjtPunts.inhabilitaElement(id);
         Rel.erase(id);
+    }
+    
+    public void addElement(Punt E, List<Integer> aux){ //et pasen el conjunt de relacions del element
+        Rel.addElement(aux);
+        CjtPunts.addElement(E);
     }
     
     public boolean[] getActius(){

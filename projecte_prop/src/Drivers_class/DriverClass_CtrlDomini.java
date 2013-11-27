@@ -40,9 +40,7 @@ public class DriverClass_CtrlDomini {
             lectura=sc.nextInt();
 
 
-            if(lectura == 1){
-                int id = Ctrl.getnewID();
-                
+            if(lectura == 1){                
                 System.out.println("Nom:");
                 sc.nextLine();
                 String nom = sc.nextLine();
@@ -51,10 +49,8 @@ public class DriverClass_CtrlDomini {
                 int x = 0;          //int x = sc.nextInt();
                 //System.out.println("Y:");
                 int y = 0;                    //int y = sc.nextInt();
-               
-                boolean enabled = true;
                 
-                Element E = new Element(id, nom, x, y, enabled);
+                Punt E = new Punt(x, y, nom);
                 
                 boolean[] b = Ctrl.getActius();
                 List<Integer> ll = new ArrayList<Integer>();
@@ -142,6 +138,7 @@ public class DriverClass_CtrlDomini {
                
                 if(alg == 1){
                     String nom = "sense_nom";
+                    int id = 0;
                     double tmp = 1000;
                     double fact = 0.03;
                     int par = 25;
@@ -149,6 +146,9 @@ public class DriverClass_CtrlDomini {
                         System.out.println("Nom de la solucio:");
                         sc.nextLine();
                         nom = sc.nextLine();
+                        
+                        System.out.println("ID de la solucio:");
+                        id = sc.nextInt();
 
 
                         System.out.println("Temperatura inicial (recomanat:1000) : ");
@@ -161,11 +161,12 @@ public class DriverClass_CtrlDomini {
                         System.out.println("parada: (recomanat: 25) ");
                         par = sc.nextInt();
                         }
-                    Ctrl.tspSA(nom, tmp, fact, par);                    
+                    Ctrl.tspSA(nom, tmp, fact, par, id);                    
                 }
                 else{
 
                     String nom = "Sense_nom";
+                    int id = 0;
                     int StopCondition = 20;
                     int Ngeneracions = 1000;
                     int NTours = 50;
@@ -173,7 +174,7 @@ public class DriverClass_CtrlDomini {
                     boolean RouletteWheel_TS = true;
                     int TournamentSize = 0;
 
-                    boolean Edge_crossover = false;
+                    boolean Edge_crossover = true;
                     boolean Mutate2 = true;
                     double MutationRate = 0.15;
                     double MutationSwapProbability = 0.9;
@@ -182,6 +183,10 @@ public class DriverClass_CtrlDomini {
                         System.out.println("Nom de la solucio:");
                         sc.nextLine();
                         nom = sc.nextLine();
+                        
+                        System.out.println("Id de la solucio:");
+                        id = sc.nextInt();
+                        
                         System.out.println("StopCondition: (recomanat: 20) ");
                         StopCondition = sc.nextInt();
 
@@ -219,7 +224,7 @@ public class DriverClass_CtrlDomini {
                     }
                     
                      Ctrl.tspGA(nom, StopCondition, Ngeneracions, NTours, Elitism, RouletteWheel_TS,
-                     TournamentSize, Edge_crossover, Mutate2, MutationRate, MutationSwapProbability);
+                     TournamentSize, Edge_crossover, Mutate2, MutationRate, MutationSwapProbability, id);
                
                 }
                 escriureSolucio(Ctrl);
@@ -251,12 +256,12 @@ public class DriverClass_CtrlDomini {
          System.out.println();
          System.out.println("L'ordre d'elements és: ");
          System.out.println();
-        for(int i = 0; i < sol.getTour().size(); ++i){
-            System.out.print(" " + sol.getTour().getElementPos(i).getID());
+        for(int i = 0; i < sol.size(); ++i){
+            System.out.print(" " + sol.getElementPos(i).getID());
           if(i%10==0)  System.out.println();
         }
          System.out.println();
-         System.out.println("Cost = " + sol.getCostSolution());
+         System.out.println("Cost = " + sol.getCost(Ctrl.getCity()));
          System.out.println();
     }
 }

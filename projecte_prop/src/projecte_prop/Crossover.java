@@ -15,7 +15,7 @@ public class Crossover {
     public static Tour crossover(Tour parent1, Tour parent2){
         Tour child = new Tour();
         npunts = parent1.size();
-        Element E = new Element(-1);
+        Punt E = new Punt(-1);
         
         int startPos = (int)(Math.random() * npunts);
         int endPos = (int)(Math.random() * npunts);
@@ -48,7 +48,7 @@ public class Crossover {
         npunts = parent1.size();
         Tour child = new Tour();        
         int ciutatActual = (int)(Math.random() * npunts);
-        Element E = new Element(ciutatActual);
+        Punt E = new Punt(ciutatActual);
         
         ArrayList<ArrayList<Integer>> costs = startCosts(C, parent1, parent2);
         boolean[] visitat = new boolean[npunts];
@@ -71,7 +71,7 @@ public class Crossover {
                 System.out.println();
             }*/
             
-            E = new Element(ciutatActual);
+            E = new Punt(ciutatActual);
             //System.out.println("element actual: " +  E.getID());
             child.addElement(E);
             visitat[ciutatActual] = true;

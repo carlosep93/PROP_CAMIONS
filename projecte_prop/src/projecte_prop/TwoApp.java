@@ -39,12 +39,12 @@ public class TwoApp {
     
         private static Tour getEtour(int size,List<Integer> l,List<Integer> id) {
         Tour t = new Tour();
-        Element E;
+        Punt E;
         int pos;
         boolean[] visited = new boolean[size];
         while (!l.isEmpty()) {
             if (!visited[l.get(0)]) {
-                E = new Element(id.get(l.get(0)));
+                E = new Punt(id.get(l.get(0)));
                 t.addElement(E);
                 visited[l.get(0)] = true;
                 l.remove(0);

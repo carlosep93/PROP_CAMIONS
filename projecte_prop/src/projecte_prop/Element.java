@@ -14,6 +14,11 @@ public  class Element {
         enabled = true;     
     }
     
+    public Element(int id){
+        this.id = id;
+        enabled = true;
+    }
+    
     public Element(boolean newenabled) {
         id = id_glob;
         ++id_glob;

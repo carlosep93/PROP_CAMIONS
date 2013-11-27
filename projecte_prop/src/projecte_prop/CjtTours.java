@@ -62,7 +62,7 @@ public class CjtTours {
         \post   S'ha afegit l'element E en la posició del tour que esta en la posició x del cjttours, en la posició y.
     */
     
-    public void addElementTour(int x, int y, Element E) {
+    public void addElementTour(int x, int y, Punt E) {
         cjtTours[x].addElement(E,y);
     }
     
