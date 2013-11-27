@@ -44,7 +44,7 @@ public class Vista extends javax.swing.JFrame {
         LayerFOTO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
         IMAGEN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        IMAGEN.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Controladors/BCN.jpg"))); // NOI18N
+        IMAGEN.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/capa_presentació/BCN.jpg"))); // NOI18N
         IMAGEN.setEnabled(false);
         IMAGEN.setBounds(0, 0, 300, 300);
         LayerFOTO.add(IMAGEN, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -54,7 +54,7 @@ public class Vista extends javax.swing.JFrame {
         PanelPrincipalLayout.setHorizontalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(440, Short.MAX_VALUE)
+                .addContainerGap(431, Short.MAX_VALUE)
                 .addComponent(LayerFOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -72,7 +72,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+            .addGap(0, 737, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +85,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+            .addGap(0, 737, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +98,7 @@ public class Vista extends javax.swing.JFrame {
         PanelOpcions.setLayout(PanelOpcionsLayout);
         PanelOpcionsLayout.setHorizontalGroup(
             PanelOpcionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabAnealing, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(TabAnealing, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
         );
         PanelOpcionsLayout.setVerticalGroup(
             PanelOpcionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +113,7 @@ public class Vista extends javax.swing.JFrame {
         PanelElements.setLayout(PanelElementsLayout);
         PanelElementsLayout.setHorizontalGroup(
             PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 742, Short.MAX_VALUE)
         );
         PanelElementsLayout.setVerticalGroup(
             PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +134,7 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PANELS, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(PANELS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
