@@ -25,8 +25,18 @@ import java.io.File;
 // s'han de guardar: ELEMENTS, ADJACENCIES, SOLUCIONS
 public class Gestor_Dades {
     
-      
+    static String pathload_Element;
+    static String pathload_Solution;
+    static String pathload_Adjacencies;
+    
+    static String pathstore_Element;
+    static String pathstore_Solution;
+    static String pathstore_Adjacencies;
    
+    //"src/Fitxers/saved_adjacencys.txt‏"
+    //"src\\Fitxers\\saved_adjacencys.txt"
+    
+    
     public static List<List<Integer>> carregar_adjacencies(String path){
         
         List <List<Integer>>  adjacencies = new ArrayList();
@@ -111,44 +121,21 @@ public class Gestor_Dades {
     
     public static void canviar_path_adjacencies_load(String path){
          
-         edit_path_adjacencies_load(path);
-        
+         pathload_Adjacencies = path;     
     }
     
     public static void canviar_path_adjacencies_store(String path){
          
-         edit_path_adjacencies_store(path);
-        
+         pathstore_Adjacencies = path;   
     }
     
-    public static void path_adjacencies(String SO){ 
-       if(SO == "Linux"){
-          edit_path_adjacencies_store("src/Fitxers/saved_adjacencys.txt‏");
-          edit_path_adjacencies_load("src/Fitxers/saved_adjacencys.txt‏");
-       }
-       else{
-          edit_path_adjacencies_load("src\\Fitxers\\saved_adjacencys.txt");
-           edit_path_adjacencies_store("src\\Fitxers\\saved_adjacencys.txt");
-       } 
-    }
-    
-    public static void canviar_path_elements(String path){
-         edit_path_elements_load(path);
-         edit_path_elements_store(path);
-         
-    }
-    
-    public static String get_path_actual_load(){
-        return get_path_adjacencies_load();      
+    public static String get_path_adjacencies_load(){
+        return pathload_Adjacencies;    
     }
  
-    public static String get_path_actual_store(){
-        return get_path_adjacencies_store();      
+    public static String get_path_adjacencies_store(){
+        return pathstore_Adjacencies;      
     }
- 
- 
- 
- 
  
   //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
    
@@ -156,7 +143,7 @@ public class Gestor_Dades {
         List<Element> saved_elements = new ArrayList<Element>() ; 
      
         try{
-         String path = get_path_elements_load();
+         String path = pathload_Element;
            
            File file = new File(path);
            Scanner sc = new Scanner(file);
