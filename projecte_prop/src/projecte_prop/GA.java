@@ -1,11 +1,5 @@
 
 package projecte_prop;
-/**
- *
- * @author josep
- */
-
-import Controladors.CtrlDomini;
 
 //quan usem el driver de TspGA:
 /*  import Stubs.CjtTours;
@@ -16,7 +10,7 @@ import Controladors.CtrlDomini;
     import Stubs.CtrlDomini;
     import Stubs.Ciutat;*/
 
-public class TspGA {
+public class GA extends Tsp{
     //nombre de generacions sense variar per donar una solució per bona
     private static int stopCondition;
     //max de generacions que es crearan
@@ -34,7 +28,7 @@ public class TspGA {
     //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    public static Tour TspGA(Ciutat C, int StopCondition, int NGeneracions, int NTours, 
+    public static Solution calSol(Ciutat C, int StopCondition, int NGeneracions, int NTours, 
             boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
             boolean Mutate2, double MutationRate, double MutationSwapProbability){
         
@@ -81,7 +75,7 @@ public class TspGA {
     }
     
     
-    private static CjtTours envolvePopulation(Ciutat C, CjtTours pop, boolean  Rouletewheel_TS, boolean Edge_crossover, boolean Mutate2){
+    private static CjtTours evolvePopulation(Ciutat C, CjtTours pop, boolean  Rouletewheel_TS, Crossover C, boolean Mutate2){
         CjtTours newPopulation = new CjtTours(nTours);
         Tour T = new Tour();
         int elitismOffset = 0;
@@ -104,7 +98,7 @@ public class TspGA {
             }
             if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(C, parent1,parent2));
             else {
-                T = Crossover.crossover(parent1, parent2);
+                T = C.getChild(parent1, parent2);
                 newPopulation.addTour(i, T);
             } 
         }

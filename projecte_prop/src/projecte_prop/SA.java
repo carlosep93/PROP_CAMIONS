@@ -1,17 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projecte_prop;
 
-import Controladors.CtrlDomini;
 /*import Stubs.Tour;
 import Stubs.CtrlDomini;
 import Stubs.CjtTours;
 import Stubs.Mutate;
 import Stubs.TwoApp;*/
 
-public class TspSA {
+public class SA extends Local{
     static double temperature;
     static double cooling;
    

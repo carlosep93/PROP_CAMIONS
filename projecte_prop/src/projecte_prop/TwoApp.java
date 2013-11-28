@@ -1,15 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projecte_prop;
+
 import java.util.List;
 import java.util.ArrayList;
-/**
- *
- * @author joanbarrosogarrido
- */
-public class TwoApp {
+
+public class TwoApp extends InitialSolGenerator{
     
     
     public static Tour Twoapp(int[][] M, List<Integer> id) {
