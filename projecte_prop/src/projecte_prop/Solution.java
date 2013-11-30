@@ -1,4 +1,4 @@
-
+/*
 package projecte_prop;
 
 import java.util.Date;
@@ -35,4 +35,4 @@ public class Solution extends Tour {
     
     
     
-}
+}*/

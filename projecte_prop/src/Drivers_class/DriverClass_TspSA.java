@@ -8,7 +8,7 @@ package Drivers_class;
  *
  * @author Carlos2
  */
-import projecte_prop.TspSA;
+import projecte_prop.Tsp_SA;
 //import Stubs.Tour;
 import projecte_prop.Tour;
 import java.util.List;
@@ -40,7 +40,7 @@ public class DriverClass_TspSA {
         p = sc.nextInt();
         
         Tour T;
-        T = TspSA.TspSA(temp, cool, p);
+        T = Tsp_SA.TspSA(temp, cool, p);
         
         for (int i=0;i<T.size();++i) {
             T.getElementPos(i).getNom();

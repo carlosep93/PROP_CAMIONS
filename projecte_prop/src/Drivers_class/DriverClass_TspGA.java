@@ -5,7 +5,7 @@ package Drivers_class;
  * @author josep
  */
 
-import projecte_prop.TspGA;
+import projecte_prop.Tsp_GA;
 import java.util.Scanner;
 import projecte_prop.Tour;
 //import Stubs.Tour;
@@ -55,7 +55,7 @@ public class DriverClass_TspGA {
         else MutationSwapProbability = 0;
         
         Tour T;
-        T = TspGA.TspGA(StopCondition, NGeneracions, NTours, Elitism, Rouletewheel_TS, TournamentSize, 
+        T = Tsp_GA.TspGA(StopCondition, NGeneracions, NTours, Elitism, Rouletewheel_TS, TournamentSize, 
         Edge_crossover, Mutate2, MutationRate, MutationSwapProbability);
         
         for(int i = 0; i < T.size(); ++i){

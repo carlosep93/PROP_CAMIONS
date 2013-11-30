@@ -30,6 +30,27 @@ public class Tour {
         cost = -1;
     }
     
+    public Tour(Tour t){
+        this.nElements = t.size();
+        for(int i = 0; i < nElements; ++i){
+            this.cjtElem.add(i, t.getElementPos(i));
+        }
+    }
+    
+    public void setNElements(int nElements){
+        this.nElements = nElements;
+    }
+    
+    public void setCost(int cost){
+        this.cost = cost;
+    }
+    
+    public void setCjtElem(ArrayList<Punt> cjtElem){
+        for(int i = 0; i < nElements; ++i){
+            replaceElement(cjtElem.get(i), i);
+        }
+    }
+    
     /** @brief Afegeix un objecte Element al l'objecte Tour
 \pre L'element no sigui buit i l'element E no està al Tour
 \post S'ha afegit l'Element E a la última posició del Tour

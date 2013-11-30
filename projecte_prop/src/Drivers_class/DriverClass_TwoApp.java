@@ -8,7 +8,7 @@ package Drivers_class;
  *
  * @author joanbarrosogarrido
  */
-import projecte_prop.TwoApp;
+import projecte_prop.InitialSolGenerator_TwoApp;
 import projecte_prop.Tour;
 import java.util.Scanner;
 import java.util.List;
@@ -61,7 +61,7 @@ public class DriverClass_TwoApp {
                     }
                 }
                 System.out.println("Amb aquestes dades, cridem a la funcio twoapp:");
-                Tour t = TwoApp.Twoapp(M,id);
+                Tour t = InitialSolGenerator_TwoApp.Twoapp(M,id);
                 for (int i = 0; i < M.length; ++i) {
                     System.out.print(t.getElementPos(i).getID() +" ");
                 }

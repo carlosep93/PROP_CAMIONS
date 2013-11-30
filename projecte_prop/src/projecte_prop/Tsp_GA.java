@@ -1,11 +1,5 @@
 
 package projecte_prop;
-/**
- *
- * @author josep
- */
-
-import Controladors.CtrlDomini;
 
 //quan usem el driver de TspGA:
 /*  import Stubs.CjtTours;
@@ -16,25 +10,25 @@ import Controladors.CtrlDomini;
     import Stubs.CtrlDomini;
     import Stubs.Ciutat;*/
 
-public class TspGA {
+public class Tsp_GA extends Tsp{
     //nombre de generacions sense variar per donar una solució per bona
-    private static int stopCondition;
+    private int stopCondition;
     //max de generacions que es crearan
-    private static int nGeneracions;
+    private int nGeneracions;
     //numero de punts
-    private static int nPunts;
+    private int nPunts;
     
-    public static int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
-    private static boolean elitism = true;        //guarda el millor de cada generació a la posició de population
-    private static int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
-    private static double mutationRate = 0.015;    //rati deom mutació
-    private static double mutationSwapProbability = 0.90;
+    public int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
+    private boolean elitism = true;        //guarda el millor de cada generació a la posició de population
+    private int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
+    private double mutationRate = 0.015;    //rati deom mutació
+    private double mutationSwapProbability = 0.90;
     
     
     //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    public static Tour TspGA(Ciutat C, int StopCondition, int NGeneracions, int NTours, 
+    @Override public Solution calSol(Ciutat C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
             boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
             boolean Mutate2, double MutationRate, double MutationSwapProbability){
         
@@ -48,7 +42,11 @@ public class TspGA {
 
         nPunts = C.num_Elements();                                         
         
-        CjtTours pop = ompla_pop(C);
+        
+        CjtTours pop = new CjtTours(nTours);
+        for(int i = 0; i < C.num_Elements(); ++i){
+            isg.generateInitialSol(C);
+        }
         
         Tour Fittest = pop.getFittestTour(C);
         int Fitness = pop.getFitness(C); 
@@ -81,7 +79,7 @@ public class TspGA {
     }
     
     
-    private static CjtTours envolvePopulation(Ciutat C, CjtTours pop, boolean  Rouletewheel_TS, boolean Edge_crossover, boolean Mutate2){
+    private CjtTours evolvePopulation(Ciutat C, CjtTours pop, boolean  Rouletewheel_TS, Crossover C, boolean Mutate2){
         CjtTours newPopulation = new CjtTours(nTours);
         Tour T = new Tour();
         int elitismOffset = 0;
@@ -104,7 +102,7 @@ public class TspGA {
             }
             if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(C, parent1,parent2));
             else {
-                T = Crossover.crossover(parent1, parent2);
+                T = C.getChild(parent1, parent2);
                 newPopulation.addTour(i, T);
             } 
         }
@@ -118,27 +116,7 @@ public class TspGA {
        return newPopulation;
     }
     
-    /** @brief  Procès que ompla el CjtTours
-        \pre    El CjtTours és buit i la ciutat del CtrlDomini contè algún Element
-        \post   S'ha omplert el CjtTours pop amb els Elements de la Ciutat del CtrlDomini, i després s'han desordenat de manera aleatòria
-    */
-    private static CjtTours ompla_pop(Ciutat C){
-        //Creem la populaiton
-        CjtTours pop = new CjtTours(nTours);
-        
-        //omplim la population
-        Tour t = C.get_Tour();
-        for(int i = 0; i < nTours; ++i){
-            pop.addTour(i,t);
-        }
-
-        //es fa un suffle de la population inicial
-        for(int i = 0; i < nPunts/4; ++i){
-            Tour T = new Tour();
-            for(int ii = 0; ii < nTours; ++ii){
-                pop.getTour(ii).swap((int)(Math.random() * nPunts), (int)(Math.random() * nPunts));
-            }
-        }
-        return pop;
+    @Override public Tour TspSA(Ciutat C, double temp, double cool,int p){
+        return null;
     }
 }
