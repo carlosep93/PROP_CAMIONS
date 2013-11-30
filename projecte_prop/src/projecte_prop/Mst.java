@@ -10,7 +10,7 @@ package projecte_prop;
  */
 public class Mst {
 
-    public static int[][] prim(int[][] M) {
+    public static int[][] prim() {
         boolean[] visited = new boolean[M.length];
         int vertex = 0;
         int[][] finalM = new int[M.length][M.length];
