@@ -28,7 +28,7 @@ public class Tsp_GA extends Tsp{
     //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    @Override public Solution calSol(Ciutat C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
+    @Override public Tour calSol(City C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
             boolean Elitism, TournamentSelection ts, int TournamentSize, Crossover cross,
             Mutate mut, double MutationRate, double MutationSwapProbability, double temp, double cool, int p){
         
@@ -40,11 +40,11 @@ public class Tsp_GA extends Tsp{
         mutationRate = MutationRate;
         mutationSwapProbability = MutationSwapProbability;
 
-        nPunts = C.num_Elements();                                         
+        nPunts = C.getPunts().size();                                         
         
         
         CjtTours pop = new CjtTours(nTours);
-        for(int i = 0; i < C.num_Elements(); ++i){
+        for(int i = 0; i < nPunts; ++i){
             isg.generateInitialSol(C);
         }
         
@@ -74,12 +74,11 @@ public class Tsp_GA extends Tsp{
         }
 
         //escriu la ruta més òptima
-        //System.out.println("La ruta final és: ");
         return Fittest;
     }
     
     
-    private CjtTours evolvePopulation(Ciutat C, CjtTours pop, TournamentSelection ts, Crossover cross, Mutate mut){
+    private CjtTours evolvePopulation(City C, CjtTours pop, TournamentSelection ts, Crossover cross, Mutate mut){
         CjtTours newPopulation = new CjtTours(nTours);
         Tour T = new Tour();
         int elitismOffset = 0;

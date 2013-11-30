@@ -23,13 +23,6 @@ public class Tour {
         cost = -1;
     }
     
-    public Tour(int mida){
-        cjtElem = new ArrayList<Punt>();
-        for(int i = 0; i < mida; ++i) cjtElem.add(new Punt(i));
-        nElements = mida;
-        cost = -1;
-    }
-    
     public Tour(Tour t){
         this.nElements = t.size();
         for(int i = 0; i < nElements; ++i){
@@ -37,17 +30,9 @@ public class Tour {
         }
     }
     
-    public void setNElements(int nElements){
-        this.nElements = nElements;
-    }
-    
-    public void setCost(int cost){
-        this.cost = cost;
-    }
-    
-    public void setCjtElem(ArrayList<Punt> cjtElem){
-        for(int i = 0; i < nElements; ++i){
-            replaceElement(cjtElem.get(i), i);
+    public void setCjtElem(List<Punt> llp){
+        for(int i = 0; i < llp.size(); ++i){
+            addElement(llp.get(i));
         }
     }
     
@@ -265,16 +250,15 @@ public class Tour {
 \pre
 \post Retorna el cost de recòrrer tots els Elements del Tour en l'ordre
 */
-    public int getCost(Ciutat C){
+    public int getCost(City C){
         if(cost == -1){
             if (nElements == 0 || nElements == 1) return 0;
             else{
-                Relations R = C.get_Relations();
                 cost = 0;
                 for(int i = 0; i < nElements-1; ++i){
-                    cost += R.getCost(cjtElem.get(i), cjtElem.get(i+1));
+                    cost += C.getCost(cjtElem.get(i), cjtElem.get(i+1));
                 }
-                cost += R.getCost(cjtElem.get(0),cjtElem.get(nElements-1));
+                cost += C.getCost(cjtElem.get(0),cjtElem.get(nElements-1));
             }
 
         }

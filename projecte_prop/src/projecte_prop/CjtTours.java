@@ -72,7 +72,7 @@ public class CjtTours {
     */
     
 
-    public int getFitness(Ciutat C) {
+    public int getFitness(City C) {
         return getFittestTour(C).getCost(C);
     }
 
@@ -93,7 +93,7 @@ public class CjtTours {
         \post   retorna el cost del tour situat en la posició idTour en el cjtTour
     */
     
-    public int getCostTour(Ciutat C, int idTour) {
+    public int getCostTour(City C, int idTour) {
         return cjtTours[idTour].getCost(C);
     }
     
@@ -103,7 +103,7 @@ public class CjtTours {
         \post   es retorna el Tour amb el cost de pasar per tots els seus elements és el més baix del conjunt
     */
     
-    public  Tour getFittestTour(Ciutat C){ 
+    public  Tour getFittestTour(City C){ 
         int idTour = 0;
         for (int i = 1; i < nTours; ++i) {
             if (cjtTours[idTour].getCost(C) > cjtTours[i].getCost(C)) idTour = i;

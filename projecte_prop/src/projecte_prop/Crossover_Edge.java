@@ -7,7 +7,7 @@ public class Crossover_Edge extends Crossover{
     
     private static int npunts;
     
-    @Override public Tour getChild(Ciutat C, Tour parent1, Tour parent2){
+    @Override public Tour getChild(City C, Tour parent1, Tour parent2){
         npunts = parent1.size();
         Tour child = new Tour();        
         int ciutatActual = (int)(Math.random() * npunts);
@@ -40,7 +40,7 @@ public class Crossover_Edge extends Crossover{
         return child;
     }
     
-    private static ArrayList<ArrayList<Integer>> startCosts(Ciutat C, Tour parent1, Tour parent2){
+    private static ArrayList<ArrayList<Integer>> startCosts(City C, Tour parent1, Tour parent2){
         
         ArrayList<ArrayList<Integer>> costs = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> aux = new ArrayList<Integer>();
