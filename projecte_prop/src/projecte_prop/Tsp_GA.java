@@ -29,8 +29,8 @@ public class Tsp_GA extends Tsp{
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
     @Override public Solution calSol(Ciutat C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
-            boolean Elitism, boolean Rouletewheel_TS, int TournamentSize, boolean Edge_crossover,
-            boolean Mutate2, double MutationRate, double MutationSwapProbability){
+            boolean Elitism, TournamentSelection ts, int TournamentSize, Crossover cross,
+            Mutate mut, double MutationRate, double MutationSwapProbability, double temp, double cool, int p){
         
         stopCondition = StopCondition;
         nGeneracions = NGeneracions;
@@ -56,7 +56,7 @@ public class Tsp_GA extends Tsp{
         for(int i = 1; i <= nGeneracions; ++i){
             //evoluciona la població en una generació
             
-            pop = envolvePopulation(C, pop, Rouletewheel_TS, Edge_crossover, Mutate2);
+            pop = evolvePopulation(C, pop, ts, cross, mut);
                     
             System.out.println("Generació " + i + "     Fitness: " + Fitness);
 
@@ -79,7 +79,7 @@ public class Tsp_GA extends Tsp{
     }
     
     
-    private CjtTours evolvePopulation(Ciutat C, CjtTours pop, boolean  Rouletewheel_TS, Crossover C, boolean Mutate2){
+    private CjtTours evolvePopulation(Ciutat C, CjtTours pop, TournamentSelection ts, Crossover cross, Mutate mut){
         CjtTours newPopulation = new CjtTours(nTours);
         Tour T = new Tour();
         int elitismOffset = 0;
@@ -90,33 +90,18 @@ public class Tsp_GA extends Tsp{
         
         //Crossover population
         for(int i = elitismOffset; i < nTours; ++i){
-            Tour parent1 = new Tour();
-            Tour parent2 = new Tour();
-            if(Rouletewheel_TS){
-                parent1 = TournamentSelection.tournamentSelection_roulettewheel(C, pop);
-                parent2 = TournamentSelection.tournamentSelection_roulettewheel(C, pop);
-            }
-            else{
-                parent1 = TournamentSelection.tournamentSelection(C, pop, tournamentSize);
-                parent2 = TournamentSelection.tournamentSelection(C, pop, tournamentSize);
-            }
-            if(Edge_crossover) newPopulation.addTour(i, Crossover.crossover_edgeRecombination(C, parent1,parent2));
-            else {
-                T = C.getChild(parent1, parent2);
-                newPopulation.addTour(i, T);
-            } 
+            Tour parent1 = ts.selTour(C, pop, tournamentSize);
+            Tour parent2 = ts.selTour(C, pop, tournamentSize);
+            
+            T = cross.getChild(C, parent1, parent2);
+
         }
+        //muta els nous tours de la població
         for(int i = elitismOffset; i < nTours; ++i){
-            if(Mutate2) newPopulation.addTour(i, Mutate.mutate2(C, newPopulation.getTour(i),mutationRate, mutationSwapProbability));
-            else{
-                T = Mutate.mutate(T, mutationRate);
-                newPopulation.addTour(i, T);
-            }
-        }        
-       return newPopulation;
-    }
-    
-    @Override public Tour TspSA(Ciutat C, double temp, double cool,int p){
-        return null;
+            newPopulation.addTour(i, mut.mutate(C, newPopulation.getTour(i),mutationRate, mutationSwapProbability));
+        }
+        
+        //retorna la nova població amb una generació més
+        return newPopulation;
     }
 }

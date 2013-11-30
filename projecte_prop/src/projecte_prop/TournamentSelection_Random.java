@@ -12,11 +12,11 @@ public class TournamentSelection_Random extends TournamentSelection{
         Tour Fittest = new Tour();
         boolean ini = false;
         for(int i = 0; i < tournamentSize; ++i){
-            int randomId = (int)(Math.random() * Tsp_GA.nTours);
+            int randomId = (int)(Math.random() * pop.sizeCjtTours());
             if(!ini){
                 Fittest = pop.getTour(randomId);
                 Fitness = Fittest.getCost(C);
-                ini=true;
+                ini = true;
             }
             else if(Fitness > pop.getCostTour(C, randomId)){
                 Fittest = pop.getTour(randomId);
@@ -24,9 +24,5 @@ public class TournamentSelection_Random extends TournamentSelection{
             }
         }
         return Fittest;
-    }
-    
-    @Override public Tour selTour(Ciutat C, CjtTours pop){
-        return null;
     }
 }

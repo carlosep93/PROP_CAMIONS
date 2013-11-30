@@ -9,7 +9,7 @@ public class InitialSolGenerator_Random extends InitialSolGenerator{
     \pre    El CjtTours és buit i la ciutat del CtrlDomini contè algún Element
     \post   S'ha omplert el CjtTours pop amb els Elements de la Ciutat del CtrlDomini, i després s'han desordenat de manera aleatòria
     */
-    @Override public Tour generateInitialSol(Ciutat C){
+    @Override public Tour generateInitialSol(Ciutat C, int[][] M, List<Integer> id){
         //omplim la population
         Tour t = new Tour(C.get_Tour());
 
@@ -18,9 +18,5 @@ public class InitialSolGenerator_Random extends InitialSolGenerator{
             t.swap((int)(Math.random() * t.size()), (int)(Math.random() * t.size()));
         }
         return t;
-    }
-    
-    @Override public Tour generateInitialSol(int[][] M, List<Integer> id){
-        return null;
     }
 }

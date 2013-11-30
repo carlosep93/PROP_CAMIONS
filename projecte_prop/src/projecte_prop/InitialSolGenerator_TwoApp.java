@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
     
-    public Tour generateInitialSol(int[][] M, List<Integer> id){
+    @Override public Tour generateInitialSol(Ciutat C, int[][] M, List<Integer> id){
         int [][] mst = Mst.prim(M);
         List<Integer> l = new ArrayList<Integer>();
         getEpath(mst,l,0);
