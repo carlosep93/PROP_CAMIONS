@@ -3,7 +3,7 @@ package projecte_prop;
 
 public class Mutate_Rate extends Mutate{
     
-    @Override public Tour mutate(Tour tour, double mutationRate){
+    @Override public Tour mutate(Ciutat C, Tour tour, double mutationRate, double mutationSwapProbability){
         int mida = tour.size();
         for(int i = 0; i < mida; ++i){
             if(Math.random() <= mutationRate){
@@ -16,10 +16,4 @@ public class Mutate_Rate extends Mutate{
         }
         return tour;
     }
-    
-    @Override public Tour mutate(Ciutat C, Tour tour, double mutationRate, double mutationSwapProbability){
-        return null;
-    }
-    
-    @Override public void  mutate(Ciutat C, Tour tour){ }
 }

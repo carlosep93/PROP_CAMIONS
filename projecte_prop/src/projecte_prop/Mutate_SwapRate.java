@@ -34,10 +34,4 @@ public class Mutate_SwapRate {
             else return mutated;
         }
     }
-    
-    public Tour mutate(Tour tour, double mutationRate){
-        return null;
-    }
-    
-    public void  mutate(Ciutat C, Tour tour){ }
 }

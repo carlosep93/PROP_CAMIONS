@@ -7,16 +7,18 @@ import java.util.ArrayList;
 public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
     
-    public Solution generateInitialSol(City C){
+    public Solution generateInitialSol(City C, int[][] M, List<Integer> id){
         List<Element> le = C.getElements();
         List<List<Relation> > llr = C.getRelations();
         
         
         /*int [][] mst = Mst.prim(M);
+
+    @Override public Tour generateInitialSol(Ciutat C, int[][] M, List<Integer> id){
+        int [][] mst = Mst.prim(M);
         List<Integer> l = new ArrayList<Integer>();
         getEpath(mst,l,0);
         return getEtour(mst.length,l,id);
-        */
     }
         
     private void getEpath(int[][] mst,List<Integer> l, int pos) {

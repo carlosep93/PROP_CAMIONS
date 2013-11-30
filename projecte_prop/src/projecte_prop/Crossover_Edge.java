@@ -74,18 +74,15 @@ public class Crossover_Edge extends Crossover{
         return costs;
     }
     
-    public static void entraCiu(Ciutat C, int origen, int desti, ArrayList<ArrayList<Integer>> con){
+    public static void entraCiu(City C, int origen, int desti, ArrayList<ArrayList<Integer>> con){
         boolean introduit = con.get(origen).contains(desti);
+        
         for(int i = 0; i < 4 && !introduit; ++i){
-            if(i == con.get(origen).size() || C.get_Relations().getCost(origen, con.get(origen).get(i)) 
-                    > C.get_Relations().getCost(origen, desti)){
+            if(i == con.get(origen).size() || C.getAdjacency().get(origen).get(con.get(origen).get(i)) 
+                    > C.getAdjacency().get(origen).get(desti)){
                 con.get(origen).add(i, desti);
                 introduit = true;
             }
         }
-    }
-   
-    @Override public Tour getChild(Tour parent1, Tour parent2){
-        return null;
     }
 }

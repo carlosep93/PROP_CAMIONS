@@ -3,7 +3,7 @@ package projecte_prop;
 
 public class Mutate_Little {
     
-    public static void  mutate(Ciutat C, Tour tour){
+    public static void  mutate(Ciutat C, Tour tour, double mutationRate, double mutationSwapProbability){
         if (tour.size()>=1){ 
             int max1 = C.get_Relations().getCost(tour.getElementPos(0).getID(),
                     tour.getElementPos(1).getID());        
@@ -25,13 +25,4 @@ public class Mutate_Little {
             tour.swap(pos1,pos2);
         }
     }
-    
-    public Tour mutate(Tour tour, double mutationRate){
-        return null;
-    }
-    
-    public Tour mutate(Ciutat C, Tour tour, double mutationRate, double mutationSwapProbability){
-        return null;
-    }
-    
 }
