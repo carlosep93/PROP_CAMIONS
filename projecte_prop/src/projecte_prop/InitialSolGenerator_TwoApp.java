@@ -4,17 +4,17 @@ package projecte_prop;
 import java.util.List;
 import java.util.ArrayList;
 
-public class TwoApp extends InitialSolGenerator{
+public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
     
-    public static Tour Twoapp(int[][] M, List<Integer> id) {
+    public Tour generateInitialSol(int[][] M, List<Integer> id){
         int [][] mst = Mst.prim(M);
         List<Integer> l = new ArrayList<Integer>();
         getEpath(mst,l,0);
         return getEtour(mst.length,l,id);
     }
         
-    private static void getEpath(int[][] mst,List<Integer> l, int pos) {
+    private void getEpath(int[][] mst,List<Integer> l, int pos) {
         l.add(pos);
         if(child(mst[pos])) {
             for(int i = 0; i < mst.length ; ++i) {
@@ -25,14 +25,14 @@ public class TwoApp extends InitialSolGenerator{
             }
         }
     }
-    private static boolean child(int[] mst) {
+    private boolean child(int[] mst) {
         for(int i = 0; i < mst.length ;++i) {
             if (mst[i] > 0) return true;
         }
         return false;
     }
     
-        private static Tour getEtour(int size,List<Integer> l,List<Integer> id) {
+    private Tour getEtour(int size,List<Integer> l,List<Integer> id) {
         Tour t = new Tour();
         Punt E;
         int pos;
@@ -51,4 +51,7 @@ public class TwoApp extends InitialSolGenerator{
         return t;
     }
 
+    public Tour generateInitialSol(Ciutat C){
+        return null;
+    }
 }

@@ -12,7 +12,7 @@ public class TournamentSelection_Random extends TournamentSelection{
         Tour Fittest = new Tour();
         boolean ini = false;
         for(int i = 0; i < tournamentSize; ++i){
-            int randomId = (int)(Math.random() * GA.nTours);
+            int randomId = (int)(Math.random() * Tsp_GA.nTours);
             if(!ini){
                 Fittest = pop.getTour(randomId);
                 Fitness = Fittest.getCost(C);
