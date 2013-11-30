@@ -9,7 +9,9 @@ public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
     public Solution generateInitialSol(City C){
         List<Element> le = C.getElements();
-        List<List<Relation> > llr = C.getRelations();
+        List<List<Integer>> llr = C.getAdjacency();
+        Tour T = new Tour();
+        
         
         
         /*int [][] mst = Mst.prim(M);

@@ -6,7 +6,6 @@ package projecte_prop;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner; 
 
 /**
  *
@@ -17,25 +16,23 @@ import java.util.Scanner;
 public class City {
     
     List<List<Integer>> llr;
-    List <Element> le;
     String nom;
     List<Punt> lp;
     
     public City(String nom) {
          llr = new ArrayList <List<Integer>>();
-         le = new ArrayList<Element>();
          lp = new ArrayList<Punt>();
          this.nom = nom;
     }
     
-   public void addElement(Element E, Relation[] v) {
+   public void addElement(Punt P, Relation[] v) {
        List<Integer> aux = new ArrayList<Integer>();
        for (int i = 0; i < v.length; ++i) {
            aux.add(v[i].getValue());
            llr.get(i).add(v[i].getValue());
        }
-       llr.add(E.getID(), aux);
-       le.add(E.getID(),E);
+       llr.add(P.getID(), aux);
+       lp.add(P.getID(),P);
    }
    
    
@@ -53,7 +50,7 @@ public class City {
     }
     
     public boolean isEnabled(int id) {
-        return le.get(id).isEnabled();
+        return lp.get(id).isEnabled();
     }
     
     
@@ -65,7 +62,7 @@ public class City {
         \post   L'element indicat per el parametre id es marca com esborrat
     */
     public void erase(int id){
-        le.get(id).modifyEnabled(false);
+        lp.get(id).modifyEnabled(false);
     }
     
         /** @brief  Habilita un element de la Relations
@@ -73,7 +70,7 @@ public class City {
         \post   L'element indicat per el parametre id es marca com habilitat
     */
     public void enable(int id) {
-        le.get(id).modifyEnabled(true);
+        lp.get(id).modifyEnabled(true);
     }
     /** @brief  Agefeix un element a la Relation
         \pre    La Relation ha de estar inicialitzada    
@@ -185,10 +182,7 @@ public class City {
     public List<List<Integer>> getAdjacency(){
         return llr;
     }
-    
-    public List<Element> getElements() {
-        return le;
-    }
+
     
     public String getNom() {
         return nom;
