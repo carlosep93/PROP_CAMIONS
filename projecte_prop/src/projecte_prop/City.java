@@ -16,24 +16,23 @@ import java.util.Scanner;
 
 public class City {
     
-    List <List<Relation>> llr;
+    List<List<Integer>> llr;
     List <Element> le;
     String nom;
+    List<Punt> lp;
     
     public City(String nom) {
-         llr = new ArrayList <List<Relation>>();
+         llr = new ArrayList <List<Integer>>();
          le = new ArrayList<Element>();
+         lp = new ArrayList<Punt>();
          this.nom = nom;
     }
     
    public void addElement(Element E, Relation[] v) {
-       List<Relation> aux = new ArrayList<Relation>();
-       List<Relation> aux1 = new ArrayList<Relation>();
+       List<Integer> aux = new ArrayList<Integer>();
        for (int i = 0; i < v.length; ++i) {
-           aux.add(v[i]);
-           aux1 = llr.get(i);
-           aux1.add(v[i]);
-           llr.set(i,aux1);
+           aux.add(v[i].getValue());
+           llr.get(i).add(v[i].getValue());
        }
        llr.add(E.getID(), aux);
        le.add(E.getID(),E);
@@ -42,16 +41,15 @@ public class City {
    
    //pre: llr !buida
    public int getCost(int id1, int id2) {
-        Relation R = llr.get(id1).get(id2);
-        return R.getValue();
+        return llr.get(id1).get(id2);
+
         
     }
     
     public int getCost(Element e1,Element e2) {
         int id1 = e1.getID();
         int id2 = e2.getID();
-        Relation R = llr.get(id1).get(id2);
-        return R.getValue();
+        return llr.get(id1).get(id2);
     }
     
     public boolean isEnabled(int id) {
@@ -184,7 +182,7 @@ public class City {
     */    
 
     
-    public List<List<Relation>> getAdjacency(){
+    public List<List<Integer>> getAdjacency(){
         return llr;
     }
     
@@ -196,6 +194,9 @@ public class City {
         return nom;
     }
     
+    public List<Punt> getPunts() {
+        return lp;
+    }
 
     /*public String toString(int id) {
         return lli.get(id).toString();        
