@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
     
-    public Solution generateInitialSol(City C, int[][] M, List<Integer> id){
-        List<Element> le = C.getElements();
-        List<List<Integer>> llr = C.getAdjacency();
-        Tour T = new Tour();
+    public Tour generateInitialSol(City C){
+        //List<Punt> lp = C.getPunts();
+        //List<List<Integer>> llr = C.getAdjacency();
+        ArrayList<ArrayList<Integer>> mst = prim(C);
         
         
         
@@ -20,7 +20,7 @@ public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         int [][] mst = Mst.prim(M);
         List<Integer> l = new ArrayList<Integer>();
         getEpath(mst,l,0);
-        return getEtour(mst.length,l,id);
+        return getEtour(mst.length,l,id);*/
     }
         
     private void getEpath(int[][] mst,List<Integer> l, int pos) {
