@@ -35,8 +35,9 @@ public class Mst {
         List<Punt> lp = C.getPunts();
         List<List<Integer>> llr = C.getAdjacency();
         List<Relation> lr = new ArrayList<Relation>();
-        Comparator<Relation> comparator = new RelationComparator();
-        Queue<Relation> pqr = new PriorityQueue(0,Comparator);
+        Comparator<Relation> comparator = new PQsort();
+        PQsort sort = new PQsort();
+        Queue<Relation> pqr = new PriorityQueue(0,sort);
         
         return mst;
     }
@@ -89,3 +90,4 @@ public class Mst {
         return v; // si se ha salido del loop será  falso, si se ha recorrido entero y el último no era, será true.
     }
 }
+* */
