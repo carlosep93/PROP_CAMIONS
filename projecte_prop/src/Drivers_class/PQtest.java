@@ -15,7 +15,7 @@ public class PQtest {
     
     public static void main(String args[]) {
         PQsort sort = new PQsort();
-        PriorityQueue<Relation> PQ = new PriorityQueue<Relation>(8,sort);
+        PriorityQueue<Relation> PQ = new PriorityQueue<Relation>(1,sort);
         Relation R = new Relation(0,1,20);
         PQ.add(R);
         R = new Relation(0,2,201);

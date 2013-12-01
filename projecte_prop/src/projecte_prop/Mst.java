@@ -18,7 +18,7 @@ public class Mst {
     public static ArrayList<ArrayList<Integer>> prim(City C) {
         ArrayList<ArrayList<Integer>> mst = new ArrayList<ArrayList<Integer>>();
         List<Punt> lp = C.getPunts();
-        List<List<Integer>> llr = C.getAdjacency();
+        //List<List<Integer>> llr = C.getAdjacency();
         mst = mst_prim(mst,C);
         return mst;
         
@@ -31,16 +31,32 @@ public class Mst {
     */
     }
     
-    private static ArrayList<ArrayList<Integer>> mst_prim(ArrayList<ArrayList<Integer>> mst, City C) {
-        List<Punt> lp = C.getPunts();
-        List<List<Integer>> llr = C.getAdjacency();
+    public static ArrayList<ArrayList<Integer>> mst_prim(ArrayList<ArrayList<Integer>> mst, City C) {
+        ArrayList<Punt> lp = C.getPunts();
+        ArrayList<ArrayList<Integer>> lli = C.getAdjacency();
         List<Relation> lr = new ArrayList<Relation>();
-        Comparator<Relation> comparator = new PQsort();
         PQsort sort = new PQsort();
-        Queue<Relation> pqr = new PriorityQueue(0,sort);
-        
+        PriorityQueue<Relation> pqr = new PriorityQueue(1,sort);
+        boolean[] visited = new boolean[lp.size()];
+        for(int i = 0; i < lp.size(); ++i) {
+            if (lp.get(i).isEnabled()) {
+                addPQ(pqr,lli.get(i),lp,i);
+                
+            }
+        }
         return mst;
     }
+    
+    private static void addPQ(PriorityQueue<Relation> pqr,ArrayList<Integer> li,ArrayList<Punt> lp, int pos) {
+        for(int i = 0; i < li.size(); ++i) {
+            if (i != pos && lp.get(i).isEnabled()) {
+                   pqr.add(new Relation(pos,i,li.get(i)));
+            }
+        }
+    }
+
+
+}
     
     
     /*

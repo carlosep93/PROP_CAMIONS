@@ -10,18 +10,18 @@ import java.util.List;
 
 public class City {
     
-    private List<List<Integer>> lli;
+    private ArrayList<ArrayList<Integer>> lli;
     private String nom;
-    private List<Punt> lp;
+    private ArrayList<Punt> lp;
     
     public City(String nom) {
-         lli = new ArrayList <List<Integer>>();
+         lli = new ArrayList <ArrayList<Integer>>();
          lp = new ArrayList<Punt>();
          this.nom = nom;
     }
     
    public void addElement(Punt P, Relation[] v) {
-       List<Integer> aux = new ArrayList<Integer>();
+       ArrayList<Integer> aux = new ArrayList<Integer>();
        for (int i = 0; i < v.length; ++i) {
            aux.add(v[i].getValue());
            lli.get(i).add(v[i].getValue());
@@ -174,7 +174,7 @@ public class City {
     */    
 
     
-    public List<List<Integer>> getAdjacency(){
+    public ArrayList<ArrayList<Integer>> getAdjacency(){
         return lli;
     }
 
@@ -183,7 +183,7 @@ public class City {
         return nom;
     }
     
-    public List<Punt> getPunts() {
+    public ArrayList<Punt> getPunts() {
         return lp;
     }
 
