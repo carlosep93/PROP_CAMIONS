@@ -7,20 +7,15 @@ package projecte_prop;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Carlos2
- */
-
 
 public class City {
     
-    List<List<Integer>> llr;
-    String nom;
-    List<Punt> lp;
+    private List<List<Integer>> lli;
+    private String nom;
+    private List<Punt> lp;
     
     public City(String nom) {
-         llr = new ArrayList <List<Integer>>();
+         lli = new ArrayList <List<Integer>>();
          lp = new ArrayList<Punt>();
          this.nom = nom;
     }
@@ -29,16 +24,16 @@ public class City {
        List<Integer> aux = new ArrayList<Integer>();
        for (int i = 0; i < v.length; ++i) {
            aux.add(v[i].getValue());
-           llr.get(i).add(v[i].getValue());
+           lli.get(i).add(v[i].getValue());
        }
-       llr.add(P.getID(), aux);
+       lli.add(P.getID(), aux);
        lp.add(P.getID(),P);
    }
    
    
    //pre: llr !buida
    public int getCost(int id1, int id2) {
-        return llr.get(id1).get(id2);
+        return lli.get(id1).get(id2);
 
         
     }
@@ -46,7 +41,7 @@ public class City {
     public int getCost(Element e1,Element e2) {
         int id1 = e1.getID();
         int id2 = e2.getID();
-        return llr.get(id1).get(id2);
+        return lli.get(id1).get(id2);
     }
     
     public boolean isEnabled(int id) {
@@ -145,7 +140,7 @@ public class City {
         \post   Retorna el tamany de la Relations
     */
     public int size() {
-        return le.size();
+        return lp.size();
     }
     
     /** @brief  Elements actius
@@ -180,7 +175,7 @@ public class City {
 
     
     public List<List<Integer>> getAdjacency(){
-        return llr;
+        return lli;
     }
 
     
