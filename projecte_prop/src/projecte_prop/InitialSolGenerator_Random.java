@@ -12,7 +12,10 @@ public class InitialSolGenerator_Random extends InitialSolGenerator{
     @Override public Tour generateInitialSol(City C){
         //omplim la population
         Tour t = new Tour();
-        t.setCjtElem(C.getPunts());
+        
+        for(int i = 0; i < C.size(); ++i){
+            if(C.getPunts().get(i).isEnabled()) t.addElement(C.getPunts().get(i));
+        }
 
         //es fa un suffle de la population inicial
         for(int i = 0; i < t.size()/4; ++i){

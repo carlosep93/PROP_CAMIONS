@@ -19,22 +19,20 @@ public class DriverClass_CtrlDomini {
         Scanner sc = new Scanner(System.in);
         String pathload = "src/Fitxers/";
 
-        CtrlDomini Ctrl = new CtrlDomini();
+        CtrlDomini Ctrl = new CtrlDomini("primer");
 
         
         int lectura = 0;
-        while(lectura != 8){   
+        while(lectura != 7){   
             System.out.println();
             System.out.println("Tria una opció:");
-
-            System.out.println("1 - Inicia Domini");
-            System.out.println("2 - Afegir Element");
-            System.out.println("3 - Consultar Element");
-            System.out.println("4 - Modificar Element");
-            System.out.println("5 - Eliminar Element");
-            System.out.println("6 - Carregar adjacencies de Memoria");
-            System.out.println("7 - Generar Camí");
-            System.out.println("8 - Sortir");
+            System.out.println("1 - Afegir Punt");
+            System.out.println("2 - Consultar Punt");
+            System.out.println("3 - Modificar Punt");
+            System.out.println("4 - Eliminar Punt");
+            System.out.println("5 - Carregar adjacencies de Memoria");
+            System.out.println("6 - Generar Camí");
+            System.out.println("7 - Sortir");
 
  
             lectura=sc.nextInt();
@@ -50,20 +48,7 @@ public class DriverClass_CtrlDomini {
                 //System.out.println("Y:");
                 int y = 0;                    //int y = sc.nextInt();
                 
-                Punt E = new Punt(x, y, nom);
-                
-                boolean[] b = Ctrl.getActius();
-                List<Integer> ll = new ArrayList<Integer>();
-                
-                for(int i = 0; i < b.length; ++i){
-                    if(b[i]){
-                        System.out.println("Pes de l'element a : " + 
-                            Ctrl.getCity().get_Tour().getElementPos(i).getNom());
-                        ll.add(sc.nextInt());
-                    }
-                    else ll.add(-1);
-                }
-                Ctrl.addElement(E, ll);
+                Ctrl.
                 
                 escriureCjtElem(Ctrl, Ctrl.getCjtElement());
                 escriureRelations(Ctrl, Ctrl.getRelations());
