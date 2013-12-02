@@ -8,7 +8,7 @@ package CapaPresentacio;
 
 /**
  *
- * @author helewt
+ * @author pol
  */
 public class CtrlPresentacio {
 
@@ -17,5 +17,8 @@ public class CtrlPresentacio {
     
     public static void main(String[] args) {
         Genetic = true;
+        Vista vist = new Vista();
+        
+        
     }
 }

@@ -15,8 +15,16 @@ import java.awt.Rectangle;
 
 /**
  *
- * @author helewt
+ * @author pol
  */
+
+
+
+
+
+
+
+
 public class Vista extends javax.swing.JFrame {
 
     /**
@@ -24,6 +32,10 @@ public class Vista extends javax.swing.JFrame {
      */
     int x;
     int y;
+    int x2;
+    int y2;
+    boolean linea2punts;
+    
     public Vista() {
         initComponents();
     }
@@ -554,14 +566,26 @@ class Surface extends javax.swing.JPanel {
  
      
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
-         x = evt.getX();
-         y = evt.getY();
-         Graphics g2 = jPanel4.getGraphics();
+        if(linea2punts == true){
+         x2 = evt.getX();
+         y2 = evt.getY();
+          Graphics g2 = jPanel4.getGraphics();
          g2.setColor(Color.red);
-         g2.fillRect(x, y, 10, 10);
-         g2.drawLine(x, y, x+100, y+100);
+         g2.fillRect(x2, y2, 10, 10);
+         g2.drawLine(x, y, x2, y2);
+         linea2punts = false;
+        }
+        else{
+        linea2punts = true;
+        x = evt.getX();
+        y = evt.getY();
+        Graphics g2 = jPanel4.getGraphics();
+        g2.setColor(Color.red);
+        g2.fillRect(x, y, 10, 10);
+        
+        }
     }//GEN-LAST:event_IMAGENMouseClicked
-
+/*
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
          x = evt.getX();
          y = evt.getY();
@@ -578,7 +602,7 @@ class Surface extends javax.swing.JPanel {
          g2.setColor(Color.red);
          g2.fillRect(x, y, 10, 10);
     }//GEN-LAST:event_jPanel4MouseClicked
-
+*/
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
