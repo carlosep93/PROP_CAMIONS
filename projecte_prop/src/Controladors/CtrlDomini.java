@@ -4,8 +4,7 @@ package Controladors;
 import projecte_prop.*;
 
 
-
-public class CtrlDomini { //   Aquesta clase inicialitza les variables globals, estructures de dades...
+public class CtrlDomini {
     
     private City ciutat;
     private Solution sol;

@@ -11,24 +11,27 @@ public class Tsp_SA extends Tsp{
     double temperature;
     double cooling;
    
-    @Override public Tour calSol(Ciutat C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
+    @Override public Tour calSol(City C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
             boolean Elitism, TournamentSelection ts, int TournamentSize, Crossover cross,
             Mutate mut, double MutationRate, double MutationSwapProbability, double temp, double cool, int p){
+        
         //Temperatura inicial
         temperature = temp;
         //Factor por el que se enfria
         cooling = cool;
         CjtTours ct = new CjtTours(3); //0: best, 1: actual
-        Tour ti = isg.generateInitialSol(C, C.get, null)InitialSolGenerator_TwoApp.Twoapp(C.get_Relations().toMatrix(),
-                    C.get_Relations().Actius());
+        
+        //genera una solució inicial i ompla el CjtTours amb aquesta
+        Tour ti = isg.generateInitialSol(C);
         for (int i=0;i<3;++i) {
             ct.addTourEmpty(i, ti);
         }
+        
         int n = 0;
         int best = ct.getTour(0).getCost(C);
         int tamany = ct.sizeCjtTours();
         while (temperature > 1 && n < p) {
-            Mutate.mutate3(C, ct.getTour(2));
+            mut.mutate(C, ct.getTour(2), MutationRate, MutationSwapProbability);
             //calcula si s'accepta la nova solució
             int ener = ct.getTour(1).getCost(C);
             int newener = ct.getTour(2).getCost(C);
