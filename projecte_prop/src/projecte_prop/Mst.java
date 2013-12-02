@@ -13,14 +13,15 @@ import java.util.PriorityQueue;
  */
 public class Mst extends InitialSolGenerator_TwoApp {
 
-    public static ArrayList<ArrayList<Integer>> prim(City C) {
+    @Override
+    public Tour generateInitialSol(City C){
         ArrayList<ArrayList<Integer>> mst = new ArrayList<ArrayList<Integer>>();
         List<Punt> lp = C.getPunts();
-        mst = mst_prim(mst,C);
-        return mst;
+        Tour T = new Tour();
+        return T;
     }
     
-    public static ArrayList<ArrayList<Integer>> mst_prim(ArrayList<ArrayList<Integer>> mst, City C) {
+    private static ArrayList<ArrayList<Integer>> mst_prim(ArrayList<ArrayList<Integer>> mst, City C) {
         ArrayList<Punt> lp = C.getPunts();
         ArrayList<ArrayList<Integer>> lli = C.getAdjacency();
         List<Relation> lr = new ArrayList<Relation>();
