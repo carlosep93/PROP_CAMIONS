@@ -20,22 +20,20 @@ public class City {
     }
    //pre: 
    public void addElement(Punt P, Relation[] v) {
+       ArrayList<Integer> aux = new ArrayList<Integer>();
        if (lp.size() == 0) {
-           ArrayList<Integer> aux = new ArrayList<Integer>();
-           lp.add(P);
            lli.add(aux);
            lli.get(0).add(v[0].getValue());
        }
        else {
-           ArrayList<Integer> aux = new ArrayList<Integer>();
             int index = P.getID();  //id del element que tractem
             lli.add(aux);
             for (int i = 0; i < v.length; ++i) {
                 lli.get(index).add(v[i].getValue()); //afegeix un a un tots els costos de l'element
                 lli.get(i).add(v[i].getValue()); //a cada element li afegeix el cost nou
             }
-            lp.add(P.getID(),P);
        }
+       lp.add(P);
        
    }
    
@@ -57,7 +55,13 @@ public class City {
         return lp.get(id).isEnabled();
     }
     
-    
+     public ArrayList<String> getEnabled(){
+        ArrayList<String> Actius = new ArrayList<String>();
+        for(int i = 0; i < size(); ++i){
+            if(isEnabled(i)) Actius.add(lp.get(i).getNom());
+        }
+        return Actius;
+    }
     
     
     

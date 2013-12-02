@@ -6,11 +6,8 @@ import java.util.ArrayList;
 
 public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
-    
+    @Override
     public Tour generateInitialSol(City C){
-        //List<Punt> lp = C.getPunts();
-        //List<List<Integer>> llr = C.getAdjacency();
-        ArrayList<ArrayList<Integer>> mst = prim(C);
         Tour T = new Tour();
         return T;
         
@@ -24,7 +21,7 @@ public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         return getEtour(mst.length,l,id);*/
     }
         
-    private void getEpath(int[][] mst,List<Integer> l, int pos) {
+    private void getEpath(ArrayList<ArrayLit<Integer>> mst,List<Integer> l, int pos) {
         l.add(pos);
         if(child(mst[pos])) {
             for(int i = 0; i < mst.length ; ++i) {
@@ -61,7 +58,4 @@ public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         return t;
     }
 
-    public Tour generateInitialSol(Ciutat C){
-        return null;
-    }
 }

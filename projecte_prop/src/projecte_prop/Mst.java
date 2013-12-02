@@ -16,6 +16,7 @@ public class Mst extends InitialSolGenerator_TwoApp {
     @Override
     public Tour generateInitialSol(City C){
         ArrayList<ArrayList<Integer>> mst = new ArrayList<ArrayList<Integer>>();
+        mst_prim(mst,C);
         List<Punt> lp = C.getPunts();
         Tour T = new Tour();
         return T;
