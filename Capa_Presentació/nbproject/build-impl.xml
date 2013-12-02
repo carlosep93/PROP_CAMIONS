@@ -441,9 +441,16 @@ is divided into following sections:
                 </union>
                 <taskdef classname="org.testng.TestNGAntTask" classpath="${run.test.classpath}" name="testng"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <testng classfilesetref="test.set" failureProperty="tests.failed" listeners="org.testng.reporters.VerboseReporter" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="Capa_Presentació" testname="TestNG tests" workingDir="${work.dir}">
 =======
                 <testng classfilesetref="test.set" failureProperty="tests.failed" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="CapaPresentacio" testname="TestNG tests" workingDir="${work.dir}">
+>>>>>>> pol
+=======
+                <testng classfilesetref="test.set" failureProperty="tests.failed" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="CapaPresentacio" testname="TestNG tests" workingDir="${work.dir}">
+=======
+                <testng classfilesetref="test.set" failureProperty="tests.failed" listeners="org.testng.reporters.VerboseReporter" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="Capa_Presentació" testname="TestNG tests" workingDir="${work.dir}">
+>>>>>>> 327b400c64e028ecda2d7f16e83caab2954ec77e
 >>>>>>> pol
                     <xmlfileset dir="${build.test.classes.dir}" includes="@{testincludes}"/>
                     <propertyset>
