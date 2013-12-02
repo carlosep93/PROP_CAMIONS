@@ -1,11 +1,13 @@
 package CapaPresentacio;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
-import java.awt.Rectangle;
+import java.util.List;
+import java.util.Map;
 
 /*
  * To change this template, choose Tools | Templates
@@ -24,6 +26,7 @@ public class Vista extends javax.swing.JFrame {
      */
     int x;
     int y;
+    CtrlPresentacio cp = new CtrlPresentacio();
     public Vista() {
         initComponents();
     }
@@ -43,6 +46,7 @@ public class Vista extends javax.swing.JFrame {
         buttonGroup4 = new javax.swing.ButtonGroup();
         buttonGroup5 = new javax.swing.ButtonGroup();
         javax.swing.ButtonGroup buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
         PANELS = new javax.swing.JTabbedPane();
         PanelPrincipal = new javax.swing.JPanel();
         SliderAlgoritme = new javax.swing.JSlider();
@@ -74,6 +78,7 @@ public class Vista extends javax.swing.JFrame {
             }
         };
         IMAGEN = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PanelOpcions = new javax.swing.JPanel();
         TabAnealing = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -102,6 +107,8 @@ public class Vista extends javax.swing.JFrame {
         EdgeCrossover = new javax.swing.JTextField();
         PanelElement = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jLabel10 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -109,6 +116,12 @@ public class Vista extends javax.swing.JFrame {
         MenuHelp = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        PANELS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PANELSMouseClicked(evt);
+            }
+        });
 
         SliderAlgoritme.setMaximum(1);
         SliderAlgoritme.setValue(0);
@@ -147,9 +160,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 300, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,6 +169,13 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jButton1.setText("Calcular Camino");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
         PanelPrincipal.setLayout(PanelPrincipalLayout);
         PanelPrincipalLayout.setHorizontalGroup(
@@ -165,25 +183,31 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LabelGenetic))
+                        .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(LabelGenetic))
+                            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(LabelSeleccio))
+                            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(LabelAnealing)
+                        .addGap(117, 117, 117))
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LabelSeleccio))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 304, Short.MAX_VALUE)
-                .addComponent(LabelAnealing)
-                .addGap(259, 259, 259)
+                        .addGap(111, 111, 111)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(152, 152, 152))
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(LabelSeleccio)
                         .addGap(18, 18, 18)
@@ -191,7 +215,9 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(LabelAnealing)
                             .addComponent(LabelGenetic))
                         .addGap(3, 3, 3)
-                        .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -221,7 +247,7 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(InitialTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StopConditionAnealing, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CoolingFactor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(862, Short.MAX_VALUE))
+                .addContainerGap(558, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +322,7 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(EdgeCrossover, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(679, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,15 +379,29 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jLabel10.setText("Set the points of the current path");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(335, 335, 335))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelElementLayout = new javax.swing.GroupLayout(PanelElement);
@@ -453,7 +493,8 @@ class Surface extends javax.swing.JPanel {
          Graphics g2 = jPanel4.getGraphics();
          g2.setColor(Color.red);
          g2.fillRect(x, y, 10, 10);
-         g2.drawLine(x, y, x+100, y+100);
+         cp.addPunt(x, y);
+         
     }//GEN-LAST:event_IMAGENMouseClicked
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
@@ -476,6 +517,22 @@ class Surface extends javax.swing.JPanel {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
+       Graphics g2 = jPanel4.getGraphics();
+       g2.setColor(Color.red);
+       for (int i=1;i< aux.size();++i) {
+           g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
+                   aux.get(i).getKey(), aux.get(i).getValue());
+       }
+       g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
+                   aux.get(0).getKey(), aux.get(0).getValue());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void PANELSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PANELSMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PANELSMouseClicked
    
     
     
@@ -544,7 +601,10 @@ class Surface extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -559,6 +619,7 @@ class Surface extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
