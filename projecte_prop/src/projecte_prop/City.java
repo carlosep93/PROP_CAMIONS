@@ -6,56 +6,46 @@ package projecte_prop;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner; 
-
-/**
- *
- * @author Carlos2
- */
 
 
 public class City {
     
-    List <List<Relation>> llr;
-    List <Element> le;
-    String nom;
+    private ArrayList<ArrayList<Integer>> lli;
+    private String nom;
+    private ArrayList<Punt> lp;
     
     public City(String nom) {
-         llr = new ArrayList <List<Relation>>();
-         le = new ArrayList<Element>();
+         lli = new ArrayList <ArrayList<Integer>>();
+         lp = new ArrayList<Punt>();
          this.nom = nom;
     }
     
-   public void addElement(Element E, Relation[] v) {
-       List<Relation> aux = new ArrayList<Relation>();
-       List<Relation> aux1 = new ArrayList<Relation>();
+   public void addElement(Punt P, Relation[] v) {
+       ArrayList<Integer> aux = new ArrayList<Integer>();
        for (int i = 0; i < v.length; ++i) {
-           aux.add(v[i]);
-           aux1 = llr.get(i);
-           aux1.add(v[i]);
-           llr.set(i,aux1);
+           aux.add(v[i].getValue());
+           lli.get(i).add(v[i].getValue());
        }
-       llr.add(E.getID(), aux);
-       le.add(E.getID(),E);
+       lli.add(P.getID(), aux);
+       lp.add(P.getID(),P);
    }
    
    
    //pre: llr !buida
    public int getCost(int id1, int id2) {
-        Relation R = llr.get(id1).get(id2);
-        return R.getValue();
+        return lli.get(id1).get(id2);
+
         
     }
     
     public int getCost(Element e1,Element e2) {
         int id1 = e1.getID();
         int id2 = e2.getID();
-        Relation R = llr.get(id1).get(id2);
-        return R.getValue();
+        return lli.get(id1).get(id2);
     }
     
     public boolean isEnabled(int id) {
-        return le.get(id).isEnabled();
+        return lp.get(id).isEnabled();
     }
     
     
@@ -67,7 +57,7 @@ public class City {
         \post   L'element indicat per el parametre id es marca com esborrat
     */
     public void erase(int id){
-        le.get(id).modifyEnabled(false);
+        lp.get(id).modifyEnabled(false);
     }
     
         /** @brief  Habilita un element de la Relations
@@ -75,7 +65,7 @@ public class City {
         \post   L'element indicat per el parametre id es marca com habilitat
     */
     public void enable(int id) {
-        le.get(id).modifyEnabled(true);
+        lp.get(id).modifyEnabled(true);
     }
     /** @brief  Agefeix un element a la Relation
         \pre    La Relation ha de estar inicialitzada    
@@ -150,7 +140,7 @@ public class City {
         \post   Retorna el tamany de la Relations
     */
     public int size() {
-        return le.size();
+        return lp.size();
     }
     
     /** @brief  Elements actius
@@ -184,18 +174,18 @@ public class City {
     */    
 
     
-    public List<List<Relation>> getAdjacency(){
-        return llr;
+    public ArrayList<ArrayList<Integer>> getAdjacency(){
+        return lli;
     }
-    
-    public List<Element> getElements() {
-        return le;
-    }
+
     
     public String getNom() {
         return nom;
     }
     
+    public ArrayList<Punt> getPunts() {
+        return lp;
+    }
 
     /*public String toString(int id) {
         return lli.get(id).toString();        
