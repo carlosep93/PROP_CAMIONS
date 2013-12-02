@@ -4,54 +4,52 @@
  */
 package projecte_prop;
 
- import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner; 
-
-/**
- *
- * @author Carlos2
- */
 
 
-public class Relations {
+public class City {
     
-    List <List<Integer>> a; 
+    private ArrayList<ArrayList<Integer>> lli;
+    private String nom;
+    private ArrayList<Punt> lp;
     
-    public Relations() {
-         a = new ArrayList <List<Integer>>();
+    public City(String nom) {
+         lli = new ArrayList <ArrayList<Integer>>();
+         lp = new ArrayList<Punt>();
+         this.nom = nom;
     }
     
-    public Relations(List<List<Integer>> an) {
-         a = an;
-    }
-    
-    public int getCost(int id1, int id2) {
-        int cost = -1;
-        if (a.isEmpty());
-        else if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
-                a.get(id1).get(a.get(id1).size()-1) == 0) {
-             if (a.get(id1).size() > id2)
-                 cost = a.get(id1).get(id2);
-             else if (a.get(id2).size() > id1)
-                 cost = a.get(id2).get(id1);
-        }
-        return cost;
+   public void addElement(Punt P, Relation[] v) {
+       ArrayList<Integer> aux = new ArrayList<Integer>();
+       for (int i = 0; i < v.length; ++i) {
+           aux.add(v[i].getValue());
+           lli.get(i).add(v[i].getValue());
+       }
+       lli.add(P.getID(), aux);
+       lp.add(P.getID(),P);
+   }
+   
+   
+   //pre: llr !buida
+   public int getCost(int id1, int id2) {
+        return lli.get(id1).get(id2);
+
+        
     }
     
     public int getCost(Element e1,Element e2) {
-        int cost = -1;
         int id1 = e1.getID();
         int id2 = e2.getID();
-        if (a.get(id2).get(a.get(id2).size()-1) == 0 && 
-                a.get(id1).get(a.get(id1).size()-1) == 0) {
-             if (a.get(id1).size() > id2)
-                 cost = a.get(id1).get(id2);
-             else if (a.get(id2).size() > id1)
-                 cost = a.get(id2).get(id1);
-        }
-        return cost;
+        return lli.get(id1).get(id2);
     }
+    
+    public boolean isEnabled(int id) {
+        return lp.get(id).isEnabled();
+    }
+    
+    
+    
     
     
     /** @brief  Esborra un element de la Relations
@@ -59,17 +57,21 @@ public class Relations {
         \post   L'element indicat per el parametre id es marca com esborrat
     */
     public void erase(int id){
-        
-        int n = a.get(id).size();
-        a.get(id).remove(n-1);
-        a.get(id).add(-1);
+        lp.get(id).modifyEnabled(false);
     }
-   
+    
+        /** @brief  Habilita un element de la Relations
+        \pre    La Relation ha de contenir l'element   
+        \post   L'element indicat per el parametre id es marca com habilitat
+    */
+    public void enable(int id) {
+        lp.get(id).modifyEnabled(true);
+    }
     /** @brief  Agefeix un element a la Relation
         \pre    La Relation ha de estar inicialitzada    
         \post   La Relation conté les relacions anteriors més la nova
     */    
-    public void addElement(int id) {
+    /*public void addElement(int id) {
         Scanner in = new Scanner(System.in);
         int x;
         List<Integer> aux = new ArrayList<Integer>();
@@ -84,21 +86,21 @@ public class Relations {
         aux.add(0);
         a.add(aux);
     }
-    
+    */
      /** @brief  Afegeix un element de la Relations
         \pre    La Relation ha de contenir elements    
         \post   L'element indicat per el parametre id es marca com esborrat
     */
-    public void addElement(List<Integer> l) {
+    /*public void addElement(List<Integer> l) {
         l.add(0);
         a.add(l);
     }
-    
+    */
     /** @brief  Transforma la relations en una matriu
         \pre    La relations ha d'estar inicialitzada  
         \post   Retorna una matriu de les relacions del elements actius
     */
-    public int [][] toMatrix() {
+    /*public int [][] toMatrix() {
         int n = 0;
         boolean [] b = new boolean [a.size()];
         for (int j=0;j < a.size(); ++j) {   //calcula vector de bools
@@ -131,21 +133,21 @@ public class Relations {
          }
       }    
         return res;
-    }
+    }*/
     
     /** @brief  Nombre de punts de la Relations
         \pre    La Relation ha estat inicialitzada  
         \post   Retorna el tamany de la Relations
     */
     public int size() {
-        return a.size();
+        return lp.size();
     }
     
     /** @brief  Elements actius
         \pre    La Relation ha d'estar inicialitzada  
         \post   Retorna una llista amb el elements actius ordenats per ID
     */
-    public List<Integer> Actius() {
+    /*public List<Integer> Actius() {
         List<Integer> l = new ArrayList<Integer>();
         for (int i=0;i<a.size();++i) {
             if (a.get(i).get(a.get(i).size()-1) == 0)
@@ -153,15 +155,18 @@ public class Relations {
         }
         return l;
     }
+    */
+    
     /** @brief  LLegeix la Relation de tecla
         \pre    La relations ha d'estar inicialitzada  
         \post   La Relation conté els elements introduits.
     */
-    public void readRelations(int n) {
+    /*public void readRelations(int n) {
         for (int i=0;i<n;++i) {
             addElement(i);
         }
     }
+    * */
 
     /** @brief  Transforma les relacions d'un element.
         \pre    La relations ha d'estar inicialitzada  
@@ -169,13 +174,21 @@ public class Relations {
     */    
 
     
-    public List<List<Integer>> getList(){
-        return a;
+    public ArrayList<ArrayList<Integer>> getAdjacency(){
+        return lli;
+    }
+
+    
+    public String getNom() {
+        return nom;
     }
     
+    public ArrayList<Punt> getPunts() {
+        return lp;
+    }
 
-    public String toString(int id) {
-        return a.get(id).toString();        
+    /*public String toString(int id) {
+        return lli.get(id).toString();        
     } 
-
+    */
 }

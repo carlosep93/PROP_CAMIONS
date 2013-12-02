@@ -3,6 +3,11 @@
  * and open the template in the editor.
  */
 package projecte_prop;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Comparator;
 
 /**
  *
@@ -10,15 +15,51 @@ package projecte_prop;
  */
 public class Mst {
 
-    public static int[][] prim(int[][] M) {
+    public static ArrayList<ArrayList<Integer>> prim(City C) {
+        ArrayList<ArrayList<Integer>> mst = new ArrayList<ArrayList<Integer>>();
+        List<Punt> lp = C.getPunts();
+        //List<List<Integer>> llr = C.getAdjacency();
+        mst = mst_prim(mst,C);
+        return mst;
+        
+        /*
         boolean[] visited = new boolean[M.length];
         int vertex = 0;
         int[][] finalM = new int[M.length][M.length];
         finalM = mst_prim(M,visited,vertex,finalM);
         return finalM;
+    */
     }
     
+    public static ArrayList<ArrayList<Integer>> mst_prim(ArrayList<ArrayList<Integer>> mst, City C) {
+        ArrayList<Punt> lp = C.getPunts();
+        ArrayList<ArrayList<Integer>> lli = C.getAdjacency();
+        List<Relation> lr = new ArrayList<Relation>();
+        PQsort sort = new PQsort();
+        PriorityQueue<Relation> pqr = new PriorityQueue(1,sort);
+        boolean[] visited = new boolean[lp.size()];
+        for(int i = 0; i < lp.size(); ++i) {
+            if (lp.get(i).isEnabled()) {
+                addPQ(pqr,lli.get(i),lp,i);
+                
+            }
+        }
+        return mst;
+    }
     
+    private static void addPQ(PriorityQueue<Relation> pqr,ArrayList<Integer> li,ArrayList<Punt> lp, int pos) {
+        for(int i = 0; i < li.size(); ++i) {
+            if (i != pos && lp.get(i).isEnabled()) {
+                   pqr.add(new Relation(pos,i,li.get(i)));
+            }
+        }
+    }
+
+
+}
+    
+    
+    /*
     public static int[][] mst_prim(int[][] M, boolean[] visited,int vertex,int[][] finalM) {
         if (M.length > 0) {
             int aux = -1;
@@ -65,3 +106,4 @@ public class Mst {
         return v; // si se ha salido del loop será  falso, si se ha recorrido entero y el último no era, será true.
     }
 }
+* */
