@@ -1,7 +1,9 @@
 
 package Controladors;
 
+import java.util.ArrayList;
 import projecte_prop.*;
+
 
 
 public class CtrlDomini {
@@ -17,8 +19,14 @@ public class CtrlDomini {
         return sol;
     }
     
-    public void addPunt(Punt E, Relation[] pesos_resta){
-        ciutat.addElement(E, pesos_resta);
+    public void addPunt(String nom, int x, int y, ArrayList<Integer> pesos_resta){
+        Punt P = new Punt(x, y, nom);
+        
+        
+        for(int i = 0; i < ciutat.size(); ++i){
+            if(!ciutat.isEnabled(i)) pesos_resta.add(i, -1);
+        }
+        ciutat.addElement(P, pesos_resta);
     }
     
     public Punt consultaPunt(String nom){
