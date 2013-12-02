@@ -5,7 +5,6 @@
 package projecte_prop;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class City {
@@ -19,15 +18,25 @@ public class City {
          lp = new ArrayList<Punt>();
          this.nom = nom;
     }
-    
+   //pre: 
    public void addElement(Punt P, Relation[] v) {
-       ArrayList<Integer> aux = new ArrayList<Integer>();
-       for (int i = 0; i < v.length; ++i) {
-           aux.add(v[i].getValue());
-           lli.get(i).add(v[i].getValue());
+       if (lp.size() == 0) {
+           ArrayList<Integer> aux = new ArrayList<Integer>();
+           lp.add(P);
+           lli.add(aux);
+           lli.get(0).add(v[0].getValue());
        }
-       lli.add(P.getID(), aux);
-       lp.add(P.getID(),P);
+       else {
+           ArrayList<Integer> aux = new ArrayList<Integer>();
+            int index = P.getID();  //id del element que tractem
+            lli.add(aux);
+            for (int i = 0; i < v.length; ++i) {
+                lli.get(index).add(v[i].getValue()); //afegeix un a un tots els costos de l'element
+                lli.get(i).add(v[i].getValue()); //a cada element li afegeix el cost nou
+            }
+            lp.add(P.getID(),P);
+       }
+       
    }
    
    
@@ -38,9 +47,9 @@ public class City {
         
     }
     
-    public int getCost(Element e1,Element e2) {
-        int id1 = e1.getID();
-        int id2 = e2.getID();
+    public int getCost(Punt p1,Punt p2) {
+        int id1 = p1.getID();
+        int id2 = p2.getID();
         return lli.get(id1).get(id2);
     }
     

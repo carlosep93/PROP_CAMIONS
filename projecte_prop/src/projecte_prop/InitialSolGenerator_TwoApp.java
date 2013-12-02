@@ -11,7 +11,8 @@ public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         //List<Punt> lp = C.getPunts();
         //List<List<Integer>> llr = C.getAdjacency();
         ArrayList<ArrayList<Integer>> mst = prim(C);
-        
+        Tour T = new Tour();
+        return T;
         
         
         /*int [][] mst = Mst.prim(M);
