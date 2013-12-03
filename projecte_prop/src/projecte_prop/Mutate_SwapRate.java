@@ -1,9 +1,9 @@
 
 package projecte_prop;
 
-public class Mutate_SwapRate {
+public class Mutate_SwapRate extends Mutate{
     
-    public static Tour mutate(City C, Tour tour, double mutationRate, double mutationSwapProbability){
+    @Override public Tour mutate(City C, Tour tour, double mutationRate, double mutationSwapProbability){
         Tour mutated=tour;
         double chance;
         int mida = tour.size();
