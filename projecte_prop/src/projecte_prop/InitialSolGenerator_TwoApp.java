@@ -9,7 +9,8 @@ public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     @Override
     public abstract Tour generateInitialSol(City C);
         
-    public void getEpath(ArrayList<ArrayList<Integer>> mst,ArrayList<Integer> l, int pos) {
+        
+    public void getEpath(ArrayList<ArrayList<Integer>> mst,List<Integer> l, int pos) {
         l.add(pos);
         if(child(mst.get(pos))) {
             for(int i = 0; i < mst.size() ; ++i) {
@@ -27,21 +28,14 @@ public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         return false;
     }
     
-    public Tour getTour(int size,List<Integer> l) {
+    public Tour getTour(int size,List<Integer> l,ArrayList<Punt> lp) {
         Tour t = new Tour();
-        Punt E;
+        Punt P;
         boolean[] visited = new boolean[size];
-        while();
-        return t;
-    }
-        
-        
-        /*
-        boolean[] visited = new boolean[size];
-        while (!l.isEmpty()) {
-            if (!visited[l.get(0)]) {
-                E = new Punt(id.get(l.get(0)));
-                t.addElement(E);
+        while(!l.isEmpty()) {
+            if(!visited[l.get(0)]) {
+                P = lp.get(l.get(0));
+                t.addElement(P);
                 visited[l.get(0)] = true;
                 l.remove(0);
             }
@@ -51,5 +45,4 @@ public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         }
         return t;
     }
-*/
 }
