@@ -15,18 +15,16 @@ public class CtrlDomini {
         ciutat = new City(nom);
     }
     
+    public City getCity(){
+        return ciutat;
+    }
+    
     public Solution getSolution(){
         return sol;
     }
     
     public void addPunt(String nom, int x, int y, ArrayList<Integer> pesos_resta){
-        Punt P = new Punt(x, y, nom);
-        
-        
-        for(int i = 0; i < ciutat.size(); ++i){
-            if(!ciutat.isEnabled(i)) pesos_resta.add(i, -1);
-        }
-        ciutat.addElement(P, pesos_resta);
+        ciutat.addElement(nom, x, y, pesos_resta);
     }
     
     public Punt consultaPunt(String nom){
@@ -54,5 +52,9 @@ public class CtrlDomini {
                     MutationSwapProbability, tmp, fact, parada));
 
             return sol;
-    }  
+    }
+    
+    public ArrayList<String> getEnabled(){
+        return ciutat.getEnabled();
+    }
 }
