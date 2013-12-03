@@ -21,10 +21,13 @@ public class City {
        for(int i = 0; i < lp.size(); ++i){
            if(!isEnabled(i)) pesos_resta.add(i, -1);
        }
+       
+       for(int i = 0; i < lp.size(); ++i){
+           lli.get(i).add(pesos_resta.get(i));
+       }
+       
        lp.add(P);
        pesos_resta.add(P.getID(), 0);
-       
-       for(int )
        
        lli.add(P.getID(), pesos_resta);
    }
