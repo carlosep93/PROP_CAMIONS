@@ -22,15 +22,18 @@ public class CtrlPresentacio {
     private List<String> nom_elements = new ArrayList <>();
     private CtrlDomini cd; 
     
-    public void addPunt(int x,int y,String noms_putilla) {
+    
+    
+    public void addPunt(int x,int y,String nom) {
         Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
         punts.add(aux); //llista de punts amb x,y
-        nom_elements.add(noms_putilla);
-        for (int i=0; i<nom_elements.size(); ++i){
-            System.out.println(nom_elements.get(i));
-        }
+        nom_elements.add(nom);
+        cd.addPunt(nom, x, y, list); //llista amb les distànceis
         
     }
+    
+    
+    
     
     public  List<String> getNomElements(){
         return nom_elements;     
