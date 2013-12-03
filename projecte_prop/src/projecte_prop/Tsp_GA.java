@@ -45,7 +45,7 @@ public class Tsp_GA extends Tsp{
         
         CjtTours pop = new CjtTours(nTours);
         for(int i = 0; i < nPunts; ++i){
-            isg.generateInitialSol(C);
+            pop.addTour(i, isg.generateInitialSol(C));
         }
         
         Tour Fittest = pop.getFittestTour(C);

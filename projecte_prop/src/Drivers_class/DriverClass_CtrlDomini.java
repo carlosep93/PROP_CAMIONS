@@ -44,20 +44,26 @@ public class DriverClass_CtrlDomini {
                 String nom = sc.nextLine();
                 
                 //System.out.println("X:");
-                int x = 0;          //int x = sc.nextInt();
+                int x = 0;                      //int x = sc.nextInt();
                 //System.out.println("Y:");
-                int y = 0;                    //int y = sc.nextInt();
+                int y = 0;                      //int y = sc.nextInt();
                 
-                Ctrl.
+                ArrayList<String> nomsAct = Ctrl.getCity().getEnabled();
+                ArrayList<Integer> pesosAct = new ArrayList<Integer>();
+                for(int i = 0; i < nomsAct.size(); ++i){
+                    System.out.println("Pes de l'element " + nom + " a l'element " + nomsAct.get(i));
+                    pesosAct.add(sc.nextInt());
+                }
                 
-                escriureCjtElem(Ctrl, Ctrl.getCjtElement());
-                escriureRelations(Ctrl, Ctrl.getRelations());
+                Ctrl.addPunt(nom, x, y, pesosAct);
+                
+                escriureCity(Ctrl.getCity());
             }
             else if(lectura == 2){
-               /* System.out.println("Nom:");
+                System.out.println("Nom:");
                 String nom = sc.nextLine();
                 
-                CtrlDomini.consultaElement(nom);*/
+                //no fa res....
             }
             /*
             else if(lectura == 3){
@@ -93,11 +99,6 @@ public class DriverClass_CtrlDomini {
             }
 */
              else if(lectura == 5){
-               System.out.println("NO FAIG REEEES");  
-             }
-                  
-
-             else if(lectura == 6){
                   System.out.println("Ubuntu(1) o windows(2) o definir path(3) ?");
                   int auxx = sc.nextInt();
                   if(auxx == 2) pathload = "src\\Fitxers\\";
@@ -106,20 +107,18 @@ public class DriverClass_CtrlDomini {
                   System.out.println("Quin fitxer vols?");
                   String aux = sc.next();
                   pathload = pathload+aux;
-                  Relations rela = new Relations (Gestor_Dades.carregar_adjacencies(pathload)); 
+                  //Relations rela = new Relations (Gestor_Dades.carregar_adjacencies(pathload)); 
 
-                  Ctrl.modificarRelationsCity(rela);
+                  //Ctrl.modificarRelationsCity(rela);
              } 
             
             
-            else if(lectura == 7){
+            else if(lectura == 6){
                 System.out.println("1, SistemAnnealing// 2, GeneticAlgorithm:");
                 int alg = sc.nextInt();
                 System.out.println("Vols usar els paràmetres predefinits? (true / false) ");
                 boolean predef = sc.nextBoolean();
 
-               
-               
                
                 if(alg == 1){
                     String nom = "sense_nom";
@@ -127,6 +126,10 @@ public class DriverClass_CtrlDomini {
                     double tmp = 1000;
                     double fact = 0.03;
                     int par = 25;
+                    InitialSolGenerator isg = new InitialSolGenerator_Random();
+                    Mutate mut = new Mutate_Little();
+                    double SwapProbability, SwapRate;
+                    SwapProbability = SwapRate = 0;
                     if(!predef){
                         System.out.println("Nom de la solucio:");
                         sc.nextLine();
@@ -134,6 +137,11 @@ public class DriverClass_CtrlDomini {
                         
                         System.out.println("ID de la solucio:");
                         id = sc.nextInt();
+                        
+                        System.out.println("Creació de la solucio inicial(1-Random/ 2-TwoAPP:");
+                        int inicial = sc.nextInt();
+                        if(inicial == 1) isg = new InitialSolGenerator_Random();
+                        else isg = new InitialSolGenerator_TwoApp();
 
 
                         System.out.println("Temperatura inicial (recomanat:1000) : ");
@@ -145,22 +153,46 @@ public class DriverClass_CtrlDomini {
 
                         System.out.println("parada: (recomanat: 25) ");
                         par = sc.nextInt();
+                        
+                        System.out.println("Tipus de mutació (1- Liitle//2- Rate//3- SwapRate:");
+                        int mutacio = sc.nextInt();
+                        if(mutacio == 1) mut = new Mutate_Little();
+                        else if(mutacio == 2){
+                            System.out.println("swap rate: ");
+                            SwapRate = sc.nextInt();
                         }
-                    Ctrl.tspSA(nom, tmp, fact, par, id);                    
+                        else if(mutacio == 3){
+                            System.out.println("swap rate: ");
+                            SwapRate = sc.nextInt();
+                            
+                            System.out.println("swap probability: ");
+                            SwapProbability = sc.nextInt();
+                        }
+                        
+                    }
+                    int aux = 0;
+                    boolean aux2 = false;
+                    
+                    
+                    Tsp_SA tsp = new Tsp_SA();
+                    //Ctrl.tsp(nom, tsp, aux, aux, aux,
+                    //        isg, aux2, null, aux,
+                    //        null, mut, SwapRate, SwapProbability,
+                    //        id, tmp, fact, par);
                 }
                 else{
-
                     String nom = "Sense_nom";
                     int id = 0;
+                    InitialSolGenerator isg = new InitialSolGenerator_Random();
                     int StopCondition = 20;
                     int Ngeneracions = 1000;
                     int NTours = 50;
                     boolean Elitism = true;
-                    boolean RouletteWheel_TS = true;
-                    int TournamentSize = 0;
+                    TournamentSelection TS = new TournamentSelection_RouletteWheel();
+                    int TournamentSize = 5;
 
-                    boolean Edge_crossover = true;
-                    boolean Mutate2 = true;
+                    Crossover cross = new Crossover_Simple();
+                    Mutate mut = new Mutate_Rate();
                     double MutationRate = 0.15;
                     double MutationSwapProbability = 0.9;
                     
@@ -171,6 +203,11 @@ public class DriverClass_CtrlDomini {
                         
                         System.out.println("Id de la solucio:");
                         id = sc.nextInt();
+                        
+                        System.out.println("Creació de la solucio inicial(1-Random/ 2-TwoAPP:");
+                        int inicial = sc.nextInt();
+                        if(inicial == 1) isg = new InitialSolGenerator_Random();
+                        else isg = new InitialSolGenerator_TwoApp();
                         
                         System.out.println("StopCondition: (recomanat: 20) ");
                         StopCondition = sc.nextInt();
@@ -184,32 +221,54 @@ public class DriverClass_CtrlDomini {
                         System.out.println("Elitism: (recomanat: true )");
                         Elitism = sc.nextBoolean();
 
-                        System.out.println("RouletteWheel_TS: (Recomanat: true) ");
-                        RouletteWheel_TS = sc.nextBoolean();
-
-                        if(!RouletteWheel_TS){
-                          System.out.println("TournamentSize: (recomanat: 2)");
+                        System.out.println("Tournament Selection: (1- Random/ 2- RouletteWheel) ");
+                        int Roule = sc.nextInt();
+                            
+                        if(Roule == 1){
+                            TS = new TournamentSelection_Random();
+                            System.out.println("Tournament Size:");
                             TournamentSize = sc.nextInt();
                         }
+                        else{
+                            TS = new TournamentSelection_RouletteWheel();
+                        }
 
-                        System.out.println("Edge_crossover: (recomanat: true)");
-                        Edge_crossover = sc.nextBoolean();
-
-                        System.out.println("Mutate2: (recomanat: true)");
-                        Mutate2 = sc.nextBoolean();
-
-                        System.out.println("MutationRate: (recomanat: 0.015)");
-                         MutationRate = sc.nextDouble();
+                        System.out.println("Crossover: (1- Simple/ 2- Edge)");
+                        int crossover = sc.nextInt();
+                        if(crossover == 1){
+                            cross = new Crossover_Simple();
+                        }
+                        else cross = new Crossover_Edge();
 
 
-                        if(Mutate2){
-                           System.out.println("MutationSwapProbability: (recomanat: 0.9)");
+                        System.out.println("Mutate2: (1- Rate/ 2-RateSwap / 3-Little)");
+                        int mutate = sc.nextInt();
+                        
+                        if(mutate == 1){
+                            mut = new Mutate_Rate();
+                            System.out.println("MutationRate: (recomanat: 0.015)");
+                            MutationRate = sc.nextDouble();
+                        }
+                        else if(mutate == 2){
+                            mut = new Mutate_SwapRate();
+                            
+                            System.out.println("MutationRate: (recomanat: 0.015)");
+                            MutationRate = sc.nextDouble();
+                            
+                            System.out.println("MutationSwapProbability: (recomanat: 0.9)");
                             MutationSwapProbability = sc.nextDouble();
                         }
+                        else mut = new Mutate_Little();
                     }
                     
-                     Ctrl.tspGA(nom, StopCondition, Ngeneracions, NTours, Elitism, RouletteWheel_TS,
-                     TournamentSize, Edge_crossover, Mutate2, MutationRate, MutationSwapProbability, id);
+                    double aux = 0;
+                    int aux2 = 0;
+                    
+                    Tsp_GA tsp = new Tsp_GA();
+                    //Ctrl.tsp(nom, tsp, StopCondition, Ngeneracions, NTours,
+                    //        isg, Elitism, TS, TournamentSize, 
+                    //        cross, mut, MutationRate, MutationSwapProbability,
+                    //        id, aux, aux, aux2);
                
                 }
                 escriureSolucio(Ctrl);
@@ -219,21 +278,25 @@ public class DriverClass_CtrlDomini {
     }
         
     
-    public static void escriureCjtElem(CtrlDomini Ctrl, Tour cjtElem){
-        Tour t = Ctrl.getCity().get_Tour();
-        for(int i = 0; i < t.size(); ++i){
-            System.out.print(" " + t.getElementPos(i).getID());
+    public static void escriureCity(City ciutat){
+        ArrayList<Punt> Pts = ciutat.getPunts();
+        System.out.println("Printo els punts:");
+        for(int i = 0; i < Pts.size(); ++i){
+            System.out.println(Pts.get(i).getNom() + "    ");
+        }
+        System.out.println();
+        
+        ArrayList<ArrayList<Integer>> adj = ciutat.getAdjacency();
+        System.out.println("Printo les adjacencies:");
+        for(int i = 0; i < adj.size(); ++i){
+            for(int ii = 0; ii < adj.get(0).size(); ++ii){
+                System.out.print(adj.get(i).get(ii) + "    ");
+            }
+            System.out.println();
         }
         System.out.println();
     }
     
-    public static void escriureRelations(CtrlDomini Ctrl, Relations R){
-        Relations r = Ctrl.getCity().get_Relations();
-        for(int i = 0; i < r.size(); ++i){
-            System.out.println(r.toString(i));
-        }
-        System.out.println();
-    }
     
     public static void escriureSolucio(CtrlDomini Ctrl){
         Solution sol = Ctrl.getSolution();
@@ -242,7 +305,7 @@ public class DriverClass_CtrlDomini {
          System.out.println("L'ordre d'elements és: ");
          System.out.println();
         for(int i = 0; i < sol.size(); ++i){
-            System.out.print(" " + sol.getElementPos(i).getID());
+            System.out.print(" " + sol.getElementPos(i).getNom());
           if(i%10==0)  System.out.println();
         }
          System.out.println();

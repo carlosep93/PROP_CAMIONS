@@ -1,9 +1,9 @@
 
 package projecte_prop;
 
-public class Mutate_Little {
+public class Mutate_Little extends Mutate{
     
-    public static void  mutate(City C, Tour tour, double mutationRate, double mutationSwapProbability){
+    @Override public Tour mutate(City C, Tour tour, double mutationRate, double mutationSwapProbability){
         if (tour.size()>=1){ 
             int max1 = C.getAdjacency().get(tour.getElementPos(0).getID()).get(tour.getElementPos(1).getID());
             int max2 = 0;
@@ -22,5 +22,6 @@ public class Mutate_Little {
             }
             tour.swap(pos1,pos2);
         }
+        return tour;
     }
 }
