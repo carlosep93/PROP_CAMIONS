@@ -105,7 +105,9 @@ public class CjtTours {
     
     public  Tour getFittestTour(City C){ 
         int idTour = 0;
+        //System.out.println("Entro a buscar FittestTOur");
         for (int i = 1; i < nTours; ++i) {
+            //System.out.println(cjtTours[i].getCost(C) + "   ");
             if (cjtTours[idTour].getCost(C) > cjtTours[i].getCost(C)) idTour = i;
         }
         return cjtTours[idTour];

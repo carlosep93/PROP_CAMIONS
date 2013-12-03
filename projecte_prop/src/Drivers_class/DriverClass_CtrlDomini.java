@@ -123,13 +123,13 @@ public class DriverClass_CtrlDomini {
                 if(alg == 1){
                     String nom = "sense_nom";
                     int id = 0;
+                    int isg = 0;
                     double tmp = 1000;
                     double fact = 0.03;
                     int par = 25;
-                    InitialSolGenerator isg = new InitialSolGenerator_Random();
-                    Mutate mut = new Mutate_Little();
+                    int mut = 3;
                     double SwapProbability, SwapRate;
-                    SwapProbability = SwapRate = 0;
+                    SwapProbability = SwapRate = 0.015;
                     if(!predef){
                         System.out.println("Nom de la solucio:");
                         sc.nextLine();
@@ -138,11 +138,8 @@ public class DriverClass_CtrlDomini {
                         System.out.println("ID de la solucio:");
                         id = sc.nextInt();
                         
-                        System.out.println("Creació de la solucio inicial(1-Random/ 2-TwoAPP:");
-                        int inicial = sc.nextInt();
-                        if(inicial == 1) isg = new InitialSolGenerator_Random();
-                        else isg = new InitialSolGenerator_TwoApp();
-
+                        System.out.println("Creació de la solucio inicial(0-Random/ 1-TwoAPP:");
+                        isg = sc.nextInt();
 
                         System.out.println("Temperatura inicial (recomanat:1000) : ");
                         tmp = sc.nextDouble();
@@ -154,45 +151,39 @@ public class DriverClass_CtrlDomini {
                         System.out.println("parada: (recomanat: 25) ");
                         par = sc.nextInt();
                         
-                        System.out.println("Tipus de mutació (1- Liitle//2- Rate//3- SwapRate:");
-                        int mutacio = sc.nextInt();
-                        if(mutacio == 1) mut = new Mutate_Little();
-                        else if(mutacio == 2){
+                        System.out.println("Tipus de mutació (0- Rate//1- RateSwap//2- Little:");
+                        mut = sc.nextInt();
+                        if(mut == 1){
                             System.out.println("swap rate: ");
-                            SwapRate = sc.nextInt();
+                            SwapRate = sc.nextDouble();
                         }
-                        else if(mutacio == 3){
+                        else if(mut == 2){
                             System.out.println("swap rate: ");
-                            SwapRate = sc.nextInt();
+                            SwapRate = sc.nextDouble();
                             
                             System.out.println("swap probability: ");
-                            SwapProbability = sc.nextInt();
+                            SwapProbability = sc.nextDouble();
                         }
-                        
                     }
-                    int aux = 0;
-                    boolean aux2 = false;
                     
-                    
-                    Tsp_SA tsp = new Tsp_SA();
-                    //Ctrl.tsp(nom, tsp, aux, aux, aux,
-                    //        isg, aux2, null, aux,
-                    //        null, mut, SwapRate, SwapProbability,
-                    //        id, tmp, fact, par);
+                    Ctrl.tsp(nom, 0, 0, 0, 0,
+                            isg, false, 0, 0,
+                            0, mut, SwapRate, SwapProbability,
+                            id, tmp, fact, par);
                 }
                 else{
                     String nom = "Sense_nom";
                     int id = 0;
-                    InitialSolGenerator isg = new InitialSolGenerator_Random();
+                    int isg = 0;
                     int StopCondition = 20;
                     int Ngeneracions = 1000;
                     int NTours = 50;
                     boolean Elitism = true;
-                    TournamentSelection TS = new TournamentSelection_RouletteWheel();
+                    int TS = 0;
                     int TournamentSize = 5;
 
-                    Crossover cross = new Crossover_Simple();
-                    Mutate mut = new Mutate_Rate();
+                    int cross = 0;
+                    int mut = 0;
                     double MutationRate = 0.15;
                     double MutationSwapProbability = 0.9;
                     
@@ -204,10 +195,8 @@ public class DriverClass_CtrlDomini {
                         System.out.println("Id de la solucio:");
                         id = sc.nextInt();
                         
-                        System.out.println("Creació de la solucio inicial(1-Random/ 2-TwoAPP:");
-                        int inicial = sc.nextInt();
-                        if(inicial == 1) isg = new InitialSolGenerator_Random();
-                        else isg = new InitialSolGenerator_TwoApp();
+                        System.out.println("Creació de la solucio inicial(0-Random/ 1-TwoAPP:");
+                        isg = sc.nextInt();
                         
                         System.out.println("StopCondition: (recomanat: 20) ");
                         StopCondition = sc.nextInt();
@@ -221,54 +210,38 @@ public class DriverClass_CtrlDomini {
                         System.out.println("Elitism: (recomanat: true )");
                         Elitism = sc.nextBoolean();
 
-                        System.out.println("Tournament Selection: (1- Random/ 2- RouletteWheel) ");
-                        int Roule = sc.nextInt();
+                        System.out.println("Tournament Selection: (0- Random/ 1- RouletteWheel) ");
+                        TS = sc.nextInt();
                             
-                        if(Roule == 1){
-                            TS = new TournamentSelection_Random();
+                        if(TS == 0){
                             System.out.println("Tournament Size:");
                             TournamentSize = sc.nextInt();
                         }
-                        else{
-                            TS = new TournamentSelection_RouletteWheel();
-                        }
 
-                        System.out.println("Crossover: (1- Simple/ 2- Edge)");
-                        int crossover = sc.nextInt();
-                        if(crossover == 1){
-                            cross = new Crossover_Simple();
-                        }
-                        else cross = new Crossover_Edge();
+                        System.out.println("Crossover: (0- Simple/ 1- Edge)");
+                        cross = sc.nextInt();
 
-
-                        System.out.println("Mutate2: (1- Rate/ 2-RateSwap / 3-Little)");
-                        int mutate = sc.nextInt();
+                        System.out.println("Mutate2: (0- Rate/ 1-RateSwap / 2-Little)");
+                        mut = sc.nextInt();
                         
-                        if(mutate == 1){
-                            mut = new Mutate_Rate();
+                        if(mut == 0){
                             System.out.println("MutationRate: (recomanat: 0.015)");
                             MutationRate = sc.nextDouble();
                         }
-                        else if(mutate == 2){
-                            mut = new Mutate_SwapRate();
-                            
+                        else if(mut == 1){
                             System.out.println("MutationRate: (recomanat: 0.015)");
                             MutationRate = sc.nextDouble();
                             
                             System.out.println("MutationSwapProbability: (recomanat: 0.9)");
                             MutationSwapProbability = sc.nextDouble();
                         }
-                        else mut = new Mutate_Little();
                     }
                     
-                    double aux = 0;
-                    int aux2 = 0;
-                    
                     Tsp_GA tsp = new Tsp_GA();
-                    //Ctrl.tsp(nom, tsp, StopCondition, Ngeneracions, NTours,
-                    //        isg, Elitism, TS, TournamentSize, 
-                    //        cross, mut, MutationRate, MutationSwapProbability,
-                    //        id, aux, aux, aux2);
+                    Ctrl.tsp(nom, 1, StopCondition, Ngeneracions, NTours,
+                            isg, Elitism, TS, TournamentSize, 
+                            cross, mut, MutationRate, MutationSwapProbability,
+                            id, 0, 0, 0);
                
                 }
                 escriureSolucio(Ctrl);
@@ -280,16 +253,16 @@ public class DriverClass_CtrlDomini {
     
     public static void escriureCity(City ciutat){
         ArrayList<Punt> Pts = ciutat.getPunts();
-        System.out.println("Printo els punts:");
+        /*System.out.println("Printo els punts:");
         for(int i = 0; i < Pts.size(); ++i){
             System.out.println(Pts.get(i).getNom() + "    ");
         }
-        System.out.println();
+        System.out.println();*/
         
         ArrayList<ArrayList<Integer>> adj = ciutat.getAdjacency();
         System.out.println("Printo les adjacencies:");
         for(int i = 0; i < adj.size(); ++i){
-            for(int ii = 0; ii < adj.get(0).size(); ++ii){
+            for(int ii = 0; ii < adj.get(i).size(); ++ii){
                 System.out.print(adj.get(i).get(ii) + "    ");
             }
             System.out.println();

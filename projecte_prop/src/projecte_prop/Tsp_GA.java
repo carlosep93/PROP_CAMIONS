@@ -44,9 +44,17 @@ public class Tsp_GA extends Tsp{
         
         
         CjtTours pop = new CjtTours(nTours);
-        for(int i = 0; i < nPunts; ++i){
+        for(int i = 0; i < nTours; ++i){
             pop.addTour(i, isg.generateInitialSol(C));
         }
+        
+        /*System.out.println("inicial <<<<<<<<<<<<<<<<<<<<<<<<<<");
+        for(int i = 0; i < NTours; ++i){
+            for(int ii = 0; ii < nPunts; ++ii){
+                System.out.print(pop.getTour(i).getElementPos(ii).getID() + "   ");
+            }
+            System.out.println();
+        }*/
         
         Tour Fittest = pop.getFittestTour(C);
         int Fitness = pop.getFitness(C); 
@@ -73,6 +81,11 @@ public class Tsp_GA extends Tsp{
             }
         }
 
+        System.out.println("escric el tour final !!!!!!!!");
+        for(int i = 0; i < Fittest.size(); ++i){
+            System.out.print(Fittest.getElementPos(i).getID() + "  ");
+        }
+        System.out.println();
         //escriu la ruta més òptima
         return Fittest;
     }
@@ -90,14 +103,31 @@ public class Tsp_GA extends Tsp{
         //Crossover population
         for(int i = elitismOffset; i < nTours; ++i){
             Tour parent1 = ts.selTour(C, pop, tournamentSize);
+            /*System.out.print("Parent1:");
+            for(int ii = 0; ii < parent1.size(); ++ii){
+                System.out.print(parent1.getElementPos(ii).getID());
+            }
+            System.out.println();*/
+            
             Tour parent2 = ts.selTour(C, pop, tournamentSize);
+            /*System.out.print("Parent2:");
+            for(int ii = 0; ii < parent2.size(); ++ii) System.out.print(parent2.getElementPos(ii).getID());
+            System.out.println();*/
             
             T = cross.getChild(C, parent1, parent2);
-
+            /*System.out.print("Child:");
+            for(int ii = 0; ii < T.size(); ++ii) System.out.print(T.getElementPos(ii).getID());
+            System.out.println();*/
+            newPopulation.addTour(i, T);
         }
         //muta els nous tours de la població
         for(int i = elitismOffset; i < nTours; ++i){
-            newPopulation.addTour(i, mut.mutate(C, newPopulation.getTour(i),mutationRate, mutationSwapProbability));
+            Tour t = mut.mutate(C, newPopulation.getTour(i),mutationRate, mutationSwapProbability);
+            
+            /*System.out.print("mutate: ");
+            for(int ii = 0; ii < t.size(); ++ii) System.out.print(t.getElementPos(ii).getID() + "  ");
+            System.out.println();*/
+            newPopulation.addTour(i, t);
         }
         
         //retorna la nova població amb una generació més
