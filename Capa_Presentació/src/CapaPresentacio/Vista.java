@@ -5,7 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
-import java.awt.Rectangle;
+import java.util.List;
+import java.util.Map;
 
 /*
  * To change this template, choose Tools | Templates
@@ -35,6 +36,7 @@ public class Vista extends javax.swing.JFrame {
     int x2;
     int y2;
     boolean linea2punts;
+    CtrlPresentacio cp = new CtrlPresentacio();
     
     public Vista() {
         initComponents();
@@ -86,6 +88,7 @@ public class Vista extends javax.swing.JFrame {
             }
         };
         IMAGEN = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PanelOpcions = new javax.swing.JPanel();
         TabAnealing = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -185,6 +188,13 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jButton1.setText("Solve");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
         PanelPrincipal.setLayout(PanelPrincipalLayout);
         PanelPrincipalLayout.setHorizontalGroup(
@@ -192,36 +202,44 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LabelGenetic)
-                        .addGap(163, 163, 163)
-                        .addComponent(LabelAnealing))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LabelSeleccio))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+                        .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(LabelGenetic)
+                                .addGap(163, 163, 163)
+                                .addComponent(LabelAnealing))
+                            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(LabelSeleccio))
+                            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(177, 177, 177)))
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(LabelSeleccio)
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelAnealing)
-                            .addComponent(LabelGenetic))
-                        .addGap(3, 3, 3)
-                        .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                            .addGap(33, 33, 33)
+                            .addComponent(LabelSeleccio)
+                            .addGap(18, 18, 18)
+                            .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(LabelAnealing)
+                                .addComponent(LabelGenetic))
+                            .addGap(3, 3, 3)
+                            .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
 
@@ -566,24 +584,12 @@ class Surface extends javax.swing.JPanel {
  
      
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
-        if(linea2punts == true){
-         x2 = evt.getX();
-         y2 = evt.getY();
-          Graphics g2 = jPanel4.getGraphics();
-         g2.setColor(Color.red);
-         g2.fillRect(x2, y2, 10, 10);
-         g2.drawLine(x, y, x2, y2);
-         linea2punts = false;
-        }
-        else{
-        linea2punts = true;
         x = evt.getX();
         y = evt.getY();
         Graphics g2 = jPanel4.getGraphics();
         g2.setColor(Color.red);
         g2.fillRect(x, y, 10, 10);
-        
-        }
+        cp.addPunt(x, y);
     }//GEN-LAST:event_IMAGENMouseClicked
 /*
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
@@ -606,6 +612,18 @@ class Surface extends javax.swing.JPanel {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
+       Graphics g2 = jPanel4.getGraphics();
+       g2.setColor(Color.red);
+       for (int i=1;i< aux.size();++i) {
+           g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
+                   aux.get(i).getKey(), aux.get(i).getValue());
+       }
+       g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
+                   aux.get(0).getKey(), aux.get(0).getValue());
+    }//GEN-LAST:event_jButton1ActionPerformed
    
     
     
@@ -680,6 +698,7 @@ class Surface extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
