@@ -4,48 +4,39 @@ package projecte_prop;
 import java.util.List;
 import java.util.ArrayList;
 
-public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
+public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
-    
-    public Tour generateInitialSol(City C){
-        //List<Punt> lp = C.getPunts();
-        //List<List<Integer>> llr = C.getAdjacency();
-        ArrayList<ArrayList<Integer>> mst = prim(C);
-        Tour T = new Tour();
-        return T;
+    @Override
+    public abstract Tour generateInitialSol(City C);
         
-        
-        /*int [][] mst = Mst.prim(M);
-
-    @Override public Tour generateInitialSol(Ciutat C, int[][] M, List<Integer> id){
-        int [][] mst = Mst.prim(M);
-        List<Integer> l = new ArrayList<Integer>();
-        getEpath(mst,l,0);
-        return getEtour(mst.length,l,id);*/
-    }
-        
-    private void getEpath(int[][] mst,List<Integer> l, int pos) {
+    public void getEpath(ArrayList<ArrayList<Integer>> mst,ArrayList<Integer> l, int pos) {
         l.add(pos);
-        if(child(mst[pos])) {
-            for(int i = 0; i < mst.length ; ++i) {
-                if(mst[pos][i] > 0) {
-                    mst[pos][i] = 0;
+        if(child(mst.get(pos))) {
+            for(int i = 0; i < mst.size() ; ++i) {
+                if(mst.get(pos).get(i) > 0) {
+                    mst.get(pos).set(i,0);
                     getEpath(mst,l,i);
                 }
             }
         }
     }
-    private boolean child(int[] mst) {
-        for(int i = 0; i < mst.length ;++i) {
-            if (mst[i] > 0) return true;
+    private boolean child(ArrayList<Integer> mst) {
+        for(int i = 0; i < mst.size() ;++i) {
+            if (mst.get(i) > 0) return true;
         }
         return false;
     }
     
-    private Tour getEtour(int size,List<Integer> l,List<Integer> id) {
+    public Tour getTour(int size,List<Integer> l) {
         Tour t = new Tour();
         Punt E;
-        int pos;
+        boolean[] visited = new boolean[size];
+        while();
+        return t;
+    }
+        
+        
+        /*
         boolean[] visited = new boolean[size];
         while (!l.isEmpty()) {
             if (!visited[l.get(0)]) {
@@ -60,8 +51,5 @@ public class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         }
         return t;
     }
-
-    public Tour generateInitialSol(Ciutat C){
-        return null;
-    }
+*/
 }

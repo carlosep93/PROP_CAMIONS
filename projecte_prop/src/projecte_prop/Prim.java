@@ -11,17 +11,27 @@ import java.util.PriorityQueue;
  *
  * @author joanbarrosogarrido
  */
-public class Mst extends InitialSolGenerator_TwoApp {
+public class Prim extends InitialSolGenerator_TwoApp {
 
     @Override
     public Tour generateInitialSol(City C){
         ArrayList<ArrayList<Integer>> mst = new ArrayList<ArrayList<Integer>>();
         List<Punt> lp = C.getPunts();
+        getMST(mst,C);
+        //proba de mst
+        for(int i = 0;i < mst.size();++i) {
+            for(int j = 0; j < mst.size();++j) {
+                System.out.print(" "+mst.get(i).get(j));
+            }
+            System.out.println();
+        }
+        ArrayList<Integer> path= new ArrayList();
+        getEpath(mst,path,0);
         Tour T = new Tour();
         return T;
     }
     
-    private static ArrayList<ArrayList<Integer>> mst_prim(ArrayList<ArrayList<Integer>> mst, City C) {
+    private static ArrayList<ArrayList<Integer>> getMST(ArrayList<ArrayList<Integer>> mst, City C) {
         ArrayList<Punt> lp = C.getPunts();
         ArrayList<ArrayList<Integer>> lli = C.getAdjacency();
         List<Relation> lr = new ArrayList<Relation>();
