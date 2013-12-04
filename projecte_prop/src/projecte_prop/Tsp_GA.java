@@ -107,17 +107,19 @@ public class Tsp_GA extends Tsp{
             for(int ii = 0; ii < parent1.size(); ++ii){
                 System.out.print(parent1.getElementPos(ii).getID());
             }
-            System.out.println();*/
+            System.out.println("        pes " +  parent1.getCost(C));*/
             
             Tour parent2 = ts.selTour(C, pop, tournamentSize);
             /*System.out.print("Parent2:");
             for(int ii = 0; ii < parent2.size(); ++ii) System.out.print(parent2.getElementPos(ii).getID());
-            System.out.println();*/
+            System.out.println("        pes " +  parent2.getCost(C));*/
             
             T = cross.getChild(C, parent1, parent2);
-            /*System.out.print("Child:");
+            /*¿System.out.print("Child:");
             for(int ii = 0; ii < T.size(); ++ii) System.out.print(T.getElementPos(ii).getID());
+            System.out.println("        pes " +  T.getCost(C));
             System.out.println();*/
+            
             newPopulation.addTour(i, T);
         }
         //muta els nous tours de la població
