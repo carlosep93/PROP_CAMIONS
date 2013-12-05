@@ -66,28 +66,10 @@ public class Vista extends javax.swing.JFrame {
         javax.swing.ButtonGroup buttonGroup6 = new javax.swing.ButtonGroup();
         PANELS = new javax.swing.JTabbedPane();
         PanelPrincipal = new javax.swing.JPanel();
-        jPanel4 = new Surface() {
-
-            private void doDrawing(Graphics g) {
-
-                Graphics2D g2d = (Graphics2D) g;
-
-                g2d.setColor(Color.blue);
-
-                Dimension size = getSize();
-                Insets insets = getInsets();
-
-                int w = size.width - insets.left - insets.right;
-                int h = size.height - insets.top - insets.bottom;
-
-                g2d.drawLine(x,y,x,y);
-            }     
-
-            //@Override
-            public void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                doDrawing(g);
+        jPanel4 = new javax.swing.JPanel() {
+            public void paint(Graphics g)  {
+                super.paint(g);
+                cpaint(g);
             }
         };
         IMAGEN = new javax.swing.JLabel();
@@ -163,14 +145,6 @@ public class Vista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel4.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel4MousePressed(evt);
-            }
-        });
 
         IMAGEN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         IMAGEN.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacio/BCN.jpg"))); // NOI18N
@@ -690,30 +664,15 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-class Surface extends javax.swing.JPanel {
 
-    private void doDrawing(Graphics g) {
 
-        Graphics2D g2d = (Graphics2D) g;
-
-        g2d.setColor(Color.blue);
-
-        Dimension size = getSize();
-        Insets insets = getInsets();
-    
-        int w = size.width - insets.left - insets.right;
-        int h = size.height - insets.top - insets.bottom;
-        
-        g2d.drawLine(x,y,x,y);
+    private void cpaint(Graphics g) {
+        for (int i=0;i<cp.lpunts().size();++i) {
+            g.setColor(Color.red);
+            g.fillRect(cp.lpunts().get(i).getKey(),cp.lpunts().get(i).getValue(), 10, 10);
+        }
     }     
 
-   //@Override
-    public void paintComponent(Graphics g,int x,int y) {
-
-        super.paintComponent(g);
-        doDrawing(g);
-    }
-}
  
      
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
