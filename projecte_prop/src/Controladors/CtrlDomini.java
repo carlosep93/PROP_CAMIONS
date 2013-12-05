@@ -25,8 +25,7 @@ public class CtrlDomini {
     
     public void addPunt(String nom, int x, int y, ArrayList<Integer> pesos_resta){
         Punt P = new Punt(x, y, nom);
-        
-        ciutat.addElement(P, pesos_resta);
+         ciutat.addElement(P, pesos_resta);
     }
     
    
@@ -74,5 +73,9 @@ public class CtrlDomini {
     
     public ArrayList<String> getEnabled(){
         return ciutat.getEnabled();
+    }
+    
+    public Integer numElementsActius(){
+        return ciutat.getEnabled().size();
     }
 }

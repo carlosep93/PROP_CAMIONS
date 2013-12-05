@@ -16,22 +16,34 @@ import Controladors.CtrlDomini;
  */
 public class CtrlPresentacio {
 
-    private static Boolean Genetic;
-    private static Boolean Anealing;
+    Boolean Genetic;
+    Boolean Anealing;
+    
     private List<Entry < Integer,Integer > > punts = new ArrayList <>();
+    
     private List<String> nom_elements = new ArrayList <>();
-    private CtrlDomini cd; 
+    private CtrlDomini cd = new CtrlDomini("fuck"); 
     
     
     
-    public void addPunt(int x,int y,String nom) {
+    public void addPunt(int x,int y,String nom,ArrayList<Integer> list) {
         Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
         punts.add(aux); //llista de punts amb x,y
         nom_elements.add(nom);
+        
         cd.addPunt(nom, x, y, list); //llista amb les distànceis
         
     }
     
+    public ArrayList<String> getElementsActivats(){
+        //for(int i=0; i< cd.getEnabled().size(); ++i) System.out.println(cd.getEnabled().get(i));
+     return cd.getEnabled();   
+    }
+        
+    public Integer numElementsActius(){
+        return cd.numElementsActius();
+    }
+         
     
     
     
