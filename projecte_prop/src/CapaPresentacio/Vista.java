@@ -793,7 +793,7 @@ class Surface extends javax.swing.JPanel {
            System.out.println("actual -> " + actual);
            ++actual;
            
-           if (numRelations > 1) nomAnterior = ListNoms.get(actual);
+           if (numRelations > 1 && actual<ListNoms.size()) nomAnterior = ListNoms.get(actual);
            NomElementRelacio.setText(nomAnterior); 
            Relacions.add(Spinner.getComponentCount());
            Spinner.setValue(0);
