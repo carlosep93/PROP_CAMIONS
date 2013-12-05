@@ -32,6 +32,15 @@ public class City {
        lli.add(P.getID(), pesos_resta);
    }
    
+   public void repPesos(int idPunt, Integer[] pesosNew){
+       if(pesosNew.length == lli.get(idPunt).size()){
+           for(int i = 0; i < pesosNew.length; ++i){
+               lli.get(idPunt).remove(i);
+               lli.get(idPunt).add(i, pesosNew[i]);
+           }
+       }
+   }
+   
    
    //pre: llr !buida
    public int getCost(int id1, int id2) {

@@ -29,9 +29,28 @@ public class CtrlDomini {
         ciutat.addElement(P, pesos_resta);
     }
     
+    public Integer[] consultaPunt(String nom){
+        int idPunt = -1;
+        for(int i = 0; i < ciutat.getPunts().size(); ++i){
+            if(ciutat.getPunts().get(i).getNom() == nom){ idPunt = i; break; }
+        }
+        if(idPunt == -1) return null;
+        Integer[] pesos = new Integer[ciutat.getAdjacency().get(idPunt).size()];
+        for(int i = 0; i < pesos.length; ++i){
+            pesos[i] = ciutat.getAdjacency().get(idPunt).get(i);
+        }
+        return pesos;
+    }
+    
    
-    public void modificaElement(Punt E, String nom){
-        
+    public void modificaElement(String nom, Integer[] pesosNew){
+        int idPunt = -1;
+        for(int i = 0; i < ciutat.getPunts().size(); ++i){
+            if(ciutat.getPunts().get(i).getNom() == nom){ idPunt = i; break; }
+        }
+        if(idPunt != -1){
+            ciutat.repPesos(idPunt, pesosNew);
+        }
     }
         
     public void eliminaElement(String nom){
