@@ -764,15 +764,15 @@ class Surface extends javax.swing.JPanel {
         if( !NomElement.getText().isEmpty() && Relacions.size()==numRelations){
             active = true;   
            
-            //afegim el punt
+            //afegim el punt a la vista i a la capa de domini
             cp.addPunt(x, y,NomElement.getText(),Relacions);
            
             
             //actualitzem els elements de la llista
-            for(int i=0; i<numRelations; ++i){
-               String aux = TextElementsActius.getText();
+            String aux = "";
+            for(int i=0; i< cp.getElementsActivats().size(); ++i){     
                TextElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n" ); 
-               
+               aux = TextElementsActius.getText();
             }
             NomElement.setText(null);
             PanelNewElement.setVisible(false);
