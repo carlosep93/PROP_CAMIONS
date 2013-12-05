@@ -163,14 +163,6 @@ public class Vista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel4.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel4MousePressed(evt);
-            }
-        });
 
         IMAGEN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         IMAGEN.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacio/BCN.jpg"))); // NOI18N
@@ -690,30 +682,14 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-class Surface extends javax.swing.JPanel {
 
-    private void doDrawing(Graphics g) {
-
-        Graphics2D g2d = (Graphics2D) g;
-
-        g2d.setColor(Color.blue);
-
-        Dimension size = getSize();
-        Insets insets = getInsets();
-    
-        int w = size.width - insets.left - insets.right;
-        int h = size.height - insets.top - insets.bottom;
-        
-        g2d.drawLine(x,y,x,y);
+    private void pintar(Graphics g) {
+            
     }     
 
-   //@Override
-    public void paintComponent(Graphics g,int x,int y) {
+   
+    
 
-        super.paintComponent(g);
-        doDrawing(g);
-    }
-}
  
      
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
@@ -752,24 +728,7 @@ class Surface extends javax.swing.JPanel {
         }    
         active = false;
     }//GEN-LAST:event_IMAGENMouseClicked
-/*
-    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-         x = evt.getX();
-         y = evt.getY();
-         Graphics g2 = jPanel4.getGraphics();
-         g2.setColor(Color.red);
-         g2.fillRect(x, y, 10, 10);
-         
-    }//GEN-LAST:event_jPanel4MousePressed
-
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-         x = evt.getX();
-         y = evt.getY();
-         Graphics g2 = jPanel4.getGraphics();
-         g2.setColor(Color.red);
-         g2.fillRect(x, y, 10, 10);
-    }//GEN-LAST:event_jPanel4MouseClicked
-*/
+/**/
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed

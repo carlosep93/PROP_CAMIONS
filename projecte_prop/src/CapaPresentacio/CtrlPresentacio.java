@@ -16,11 +16,11 @@ import Controladors.CtrlDomini;
  */
 public class CtrlPresentacio {
 
-    Boolean Genetic;
-    Boolean Anealing;
+    private Boolean Genetic;
+    private Boolean Anealing;
     
-    private List<Entry < Integer,Integer > > punts = new ArrayList <>();
-    private List<String> nom_elements = new ArrayList <>();
+    private List<Entry < Integer,Integer > > punts = new ArrayList <Entry < Integer,Integer >>();
+    private List<String> nom_elements = new ArrayList <String>();
     private CtrlDomini cd = new CtrlDomini("fuck"); 
     
     
