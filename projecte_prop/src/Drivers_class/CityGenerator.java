@@ -5,6 +5,10 @@
 package Drivers_class;
 import java.util.Scanner;
 import projecte_prop.Punt;
+import projecte_prop.City;
+import java.util.ArrayList;
+import projecte_prop.*;
+
 /**
  *
  * @author joanbarrosogarrido
@@ -20,14 +24,18 @@ public class CityGenerator {
         int y = 0;
         String s;
         for (int i = 0; i < qp; ++i) {
+            ArrayList<Integer> ali = new ArrayList();
             s = Integer.toString(x);
             Punt P = new Punt(x,y,s);
             ++x;++y;
-        }
-        for (int i = 0; i < qp; ++i) {
-            for(int j = 0; j < qp-1; ++j) {
-                
+            for(int j = 0; j <i; ++j) {
+                System.out.println("sus mertos");
+                ali.add((int)(Math.random()*8+1));
             }
+                C.addElement(P, ali);
         }
+        Prim prim = new Prim();
+        Tour T = prim.generateInitialSol(C);
+        
     }
 }

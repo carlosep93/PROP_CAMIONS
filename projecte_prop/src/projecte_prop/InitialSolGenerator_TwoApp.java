@@ -10,7 +10,7 @@ public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     public abstract Tour generateInitialSol(City C);
         
         
-    public void getEpath(ArrayList<ArrayList<Integer>> mst,List<Integer> l, int pos) {
+    public void getEpath(List<List<Integer>> mst,List<Integer> l, int pos) {
         l.add(pos);
         if(child(mst.get(pos))) {
             for(int i = 0; i < mst.size() ; ++i) {
@@ -21,7 +21,7 @@ public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
             }
         }
     }
-    private boolean child(ArrayList<Integer> mst) {
+    private boolean child(List<Integer> mst) {
         for(int i = 0; i < mst.size() ;++i) {
             if (mst.get(i) > 0) return true;
         }
