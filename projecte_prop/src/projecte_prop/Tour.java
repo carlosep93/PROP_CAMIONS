@@ -264,4 +264,14 @@ public class Tour {
         }
         return cost;
     }
+    
+    public List<Punt> getCjtElements(){
+        return cjtElem;
+    }
+    
+    public ArrayList<String> getNomElements(){
+        ArrayList<String> noms = new ArrayList<String>();
+        for (int i=0; i<cjtElem.size(); ++i) noms.add(cjtElem.get(i).getNom());
+        return noms;
+    }
 }

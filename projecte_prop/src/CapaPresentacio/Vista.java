@@ -106,10 +106,13 @@ public class Vista extends javax.swing.JFrame {
         Spinner = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         LabelAnealing = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ButtonSolve = new javax.swing.JButton();
         LabelGenetic = new javax.swing.JLabel();
         SliderAlgoritme = new javax.swing.JSlider();
         LabelSeleccio = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TextSolution = new javax.swing.JTextArea();
         PanelOpcions = new javax.swing.JPanel();
         TabAnealing = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -149,6 +152,8 @@ public class Vista extends javax.swing.JFrame {
         CheckBoxDesactivar = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
         TextInfo = new javax.swing.JTextField();
+        TextRelations = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -288,17 +293,16 @@ public class Vista extends javax.swing.JFrame {
 
         LabelAnealing.setText("Anealing");
 
-        jButton1.setText("Solve");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonSolve.setText("Solve");
+        ButtonSolve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonSolveActionPerformed(evt);
             }
         });
 
         LabelGenetic.setText("Genetic");
 
-        SliderAlgoritme.setMaximum(1);
-        SliderAlgoritme.setValue(0);
+        SliderAlgoritme.setMaximum(2);
         SliderAlgoritme.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 SliderAlgoritmeStateChanged(evt);
@@ -306,6 +310,8 @@ public class Vista extends javax.swing.JFrame {
         });
 
         LabelSeleccio.setText("Selecciona algoritme");
+
+        jLabel12.setText("Nomes Relació");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -320,15 +326,15 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(LabelGenetic)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12)
+                        .addGap(45, 45, 45)
                         .addComponent(LabelAnealing)
                         .addGap(40, 40, 40))))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSolve, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 59, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -338,13 +344,18 @@ public class Vista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelAnealing)
-                    .addComponent(LabelGenetic))
+                    .addComponent(LabelGenetic)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addComponent(ButtonSolve)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
+
+        TextSolution.setColumns(20);
+        TextSolution.setRows(5);
+        jScrollPane3.setViewportView(TextSolution);
 
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
         PanelPrincipal.setLayout(PanelPrincipalLayout);
@@ -358,7 +369,9 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
                 .addContainerGap())
         );
         PanelPrincipalLayout.setVerticalGroup(
@@ -366,13 +379,16 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         PANELS.addTab("Vista Principal", PanelPrincipal);
@@ -552,6 +568,14 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel14.setText("Informació");
 
+        TextRelations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextRelationsActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Relacions");
+
         javax.swing.GroupLayout PanelElementsLayout = new javax.swing.GroupLayout(PanelElements);
         PanelElements.setLayout(PanelElementsLayout);
         PanelElementsLayout.setHorizontalGroup(
@@ -559,10 +583,18 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(PanelElementsLayout.createSequentialGroup()
                 .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelElementsLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelElementsLayout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelElementsLayout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(96, 96, 96)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel19)))
+                            .addGroup(PanelElementsLayout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(TextRelations, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(45, 45, 45)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
@@ -593,17 +625,23 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jLabel14)
                         .addGap(29, 29, 29)
                         .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(120, 120, 120)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(CheckBoxDesactivar))
                         .addGap(18, 18, 18)
-                        .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(119, Short.MAX_VALUE))
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2)))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextRelations, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
         );
 
         javax.swing.GroupLayout PanelElementLayout = new javax.swing.GroupLayout(PanelElement);
@@ -736,7 +774,9 @@ class Surface extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonSolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSolveActionPerformed
+       
+        if(SliderAlgoritme.getValue() == 1){
         List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
        Graphics g2 = jPanel4.getGraphics();
        g2.setColor(Color.red);
@@ -746,7 +786,26 @@ class Surface extends javax.swing.JPanel {
        }
        g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
                    aux.get(0).getKey(), aux.get(0).getValue());
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }
+        
+           
+        if(SliderAlgoritme.getValue() == 2){
+            ArrayList<String> Elems = cp.solutionAnealing();
+            TextSolution.setText("");
+            for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + " ");
+            
+        List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
+       Graphics g2 = jPanel4.getGraphics();
+       g2.setColor(Color.red);
+       for (int i=1;i< aux.size();++i) {
+           g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
+                   aux.get(i).getKey(), aux.get(i).getValue());
+       }
+       g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
+                   aux.get(0).getKey(), aux.get(0).getValue());
+        }
+        
+    }//GEN-LAST:event_ButtonSolveActionPerformed
 
     private void SliderAlgoritmeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderAlgoritmeStateChanged
         if(cp.Genetic){
@@ -766,7 +825,7 @@ class Surface extends javax.swing.JPanel {
            
             //afegim el punt a la vista i a la capa de domini
             cp.addPunt(x, y,NomElement.getText(),Relacions);
-           
+            
             
             //actualitzem els elements de la llista
             String aux = "";
@@ -774,6 +833,19 @@ class Surface extends javax.swing.JPanel {
                TextElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n" ); 
                aux = TextElementsActius.getText();
             }
+            
+        //actualitzem la llista d adjacencies
+            aux = "";
+             for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
+                  for(int j=0; j< cp.getElementsActivats().size(); ++j){ 
+                      TextRelations.setText(aux + cp.GetRelations().get(i).get(j));
+                      System.out.print(cp.GetRelations().get(i).get(j));
+                      aux = TextRelations.getText();
+             }
+                  TextRelations.setText(aux + "\n");
+                  System.out.println();
+             }
+            
             NomElement.setText(null);
             PanelNewElement.setVisible(false);
             
@@ -788,7 +860,7 @@ class Surface extends javax.swing.JPanel {
             NomElementRelacio.setText("-----");
                     
         }
-        else if(Spinner.getComponentCount() != 0){
+        else if(Spinner.getComponentCount() > 0){
            String nomAnterior = " ----- ";
            System.out.println("actual -> " + actual);
            ++actual;
@@ -801,6 +873,10 @@ class Surface extends javax.swing.JPanel {
            
         }
     }//GEN-LAST:event_AddRelationActionPerformed
+
+    private void TextRelationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRelationsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextRelationsActionPerformed
    
     
     
@@ -840,6 +916,7 @@ class Surface extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddRelation;
+    private javax.swing.JButton ButtonSolve;
     private javax.swing.JCheckBox CheckBoxDesactivar;
     private javax.swing.JTextField CoolingFactor;
     private javax.swing.JTextField EdgeCrossover;
@@ -876,6 +953,8 @@ class Surface extends javax.swing.JPanel {
     private javax.swing.JTabbedPane TabAnealing;
     private javax.swing.JTextArea TextElementsActius;
     private javax.swing.JTextField TextInfo;
+    private javax.swing.JTextField TextRelations;
+    private javax.swing.JTextArea TextSolution;
     private javax.swing.JToggleButton ToggleElitism;
     private javax.swing.JTextField TournamentSize;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -883,17 +962,18 @@ class Surface extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -910,6 +990,7 @@ class Surface extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

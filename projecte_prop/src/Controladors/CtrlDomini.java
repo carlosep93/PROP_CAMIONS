@@ -10,9 +10,12 @@ public class CtrlDomini {
     
     private City ciutat;
     private Solution sol;
+    private Boolean SolucioCreada;
+  
     
     public CtrlDomini(String nom){
         ciutat = new City(nom);
+        SolucioCreada = false;
     }
     
     public City getCity(){
@@ -97,4 +100,53 @@ public class CtrlDomini {
     public Integer numElementsActius(){
         return ciutat.getEnabled().size();
     }
+    
+    //funcions per obtenir el cami i la solucio per la capa de presentacio
+    
+    public ArrayList<String> tsp_CamiDeNoms(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
+            int isgI, boolean Elitism, int TSI, int TournamentSize, 
+            int crossI, int mutI, double MutationRate, double MutationSwapProbability, 
+            int id_sol, double tmp, double fact, int parada){
+        
+            sol = new Solution(id_sol, nomSolution);
+            Tsp tsp = new Tsp_SA();
+            if(tspI == 0) tsp = new Tsp_SA();
+            else if(tspI == 1) tsp = new Tsp_GA();
+            
+            InitialSolGenerator isg = new InitialSolGenerator_Random();
+            if(isgI == 0) isg = new InitialSolGenerator_Random();
+            else if(isgI == 1) isg = new InitialSolGenerator_TwoApp();
+            
+            TournamentSelection TS = new TournamentSelection_Random();
+            if(TSI == 0) TS = new TournamentSelection_Random();
+            else if(TSI == 1) TS = new TournamentSelection_RouletteWheel();
+            
+            Crossover cross = new Crossover_Simple();
+            if(crossI == 0) cross = new Crossover_Simple();
+            else if(crossI == 1) cross = new Crossover_Edge();
+            
+            Mutate mut = new Mutate_Rate();
+            if(mutI == 0) mut = new Mutate_Rate();
+            else if(mutI == 1) mut = new Mutate_SwapRate();
+            else if(mutI == 2) mut = new Mutate_Little();
+            
+            sol.addTour(tsp.calSol(ciutat, StopCondition, NGeneracions, NTours, isg, 
+                    Elitism, TS, TournamentSize, cross, mut, MutationRate, 
+                    MutationSwapProbability, tmp, fact, parada));
+            
+            ArrayList <String> NomsEnOrdre = sol.getNomElements();
+            
+            SolucioCreada = true;
+            return NomsEnOrdre;
+    }
+    public Boolean SolucioGenerada(){
+        return SolucioCreada;
+    }
+    
+    public ArrayList<ArrayList<Integer>> getRelations(){
+            return ciutat.getAdjacency();
+     }
+    
+    
+    
 }
