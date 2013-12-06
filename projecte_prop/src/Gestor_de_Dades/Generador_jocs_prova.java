@@ -4,7 +4,7 @@
  *  @author Pol
 
  */
-package Fitxers;
+package Gestor_de_Dades;
 
 
 

@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
-
+import projecte_prop.Punt;
 /**
  *
  * @author Pol
@@ -25,32 +25,30 @@ import java.io.File;
 // s'han de guardar: ELEMENTS, ADJACENCIES, SOLUCIONS
 public class Gestor_Dades {
     
-    static String pathload_Element;
-    static String pathload_Solution;
-    static String pathload_Adjacencies;
-    
-    static String pathstore_Element;
-    static String pathstore_Solution;
-    static String pathstore_Adjacencies;
+    static String Path_Elements = "Fitxer_Element.txt";
+    static String Path_Relations = "Fitxer_Relations.txt";
    
     //"src/Fitxers/saved_adjacencys.txt‏"
     //"src\\Fitxers\\saved_adjacencys.txt"
     
-    
-    public static List<List<Integer>> carregar_adjacencies(String path){
+    public Gestor_Dades(){
         
-        List <List<Integer>>  adjacencies = new ArrayList();
+    }
+    
+    public  ArrayList<ArrayList<Integer>> carregar_adjacencies(){
+        
+        ArrayList <ArrayList<Integer>>  adjacencies = new ArrayList();
         try{
            //String path = get_path_adjacencies_load();
            
-           File file = new File(path);
+           File file = new File(Path_Elements);
            Scanner sc = new Scanner(file);
           
            while(sc.hasNext()){             //primer element és num d'elements
            int num = sc.nextInt();
            for(int i=0; i<num; ++i){
-               List<Integer> temp = new ArrayList<Integer>();
-               for(int j=0; j<i+1; ++j){
+               ArrayList<Integer> temp = new ArrayList<Integer>();
+               for(int j=0; j<num; ++j){
                    int dist=sc.nextInt();
                    temp.add(dist);
                }
@@ -68,17 +66,17 @@ public class Gestor_Dades {
 }
     
     
-    public static void guardar_adjacencies( List <List<Integer>> adjac,String path){
+    public  void guardar_adjacencies( ArrayList <ArrayList<Integer>> adjac){
  
         PrintWriter salida = null;
         try{
        // String path = get_path_adjacencies_store();
-        salida = new PrintWriter(path);
+        salida = new PrintWriter(Path_Relations);
        int mida = adjac.size();
        salida.println(mida);
         
         for(int i=0; i<mida; ++i){
-            List<Integer> aux = adjac.get(i);
+            ArrayList<Integer> aux = adjac.get(i);
              for(int j=0; j<aux.size(); ++j)  salida.print(aux.get(j) + " ");
              salida.println();
         }
@@ -91,8 +89,65 @@ public class Gestor_Dades {
        
         
   }
-    
+  //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
    
+    public ArrayList<Punt> carregar_elements(){  //Retorna la llista d'elements guardats
+        ArrayList<Punt> elems = new ArrayList<Punt>() ; 
+     
+        try{
+         String path = Path_Elements;
+           
+           File file = new File(path);
+           Scanner sc = new Scanner(file);
+           int mida = sc.nextInt();
+        for(int i=0; i<mida; ++i){
+               
+             int x = sc.nextInt();
+             int y = sc.nextInt();
+             String nom = sc.next();
+             int id= sc.nextInt();
+             boolean enabled = sc.nextBoolean();   
+             Punt aux = new Punt(x,y,nom);
+             aux.modifyEnabled(enabled);
+             elems.add(aux);
+        }
+        //tanquem en arxiu
+     sc.close();
+    }catch (Exception e){
+        System.err.println("Error desconegut " + e.getMessage());
+    }
+    
+        return elems;   
+    
+}
+
+    
+    public void guardar_elements(ArrayList<Punt> elems){   //guardem un element al conjunt d'elements
+        PrintWriter salida = null;
+        try{
+        String path = Path_Elements;
+        salida = new PrintWriter(path);
+        salida.println(elems.size());
+        for(int i=0; i< elems.size(); ++i){
+             Punt aux = elems.get(i);
+             int x = aux.getX();
+             int y = aux.getY();
+             String nom = aux.getNom();
+             int id= aux.getID();
+             boolean enabled = aux.isEnabled(); 
+             salida.println(x + " " + y + " " + nom + " " + id + " " + enabled);
+        }
+        
+         salida.flush();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {         
+            salida.close();
+        }
+       
+    }
+  
+
     public static void print_list_list(List<List<Integer>> per_printar){
         int mida= per_printar.size();
         System.out.println(mida);
@@ -118,97 +173,6 @@ public class Gestor_Dades {
         }
         return result;
     }
-    
-    public static void canviar_path_adjacencies_load(String path){
-         
-         pathload_Adjacencies = path;     
-    }
-    
-    public static void canviar_path_adjacencies_store(String path){
-         
-         pathstore_Adjacencies = path;   
-    }
-    
-    public static String get_path_adjacencies_load(){
-        return pathload_Adjacencies;    
-    }
- 
-    public static String get_path_adjacencies_store(){
-        return pathstore_Adjacencies;      
-    }
- 
-  //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
-   
-    public List<Element> saved_elements(){  //Retorna la llista d'elements guardats
-        List<Element> saved_elements = new ArrayList<Element>() ; 
-     
-        try{
-         String path = pathload_Element;
-           
-           File file = new File(path);
-           Scanner sc = new Scanner(file);
-        
-        String strLinea;
-        int id_elem;
-        boolean active;
-        
-         while(sc.hasNext()){             //primer element és num d'elements
-           int num = sc.nextInt();
-           for(int i=0; i<num; ++i){
-              Element temp = new Element(sc.nextInt());
-              saved_elements.add(temp);
-           }
-         }
-        //tanquem en arxiu
-     sc.close();
-    }catch (Exception e){
-        System.err.println("Error desconegut " + e.getMessage());
-    }
-    
-        return saved_elements;   
-    
-}
-
-    
-    public void save_Element(Element elem){   //guardem un element al conjunt d'elements
-        PrintWriter salida = null;
-        try{
-        String path = get_path_adjacencies_store();
-        salida = new PrintWriter(path);
-        salida.println(elem.getID());
-        
-         salida.flush();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        } finally {         
-            salida.close();
-        }
-       
-    }
-    
-    public void discatalogue_Element(Element elem){  //invalida un element
-       PrintWriter salida = null;
-        try{
-        String path = get_path_adjacencies_store();
-        salida = new PrintWriter(path);
-        while(/*No trobem element ID*/ true){
-       
-       //mirem elements
-        
-            
-        }
-        //borrem element
-        
-        
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        } finally {         
-            salida.close();
-        }
-    
-    }
-  
-
     
     
 }
