@@ -35,7 +35,9 @@ public class CityGenerator {
                 C.addElement(P, ali);
         }
         Prim prim = new Prim();
-        Tour T = prim.generateInitialSol(C);
+        prim.getMST(C);
+        InitialSolGenerator_TwoApp twoapp = new InitialSolGenerator_TwoApp(C);
+        twoapp
         
     }
 }
