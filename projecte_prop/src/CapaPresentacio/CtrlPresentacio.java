@@ -54,7 +54,10 @@ public class CtrlPresentacio {
         return cd.getRelations();
     }
             
-    
+    public void resetDomini() {
+        CtrlDomini cd2 = new CtrlDomini("a");
+        cd = cd2;
+    }
     
     public void addPunt(int x,int y,String nom,ArrayList<Integer> list) {
         Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);

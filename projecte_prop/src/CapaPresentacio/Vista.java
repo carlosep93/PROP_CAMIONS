@@ -128,6 +128,7 @@ public class Vista extends javax.swing.JFrame {
         TextInfo = new javax.swing.JTextField();
         TextRelations = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -528,7 +529,12 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel13.setText("Inahabilitar Elements");
 
-        ElementsAdesactivar.setText("Escriu els noms/id dels Elements a desactivar");
+        ElementsAdesactivar.setText("Escriu els nom/id del Paquet a desactivar");
+        ElementsAdesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ElementsAdesactivarActionPerformed(evt);
+            }
+        });
 
         CheckBoxDesactivar.setText("Desactivar tots");
 
@@ -541,6 +547,13 @@ public class Vista extends javax.swing.JFrame {
         });
 
         jLabel19.setText("Relacions");
+
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelElementsLayout = new javax.swing.GroupLayout(PanelElements);
         PanelElements.setLayout(PanelElementsLayout);
@@ -570,7 +583,9 @@ public class Vista extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(CheckBoxDesactivar))
                                 .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1)
+                                .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(jLabel10)
@@ -597,7 +612,9 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(CheckBoxDesactivar))
                         .addGap(18, 18, 18)
                         .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(119, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addContainerGap(78, Short.MAX_VALUE))
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -825,6 +842,18 @@ public class Vista extends javax.swing.JFrame {
     private void TextRelationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRelationsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextRelationsActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (CheckBoxDesactivar.isEnabled())
+            cp.resetDomini();
+        else {
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ElementsAdesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElementsAdesactivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ElementsAdesactivarActionPerformed
    
     
     
@@ -910,6 +939,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
