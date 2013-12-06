@@ -11,11 +11,11 @@ import java.util.PriorityQueue;
  *
  * @author joanbarrosogarrido
  */
-public class Prim extends InitialSolGenerator_TwoApp {
+public class Prim extends Mst {
 
     @Override
-    public Tour generateInitialSol(City C){
-        List<List<Integer>> mst = new ArrayList<List<Integer>>();
+    public ArrayList<List<Integer>> getMST(City C){
+        ArrayList<List<Integer>> mst = new ArrayList<List<Integer>>();
         List<Punt> lp = C.getPunts();
         List<Integer> aux = new ArrayList<Integer>();
         System.out.println("empiezo a rellenar la puta matriz " + C.size());
@@ -33,6 +33,7 @@ public class Prim extends InitialSolGenerator_TwoApp {
             }
             System.out.println();
         }
+            System.out.println();
         getMST(mst,C);
         //proba de mst
         for(int i = 0;i < mst.size();++i) {
@@ -41,10 +42,11 @@ public class Prim extends InitialSolGenerator_TwoApp {
             }
             System.out.println();
         }
-        ArrayList<Integer> path= new ArrayList();
+        /*ArrayList<Integer> path= new ArrayList();
         getEpath(mst,path,0);
         Tour T = new Tour();
-        return T;
+        */
+        return mst;
     }
     
     private static void getMST(List<List<Integer>> mst, City C) {
@@ -77,13 +79,9 @@ public class Prim extends InitialSolGenerator_TwoApp {
         boolean done = false;
         while (!done && pqr.size() > 0){ 
             Relation R = pqr.poll();
-            System.out.println(R.getID1() + " " + R.getID2() + " " + R.getValue());
-            System.out.println("AQUI!");
             if (/*!visited[R.getID1()] || */!visited[R.getID2()]) {
                 mst.get(R.getID1()).remove(R.getID2());
-                System.out.println("Aqui coño!!");
                 mst.get(R.getID1()).add(R.getID2(),R.getValue());
-                System.out.println("nooo aqui!!!");
                 mst.get(R.getID2()).set(R.getID1(),R.getValue());
                 visited[R.getID1()] = true;
                 visited[R.getID2()] = true;
