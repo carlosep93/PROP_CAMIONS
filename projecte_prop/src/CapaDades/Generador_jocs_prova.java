@@ -4,13 +4,12 @@
  *  @author Pol
 
  */
-package Gestor_de_Dades;
+package CapaDades;
 
 
 
 
 import java.util.List;
-import Gestor_de_Dades.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import projecte_prop.Relations;
