@@ -141,12 +141,8 @@
                   </Border>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel4MouseClicked"/>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel4MousePressed"/>
-              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Surface() {&#xd;&#xa;&#xd;&#xa;    private void doDrawing(Graphics g) {&#xd;&#xa;&#xd;&#xa;        Graphics2D g2d = (Graphics2D) g;&#xd;&#xa;&#xd;&#xa;        g2d.setColor(Color.blue);&#xd;&#xa;&#xd;&#xa;        Dimension size = getSize();&#xd;&#xa;        Insets insets = getInsets();&#xd;&#xa;    &#xd;&#xa;        int w = size.width - insets.left - insets.right;&#xd;&#xa;        int h = size.height - insets.top - insets.bottom;&#xd;&#xa;        &#xd;&#xa;        g2d.drawLine(x,y,x,y);&#xd;&#xa;    }     &#xd;&#xa;&#xd;&#xa;   //@Override&#xd;&#xa;    public void paintComponent(Graphics g) {&#xd;&#xa;&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        doDrawing(g);&#xd;&#xa;    }&#xd;&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xd;&#xa;    public void paint(Graphics g)  {&#xd;&#xa;        super.paint(g);&#xd;&#xa;        cpaint(g);&#xd;&#xa;    }&#xd;&#xa;}"/>
               </AuxValues>
 
               <Layout>
