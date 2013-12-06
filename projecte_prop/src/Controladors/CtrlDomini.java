@@ -3,7 +3,7 @@ package Controladors;
 
 import java.util.ArrayList;
 import projecte_prop.*;
-import Gestor_de_Dades.Gestor_Dades;
+import CapaDades.Gestor_Dades;
 
 
 public class CtrlDomini {
