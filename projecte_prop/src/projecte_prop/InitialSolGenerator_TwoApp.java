@@ -6,14 +6,16 @@ import java.util.ArrayList;
 
 public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
-    private City C;
+   // private ArrayList<ArrayList<Integer> > mst;
+    private Mst mst;
     
-    public InitialSolGenerator_TwoApp() {
-        this.C = C;
+    public InitialSolGenerator_TwoApp(Mst mst) {
+        this.mst = mst;
     }
     
     @Override
-    public Tour generateInitialSol(ArrayList<ArrayList<Integer> mst){
+    public Tour generateInitialSol(){
+        mst.getMST();
         Tour T = new Tour();
         return T;
         

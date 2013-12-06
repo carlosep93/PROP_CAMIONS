@@ -11,10 +11,16 @@ import java.util.PriorityQueue;
  *
  * @author joanbarrosogarrido
  */
-public class Prim extends Mst {
+public class Mst_Prim extends Mst {
 
+    private City C;
+    
+    public Mst_Prim(City C) {
+        this.C = C;
+    }
+     
     @Override
-    public ArrayList<List<Integer>> getMST(City C){
+    public ArrayList<List<Integer>> getMST(){
         ArrayList<List<Integer>> mst = new ArrayList<List<Integer>>();
         List<Punt> lp = C.getPunts();
         List<Integer> aux = new ArrayList<Integer>();

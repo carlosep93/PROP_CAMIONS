@@ -69,7 +69,7 @@ public class CtrlDomini {
             
             InitialSolGenerator isg;
             if(isgI == 0) isg = new InitialSolGenerator_Random(ciutat);
-            else isg = new Prim();
+            else isg = new Mst_Prim();
             
             TournamentSelection TS;
             if(TSI == 0) TS = new TournamentSelection_Random(ciutat, TournamentSize);

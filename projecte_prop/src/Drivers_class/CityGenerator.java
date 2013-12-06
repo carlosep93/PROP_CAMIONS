@@ -34,7 +34,7 @@ public class CityGenerator {
             }
                 C.addElement(P, ali);
         }
-        Prim prim = new Prim();
+        Mst_Prim prim = new Mst_Prim();
         prim.getMST(C);
         InitialSolGenerator_TwoApp twoapp = new InitialSolGenerator_TwoApp(C);
         twoapp

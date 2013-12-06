@@ -11,5 +11,5 @@ import java.util.List;
  * @author joanbarrosogarrido
  */
 public abstract class Mst {
-    public abstract ArrayList<List<Integer>>  getMST(City C);
+    public abstract ArrayList<List<Integer>>  getMST();
 }
