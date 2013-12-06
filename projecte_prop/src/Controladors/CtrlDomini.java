@@ -18,12 +18,8 @@ public class CtrlDomini {
         SolucioCreada = false;
     }
     
-    public City getCity(){
-        return ciutat;
-    }
-    
-    public Solution getSolution(){
-        return sol;
+    public int getSolution(){
+        return sol.getCost(ciutat);
     }
     
     public void addPunt(String nom, int x, int y, ArrayList<Integer> pesos_resta){
@@ -32,11 +28,7 @@ public class CtrlDomini {
     }
     
     public Integer[] consultaPunt(String nom){
-        int idPunt = -1;
-        for(int i = 0; i < ciutat.getPunts().size(); ++i){
-            if(ciutat.getPunts().get(i).getNom().equals(nom)){ idPunt = i; break; }
-        }
-        if(idPunt == -1) return null;
+        int idPunt = NomtoPos(nom);
         Integer[] pesos = new Integer[ciutat.getAdjacency().get(idPunt).size()];
         for(int i = 0; i < pesos.length; ++i){
             pesos[i] = ciutat.getAdjacency().get(idPunt).get(i);
@@ -46,10 +38,7 @@ public class CtrlDomini {
     
    
     public void modificaElement(String nom, Integer[] pesosNew){
-        int idPunt = -1;
-        for(int i = 0; i < ciutat.getPunts().size(); ++i){
-            if(ciutat.getPunts().get(i).getNom().equals(nom)){ idPunt = i; break; }
-        }
+        int idPunt = NomtoPos(nom);
         
         if(idPunt != -1){
             ciutat.repPesos(idPunt, pesosNew);
@@ -57,7 +46,9 @@ public class CtrlDomini {
     }
         
     public void eliminaElement(String nom){
+        int idPunt = NomtoPos(nom);
         
+        ciutat.erase(idPunt);
     }
 
     public ArrayList<String> tsp(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
@@ -155,6 +146,12 @@ public class CtrlDomini {
             return ciutat.getAdjacency();
      }
     
-    
+    private int NomtoPos(String nom){
+        int idPunt = -1;
+        for(int i = 0; i < ciutat.getPunts().size(); ++i){
+            if(ciutat.getPunts().get(i).getNom().equals(nom)){ idPunt = i; break; }
+        }
+        return idPunt;
+    }
     
 }

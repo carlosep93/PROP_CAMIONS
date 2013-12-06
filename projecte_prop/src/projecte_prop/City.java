@@ -59,6 +59,7 @@ public class City {
         return lp.get(id).isEnabled();
     }
     
+    
     public ArrayList<String> getEnabled(){
         ArrayList<String> Actius = new ArrayList<String>();
         for(int i = 0; i < size(); ++i){
@@ -85,7 +86,7 @@ public class City {
         lp.get(id).modifyEnabled(false);
     }
     
-        /** @brief  Habilita un element de la Relations
+    /** @brief  Habilita un element de la Relations
         \pre    La Relation ha de contenir l'element   
         \post   L'element indicat per el parametre id es marca com habilitat
     */
