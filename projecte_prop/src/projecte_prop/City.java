@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class City {
     
-    private ArrayList<ArrayList<Integer>> lli;
+    private ArrayList<ArrayList<Integer>> lli = new ArrayList <ArrayList<Integer>>();
     private String nom;
-    private ArrayList<Punt> lp;
+    private ArrayList<Punt> lp = new ArrayList<Punt>();
     
     public City(String nom) {
          lli = new ArrayList <ArrayList<Integer>>();
