@@ -21,21 +21,13 @@ import java.util.Map;
  */
 
 
-
-
-
-
-
-
 public class Vista extends javax.swing.JFrame {
 
     /**
      * Creates new form Vista
      */
-    private int x;
-    private int y;
-    private int x2;
-    private int y2;
+    private int x = -1;
+    private int y  = -1;
     private boolean linea2punts;
     private CtrlPresentacio cp = new CtrlPresentacio();
     private boolean active = true;
@@ -667,10 +659,12 @@ public class Vista extends javax.swing.JFrame {
 
 
     private void cpaint(Graphics g) {
+        g.setColor(Color.red);
         for (int i=0;i<cp.lpunts().size();++i) {
-            g.setColor(Color.red);
             g.fillRect(cp.lpunts().get(i).getKey(),cp.lpunts().get(i).getValue(), 10, 10);
         }
+        if (x != -1)
+            g.fillRect(x, y, 10, 10);
     }     
 
  
@@ -734,9 +728,10 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void ButtonSolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSolveActionPerformed
-       
-        if(SliderAlgoritme.getValue() == 1){
-        List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
+       Graphics g3 = jPanel4.getGraphics();
+       jPanel4.paint(g3);
+       if(SliderAlgoritme.getValue() == 1){
+       List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
        Graphics g2 = jPanel4.getGraphics();
        g2.setColor(Color.red);
        for (int i=1;i< aux.size();++i) {
@@ -829,8 +824,9 @@ public class Vista extends javax.swing.JFrame {
            Relacions.add(Spinner.getComponentCount());
            Spinner.setValue(0);
            ProgresBar.setValue(actual*(100/numRelations));
-           
         }
+        if (ProgresBar.getValue() == 100)
+            jCheckBox1.setSelected(true);
     }//GEN-LAST:event_AddRelationActionPerformed
 
     private void TextRelationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRelationsActionPerformed
