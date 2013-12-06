@@ -11,12 +11,29 @@ import java.util.PriorityQueue;
  *
  * @author joanbarrosogarrido
  */
-public class Prim extends InitialSolGenerator_TwoApp {
+public class Prim extends Mst {
 
     @Override
-    public Tour generateInitialSol(City C){
-        ArrayList<ArrayList<Integer>> mst = new ArrayList<ArrayList<Integer>>();
+    public ArrayList<List<Integer>> getMST(City C){
+        ArrayList<List<Integer>> mst = new ArrayList<List<Integer>>();
         List<Punt> lp = C.getPunts();
+        List<Integer> aux = new ArrayList<Integer>();
+        System.out.println("empiezo a rellenar la puta matriz " + C.size());
+        for(int i = 0;i < C.size();++i) {
+        List<Integer> row = new ArrayList<Integer>();
+        mst.add(row);
+            for(int j = 0; j < C.size();++j) {
+                mst.get(i).add(0);
+            }
+        }
+        ArrayList<ArrayList<Integer>> mat = C.getAdjacency();
+        for(int i = 0;i < mst.size();++i) {
+            for(int j = 0; j < mst.size();++j) {
+                System.out.print(" " + mat.get(i).get(j));
+            }
+            System.out.println();
+        }
+            System.out.println();
         getMST(mst,C);
         //proba de mst
         for(int i = 0;i < mst.size();++i) {
@@ -25,13 +42,14 @@ public class Prim extends InitialSolGenerator_TwoApp {
             }
             System.out.println();
         }
-        ArrayList<Integer> path= new ArrayList();
+        /*ArrayList<Integer> path= new ArrayList();
         getEpath(mst,path,0);
         Tour T = new Tour();
-        return T;
+        */
+        return mst;
     }
     
-    private static ArrayList<ArrayList<Integer>> getMST(ArrayList<ArrayList<Integer>> mst, City C) {
+    private static void getMST(List<List<Integer>> mst, City C) {
         ArrayList<Punt> lp = C.getPunts();
         ArrayList<ArrayList<Integer>> lli = C.getAdjacency();
         List<Relation> lr = new ArrayList<Relation>();
@@ -47,7 +65,6 @@ public class Prim extends InitialSolGenerator_TwoApp {
                 }
             }
         }
-        return mst;
     }
     
     private static void addPQ(PriorityQueue<Relation> pqr,ArrayList<Integer> li,ArrayList<Punt> lp, int pos) {
@@ -58,15 +75,17 @@ public class Prim extends InitialSolGenerator_TwoApp {
         }
     }
     
-    private static void addmst(PriorityQueue<Relation> pqr, boolean [] visited, ArrayList<ArrayList<Integer>> mst) {
+    private static void addmst(PriorityQueue<Relation> pqr, boolean [] visited, List<List<Integer>> mst) {
         boolean done = false;
         while (!done && pqr.size() > 0){ 
             Relation R = pqr.poll();
-            if (!visited[R.getID1()] || !visited[R.getID2()]) {
-                mst.get(R.getID1()).add(R.getValue());
-                mst.get(R.getID2()).add(R.getValue());
+            if (/*!visited[R.getID1()] || */!visited[R.getID2()]) {
+                mst.get(R.getID1()).remove(R.getID2());
+                mst.get(R.getID1()).add(R.getID2(),R.getValue());
+                mst.get(R.getID2()).set(R.getID1(),R.getValue());
                 visited[R.getID1()] = true;
                 visited[R.getID2()] = true;
+                done = true;
             }
         }
     }

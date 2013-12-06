@@ -32,7 +32,15 @@ public class Tsp_SA extends Tsp{
         
         CjtTours ct = new CjtTours(3); //0: best, 1: actual, 2: nueva
         //genera una solució inicial i ompla el CjtTours amb aquesta
+
         Tour ti = isg.generateInitialSol();
+
+        /*System.out.println("inicial <<<<<<<<<<<<<<<<<<<<<<<<<<");
+        for(int i = 0; i < ti.size(); ++i){
+             System.out.print(ti.getElementPos(i).getID() + "   ");
+        }
+        System.out.println();*/
+        
         for(int i = 0; i < 3; ++i){
             ct.addTour(i,ti);
         }
@@ -41,7 +49,15 @@ public class Tsp_SA extends Tsp{
         int best = ct.getCostTour(C,1);
         int tamany = ct.sizeCjtTours();
         while (temperature > 1 && n < p) {
+
             ti = mut.mutate(ct.getTour(2));
+
+            /*System.out.println("Solucion despues del mutate");
+            for(int i = 0; i < ti.size(); ++i){
+                System.out.print(ti.getElementPos(i).getID() + "   ");
+            }
+            System.out.println();*/
+
             //calcula si s'accepta la nova solució
             int ener = ct.getCostTour(C,2);
             //igual esta es la causa del error
@@ -60,6 +76,10 @@ public class Tsp_SA extends Tsp{
             //Enfriamiento
             temperature *= 1-cooling;
         }
+        for(int i = 0; i < ct.getTour(0).size(); ++i){
+             System.out.print(ct.getTour(0).getElementPos(i).getID() + "   ");
+        }
+        System.out.println();
         return ct.getTour(0);
     }
     
