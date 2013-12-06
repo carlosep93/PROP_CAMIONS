@@ -25,9 +25,9 @@ import projecte_prop.Punt;
 // s'han de guardar: ELEMENTS, ADJACENCIES, SOLUCIONS
 public class Gestor_Dades {
     
-    static String Path_Elements = "Fitxer_Element.txt";
-    static String Path_Relations = "Fitxer_Relations.txt";
-   
+    static String Path_Elements = "src\\CapaDades\\Fitxer_Element.txt";
+    static String Path_Relations = "src\\CapaDades\\Fitxer_Relations.txt";
+  
     //"src/Fitxers/saved_adjacencys.txt‏"
     //"src\\Fitxers\\saved_adjacencys.txt"
     
@@ -35,13 +35,13 @@ public class Gestor_Dades {
         
     }
     
-    public  ArrayList<ArrayList<Integer>> carregar_adjacencies(){
+    public static ArrayList<ArrayList<Integer>> carregar_adjacencies(){
         
         ArrayList <ArrayList<Integer>>  adjacencies = new ArrayList();
         try{
            //String path = get_path_adjacencies_load();
            
-           File file = new File(Path_Elements);
+           File file = new File(Path_Relations);
            Scanner sc = new Scanner(file);
           
            while(sc.hasNext()){             //primer element és num d'elements
@@ -66,11 +66,11 @@ public class Gestor_Dades {
 }
     
     
-    public  void guardar_adjacencies( ArrayList <ArrayList<Integer>> adjac){
+    public static void guardar_adjacencies( ArrayList <ArrayList<Integer>> adjac){
  
         PrintWriter salida = null;
         try{
-       // String path = get_path_adjacencies_store();
+      
         salida = new PrintWriter(Path_Relations);
        int mida = adjac.size();
        salida.println(mida);
@@ -91,7 +91,7 @@ public class Gestor_Dades {
   }
   //------------ FUNCIONS DE GUARDAR/CARREGAR ELEMENTS ----------------- 
    
-    public ArrayList<Punt> carregar_elements(){  //Retorna la llista d'elements guardats
+    public static ArrayList<Punt> carregar_elements(){  //Retorna la llista d'elements guardats
         ArrayList<Punt> elems = new ArrayList<Punt>() ; 
      
         try{
@@ -122,7 +122,7 @@ public class Gestor_Dades {
 }
 
     
-    public void guardar_elements(ArrayList<Punt> elems){   //guardem un element al conjunt d'elements
+    public static void guardar_elements(ArrayList<Punt> elems){   //guardem un element al conjunt d'elements
         PrintWriter salida = null;
         try{
         String path = Path_Elements;
@@ -148,7 +148,7 @@ public class Gestor_Dades {
     }
   
 
-    public static void print_list_list(List<List<Integer>> per_printar){
+    public static void print_list_list(ArrayList<ArrayList<Integer>> per_printar){
         int mida= per_printar.size();
         System.out.println(mida);
         for(int i=0; i<mida; ++i){

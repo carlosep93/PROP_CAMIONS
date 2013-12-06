@@ -136,6 +136,15 @@ public class CtrlDomini {
         return gd.carregar_elements();
     }
     
+    public void guardar_Elements_i_Adjacencies(){
+        gd.guardar_adjacencies(ciutat.getAdjacency());
+        gd.guardar_elements(ciutat.getPunts());
+    }
+    
+    public void carregar_Elements_i_Adjacencies(){
+        
+    }
+    
     public Boolean SolucioGenerada(){
         return SolucioCreada;
     }
