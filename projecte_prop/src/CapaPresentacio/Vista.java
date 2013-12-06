@@ -66,28 +66,10 @@ public class Vista extends javax.swing.JFrame {
         javax.swing.ButtonGroup buttonGroup6 = new javax.swing.ButtonGroup();
         PANELS = new javax.swing.JTabbedPane();
         PanelPrincipal = new javax.swing.JPanel();
-        jPanel4 = new Surface() {
-
-            private void doDrawing(Graphics g) {
-
-                Graphics2D g2d = (Graphics2D) g;
-
-                g2d.setColor(Color.blue);
-
-                Dimension size = getSize();
-                Insets insets = getInsets();
-
-                int w = size.width - insets.left - insets.right;
-                int h = size.height - insets.top - insets.bottom;
-
-                g2d.drawLine(x,y,x,y);
-            }     
-
-            //@Override
-            public void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                doDrawing(g);
+        jPanel4 = new javax.swing.JPanel() {
+            public void paint(Graphics g)  {
+                super.paint(g);
+                cpaint(g);
             }
         };
         IMAGEN = new javax.swing.JLabel();
@@ -683,6 +665,7 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
+<<<<<<< HEAD
     private void pintar(Graphics g) {
             
     }     
@@ -690,6 +673,16 @@ public class Vista extends javax.swing.JFrame {
    
     
 
+=======
+
+    private void cpaint(Graphics g) {
+        for (int i=0;i<cp.lpunts().size();++i) {
+            g.setColor(Color.red);
+            g.fillRect(cp.lpunts().get(i).getKey(),cp.lpunts().get(i).getValue(), 10, 10);
+        }
+    }     
+
+>>>>>>> ed59ab9f8c32a9b8645afacc5ab49092249ccc1e
  
      
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
