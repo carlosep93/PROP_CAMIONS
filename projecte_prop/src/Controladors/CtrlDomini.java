@@ -32,7 +32,7 @@ public class CtrlDomini {
     public Integer[] consultaPunt(String nom){
         int idPunt = -1;
         for(int i = 0; i < ciutat.getPunts().size(); ++i){
-            if(ciutat.getPunts().get(i).getNom() == nom){ idPunt = i; break; }
+            if(ciutat.getPunts().get(i).getNom().equals(nom)){ idPunt = i; break; }
         }
         if(idPunt == -1) return null;
         Integer[] pesos = new Integer[ciutat.getAdjacency().get(idPunt).size()];
@@ -46,8 +46,9 @@ public class CtrlDomini {
     public void modificaElement(String nom, Integer[] pesosNew){
         int idPunt = -1;
         for(int i = 0; i < ciutat.getPunts().size(); ++i){
-            if(ciutat.getPunts().get(i).getNom() == nom){ idPunt = i; break; }
+            if(ciutat.getPunts().get(i).getNom().equals(nom)){ idPunt = i; break; }
         }
+        
         if(idPunt != -1){
             ciutat.repPesos(idPunt, pesosNew);
         }
@@ -63,30 +64,30 @@ public class CtrlDomini {
             int id_sol, double tmp, double fact, int parada){
         
             sol = new Solution(id_sol, nomSolution);
-            Tsp tsp = new Tsp_SA();
-            if(tspI == 0) tsp = new Tsp_SA();
-            else if(tspI == 1) tsp = new Tsp_GA();
             
-            InitialSolGenerator isg = new InitialSolGenerator_Random();
-            if(isgI == 0) isg = new InitialSolGenerator_Random();
-            else if(isgI == 1) isg = new InitialSolGenerator_TwoApp();
+            InitialSolGenerator isg;
+            if(isgI == 0) isg = new InitialSolGenerator_Random(ciutat);
+            else isg = new Prim();
             
-            TournamentSelection TS = new TournamentSelection_Random();
-            if(TSI == 0) TS = new TournamentSelection_Random();
-            else if(TSI == 1) TS = new TournamentSelection_RouletteWheel();
+            TournamentSelection TS;
+            if(TSI == 0) TS = new TournamentSelection_Random(ciutat, TournamentSize);
+            else TS = new TournamentSelection_RouletteWheel(ciutat);
             
-            Crossover cross = new Crossover_Simple();
-            if(crossI == 0) cross = new Crossover_Simple();
-            else if(crossI == 1) cross = new Crossover_Edge();
+            Crossover cross;
+            if(crossI == 0) cross = new Crossover_Simple(ciutat);
+            else cross = new Crossover_Edge(ciutat);
             
-            Mutate mut = new Mutate_Rate();
-            if(mutI == 0) mut = new Mutate_Rate();
-            else if(mutI == 1) mut = new Mutate_SwapRate();
-            else if(mutI == 2) mut = new Mutate_Little();
+            Mutate mut;
+            if(mutI == 0) mut = new Mutate_Rate(ciutat, MutationRate);
+            else if(mutI == 1) mut = new Mutate_SwapRate(ciutat, MutationRate, MutationSwapProbability);
+            else mut = new Mutate_Little(ciutat);
             
-            sol.addTour(tsp.calSol(ciutat, StopCondition, NGeneracions, NTours, isg, 
-                    Elitism, TS, TournamentSize, cross, mut, MutationRate, 
-                    MutationSwapProbability, tmp, fact, parada));
+            Tsp tsp;
+            if(tspI == 0) tsp = new Tsp_SA(ciutat, isg, mut, tmp, fact, parada);
+            else tsp = new Tsp_GA(ciutat, StopCondition, NGeneracions, NTours, isg, Elitism,
+                    TS, cross, mut);
+            
+            sol.addTour(tsp.calSol());
 
             return sol;
     }

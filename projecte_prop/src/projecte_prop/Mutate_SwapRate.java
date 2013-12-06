@@ -2,8 +2,16 @@
 package projecte_prop;
 
 public class Mutate_SwapRate extends Mutate{
+    private City C;
+    private double mutationRate, mutationSwapProbability;
     
-    @Override public Tour mutate(City C, Tour tour, double mutationRate, double mutationSwapProbability){
+    public Mutate_SwapRate(City C, double mutationRate, double mutationSwapProbability){
+        this.C = C;
+        this.mutationRate = mutationRate;
+        this.mutationSwapProbability = mutationSwapProbability;
+    }
+    
+    @Override public Tour mutate(Tour tour){
         Tour mutated=tour;
         double chance;
         int mida = tour.size();

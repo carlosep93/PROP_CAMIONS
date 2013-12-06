@@ -8,21 +8,31 @@ import Stubs.Mutate;
 import Stubs.TwoApp;*/
 
 public class Tsp_SA extends Tsp{
-    double temperature;
-    double cooling;
+    
+    private double temperature;
+    private double cooling;
+    private int p;
+    
+    private City C;
+    private InitialSolGenerator isg;
+    private Mutate mut;
+    
+    public Tsp_SA(City C, InitialSolGenerator isg, Mutate mut, double temp,
+            double cool, int p){
+        this.C = C;
+        this.isg = isg;
+        this.mut = mut;
+        this.temperature = temp;
+        this.cooling = cool;
+        this.p = p;
+    }
     
    
-    @Override public Tour calSol(City C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
-            boolean Elitism, TournamentSelection ts, int TournamentSize, Crossover cross,
-            Mutate mut, double MutationRate, double MutationSwapProbability, double temp, double cool, int p){
+    @Override public Tour calSol(){
         
-        //Temperatura inicial
-        temperature = temp;
-        //Factor por el que se enfriaa
-        cooling = cool;
         CjtTours ct = new CjtTours(3); //0: best, 1: actual, 2: nueva
         //genera una solució inicial i ompla el CjtTours amb aquesta
-        Tour ti = isg.generateInitialSol(C);
+        Tour ti = isg.generateInitialSol();
         for(int i = 0; i < 3; ++i){
             ct.addTour(i,ti);
         }
@@ -31,7 +41,7 @@ public class Tsp_SA extends Tsp{
         int best = ct.getCostTour(C,1);
         int tamany = ct.sizeCjtTours();
         while (temperature > 1 && n < p) {
-            ti = mut.mutate(C, ct.getTour(2), MutationRate, MutationSwapProbability);
+            ti = mut.mutate(ct.getTour(2));
             //calcula si s'accepta la nova solució
             int ener = ct.getCostTour(C,2);
             //igual esta es la causa del error

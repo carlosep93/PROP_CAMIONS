@@ -61,9 +61,18 @@ public class DriverClass_CtrlDomini {
             }
             else if(lectura == 2){
                 System.out.println("Nom:");
+                sc.nextLine();
                 String nom = sc.nextLine();
                 
-                //no fa res....
+                try{
+                    Integer[] pesos = Ctrl.consultaPunt(nom);
+                }
+                catch("")
+                System.out.println("printo els pesos de " + nom);
+                for(int i = 0; i < pesos.length; ++i){
+                    System.out.print(pesos[i] + "     ");
+                }
+                System.out.println();
             }
             /*
             else if(lectura == 3){
@@ -237,7 +246,6 @@ public class DriverClass_CtrlDomini {
                         }
                     }
                     
-                    Tsp_GA tsp = new Tsp_GA();
                     Ctrl.tsp(nom, 1, StopCondition, Ngeneracions, NTours,
                             isg, Elitism, TS, TournamentSize, 
                             cross, mut, MutationRate, MutationSwapProbability,
