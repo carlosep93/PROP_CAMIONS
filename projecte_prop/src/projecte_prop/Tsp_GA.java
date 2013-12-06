@@ -11,41 +11,56 @@ package projecte_prop;
     import Stubs.Ciutat;*/
 
 public class Tsp_GA extends Tsp{
+    private City C;
     //nombre de generacions sense variar per donar una solució per bona
     private int stopCondition;
     //max de generacions que es crearan
     private int nGeneracions;
     //numero de punts
     private int nPunts;
+    //el valor de la quantitat de toure sobre la qual operarà
+    public int nTours;
+    //guarda el millor de cada generació a la posició de population
+    private boolean elitism;
+    //defineix la grandaria del subconjunt de pares del qual escollirem el millor
+    private int tournamentSize;
+    //rati deom mutació
+    private double mutationRate;
+    //
+    private double mutationSwapProbability;
     
-    public int nTours = 20;              //el valor de la quantitat de toure sobre la qual operarà
-    private boolean elitism = true;        //guarda el millor de cada generació a la posició de population
-    private int tournamentSize = 5;         //defineix la grandaria del subconjunt de pares del qual escollirem el millor
-    private double mutationRate = 0.015;    //rati deom mutació
-    private double mutationSwapProbability = 0.90;
+    private InitialSolGenerator isg;
+    private TournamentSelection ts;
+    private Crossover cross;
+    private Mutate mut;
+    
+    public Tsp_GA(City C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
+            boolean Elitism, TournamentSelection ts, Crossover cross, Mutate mut){
+        this.C = C;
+        this.stopCondition = StopCondition;
+        this.nGeneracions = NGeneracions;
+        this.nTours = NTours;
+        this.elitism = Elitism;
+        
+        this.isg = isg;
+        this.ts = ts;
+        this.cross = cross;
+        this.mut = mut;
+    }
     
     
     //passant una condició de parada, el nombre de generacions màximes,
     //el nombre de tours, elitisme, rouletewheel_TS, tournamentSize(si rouletewh...==true => tour...=null)
     //edge_crossover, mutate2, mutationRate, mutationSwapProbability(si mutate_2==true)
-    @Override public Tour calSol(City C, int StopCondition, int NGeneracions, int NTours, InitialSolGenerator isg,
-            boolean Elitism, TournamentSelection ts, int TournamentSize, Crossover cross,
-            Mutate mut, double MutationRate, double MutationSwapProbability, double temp, double cool, int p){
+    @Override public Tour calSol(){
         
-        stopCondition = StopCondition;
-        nGeneracions = NGeneracions;
-        nTours = NTours;
-        elitism = Elitism;
-        tournamentSize = TournamentSize;
-        mutationRate = MutationRate;
-        mutationSwapProbability = MutationSwapProbability;
 
         nPunts = C.getPunts().size();                                         
         
         
         CjtTours pop = new CjtTours(nTours);
         for(int i = 0; i < nTours; ++i){
-            pop.addTour(i, isg.generateInitialSol(C));
+            pop.addTour(i, isg.generateInitialSol());
         }
         
         /*System.out.println("inicial <<<<<<<<<<<<<<<<<<<<<<<<<<");
@@ -102,19 +117,19 @@ public class Tsp_GA extends Tsp{
         
         //Crossover population
         for(int i = elitismOffset; i < nTours; ++i){
-            Tour parent1 = ts.selTour(C, pop, tournamentSize);
+            Tour parent1 = ts.selTour(pop);
             /*System.out.print("Parent1:");
             for(int ii = 0; ii < parent1.size(); ++ii){
                 System.out.print(parent1.getElementPos(ii).getID());
             }
             System.out.println("        pes " +  parent1.getCost(C));*/
             
-            Tour parent2 = ts.selTour(C, pop, tournamentSize);
+            Tour parent2 = ts.selTour(pop);
             /*System.out.print("Parent2:");
             for(int ii = 0; ii < parent2.size(); ++ii) System.out.print(parent2.getElementPos(ii).getID());
             System.out.println("        pes " +  parent2.getCost(C));*/
             
-            T = cross.getChild(C, parent1, parent2);
+            T = cross.getChild(parent1, parent2);
             /*¿System.out.print("Child:");
             for(int ii = 0; ii < T.size(); ++ii) System.out.print(T.getElementPos(ii).getID());
             System.out.println("        pes " +  T.getCost(C));
@@ -124,7 +139,7 @@ public class Tsp_GA extends Tsp{
         }
         //muta els nous tours de la població
         for(int i = elitismOffset; i < nTours; ++i){
-            Tour t = mut.mutate(C, newPopulation.getTour(i),mutationRate, mutationSwapProbability);
+            Tour t = mut.mutate(newPopulation.getTour(i));
             
             /*System.out.print("mutate: ");
             for(int ii = 0; ii < t.size(); ++ii) System.out.print(t.getElementPos(ii).getID() + "  ");

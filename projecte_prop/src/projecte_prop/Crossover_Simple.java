@@ -3,7 +3,13 @@ package projecte_prop;
 
 public class Crossover_Simple extends Crossover{
     
-    @Override public Tour getChild(City C, Tour parent1, Tour parent2){
+    private City C;
+    
+    public Crossover_Simple(City C){
+        this.C = C;
+    }
+    
+    @Override public Tour getChild(Tour parent1, Tour parent2){
         Tour child = new Tour();
         int npunts = parent1.size();
         Punt E = new Punt(-1);
