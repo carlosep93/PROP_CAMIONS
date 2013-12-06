@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 import Controladors.CtrlDomini;
+import exception.ExceptionExistence;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -16,12 +19,12 @@ import Controladors.CtrlDomini;
  */
 public class CtrlPresentacio {
 
-    private Boolean Genetic;
-    private Boolean Anealing;
+    private  static Boolean Genetic;
+    private  static Boolean Anealing;
     
     private List<Entry < Integer,Integer > > punts = new ArrayList <Entry < Integer,Integer >>();
     private List<String> nom_elements = new ArrayList <String>();
-    private CtrlDomini cd = new CtrlDomini("fuck"); 
+    private CtrlDomini cd = new CtrlDomini("a"); 
     
     
     public ArrayList<String> solutionAnealing(){
@@ -45,30 +48,64 @@ public class CtrlPresentacio {
                     int crossI = 0; //1 -> crosover edge
                     int mutI = 3; // 0 -> rate 1-> swaprate 2-> little
                     int id_sol = 0;
-        ArrayList<String> Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
+         ArrayList<String> Elems = new ArrayList<String>();           
+         try {           
+         Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
                 TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
+         }
+         catch (ExceptionExistence e) {
+             VistaError error = new VistaError(e.getMessage());
+         }
+         
         return Elems;
     }
     
     public   ArrayList<ArrayList<Integer>> GetRelations(){
-        return cd.getRelations();
+        ArrayList<ArrayList<Integer>> rel = new ArrayList<ArrayList<Integer>>();
+        try {
+            rel = cd.getRelations();
+        }
+        catch (ExceptionExistence e) {
+            VistaError error = new VistaError(e.getMessage());
+        }
+        return rel;
     }
             
     public void resetDomini() {
         CtrlDomini cd2 = new CtrlDomini("a");
         cd = cd2;
+        List<Entry < Integer,Integer > > punts2 = new ArrayList <Entry < Integer,Integer > >();
+        punts = punts2;
+    }
+    
+    public void eliminaElement(String s) {
+        try {
+            cd.eliminaElement(s);
+        }
+        catch (ExceptionExistence e) {}
     }
     
     public void addPunt(int x,int y,String nom,ArrayList<Integer> list) {
         Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
         punts.add(aux); //llista de punts amb x,y
         nom_elements.add(nom);
-        cd.addPunt(nom, x, y, list); //llista amb les distànceis
-        
+        try {
+            cd.addPunt(nom, x, y, list); //llista amb les distÃ ncies
+        }
+        catch(ExceptionExistence e) {
+            VistaError error = new VistaError(e.getMessage());
+        }
     }
     
     public ArrayList<String> getElementsActivats(){
-     return cd.getEnabled();   
+        ArrayList<String> res = new ArrayList<String>();
+        try{
+            res = cd.getEnabled();
+        }
+        catch(ExceptionExistence e) {
+            //VistaError error = new VistaError(e.getMessage());
+        }  
+        return res;
     }
         
     public Integer numElementsActius(){

@@ -1,10 +1,7 @@
 package CapaPresentacio;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +36,7 @@ public class Vista extends javax.swing.JFrame {
     private int actual;
     public Vista() {
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -674,15 +672,7 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-<<<<<<< HEAD
-    private void pintar(Graphics g) {
-            
-    }     
 
-   
-    
-
-=======
 
     private void cpaint(Graphics g) {
         g.setColor(Color.red);
@@ -692,9 +682,6 @@ public class Vista extends javax.swing.JFrame {
         if (x != -1)
             g.fillRect(x, y, 10, 10);
     }     
-
->>>>>>> ed59ab9f8c32a9b8645afacc5ab49092249ccc1e
- 
      
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
         if (active){
@@ -844,8 +831,11 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_TextRelationsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (CheckBoxDesactivar.isEnabled())
+        if (CheckBoxDesactivar.isEnabled()) {
             cp.resetDomini();
+            x = -1;
+            y = -1;
+        }    
         else {
             
         }
@@ -860,7 +850,7 @@ public class Vista extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   public static void init() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
