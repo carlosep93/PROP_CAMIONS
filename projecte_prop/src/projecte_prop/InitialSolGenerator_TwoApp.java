@@ -4,13 +4,23 @@ package projecte_prop;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
+public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
+    
+    private City C;
+    
+    public InitialSolGenerator_TwoApp() {
+        this.C = C;
+    }
     
     @Override
-    public abstract Tour generateInitialSol(City C);
+    public Tour generateInitialSol(ArrayList<ArrayList<Integer> mst){
+        Tour T = new Tour();
+        return T;
+        
+    }
         
         
-    public void getEpath(ArrayList<ArrayList<Integer>> mst,List<Integer> l, int pos) {
+    public void getEpath(List<List<Integer>> mst,List<Integer> l, int pos) {
         l.add(pos);
         if(child(mst.get(pos))) {
             for(int i = 0; i < mst.size() ; ++i) {
@@ -21,7 +31,7 @@ public abstract  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
             }
         }
     }
-    private boolean child(ArrayList<Integer> mst) {
+    private boolean child(List<Integer> mst) {
         for(int i = 0; i < mst.size() ;++i) {
             if (mst.get(i) > 0) return true;
         }
