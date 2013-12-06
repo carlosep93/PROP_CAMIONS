@@ -45,7 +45,7 @@ public class CtrlPresentacio {
                     int crossI = 0; //1 -> crosover edge
                     int mutI = 3; // 0 -> rate 1-> swaprate 2-> little
                     int id_sol = 0;
-        ArrayList<String> Elems = cd.tsp_CamiDeNoms(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
+        ArrayList<String> Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
                 TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
         return Elems;
     }

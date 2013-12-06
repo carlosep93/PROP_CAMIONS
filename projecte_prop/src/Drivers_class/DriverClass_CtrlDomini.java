@@ -11,7 +11,7 @@ import projecte_prop.*;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import Gestor_de_Dades.Gestor_Dades;
+import CapaDades.Gestor_Dades;
 
 public class DriverClass_CtrlDomini {
     

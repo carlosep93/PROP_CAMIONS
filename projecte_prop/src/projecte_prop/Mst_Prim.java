@@ -11,10 +11,16 @@ import java.util.PriorityQueue;
  *
  * @author joanbarrosogarrido
  */
-public class Prim extends Mst {
+public class Mst_Prim extends Mst {
 
+    private City C;
+    
+    public Mst_Prim(City C) {
+        this.C = C;
+    }
+     
     @Override
-    public ArrayList<List<Integer>> getMST(City C){
+    public ArrayList<List<Integer>> getMST(){
         ArrayList<List<Integer>> mst = new ArrayList<List<Integer>>();
         List<Punt> lp = C.getPunts();
         List<Integer> aux = new ArrayList<Integer>();
@@ -42,10 +48,6 @@ public class Prim extends Mst {
             }
             System.out.println();
         }
-        /*ArrayList<Integer> path= new ArrayList();
-        getEpath(mst,path,0);
-        Tour T = new Tour();
-        */
         return mst;
     }
     
@@ -59,10 +61,11 @@ public class Prim extends Mst {
         int nextdot = 0;
         for(int i = 0; i < lp.size(); ++i) {
             if (lp.get(nextdot).isEnabled()) {
-                addPQ(pqr,lli.get(nextdot),lp,i);
+                addPQ(pqr,lli.get(nextdot),lp,nextdot);
                 if (!allvisited(visited)){
-                    addmst(pqr,visited,mst);
+                    nextdot = addmst(pqr,visited,mst);
                 }
+                if(nextdot == -1) break;
             }
         }
     }
@@ -75,11 +78,13 @@ public class Prim extends Mst {
         }
     }
     
-    private static void addmst(PriorityQueue<Relation> pqr, boolean [] visited, List<List<Integer>> mst) {
+    private static int addmst(PriorityQueue<Relation> pqr, boolean [] visited, List<List<Integer>> mst) {
         boolean done = false;
         while (!done && pqr.size() > 0){ 
             Relation R = pqr.poll();
-            if (/*!visited[R.getID1()] || */!visited[R.getID2()]) {
+            if (!visited[R.getID2()]) {
+                System.out.print(" " + R.getValue());
+                System.out.println();
                 mst.get(R.getID1()).remove(R.getID2());
                 mst.get(R.getID1()).add(R.getID2(),R.getValue());
                 mst.get(R.getID2()).set(R.getID1(),R.getValue());
@@ -87,7 +92,9 @@ public class Prim extends Mst {
                 visited[R.getID2()] = true;
                 done = true;
             }
+        if (done) return R.getID2();
         }
+        return -1;
     }
 
     private static boolean allvisited(boolean[] visited) {
@@ -98,47 +105,4 @@ public class Prim extends Mst {
         return v; // si se ha salido del loop será  falso, si se ha recorrido entero y el último no era, será true.
     }
 }
-
-    
-    
-    /*
-    public static int[][] mst_prim(int[][] M, boolean[] visited,int vertex,int[][] finalM) {
-        if (M.length > 0) {
-            int aux = -1;
-            visited[vertex] = true;
-            if (!allvisited(visited, M.length)) {
-                for (int i = 0; i < visited.length; ++i) {
-                    if (visited[i]) {
-                        for(int j = 0; j < M.length; ++j) {
-                            if(M[i][j] != 0) {
-                                if (!visited[j]) {
-                                    if (aux == -1) {
-                                        aux = M[i][j];
-                                    }
-                                    else {
-                                        aux = Math.min(aux, M[i][j]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                for(int i = 0; i < visited.length; ++i) {
-                    if (visited[i]) {
-                        for(int j = 0; j < M.length; ++j) {
-                            if (M[i][j] == aux) {
-                                if(!visited[j]) {
-                                    finalM[i][j] = finalM[j][i] = aux;
-                                    return mst_prim(M,visited,j,finalM);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-            return finalM;
-    }
-    * */
 
