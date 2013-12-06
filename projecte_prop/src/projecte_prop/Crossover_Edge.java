@@ -7,7 +7,13 @@ public class Crossover_Edge extends Crossover{
     
     private static int npunts;
     
-    @Override public Tour getChild(City C, Tour parent1, Tour parent2){
+    private City C;
+    
+    public Crossover_Edge(City C){
+        this.C = C;
+    }
+    
+    @Override public Tour getChild(Tour parent1, Tour parent2){
         npunts = parent1.size();
         Tour child = new Tour();        
         int ciutatActual = (int)(Math.random() * npunts);

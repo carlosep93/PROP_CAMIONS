@@ -60,7 +60,7 @@ public class CtrlDomini {
         
     }
 
-    public Solution tsp(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
+    public ArrayList<String> tsp(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
             int isgI, boolean Elitism, int TSI, int TournamentSize, 
             int crossI, int mutI, double MutationRate, double MutationSwapProbability, 
             int id_sol, double tmp, double fact, int parada){
@@ -69,7 +69,10 @@ public class CtrlDomini {
             
             InitialSolGenerator isg;
             if(isgI == 0) isg = new InitialSolGenerator_Random(ciutat);
-            else isg = new Mst_Prim();
+            else{
+                Mst_Prim prim = new Mst_Prim(ciutat);
+                isg = new InitialSolGenerator_TwoApp(prim);
+            }
             
             TournamentSelection TS;
             if(TSI == 0) TS = new TournamentSelection_Random(ciutat, TournamentSize);
@@ -91,7 +94,11 @@ public class CtrlDomini {
             
             sol.addTour(tsp.calSol());
 
-            return sol;
+            ArrayList<String> S = new ArrayList<String>();
+            for(int i = 0; i < sol.size(); ++i){
+                S.add(sol.getElementPos(i).getNom());
+            }
+            return S;
     }
     
     public ArrayList<String> getEnabled(){
@@ -104,15 +111,15 @@ public class CtrlDomini {
     
     //funcions per obtenir el cami i la solucio per la capa de presentacio
     
-    public ArrayList<String> tsp_CamiDeNoms(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
+   /* public ArrayList<String> tsp_CamiDeNoms(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
             int isgI, boolean Elitism, int TSI, int TournamentSize, 
             int crossI, int mutI, double MutationRate, double MutationSwapProbability, 
             int id_sol, double tmp, double fact, int parada){
         
             sol = new Solution(id_sol, nomSolution);
-            Tsp tsp = new Tsp_SA();
+            Tsp tsp;
             if(tspI == 0) tsp = new Tsp_SA();
-            else if(tspI == 1) tsp = new Tsp_GA();
+            elsetsp = new Tsp_GA();
             
             InitialSolGenerator isg = new InitialSolGenerator_Random();
             if(isgI == 0) isg = new InitialSolGenerator_Random();
@@ -139,7 +146,7 @@ public class CtrlDomini {
             
             SolucioCreada = true;
             return NomsEnOrdre;
-    }
+    }*/
     public Boolean SolucioGenerada(){
         return SolucioCreada;
     }
