@@ -29,15 +29,13 @@ public class CityGenerator {
             Punt P = new Punt(x,y,s);
             ++x;++y;
             for(int j = 0; j <i; ++j) {
-                System.out.println("sus mertos");
                 ali.add((int)(Math.random()*8+1));
             }
                 C.addElement(P, ali);
         }
-        Mst_Prim prim = new Mst_Prim();
-        prim.getMST(C);
-        InitialSolGenerator_TwoApp twoapp = new InitialSolGenerator_TwoApp(C);
-        twoapp
+        Mst_Prim prim = new Mst_Prim(C);
+        InitialSolGenerator_TwoApp twoapp = new InitialSolGenerator_TwoApp(prim);
+        twoapp.generateInitialSol();
         
     }
 }
