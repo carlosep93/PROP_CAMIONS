@@ -7,7 +7,9 @@ import java.util.Scanner;
 import projecte_prop.Punt;
 import projecte_prop.City;
 import java.util.ArrayList;
+import java.util.List;
 import projecte_prop.*;
+import java.util.Scanner;
 
 /**
  *
@@ -23,19 +25,53 @@ public class CityGenerator {
         int x = 0;
         int y = 0;
         String s;
-        for (int i = 0; i < qp; ++i) {
-            ArrayList<Integer> ali = new ArrayList();
-            s = Integer.toString(x);
-            Punt P = new Punt(x,y,s);
-            ++x;++y;
-            for(int j = 0; j <i; ++j) {
-                ali.add((int)(Math.random()*8+1));
+        System.out.println("random 0, manual 1");
+        if (sc.nextInt() == 0){
+            for (int i = 0; i < qp; ++i) {
+                ArrayList<Integer> ali = new ArrayList();
+                s = Integer.toString(x);
+                Punt P = new Punt(x,y,s);
+                ++x;++y;
+                for(int j = 0; j <i; ++j) {
+                    ali.add((int)(Math.random()*8+1));
+                }
+                    C.addElement(P, ali);
             }
-                C.addElement(P, ali);
         }
+        else {
+            for (int i = 0; i < qp; ++i) {
+                ArrayList<Integer> ali = new ArrayList();
+                s = Integer.toString(x);
+                Punt P = new Punt(x,y,s);
+                ++x;++y;
+                for(int j = 0; j <i; ++j) {
+                    ali.add(sc.nextInt());
+                }
+                    C.addElement(P, ali);
+            }
+        }
+        for(int i = 0; i < C.size(); ++i) System.out.println("el elemento "+ i+ " esta "+ C.isEnabled(i));
+        System.out.println("quieres borrar algun elemento? 0 =  no, 1 = si");
+        int bool = sc.nextInt();
+        while (bool == 1){
+            System.out.print("Id del punt a esborrar: ");
+            int mod = sc.nextInt();
+            System.out.println();
+            C.erase(mod);
+            
+        for(int i = 0; i < C.size(); ++i) System.out.println("el elemento "+ i+ " esta "+ C.isEnabled(i));
+            bool = sc.nextInt();
+        }
+        
+        for(int i = 0; i < C.size(); ++i) System.out.println("el elemento "+ i+ " esta "+ C.isEnabled(i));
         Mst_Prim prim = new Mst_Prim(C);
         InitialSolGenerator_TwoApp twoapp = new InitialSolGenerator_TwoApp(prim);
-        twoapp.generateInitialSol();
+        Tour T = twoapp.generateInitialSol();
+        List<Punt> lp = T.getCjtElements();
+        for(int i = 0; i < lp.size(); ++i) {
+            System.out.println(lp.get(i).getID());
+        }
+        System.out.println(T.getCost(C));
         
     }
 }

@@ -14,15 +14,33 @@ public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
     @Override
     public Tour generateInitialSol(){
-        mst.getMST();
-        Tour T = new Tour();
+        ArrayList<List<Integer>> tree = mst.getMST();
+        List<Integer> path = new ArrayList<Integer>();
+        City C;
+        C = mst.getCity();
+        int ini = 0;
+        for(int i = 0; i < C.size(); ++i) {
+            if (child(tree.get(i))){
+                ini = i;
+                break;
+            }
+        }
+        getEpath(tree,path,ini);
+        System.out.println();
+        ArrayList<Integer> active = C.getEnabledInt();
+        boolean[] usable = new boolean[C.size()];
+        for(int i = 0; i < active.size(); ++i) {
+            usable[active.get(i)] = true;
+        }
+        Tour T = getTour(usable,path,C.getPunts());
         return T;
         
     }
         
         
-    public void getEpath(List<List<Integer>> mst,List<Integer> l, int pos) {
+    public void getEpath(ArrayList<List<Integer>> mst,List<Integer> l, int pos) {
         l.add(pos);
+        System.out.print(" " + pos);
         if(child(mst.get(pos))) {
             for(int i = 0; i < mst.size() ; ++i) {
                 if(mst.get(pos).get(i) > 0) {
@@ -39,15 +57,15 @@ public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         return false;
     }
     
-    public Tour getTour(int size,List<Integer> l,ArrayList<Punt> lp) {
+    public Tour getTour(boolean[] usable,List<Integer> l,ArrayList<Punt> lp) {
         Tour t = new Tour();
         Punt P;
-        boolean[] visited = new boolean[size];
         while(!l.isEmpty()) {
-            if(!visited[l.get(0)]) {
+            if(usable[l.get(0)]) {
                 P = lp.get(l.get(0));
                 t.addElement(P);
-                visited[l.get(0)] = true;
+                usable[l.get(0)] = false;
+                System.out.print(" " + l.get(0));
                 l.remove(0);
             }
             else {
