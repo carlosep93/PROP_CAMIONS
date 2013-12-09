@@ -12,4 +12,5 @@ import java.util.List;
  */
 public abstract class Mst {
     public abstract ArrayList<List<Integer>>  getMST();
+    public abstract City  getCity();
 }

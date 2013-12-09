@@ -24,7 +24,6 @@ public class Mst_Prim extends Mst {
         ArrayList<List<Integer>> mst = new ArrayList<List<Integer>>();
         List<Punt> lp = C.getPunts();
         List<Integer> aux = new ArrayList<Integer>();
-        System.out.println("empiezo a rellenar la puta matriz " + C.size());
         for(int i = 0;i < C.size();++i) {
         List<Integer> row = new ArrayList<Integer>();
         mst.add(row);
@@ -59,13 +58,19 @@ public class Mst_Prim extends Mst {
         PriorityQueue<Relation> pqr = new PriorityQueue(1,sort);
         boolean[] visited = new boolean[lp.size()];
         int nextdot = 0;
-        for(int i = 0; i < lp.size(); ++i) {
-            if (lp.get(nextdot).isEnabled()) {
+        for(int i = 0; i < C.size(); ++i) System.out.println("el elemento "+ i+ " esta "+ C.isEnabled(i));
+        for(int i = 0; i < C.size(); ++i) {
+            if (nextdot == -1) break;
+            System.out.println(nextdot);
+            if (C.isEnabled(nextdot)) {
                 addPQ(pqr,lli.get(nextdot),lp,nextdot);
                 if (!allvisited(visited)){
                     nextdot = addmst(pqr,visited,mst);
                 }
-                if(nextdot == -1) break;
+            }
+            else {
+                if (nextdot == 0) nextdot = i;
+                ++nextdot;
             }
         }
     }
@@ -83,7 +88,6 @@ public class Mst_Prim extends Mst {
         while (!done && pqr.size() > 0){ 
             Relation R = pqr.poll();
             if (!visited[R.getID2()]) {
-                System.out.print(" " + R.getValue());
                 System.out.println();
                 mst.get(R.getID1()).remove(R.getID2());
                 mst.get(R.getID1()).add(R.getID2(),R.getValue());
@@ -103,6 +107,11 @@ public class Mst_Prim extends Mst {
             if (!visited[i]) v = visited[i];       //si no esta visitado, v toma el valor y por tanto se sale del loop.
          }
         return v; // si se ha salido del loop será  falso, si se ha recorrido entero y el último no era, será true.
+    }
+    
+    @Override
+    public City getCity(){
+        return C;
     }
 }
 
