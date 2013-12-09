@@ -822,19 +822,23 @@ public class Vista extends javax.swing.JFrame {
             cp.resetDomini(true);
             x = -1;
             y = -1;
+            ElementsInactius.setText("");
+            ElementsActius.setText("");
         }
         else {
-            cp.eliminaElement(ElementsAdesactivar.getText());
            String aux = " ";
-          
-           for(int i=0; i< cp.getElementsActivats().size(); ++i){     
-               ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
-               aux = ElementsActius.getText();
-                if (cp.getElementsActivats().get(i).equals(ElementsAdesactivar.getText())) {
+           
+           for (int j=0; j<cp.getElementsActivats().size(); ++j) {
+               if (cp.getElementsActivats().get(j).equals(ElementsAdesactivar.getText())) {
                    ElementsInactius.setText(ElementsInactius.getText() + ElementsAdesactivar.getText() + "\n");
                 }
            }
-           ElementsAdesactivar.setText(" ");
+          cp.eliminaElement(ElementsAdesactivar.getText());
+          for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
+            ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
+            aux = ElementsActius.getText();  
+          }
+          ElementsAdesactivar.setText(" ");
         }               
     }//GEN-LAST:event_DeleteButtonActionPerformed
 

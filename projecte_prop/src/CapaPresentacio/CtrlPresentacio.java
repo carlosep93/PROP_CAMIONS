@@ -121,6 +121,7 @@ public class CtrlPresentacio {
     public void eliminaElement(String s) {
         try {
             cd.eliminaElement(s);
+            
         }
         catch (ExceptionExistence e) {}
     }
