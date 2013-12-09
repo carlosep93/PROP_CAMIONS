@@ -7,11 +7,10 @@ package Drivers_class;
 
 
 import Controladors.CtrlDomini;
+import exception.ExceptionExistence;
 import projecte_prop.*;
 import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
-import CapaDades.Gestor_Dades;
 
 public class DriverClass_CtrlDomini {
     
@@ -47,17 +46,24 @@ public class DriverClass_CtrlDomini {
                 int x = 0;                      //int x = sc.nextInt();
                 //System.out.println("Y:");
                 int y = 0;                      //int y = sc.nextInt();
-                
-                ArrayList<String> nomsAct = Ctrl.getCity().getEnabled();
+                ArrayList<String> nomsAct = new ArrayList<String>();
+                try{
+                    nomsAct = Ctrl.getEnabled();
+                }
+                catch(ExceptionExistence e){
+                    System.out.println(e.getMessage());
+                }
                 ArrayList<Integer> pesosAct = new ArrayList<Integer>();
                 for(int i = 0; i < nomsAct.size(); ++i){
                     System.out.println("Pes de l'element " + nom + " a l'element " + nomsAct.get(i));
                     pesosAct.add(sc.nextInt());
                 }
-                
-                Ctrl.addPunt(nom, x, y, pesosAct);
-                
-                escriureCity(Ctrl.getCity());
+                try{
+                    Ctrl.addPunt(nom, x, y, pesosAct);
+                }
+                catch(ExceptionExistence e){
+                    System.out.println(e.getMessage());
+                }
             }
             else if(lectura == 2){
                 System.out.println("Nom:");
@@ -67,12 +73,9 @@ public class DriverClass_CtrlDomini {
                 try{
                     Integer[] pesos = Ctrl.consultaPunt(nom);
                 }
-                catch("")
-                System.out.println("printo els pesos de " + nom);
-                for(int i = 0; i < pesos.length; ++i){
-                    System.out.print(pesos[i] + "     ");
+                catch(ExceptionExistence e){
+                    System.out.println(e.getMessage());
                 }
-                System.out.println();
             }
             /*
             else if(lectura == 3){
@@ -174,11 +177,15 @@ public class DriverClass_CtrlDomini {
                             SwapProbability = sc.nextDouble();
                         }
                     }
-                    
-                    Ctrl.tsp(nom, 0, 0, 0, 0,
+                    try{
+                        Ctrl.tsp(nom, 0, 0, 0, 0,
                             isg, false, 0, 0,
                             0, mut, SwapRate, SwapProbability,
                             id, tmp, fact, par);
+                    }
+                    catch(ExceptionExistence e){
+                        System.out.println(e.getMessage());
+                    }
                 }
                 else{
                     String nom = "Sense_nom";
@@ -245,14 +252,22 @@ public class DriverClass_CtrlDomini {
                             MutationSwapProbability = sc.nextDouble();
                         }
                     }
-                    
-                    Ctrl.tsp(nom, 1, StopCondition, Ngeneracions, NTours,
+                    try{
+                        ArrayList<String> sol = Ctrl.tsp(nom, 1, StopCondition, Ngeneracions, NTours,
                             isg, Elitism, TS, TournamentSize, 
                             cross, mut, MutationRate, MutationSwapProbability,
                             id, 0, 0, 0);
+                        System.out.println("");
+                        for(int i = 0; i < sol.size(); ++i){
+                            System.out.print("  " + sol.get(i));
+                        }
+                        System.out.println();
+                    }
+                    catch(ExceptionExistence e){
+                        System.out.println(e.getMessage());
+                    }
                
                 }
-                escriureSolucio(Ctrl);
             }
             System.out.println();
         }
@@ -276,21 +291,5 @@ public class DriverClass_CtrlDomini {
             System.out.println();
         }
         System.out.println();
-    }
-    
-    
-    public static void escriureSolucio(CtrlDomini Ctrl){
-        Solution sol = Ctrl.getSolution();
-        System.out.println("Nom solució: " + sol.getNom());
-         System.out.println();
-         System.out.println("L'ordre d'elements és: ");
-         System.out.println();
-        for(int i = 0; i < sol.size(); ++i){
-            System.out.print(" " + sol.getElementPos(i).getNom());
-          if(i%10==0)  System.out.println();
-        }
-         System.out.println();
-         System.out.println("Cost = " + sol.getCost(Ctrl.getCity()));
-         System.out.println();
     }
 }
