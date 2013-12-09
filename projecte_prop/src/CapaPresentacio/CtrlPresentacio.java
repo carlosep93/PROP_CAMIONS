@@ -29,7 +29,7 @@ public class CtrlPresentacio {
     
     public ArrayList<String> solutionAnealing(){
                     
-                    int IsgI = 0;
+                    int IsgI = 1;
                     double tmp = 1000;
                     double fact = 0.03;
                     int parada = 25;
@@ -52,6 +52,7 @@ public class CtrlPresentacio {
          try {           
          Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
                 TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
+         punts = cd.ListPuntsXY();
          }
          catch (ExceptionExistence e) {
              VistaError error = new VistaError(e.getMessage());
@@ -85,6 +86,7 @@ public class CtrlPresentacio {
          try {           
          Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
                 TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
+         punts = cd.ListPuntsXY();
          }
          catch (ExceptionExistence e) {
              VistaError error = new VistaError(e.getMessage());
@@ -104,11 +106,16 @@ public class CtrlPresentacio {
         return rel;
     }
             
-    public void resetDomini() {
+    public void resetDomini(boolean tot) {
+       if(tot){
         CtrlDomini cd2 = new CtrlDomini("a");
         cd = cd2;
-        List<Entry < Integer,Integer > > punts2 = new ArrayList <Entry < Integer,Integer > >();
-        punts = punts2;
+        
+       }
+       List <Entry < Integer,Integer > > punts2 = new ArrayList <Entry < Integer,Integer > >();
+       punts = punts2;
+       
+       
     }
     
     public void eliminaElement(String s) {

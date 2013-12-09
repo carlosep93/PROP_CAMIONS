@@ -54,6 +54,10 @@ public class Vista extends javax.swing.JFrame {
         buttonGroup4 = new javax.swing.ButtonGroup();
         buttonGroup5 = new javax.swing.ButtonGroup();
         javax.swing.ButtonGroup buttonGroup6 = new javax.swing.ButtonGroup();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         PANELS = new javax.swing.JTabbedPane();
         PanelPrincipal = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel() {
@@ -111,25 +115,32 @@ public class Vista extends javax.swing.JFrame {
         ToggleElitism = new javax.swing.JToggleButton();
         PanelElement = new javax.swing.JPanel();
         PanelElements = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TextElementsActius = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        ElementsInactius = new javax.swing.JTextArea();
+        ElementsActius = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         ElementsAdesactivar = new javax.swing.JTextField();
         CheckBoxDesactivar = new javax.swing.JCheckBox();
-        jLabel14 = new javax.swing.JLabel();
-        TextInfo = new javax.swing.JTextField();
-        TextRelations = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         DeleteButton = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        TextRelations = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ElementsInactius = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuHelp = new javax.swing.JMenu();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane5.setViewportView(jTextArea2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,7 +171,7 @@ public class Vista extends javax.swing.JFrame {
         PanelNewElement.setForeground(new java.awt.Color(102, 102, 102));
         PanelNewElement.setEnabled(false);
 
-        jLabel15.setText("Nou Element");
+        jLabel15.setText("Nou Paquet");
 
         jLabel16.setText("Nom");
 
@@ -175,7 +186,7 @@ public class Vista extends javax.swing.JFrame {
 
         jCheckBox1.setText("Complet");
 
-        jLabel18.setText("Element");
+        jLabel18.setText("Relació amb paquet");
 
         AddRelation.setText("Add");
         AddRelation.addActionListener(new java.awt.event.ActionListener() {
@@ -192,38 +203,38 @@ public class Vista extends javax.swing.JFrame {
             PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelNewElementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelNewElementLayout.createSequentialGroup()
-                        .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(NumRelacions, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SaveNewElement)
+                        .addGap(10, 10, 10))
+                    .addGroup(PanelNewElementLayout.createSequentialGroup()
+                        .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addGroup(PanelNewElementLayout.createSequentialGroup()
                                 .addComponent(ProgresBar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCheckBox1))
                             .addGroup(PanelNewElementLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelNewElementLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(NomElement, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(81, 81, 81)
+                                        .addComponent(jLabel16))
+                                    .addComponent(jLabel18))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NomElement, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(PanelNewElementLayout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
+                                        .addGap(13, 13, 13)
                                         .addComponent(jLabel17))))
                             .addGroup(PanelNewElementLayout.createSequentialGroup()
                                 .addComponent(NomElementRelacio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(29, 29, 29)
                                 .addComponent(Spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(AddRelation)))
-                        .addGap(49, 49, 49))
-                    .addGroup(PanelNewElementLayout.createSequentialGroup()
-                        .addComponent(NumRelacions, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SaveNewElement)
-                        .addGap(10, 10, 10))))
+                        .addContainerGap(34, Short.MAX_VALUE))))
         );
         PanelNewElementLayout.setVerticalGroup(
             PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -506,40 +517,40 @@ public class Vista extends javax.swing.JFrame {
 
         PanelElements.setBorder(new javax.swing.border.MatteBorder(null));
 
-        TextElementsActius.setColumns(20);
-        TextElementsActius.setRows(5);
-        jScrollPane1.setViewportView(TextElementsActius);
+        jLabel10.setText("LLista de Paquets Actius");
 
-        jLabel10.setText("LLista d' Elements Actius");
+        ElementsActius.setColumns(20);
+        ElementsActius.setRows(5);
+        jScrollPane2.setViewportView(ElementsActius);
 
-        ElementsInactius.setColumns(20);
-        ElementsInactius.setRows(5);
-        jScrollPane2.setViewportView(ElementsInactius);
+        jLabel11.setText("  Llista de Paquets Eliminats");
 
-        jLabel11.setText("  Llista d' Elements Eliminats");
+        jLabel13.setText("Inahabilitar Paquet");
 
-        jLabel13.setText("Inahabilitar Elements");
-
-        ElementsAdesactivar.setText("Escriu els noms/id dels Elements a desactivar");
-
-        CheckBoxDesactivar.setText("Desactivar tots");
-
-        jLabel14.setText("Informació");
-
-        TextRelations.addActionListener(new java.awt.event.ActionListener() {
+        ElementsAdesactivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextRelationsActionPerformed(evt);
+                ElementsAdesactivarActionPerformed(evt);
             }
         });
 
+        CheckBoxDesactivar.setText("Desactivar tots");
+
         jLabel19.setText("Relacions");
 
-        DeleteButton.setText("Guardar");
+        DeleteButton.setText("Borrar");
         DeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteButtonActionPerformed(evt);
             }
         });
+
+        TextRelations.setColumns(20);
+        TextRelations.setRows(5);
+        jScrollPane6.setViewportView(TextRelations);
+
+        ElementsInactius.setColumns(20);
+        ElementsInactius.setRows(5);
+        jScrollPane8.setViewportView(ElementsInactius);
 
         javax.swing.GroupLayout PanelElementsLayout = new javax.swing.GroupLayout(PanelElements);
         PanelElements.setLayout(PanelElementsLayout);
@@ -548,68 +559,65 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(PanelElementsLayout.createSequentialGroup()
                 .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelElementsLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel10))
+                    .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelElementsLayout.createSequentialGroup()
-                                .addGap(67, 67, 67)
+                                .addGap(33, 33, 33)
+                                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PanelElementsLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelElementsLayout.createSequentialGroup()
                                 .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelElementsLayout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(96, 96, 96)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel19)))
+                                        .addGap(50, 50, 50)
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelElementsLayout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addComponent(jLabel11)))
+                                .addGap(102, 102, 102)
+                                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(PanelElementsLayout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(TextRelations, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(45, 45, 45)
-                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(PanelElementsLayout.createSequentialGroup()
-                                    .addComponent(jLabel13)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CheckBoxDesactivar))
-                                .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DeleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanelElementsLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel10)
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel11)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                                .addGap(11, 11, 11)
+                                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CheckBoxDesactivar))))))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         PanelElementsLayout.setVerticalGroup(
             PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelElementsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
                 .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelElementsLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel14)
-                        .addGap(29, 29, 29)
-                        .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
-                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(CheckBoxDesactivar))
-                        .addGap(18, 18, 18)
-                        .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DeleteButton)
-                        .addContainerGap(78, Short.MAX_VALUE))
-                    .addGroup(PanelElementsLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextRelations, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelElementsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(21, 21, 21)
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(CheckBoxDesactivar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeleteButton))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelElementLayout = new javax.swing.GroupLayout(PanelElement);
@@ -623,7 +631,7 @@ public class Vista extends javax.swing.JFrame {
             .addComponent(PanelElements, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        PANELS.addTab("Elements", PanelElement);
+        PANELS.addTab("Paquet", PanelElement);
 
         jTextField1.setText("jTextField1");
 
@@ -711,37 +719,37 @@ public class Vista extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void DibuixarPunts(){
+         List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
+         if (!aux.isEmpty()){
+            Graphics g2 = jPanel4.getGraphics();
+            g2.setColor(Color.red);
+            for (int i=1;i< aux.size();++i) {
+                g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
+                        aux.get(i).getKey(), aux.get(i).getValue());
+            }
+            g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
+                        aux.get(0).getKey(), aux.get(0).getValue());
+         }
+    }
+    
     private void ButtonSolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSolveActionPerformed
        Graphics g3 = jPanel4.getGraphics();
        jPanel4.paint(g3);
+      ArrayList<String> Elems = new ArrayList<String>();
        if(RadioAnnealing.isSelected()){
-       List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
-       Graphics g2 = jPanel4.getGraphics();
-       g2.setColor(Color.red);
-       for (int i=1;i< aux.size();++i) {
-           g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
-                   aux.get(i).getKey(), aux.get(i).getValue());
+            Elems = cp.solutionAnealing();
        }
-       g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
-                   aux.get(0).getKey(), aux.get(0).getValue());
-        }
-        
+       else if(RadioGenetic.isSelected()){
+           Elems = cp.solutionGenetic();
            
-        if(SliderAlgoritme.getValue() == 2){
-            ArrayList<String> Elems = cp.solutionGenetic();
+       }
+       DibuixarPunts();
+            
             TextSolution.setText("");
             for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + " ");
-            
-        List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
-       Graphics g2 = jPanel4.getGraphics();
-       g2.setColor(Color.red);
-       for (int i=1;i< aux.size();++i) {
-           g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
-                   aux.get(i).getKey(), aux.get(i).getValue());
-       }
-       g2.drawLine(aux.get(aux.size()-1).getKey(),aux.get(aux.size()-1).getValue(), 
-                   aux.get(0).getKey(), aux.get(0).getValue());
-        }
+      
+        
         
     }//GEN-LAST:event_ButtonSolveActionPerformed
 
@@ -756,21 +764,20 @@ public class Vista extends javax.swing.JFrame {
             
             //actualitzem els elements de la llista
             String aux = "";
-            for(int i=0; i< cp.getElementsActivats().size(); ++i){     
-               TextElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n" ); 
-               aux = TextElementsActius.getText();
-            }
+           for(int i=0; i< cp.getElementsActivats().size(); ++i){     
+               ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
+               aux = ElementsActius.getText();
+           }
+            
             
         //actualitzem la llista d adjacencies
-            aux = "";
+           aux = "";
              for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
                   for(int j=0; j< cp.getElementsActivats().size(); ++j){ 
                       TextRelations.setText(aux + cp.GetRelations().get(i).get(j));
-                      System.out.print(cp.GetRelations().get(i).get(j));
                       aux = TextRelations.getText();
              }
-                  TextRelations.setText(aux + "\n");
-                  System.out.println();
+                  TextRelations.setText(aux + " \n");
              }
             
             NomElement.setText(null);
@@ -787,14 +794,14 @@ public class Vista extends javax.swing.JFrame {
             NomElementRelacio.setText("-----");
                     
         }
-        else if(Spinner.getComponentCount() > 0){
+        else if(Integer.parseInt(Spinner.getValue().toString()) > 0){
            String nomAnterior = " ----- ";
            System.out.println("actual -> " + actual);
            ++actual;
            
            if (numRelations > 1 && actual<ListNoms.size()) nomAnterior = ListNoms.get(actual);
            NomElementRelacio.setText(nomAnterior); 
-           Relacions.add(Spinner.getComponentCount());
+           Relacions.add(Integer.parseInt(Spinner.getValue().toString()));
            Spinner.setValue(0);
            ProgresBar.setValue(actual*(100/numRelations));
         }
@@ -802,19 +809,8 @@ public class Vista extends javax.swing.JFrame {
             jCheckBox1.setSelected(true);
     }//GEN-LAST:event_AddRelationActionPerformed
 
-    private void TextRelationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRelationsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextRelationsActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (CheckBoxDesactivar.isEnabled()) {
-            cp.resetDomini();
-            x = -1;
-            y = -1;
-        }    
-        else {
-            
-        }
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ElementsAdesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElementsAdesactivarActionPerformed
@@ -822,13 +818,23 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_ElementsAdesactivarActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-        if (CheckBoxDesactivar.isEnabled()) {
-            cp.resetDomini();
+        if (CheckBoxDesactivar.isSelected()) {
+            cp.resetDomini(true);
             x = -1;
             y = -1;
         }
         else {
             cp.eliminaElement(ElementsAdesactivar.getText());
+           String aux = " ";
+          
+           for(int i=0; i< cp.getElementsActivats().size(); ++i){     
+               ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
+               aux = ElementsActius.getText();
+                if (cp.getElementsActivats().get(i).equals(ElementsAdesactivar.getText())) {
+                   ElementsInactius.setText(ElementsInactius.getText() + ElementsAdesactivar.getText() + "\n");
+                }
+           }
+           ElementsAdesactivar.setText(" ");
         }               
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
@@ -887,6 +893,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField CoolingFactor;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JTextField EdgeCrossover;
+    private javax.swing.JTextArea ElementsActius;
     private javax.swing.JTextField ElementsAdesactivar;
     private javax.swing.JTextArea ElementsInactius;
     private javax.swing.JLabel IMAGEN;
@@ -917,9 +924,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField StopCondition;
     private javax.swing.JTextField StopConditionAnealing;
     private javax.swing.JTabbedPane TabAnealing;
-    private javax.swing.JTextArea TextElementsActius;
-    private javax.swing.JTextField TextInfo;
-    private javax.swing.JTextField TextRelations;
+    private javax.swing.JTextArea TextRelations;
     private javax.swing.JTextArea TextSolution;
     private javax.swing.JToggleButton ToggleElitism;
     private javax.swing.JTextField TournamentSize;
@@ -933,7 +938,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -953,9 +957,14 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
