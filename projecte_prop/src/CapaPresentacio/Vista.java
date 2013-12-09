@@ -1,4 +1,4 @@
-package CapaPresentacio;
+ package CapaPresentacio;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -77,12 +77,10 @@ public class Vista extends javax.swing.JFrame {
         NumRelacions = new javax.swing.JTextField();
         Spinner = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
-        LabelAnealing = new javax.swing.JLabel();
         ButtonSolve = new javax.swing.JButton();
-        LabelGenetic = new javax.swing.JLabel();
-        SliderAlgoritme = new javax.swing.JSlider();
         LabelSeleccio = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        RadioGenetic = new javax.swing.JRadioButton();
+        RadioAnnealing = new javax.swing.JRadioButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         TextSolution = new javax.swing.JTextArea();
         PanelOpcions = new javax.swing.JPanel();
@@ -126,7 +124,7 @@ public class Vista extends javax.swing.JFrame {
         TextInfo = new javax.swing.JTextField();
         TextRelations = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        DeleteButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -256,8 +254,6 @@ public class Vista extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        LabelAnealing.setText("Anealing");
-
         ButtonSolve.setText("Solve");
         ButtonSolve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,18 +261,21 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        LabelGenetic.setText("Genetic");
+        LabelSeleccio.setText("Selecciona algoritme");
 
-        SliderAlgoritme.setMaximum(2);
-        SliderAlgoritme.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                SliderAlgoritmeStateChanged(evt);
+        RadioGenetic.setText("Genetic");
+        RadioGenetic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioGeneticActionPerformed(evt);
             }
         });
 
-        LabelSeleccio.setText("Selecciona algoritme");
-
-        jLabel12.setText("Nomes Relació");
+        RadioAnnealing.setText("Annealing");
+        RadioAnnealing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioAnnealingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -288,18 +287,15 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                         .addComponent(LabelSeleccio)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(LabelGenetic)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12)
-                        .addGap(45, 45, 45)
-                        .addComponent(LabelAnealing)
-                        .addGap(40, 40, 40))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RadioAnnealing)
+                            .addComponent(RadioGenetic))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonSolve, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ButtonSolve, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 59, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -307,13 +303,10 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(LabelSeleccio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelAnealing)
-                    .addComponent(LabelGenetic)
-                    .addComponent(jLabel12))
+                .addComponent(RadioGenetic)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SliderAlgoritme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(RadioAnnealing)
+                .addGap(13, 13, 13)
                 .addComponent(ButtonSolve)
                 .addContainerGap(113, Short.MAX_VALUE))
         );
@@ -353,7 +346,7 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         PANELS.addTab("Vista Principal", PanelPrincipal);
@@ -527,12 +520,7 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel13.setText("Inahabilitar Elements");
 
-        ElementsAdesactivar.setText("Escriu els nom/id del Paquet a desactivar");
-        ElementsAdesactivar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ElementsAdesactivarActionPerformed(evt);
-            }
-        });
+        ElementsAdesactivar.setText("Escriu els noms/id dels Elements a desactivar");
 
         CheckBoxDesactivar.setText("Desactivar tots");
 
@@ -546,10 +534,10 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel19.setText("Relacions");
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        DeleteButton.setText("Guardar");
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DeleteButtonActionPerformed(evt);
             }
         });
 
@@ -581,9 +569,8 @@ public class Vista extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(CheckBoxDesactivar))
                                 .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1)
-                                .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DeleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(jLabel10)
@@ -611,7 +598,7 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(DeleteButton)
                         .addContainerGap(78, Short.MAX_VALUE))
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -727,7 +714,7 @@ public class Vista extends javax.swing.JFrame {
     private void ButtonSolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSolveActionPerformed
        Graphics g3 = jPanel4.getGraphics();
        jPanel4.paint(g3);
-       if(SliderAlgoritme.getValue() == 1){
+       if(RadioAnnealing.isSelected()){
        List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
        Graphics g2 = jPanel4.getGraphics();
        g2.setColor(Color.red);
@@ -741,7 +728,7 @@ public class Vista extends javax.swing.JFrame {
         
            
         if(SliderAlgoritme.getValue() == 2){
-            ArrayList<String> Elems = cp.solutionAnealing();
+            ArrayList<String> Elems = cp.solutionGenetic();
             TextSolution.setText("");
             for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + " ");
             
@@ -757,17 +744,6 @@ public class Vista extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_ButtonSolveActionPerformed
-
-    private void SliderAlgoritmeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderAlgoritmeStateChanged
-        if(cp.Genetic){
-            cp.Genetic = false;
-            cp.Anealing = true;
-        }
-        else {
-            cp.Genetic = false;
-            cp.Anealing = true;
-        }
-    }//GEN-LAST:event_SliderAlgoritmeStateChanged
 
     private void SaveNewElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveNewElementActionPerformed
         
@@ -844,6 +820,29 @@ public class Vista extends javax.swing.JFrame {
     private void ElementsAdesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElementsAdesactivarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ElementsAdesactivarActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        if (CheckBoxDesactivar.isEnabled()) {
+            cp.resetDomini();
+            x = -1;
+            y = -1;
+        }
+        else {
+            cp.eliminaElement(ElementsAdesactivar.getText());
+        }               
+    }//GEN-LAST:event_DeleteButtonActionPerformed
+
+    private void RadioAnnealingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioAnnealingActionPerformed
+        if (RadioAnnealing.isSelected()) {
+            RadioGenetic.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioAnnealingActionPerformed
+
+    private void RadioGeneticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioGeneticActionPerformed
+        if (RadioGenetic.isSelected()) {
+            RadioAnnealing.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioGeneticActionPerformed
    
     
     
@@ -886,6 +885,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton ButtonSolve;
     private javax.swing.JCheckBox CheckBoxDesactivar;
     private javax.swing.JTextField CoolingFactor;
+    private javax.swing.JButton DeleteButton;
     private javax.swing.JTextField EdgeCrossover;
     private javax.swing.JTextField ElementsAdesactivar;
     private javax.swing.JTextArea ElementsInactius;
@@ -893,8 +893,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField InitialTemperature;
     private javax.swing.JLabel Jlabel3;
     private javax.swing.JLabel Label4;
-    private javax.swing.JLabel LabelAnealing;
-    private javax.swing.JLabel LabelGenetic;
     private javax.swing.JLabel LabelSeleccio;
     private javax.swing.JMenu MenuFile;
     private javax.swing.JMenu MenuHelp;
@@ -911,9 +909,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel PanelOpcions;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JProgressBar ProgresBar;
+    private javax.swing.JRadioButton RadioAnnealing;
+    private javax.swing.JRadioButton RadioGenetic;
     private javax.swing.JTextField Roulette;
     private javax.swing.JButton SaveNewElement;
-    private javax.swing.JSlider SliderAlgoritme;
     private javax.swing.JSpinner Spinner;
     private javax.swing.JTextField StopCondition;
     private javax.swing.JTextField StopConditionAnealing;
@@ -929,12 +928,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -962,3 +959,4 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
+
