@@ -27,8 +27,8 @@ public class City {
        }
        
        lp.add(P);
+   
        pesos_resta.add(P.getID(), 0);
-       
        lli.add(P.getID(), pesos_resta);
    }
    
