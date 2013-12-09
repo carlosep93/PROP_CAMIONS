@@ -121,6 +121,19 @@ public class CtrlDomini {
         return ciutat.getEnabled().size();
     }
     
+    public Map.Entry < Integer,Integer > getXY(String s) {
+        int x = -1;
+        int y = -1;
+        for (int i=0;i<ciutat.getPunts().size();++i) {
+            if (s.equals(ciutat.getPunts().get(i).getNom())) {
+                x = ciutat.getPunts().get(i).getX();
+                y = ciutat.getPunts().get(i).getY();
+            }
+        }
+        Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
+        return aux;
+    }
+    
     
     
     //memoiraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

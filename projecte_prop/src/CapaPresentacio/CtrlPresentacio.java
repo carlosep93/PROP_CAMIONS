@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import Controladors.CtrlDomini;
 import exception.ExceptionExistence;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /*
@@ -107,9 +108,17 @@ public class CtrlPresentacio {
     }
             
     public void resetDomini(boolean tot) {
-       if(tot){
-        CtrlDomini cd2 = new CtrlDomini("a");
-        cd = cd2;
+       if(tot) {
+         try {  
+            System.out.println("Enabled "+ cd.getEnabled().size()); 
+            for (int i=0; i<cd.getEnabled().size();++i) {
+                cd.eliminaElement(cd.getEnabled().get(i));
+            }
+            cd.eliminaElement(cd.getEnabled().get(0));
+         }
+         catch( ExceptionExistence e) {
+             VistaError error = new VistaError(e.getMessage());
+         }
         
        }
        List <Entry < Integer,Integer > > punts2 = new ArrayList <Entry < Integer,Integer > >();
@@ -120,10 +129,17 @@ public class CtrlPresentacio {
     
     public void eliminaElement(String s) {
         try {
+            Map.Entry<Integer,Integer> aux = cd.getXY(s);
             cd.eliminaElement(s);
+            for (int i=0;i<punts.size();++i) {
+                if (punts.get(i).getKey() == aux.getKey() && punts.get(i).getValue()==aux.getValue())
+                    punts.remove(i);
+            }
             
         }
-        catch (ExceptionExistence e) {}
+        catch (ExceptionExistence e) {
+            VistaError error = new VistaError(e.getMessage());
+        }
     }
     
     public void addPunt(int x,int y,String nom,ArrayList<Integer> list) {
