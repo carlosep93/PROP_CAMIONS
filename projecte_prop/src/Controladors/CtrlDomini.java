@@ -2,6 +2,7 @@
 package Controladors;
 
 import exception.ExceptionExistence;
+import exception.ExceptionEnabled;
 import java.util.ArrayList;
 import projecte_prop.*;
 import CapaDades.Gestor_Dades;
@@ -59,7 +60,15 @@ public class CtrlDomini {
         
         ciutat.erase(idPunt);
     }
-
+    
+    public void rehabilitaElement(String nom, ArrayList<Integer> pesos_resta) throws ExceptionExistence, ExceptionEnabled{
+        int idPunt = NomtoPos(nom);
+        if(ciutat.getPunts().get(idPunt).isEnabled()){
+            throw new ExceptionEnabled("El paquet ja està habilitat");
+        }
+        ciutat.rehabilitaElement(idPunt, pesos_resta);
+    }
+    
     public ArrayList<String> tsp(String nomSolution, int tspI, int StopCondition, int NGeneracions, int NTours,
         int isgI, boolean Elitism, int TSI, int TournamentSize, 
         int crossI, int mutI, double MutationRate, double MutationSwapProbability, 
