@@ -127,7 +127,7 @@
                               <Component id="PanelNewElement" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -346,22 +346,19 @@
                                   <Component id="LabelSeleccio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="LabelGenetic" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="RadioAnnealing" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RadioGenetic" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="LabelAnealing" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="SliderAlgoritme" min="-2" max="-2" attributes="0"/>
-                              <Component id="ButtonSolve" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="ButtonSolve" min="-2" pref="200" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -371,14 +368,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="LabelSeleccio" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabelAnealing" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelGenetic" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="RadioGenetic" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="SliderAlgoritme" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="RadioAnnealing" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Component id="ButtonSolve" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="113" max="32767" attributes="0"/>
                       </Group>
@@ -386,11 +379,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="LabelAnealing">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Anealing"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JButton" name="ButtonSolve">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Solve"/>
@@ -399,28 +387,26 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSolveActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabelGenetic">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Genetic"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JSlider" name="SliderAlgoritme">
-                  <Properties>
-                    <Property name="maximum" type="int" value="2"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="SliderAlgoritmeStateChanged"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="LabelSeleccio">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Selecciona algoritme"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JRadioButton" name="RadioGenetic">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nomes Relaci&#xf3;"/>
+                    <Property name="text" type="java.lang.String" value="Genetic"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioGeneticActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="RadioAnnealing">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Annealing"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioAnnealingActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -783,6 +769,7 @@
                                           <Component id="TextInfo" min="-2" pref="228" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="ElementsAdesactivar" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
+                                      <Component id="DeleteButton" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -817,7 +804,9 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="ElementsAdesactivar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="119" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="DeleteButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="78" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -908,6 +897,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Relacions"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="DeleteButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Guardar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

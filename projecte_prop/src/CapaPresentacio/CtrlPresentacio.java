@@ -60,6 +60,39 @@ public class CtrlPresentacio {
         return Elems;
     }
     
+     public ArrayList<String> solutionGenetic(){
+                    
+                    int IsgI = 0;
+                    double tmp = 1000;
+                    double fact = 0.03;
+                    int parada = 25;
+                    int StopCondition = 20;
+                    int Ngeneracions = 1000;
+                    int NTours = 50;
+                    boolean Elitism = true;
+                    int TS = 0;
+                    int TournamentSize = 5;
+                    int cross = 0;
+                    double MutationRate = 0.15;
+                    double MutationSwapProbability = 0.9;
+                    String nomSolution = "sensenom";
+                    int tspI = 1;
+                    int TSI = 0; // 0 -> rendom // 1 -> rouletwheel
+                    int crossI = 0; //1 -> crosover edge
+                    int mutI = 3; // 0 -> rate 1-> swaprate 2-> little
+                    int id_sol = 0;
+         ArrayList<String> Elems = new ArrayList<String>();           
+         try {           
+         Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
+                TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
+         }
+         catch (ExceptionExistence e) {
+             VistaError error = new VistaError(e.getMessage());
+         }
+         
+        return Elems;
+    }
+    
     public   ArrayList<ArrayList<Integer>> GetRelations(){
         ArrayList<ArrayList<Integer>> rel = new ArrayList<ArrayList<Integer>>();
         try {
