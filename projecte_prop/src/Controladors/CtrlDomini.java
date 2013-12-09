@@ -5,6 +5,8 @@ import exception.ExceptionExistence;
 import java.util.ArrayList;
 import projecte_prop.*;
 import CapaDades.Gestor_Dades;
+import java.util.List;
+import java.util.Map;
 
 
 public class CtrlDomini {
@@ -119,6 +121,10 @@ public class CtrlDomini {
         return ciutat.getEnabled().size();
     }
     
+    
+    
+    //memoiraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    
     public void guardar_adjacencies(){
         gd.guardar_adjacencies(ciutat.getAdjacency());    
     }
@@ -142,7 +148,25 @@ public class CtrlDomini {
     }
     
     public void carregar_Elements_i_Adjacencies(){
-        
+        gd.carregar_elements();
+        gd.carregar_adjacencies();
+    }
+   // meomoriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end 
+   
+    
+    public Integer getCostSol(){
+        return sol.getCost(ciutat);
+    }
+    
+    public List<Map.Entry < Integer,Integer > > ListPuntsXY(){
+        List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
+       
+        for ( int i=0; i<sol.size(); ++i){
+            Punt p = ciutat.getPunts().get(sol.getElementPos(i).getID());
+            Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(p.getX(),p.getY());
+            punts.add(aux);
+        }
+        return punts;
     }
     
     public Boolean SolucioGenerada(){
@@ -155,6 +179,14 @@ public class CtrlDomini {
         
         return ciutat.getAdjacency();
      }
+    
+    
+    
+    
+    
+    
+    
+    
     
     private int NomtoPos(String nom) throws ExceptionExistence{
         int idPunt = -1;
