@@ -22,6 +22,7 @@ public class CtrlDomini {
         gd = new Gestor_Dades();
     }
     
+    
     public int getSolution() throws ExceptionExistence{
         if(!SolucioCreada){
             throw new ExceptionExistence("No hi ha solucio");
@@ -142,8 +143,8 @@ public class CtrlDomini {
         gd.GuardarDades(ciutat.getPunts(),ciutat.getAdjacency(), path);
     }
     
-    public void carregar_Elements_i_Adjacencies(String path){
-        
+    public void carregar_Elements_i_Adjacencies(String path){ 
+      ciutat = new City("bcn");
       ciutat.setDades(gd.carregar_adjacencies(path),gd.carregar_elements(path));
     }
    // meomoriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end 

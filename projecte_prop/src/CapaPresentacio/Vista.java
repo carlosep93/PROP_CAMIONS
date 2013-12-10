@@ -39,6 +39,7 @@ public class Vista extends javax.swing.JFrame {
     private int actual;
     public Vista() {
         initComponents();
+        setResizable(false);
         setVisible(true);
     }
 
@@ -879,12 +880,11 @@ public class Vista extends javax.swing.JFrame {
     }
     
     private void actualitzarAdjacencies(){
-        String aux = "";
-        //System.out.println(cp.);
+
+        TextRelations.setText("");
             for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
-                  for(int j=0; j< cp.getElementsActivats().size(); ++j){ 
-                       aux = TextRelations.getText(); 
-                      TextRelations.setText(aux + cp.GetRelations().get(i).get(j) + "  ");            
+                  for(int j=0; j< cp.getElementsActivats().size(); ++j){  
+                      TextRelations.setText(TextRelations.getText() + cp.GetRelations().get(i).get(j) + "  ");            
              }
                   TextRelations.setText(TextRelations.getText() + "\n");
                   
@@ -965,14 +965,13 @@ public class Vista extends javax.swing.JFrame {
         RadioGenetic.setSelected(false);
         TextSolution.setText("");
         CostText.setText("");
-        PanelNewElement.setVisible(false);
+        //PanelNewElement.setVisible(false);
        // jPanel4 = new javax.swing.JPanel();
     }
     
     private void FileChoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChoserActionPerformed
-        //cp.resetDomini();
-        cp = new CtrlPresentacio();
-        ResetVista(); 
+ 
+        ResetVista();
         File fil = FileChoser.getSelectedFile();
         cp.carregar_dades(fil.getAbsolutePath());
         actualitzarAdjacencies();

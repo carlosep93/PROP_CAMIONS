@@ -112,6 +112,7 @@ public class Gestor_Dades {
              int id= sc.nextInt();
              boolean enabled = sc.nextBoolean();   
              Punt aux = new Punt(x,y,nom);
+             aux.modifyid(id);
              aux.modifyEnabled(enabled);
              elems.add(aux);
         }

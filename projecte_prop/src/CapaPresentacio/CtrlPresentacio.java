@@ -30,7 +30,7 @@ public class CtrlPresentacio {
     
     public ArrayList<String> solutionAnealing(){
                     
-                    int IsgI = 0;
+                    int IsgI = 1;
                     double tmp = 1000;
                     double fact = 0.03;
                     int parada = 25;
@@ -112,8 +112,8 @@ public class CtrlPresentacio {
         return rel;
     }
             
-    public void resetDomini() {
-     /*  if(tot) {
+    public void resetDomini(boolean tot) {
+       if(tot) {
          try {  
             System.out.println("Enabled "+ cd.getEnabled().size()); 
             for (int i=0; i<cd.getEnabled().size();++i) {
@@ -125,10 +125,9 @@ public class CtrlPresentacio {
              VistaError error = new VistaError(e.getMessage());
          }
         
-       }*/
+       }
        punts = new ArrayList <Entry < Integer,Integer > >();
        nom_elements = new ArrayList <String>();
-       cd = new CtrlDomini("sensenom");     
     }
     
     public void eliminaElement(String s) {

@@ -33,7 +33,9 @@ public class City {
    }
    
    public void setDades (ArrayList <ArrayList<Integer>> llista, ArrayList<Punt> punts){
+       lli = new ArrayList <ArrayList<Integer>>();
        lli = llista;
+       lp = new ArrayList<Punt>();
        lp = punts;
    }
      
