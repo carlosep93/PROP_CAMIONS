@@ -32,13 +32,6 @@ public class Mst_Prim extends Mst {
             }
         }
         ArrayList<ArrayList<Integer>> mat = C.getAdjacency();
-        for(int i = 0;i < mst.size();++i) {
-            for(int j = 0; j < mst.size();++j) {
-                System.out.print(" " + mat.get(i).get(j));
-            }
-            System.out.println();
-        }
-            System.out.println();
         getMST(mst,C);
         //proba de mst
         for(int i = 0;i < mst.size();++i) {
@@ -51,6 +44,7 @@ public class Mst_Prim extends Mst {
     }
     
     private static void getMST(List<List<Integer>> mst, City C) {
+        
         ArrayList<Punt> lp = C.getPunts();
         ArrayList<ArrayList<Integer>> lli = C.getAdjacency();
         List<Relation> lr = new ArrayList<Relation>();

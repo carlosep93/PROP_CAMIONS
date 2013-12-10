@@ -20,19 +20,11 @@ public class Generador_jocs_prova {
          Gestor_Dades gd = new Gestor_Dades();
          String pathload;
          Scanner sc = new Scanner(System.in);
-        /* File pro = new File(".");
-         String pathload = pro.getAbsolutePath();   
-         System.out.println(pathload);
-         */
          ArrayList <ArrayList<Integer>> lists = new ArrayList <ArrayList<Integer>>();
-        
-         pathload = "src/CapaDades/" ;
+        String b = System.getProperty("file.separator");
+         pathload = "src" + b + "CapaDades" + b ;
          
-         System.out.println("Ubuntu(1) o windows(2) o definir path(3)?");
-        if( sc.nextInt()==2 ) pathload = "src\\CapaDades\\";
-        else if( sc.nextInt()==3 ) pathload = sc.next();  
-       
-        System.out.println(pathload);
+         
        
         System.out.println("Quin nom fitxer vols crear?");
         String aux = sc.next();

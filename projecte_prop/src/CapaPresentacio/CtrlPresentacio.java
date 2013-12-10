@@ -28,31 +28,18 @@ public class CtrlPresentacio {
     private CtrlDomini cd = new CtrlDomini("a"); 
     
     
-    public ArrayList<String> solutionAnealing(){
+    public ArrayList<String> solutionAnealing(double tmp,double cool,int parada,double mutR,
+            double mutS,boolean TwoAp2, boolean mut2){
                     
-                    int IsgI = 1;
-                    double tmp = 1000;
-                    double fact = 0.03;
-                    int parada = 25;
-                    int StopCondition = 20;
-                    int Ngeneracions = 1000;
-                    int NTours = 50;
-                    boolean Elitism = true;
-                    int TS = 0;
-                    int TournamentSize = 5;
-                    int cross = 0;
-                    double MutationRate = 0.15;
-                    double MutationSwapProbability = 0.9;
+                    int IsgI = 0;
+                    if(TwoAp2) IsgI = 1;   
                     String nomSolution = "sensenom";
-                    int tspI = 0;
-                    int TSI = 0; // 0 -> rendom // 1 -> rouletwheel
-                    int crossI = 0; //1 -> crosover edge
-                    int mutI = 3; // 0 -> rate 1-> swaprate 2-> little
-                    int id_sol = 0;
+                    int mutI = 1; // 0 -> rate 1-> swaprate 2-> little
+                    if(mut2) mutI = 2;
          ArrayList<String> Elems = new ArrayList<String>();           
          try {           
-         Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
-                TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
+         Elems = cd.tsp(nomSolution ,0 ,0, 0 ,0 ,IsgI ,false ,0 , 
+                0,0,mutI, mutR, mutS ,0,tmp ,cool ,parada);
          punts = cd.ListPuntsXY();
          }
          catch (ExceptionExistence e) {
@@ -62,31 +49,22 @@ public class CtrlPresentacio {
         return Elems;
     }
     
-     public ArrayList<String> solutionGenetic(){
+     public ArrayList<String> solutionGenetic(int stop,int ng,int nt,double mr,
+             int ts,double ms,int mutate,boolean Roulet,boolean Edge,boolean Elitism){
                     
-                    int IsgI = 0;
-                    double tmp = 1000;
-                    double fact = 0.03;
-                    int parada = 25;
-                    int StopCondition = 20;
-                    int Ngeneracions = 1000;
-                    int NTours = 50;
-                    boolean Elitism = true;
-                    int TS = 0;
-                    int TournamentSize = 5;
-                    int cross = 0;
-                    double MutationRate = 0.15;
-                    double MutationSwapProbability = 0.9;
-                    String nomSolution = "sensenom";
-                    int tspI = 1;
-                    int TSI = 0; // 0 -> rendom // 1 -> rouletwheel
+                    int IsgI = 0;  //twoAp -> 1                      
+                    int TSI = 0; // 0 -> random // 1 -> rouletwheel
+                    if(Roulet) TSI = 1;
                     int crossI = 0; //1 -> crosover edge
+                    if(Edge) crossI = 1;
                     int mutI = 3; // 0 -> rate 1-> swaprate 2-> little
-                    int id_sol = 0;
+                   
          ArrayList<String> Elems = new ArrayList<String>();           
          try {           
-         Elems = cd.tsp(nomSolution ,tspI ,StopCondition, Ngeneracions ,NTours ,IsgI ,Elitism ,TSI , 
-                TournamentSize ,crossI ,mutI, MutationRate, MutationSwapProbability ,id_sol ,tmp ,fact ,parada);
+         
+             Elems = cd.tsp( "no",1 ,stop, ng ,nt ,IsgI ,Elitism ,TSI , 
+                ts ,crossI ,mutI, mr,ms ,0 ,0 ,0 ,0);
+         
          punts = cd.ListPuntsXY();
          }
          catch (ExceptionExistence e) {
@@ -157,6 +135,7 @@ public class CtrlPresentacio {
         }
     }
     
+    
     public ArrayList<String> getElementsActivats(){
         ArrayList<String> res = new ArrayList<String>();
         try{
@@ -187,7 +166,9 @@ public class CtrlPresentacio {
     public List<Entry < Integer,Integer > > lpunts() {
         return punts;
     }
-    
+    public void ResetPunts(){
+        punts = new ArrayList <Entry < Integer,Integer >>();
+    }
     
     public void carregar_dades (String nom){
         cd.carregar_Elements_i_Adjacencies(nom);
