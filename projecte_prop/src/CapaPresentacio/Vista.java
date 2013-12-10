@@ -29,10 +29,12 @@ public class Vista extends javax.swing.JFrame {
     private boolean linea2punts;
     private CtrlPresentacio cp = new CtrlPresentacio();
     private boolean active = true;
+   
     private int snom;
     
     private ArrayList<Integer> Relacions = new ArrayList<Integer>();
     private ArrayList<String> ListNoms = new ArrayList<String>();
+    
     private int numRelations;
     private int actual;
     public Vista() {
@@ -68,6 +70,11 @@ public class Vista extends javax.swing.JFrame {
             }
         };
         IMAGEN = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        ButtonSolve = new javax.swing.JButton();
+        LabelSeleccio = new javax.swing.JLabel();
+        RadioGenetic = new javax.swing.JRadioButton();
+        RadioAnnealing = new javax.swing.JRadioButton();
         PanelNewElement = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         NomElement = new javax.swing.JTextField();
@@ -82,13 +89,11 @@ public class Vista extends javax.swing.JFrame {
         NumRelacions = new javax.swing.JTextField();
         Spinner = new javax.swing.JSpinner();
         textxy = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
-        ButtonSolve = new javax.swing.JButton();
-        LabelSeleccio = new javax.swing.JLabel();
-        RadioGenetic = new javax.swing.JRadioButton();
-        RadioAnnealing = new javax.swing.JRadioButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         TextSolution = new javax.swing.JTextArea();
+        CostText = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         PanelOpcions = new javax.swing.JPanel();
         TabAnealing = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -166,12 +171,35 @@ public class Vista extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 459, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
+
+        ButtonSolve.setText("Solve");
+        ButtonSolve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSolveActionPerformed(evt);
+            }
+        });
+
+        LabelSeleccio.setText("Selecciona algoritme");
+
+        RadioGenetic.setText("Genetic");
+        RadioGenetic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioGeneticActionPerformed(evt);
+            }
+        });
+
+        RadioAnnealing.setText("Annealing");
+        RadioAnnealing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioAnnealingActionPerformed(evt);
+            }
+        });
 
         PanelNewElement.setBackground(new java.awt.Color(204, 204, 204));
         PanelNewElement.setBorder(new javax.swing.border.MatteBorder(null));
@@ -280,29 +308,6 @@ public class Vista extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        ButtonSolve.setText("Solve");
-        ButtonSolve.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonSolveActionPerformed(evt);
-            }
-        });
-
-        LabelSeleccio.setText("Selecciona algoritme");
-
-        RadioGenetic.setText("Genetic");
-        RadioGenetic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioGeneticActionPerformed(evt);
-            }
-        });
-
-        RadioAnnealing.setText("Annealing");
-        RadioAnnealing.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioAnnealingActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -320,9 +325,14 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(RadioGenetic))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(ButtonSolve, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 59, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(ButtonSolve, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,45 +344,62 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(RadioAnnealing)
                 .addGap(13, 13, 13)
                 .addComponent(ButtonSolve)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         TextSolution.setColumns(20);
-        TextSolution.setRows(5);
+        TextSolution.setRows(1);
         jScrollPane3.setViewportView(TextSolution);
+
+        jLabel12.setText("Tour");
+
+        jLabel14.setText("Cost");
 
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
         PanelPrincipal.setLayout(PanelPrincipalLayout);
         PanelPrincipalLayout.setHorizontalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel14)
+                        .addGap(6, 6, 6)))
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(CostText, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3)))
                 .addContainerGap())
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CostText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel12)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         PANELS.addTab("Vista Principal", PanelPrincipal);
@@ -701,7 +728,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGap(0, 128, Short.MAX_VALUE))
             );
 
-            PANELS.addTab("tab4", jPanel3);
+            PANELS.addTab("Dades", jPanel3);
 
             jTextField1.setText("jTextField1");
 
@@ -816,10 +843,10 @@ public class Vista extends javax.swing.JFrame {
            
        }
        DibuixarPunts();
-            
-            TextSolution.setText("");
+       cpaint(g3);
+            TextSolution.setText("El Tour es : ");
             for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + "   ");
-      
+            CostText.setText("El Cost es : " +cp.getCost());
         
         
     }//GEN-LAST:event_ButtonSolveActionPerformed
@@ -833,23 +860,8 @@ public class Vista extends javax.swing.JFrame {
             cp.addPunt(x, y,NomElement.getText(),Relacions);
             
             
-            //actualitzem els elements de la llista
-            String aux = "";
-           for(int i=0; i< cp.getElementsActivats().size(); ++i){     
-               ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
-               aux = ElementsActius.getText();
-           }
-            
-            
-        //actualitzem la llista d adjacencies
-           aux = "";
-             for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
-                  for(int j=0; j< cp.getElementsActivats().size(); ++j){ 
-                      TextRelations.setText(aux + cp.GetRelations().get(i).get(j));
-                      aux = TextRelations.getText();
-             }
-                  TextRelations.setText(aux + " \n");
-             }
+           actualitzarElements();
+           actualitzarAdjacencies();
             
             NomElement.setText(null);
             PanelNewElement.setVisible(false);
@@ -857,7 +869,28 @@ public class Vista extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_SaveNewElementActionPerformed
-
+    
+    private void actualitzarElements(){
+         String aux = "";
+           for(int i=0; i< cp.getElementsActivats().size(); ++i){     
+               ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
+               aux = ElementsActius.getText();
+           }
+    }
+    
+    private void actualitzarAdjacencies(){
+        String aux = "";
+        //System.out.println(cp.);
+            for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
+                  for(int j=0; j< cp.getElementsActivats().size(); ++j){ 
+                       aux = TextRelations.getText(); 
+                      TextRelations.setText(aux + cp.GetRelations().get(i).get(j) + "  ");            
+             }
+                  TextRelations.setText(TextRelations.getText() + "\n");
+                  
+             }
+    }
+    
     private void AddRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRelationActionPerformed
        
         if(Relacions.size()== snom){
@@ -890,7 +923,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
         if (CheckBoxDesactivar.isSelected()) {
-            cp.resetDomini(true);
+            cp.resetDomini();
             x = -1;
             y = -1;
             ElementsInactius.setText("");
@@ -927,9 +960,23 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RadioGeneticActionPerformed
 
+    private void ResetVista(){
+        RadioGenetic.setSelected(false);
+        RadioGenetic.setSelected(false);
+        TextSolution.setText("");
+        CostText.setText("");
+        PanelNewElement.setVisible(false);
+       // jPanel4 = new javax.swing.JPanel();
+    }
+    
     private void FileChoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChoserActionPerformed
+        //cp.resetDomini();
+        cp = new CtrlPresentacio();
+        ResetVista(); 
         File fil = FileChoser.getSelectedFile();
         cp.carregar_dades(fil.getAbsolutePath());
+        actualitzarAdjacencies();
+        actualitzarElements();
     }//GEN-LAST:event_FileChoserActionPerformed
 
     private void ButtonGuardarDadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGuardarDadesActionPerformed
@@ -990,6 +1037,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton ButtonSolve;
     private javax.swing.JCheckBox CheckBoxDesactivar;
     private javax.swing.JTextField CoolingFactor;
+    private javax.swing.JTextField CostText;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JTextField EdgeCrossover;
     private javax.swing.JTextArea ElementsActius;
@@ -1038,7 +1086,9 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;

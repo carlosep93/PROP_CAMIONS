@@ -95,6 +95,11 @@ public class CtrlPresentacio {
          
         return Elems;
     }
+     
+    public Integer getCost(){
+        return cd.getCostSol();
+    } 
+     
     
     public   ArrayList<ArrayList<Integer>> GetRelations(){
         ArrayList<ArrayList<Integer>> rel = new ArrayList<ArrayList<Integer>>();
@@ -107,8 +112,8 @@ public class CtrlPresentacio {
         return rel;
     }
             
-    public void resetDomini(boolean tot) {
-       if(tot) {
+    public void resetDomini() {
+     /*  if(tot) {
          try {  
             System.out.println("Enabled "+ cd.getEnabled().size()); 
             for (int i=0; i<cd.getEnabled().size();++i) {
@@ -120,11 +125,10 @@ public class CtrlPresentacio {
              VistaError error = new VistaError(e.getMessage());
          }
         
-       }
-       List <Entry < Integer,Integer > > punts2 = new ArrayList <Entry < Integer,Integer > >();
-       punts = punts2;
-       
-       
+       }*/
+       punts = new ArrayList <Entry < Integer,Integer > >();
+       nom_elements = new ArrayList <String>();
+       cd = new CtrlDomini("sensenom");     
     }
     
     public void eliminaElement(String s) {
