@@ -26,11 +26,11 @@ public class City {
        }
        
        lp.add(P);
+   
        pesos_resta.add(P.getID(), 0);
-       
        lli.add(P.getID(), pesos_resta);
    }
-   
+
    public void rehabilitaElement(int id, ArrayList<Integer> pesos_resta){
        enable(id);
        for (int i = 0; i < size();++i){
@@ -42,7 +42,14 @@ public class City {
        }
        
    }
-   
+
+   public void setDades (ArrayList <ArrayList<Integer>> llista, ArrayList<Punt> punts){
+       lli = new ArrayList <ArrayList<Integer>>();
+       lli = llista;
+       lp = new ArrayList<Punt>();
+       lp = punts;
+   }
+
    public void repPesos(int idPunt, Integer[] pesosNew){
        if(pesosNew.length == lli.get(idPunt).size()){
            for(int i = 0; i < pesosNew.length; ++i){
