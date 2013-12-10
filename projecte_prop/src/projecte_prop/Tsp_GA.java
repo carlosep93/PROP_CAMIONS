@@ -81,7 +81,7 @@ public class Tsp_GA extends Tsp{
             
             pop = evolvePopulation(C, pop, ts, cross, mut);
                     
-            System.out.println("Generació " + i + "     Fitness: " + Fitness);
+            //System.out.println("Generació " + i + "     Fitness: " + Fitness);
 
             //si fa tantes generacions que no ha cambiat el millor element de
             //la població com defineix "stopCondition" no crea més generacions
@@ -96,12 +96,6 @@ public class Tsp_GA extends Tsp{
             }
         }
 
-        System.out.println("escric el tour final !!!!!!!!");
-        for(int i = 0; i < Fittest.size(); ++i){
-            System.out.print(Fittest.getElementPos(i).getID() + "  ");
-        }
-        System.out.println();
-        //escriu la ruta més òptima
         return Fittest;
     }
     

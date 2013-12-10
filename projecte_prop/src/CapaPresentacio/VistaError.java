@@ -22,7 +22,7 @@ public class VistaError {
         JOptionPane panel = new JOptionPane(s,JOptionPane.ERROR_MESSAGE);
         eMessage = panel.createDialog(new JFrame(),"Error"); 
         eMessage.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        eMessage.setSize(300,200);
+        eMessage.setSize(400,200);
         eMessage.setVisible(true);
     }
     

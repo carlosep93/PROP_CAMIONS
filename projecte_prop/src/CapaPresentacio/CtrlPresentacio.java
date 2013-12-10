@@ -135,6 +135,7 @@ public class CtrlPresentacio {
         }
     }
     
+    
     public ArrayList<String> getElementsActivats(){
         ArrayList<String> res = new ArrayList<String>();
         try{
@@ -165,7 +166,9 @@ public class CtrlPresentacio {
     public List<Entry < Integer,Integer > > lpunts() {
         return punts;
     }
-    
+    public void ResetPunts(){
+        punts = new ArrayList <Entry < Integer,Integer >>();
+    }
     
     public void carregar_dades (String nom){
         cd.carregar_Elements_i_Adjacencies(nom);
