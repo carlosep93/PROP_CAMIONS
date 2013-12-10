@@ -42,11 +42,11 @@ public class Generador_jocs_prova {
                                  (int)(Math.random()*400),nom);
              lp.add(aux2);
         }
-         
+         //adjacencies
          for(int i=0; i<mida; ++i){
           ArrayList<Integer> auxl = new ArrayList<Integer>();
            for (int q=0; q<i;++q){
-               int num = (int)(Math.random()*100);
+               int num = (int)(Math.random()*100)+1;
                auxl.add(num);
            }
            auxl.add(0);
