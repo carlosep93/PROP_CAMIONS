@@ -1339,7 +1339,8 @@ public class Vista extends javax.swing.JFrame {
 
     private void AjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjudaActionPerformed
          System.out.println("holaaaaaa");
-        String path = "src\\CapaDades\\Ajuda.pdf";
+         String bar = System.getProperty("file.separator");
+        String path = "src" + bar + "CapaDades" + bar + "Ajuda.pdf";
        File fil = new File(path);
        try {
           Desktop.getDesktop().open(fil);
