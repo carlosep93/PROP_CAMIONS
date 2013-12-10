@@ -1,14 +1,13 @@
  package CapaPresentacio;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Graphics;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JFileChooser;
 
 /*
  * To change this template, choose Tools | Templates
@@ -169,6 +168,7 @@ public class Vista extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuHelp = new javax.swing.JMenu();
+        Ajuda = new javax.swing.JMenuItem();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -971,6 +971,20 @@ public class Vista extends javax.swing.JFrame {
         jMenuBar1.add(CarregarDades);
 
         MenuHelp.setText("Help");
+        MenuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuHelpActionPerformed(evt);
+            }
+        });
+
+        Ajuda.setText("Ajuda");
+        Ajuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjudaActionPerformed(evt);
+            }
+        });
+        MenuHelp.add(Ajuda);
+
         jMenuBar1.add(MenuHelp);
 
         setJMenuBar(jMenuBar1);
@@ -1318,6 +1332,20 @@ public class Vista extends javax.swing.JFrame {
         File fil = FileChoser.getSelectedFile();
         cp.guardar_dades(fil.getAbsolutePath()+ ".txt");
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void MenuHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuHelpActionPerformed
+      
+    }//GEN-LAST:event_MenuHelpActionPerformed
+
+    private void AjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjudaActionPerformed
+         System.out.println("holaaaaaa");
+        String path = "src\\CapaDades\\Ajuda.pdf";
+       File fil = new File(path);
+       try {
+          Desktop.getDesktop().open(fil);
+       }
+        catch (IOException ex) {}
+    }//GEN-LAST:event_AjudaActionPerformed
    
     
     
@@ -1357,6 +1385,7 @@ public class Vista extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddRelation;
+    private javax.swing.JMenuItem Ajuda;
     private javax.swing.JButton ButtonSolve;
     private javax.swing.JButton CancelButton;
     private javax.swing.JMenu CarregarDades;
