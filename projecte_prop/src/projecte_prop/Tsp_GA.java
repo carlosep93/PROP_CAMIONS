@@ -55,12 +55,14 @@ public class Tsp_GA extends Tsp{
     @Override public Tour calSol(){
         
 
-        nPunts = C.getPunts().size();                                         
+        nPunts = C.getPunts().size();
         
+        Tour t = isg.generateInitialSol();
         
         CjtTours pop = new CjtTours(nTours);
         for(int i = 0; i < nTours; ++i){
-            pop.addTour(i, isg.generateInitialSol());
+            pop.addTour(i, t);
+            pop.getTour(i).swap((int)(Math.random()*nPunts), (int)(Math.random()*nPunts));
         }
         
         /*System.out.println("inicial <<<<<<<<<<<<<<<<<<<<<<<<<<");

@@ -117,7 +117,7 @@ public class CtrlDomini {
 
         ArrayList<String> S = new ArrayList<String>();
         for(int i = 0; i < sol.size(); ++i){
-            S.add(sol.getElementPos(i).getNom());
+            S.add(ciutat.getPunts().get(sol.getElementPos(i).getID()).getNom());
         }
         return S;
     }
