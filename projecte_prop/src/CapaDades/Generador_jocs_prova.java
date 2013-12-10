@@ -5,14 +5,11 @@
 
  */
 package CapaDades;
-
-
-
-
-import java.util.List;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-import projecte_prop.Relations;
+import projecte_prop.Punt;
+
 
 
 
@@ -20,35 +17,59 @@ public class Generador_jocs_prova {
     
      
      public static void main(String[] args){
-         String pathload = "src/Fitxers/";
+         Gestor_Dades gd = new Gestor_Dades();
+         String pathload;
          Scanner sc = new Scanner(System.in);
-         String path;
-         List <List<Integer>> lists = new ArrayList <List<Integer>>();
-
-         System.out.println("Ubuntu(1) o windows(2) o definir path(3)?");
-        if( sc.nextInt()==2 ) pathload = "src\\Fitxers\\";
-        else if( sc.nextInt()==3 ) pathload = sc.next();  
-
-         System.out.println("Ubuntu(1) o windows(2) ?");
-        if( sc.nextInt()==2 ) pathload = "src\\Fitxers\\";
-
-        System.out.println("Quin nom fitxer vols crear? (acavat amb .txt) ");
-        String aux = sc.next();
-        pathload = pathload+aux;
+        /* File pro = new File(".");
+         String pathload = pro.getAbsolutePath();   
+         System.out.println(pathload);
+         */
+         ArrayList <ArrayList<Integer>> lists = new ArrayList <ArrayList<Integer>>();
+        
+         pathload = "src/CapaDades/" ;
          
+         System.out.println("Ubuntu(1) o windows(2) o definir path(3)?");
+        if( sc.nextInt()==2 ) pathload = "src\\CapaDades\\";
+        else if( sc.nextInt()==3 ) pathload = sc.next();  
+       
+        System.out.println(pathload);
+       
+        System.out.println("Quin nom fitxer vols crear?");
+        String aux = sc.next();
+        pathload = pathload+aux+".txt";
+        System.out.println(pathload);
+        
          System.out.println("Quants elements vols ?");
          int mida = sc.nextInt();
          
+       ArrayList<Punt> lp = new ArrayList<Punt>();
+       
+        for(int i=0; i< mida; ++i){
+            String nom = "id"+i;
+             Punt aux2 = new Punt((int)(Math.random()*400),
+                                 (int)(Math.random()*400),nom);
+             lp.add(aux2);
+        }
+         
          for(int i=0; i<mida; ++i){
-          List<Integer> auxl = new ArrayList<Integer>();
+          ArrayList<Integer> auxl = new ArrayList<Integer>();
            for (int q=0; q<i;++q){
-               auxl.add((int)(Math.random()*100));
+               int num = (int)(Math.random()*100);
+               auxl.add(num);
            }
            auxl.add(0);
            lists.add(auxl);
-            }         
+            }
          
-         Gestor_Dades.guardar_adjacencies(lists,pathload);
+         for(int i=0; i<lists.size();++i){
+             for(int j=0; j<i;++j){
+                 int nu = lists.get(i).get(j);
+                 lists.get(j).add(nu);
+             }
+         }
+         
+         
+         gd.GuardarDades(lp, lists, pathload);
          System.out.println("Guardat!!!!");
      }
     

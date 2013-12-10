@@ -2,6 +2,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,7 @@ public class Vista extends javax.swing.JFrame {
         NomElementRelacio = new javax.swing.JTextField();
         NumRelacions = new javax.swing.JTextField();
         Spinner = new javax.swing.JSpinner();
+        textxy = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         ButtonSolve = new javax.swing.JButton();
         LabelSeleccio = new javax.swing.JLabel();
@@ -128,6 +130,10 @@ public class Vista extends javax.swing.JFrame {
         TextRelations = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
         ElementsInactius = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        FileChoser = new javax.swing.JFileChooser();
+        GuardarDades = new javax.swing.JTextField();
+        ButtonGuardarDades = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -159,11 +165,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 418, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
 
         PanelNewElement.setBackground(new java.awt.Color(204, 204, 204));
@@ -195,6 +201,13 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        textxy.setText("xy = ");
+        textxy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textxyActionPerformed(evt);
+            }
+        });
+
         PanelNewElement.setVisible(false);
 
         javax.swing.GroupLayout PanelNewElementLayout = new javax.swing.GroupLayout(PanelNewElement);
@@ -217,24 +230,24 @@ public class Vista extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCheckBox1))
                             .addGroup(PanelNewElementLayout.createSequentialGroup()
-                                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelNewElementLayout.createSequentialGroup()
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel16))
-                                    .addComponent(jLabel18))
-                                .addGap(18, 18, 18)
-                                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NomElement, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(PanelNewElementLayout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(jLabel17))))
+                                .addComponent(jLabel18)
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel17))
                             .addGroup(PanelNewElementLayout.createSequentialGroup()
                                 .addComponent(NomElementRelacio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
                                 .addComponent(Spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(AddRelation)))
-                        .addContainerGap(34, Short.MAX_VALUE))))
+                        .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(PanelNewElementLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NomElement, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textxy, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         PanelNewElementLayout.setVerticalGroup(
             PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,9 +255,10 @@ public class Vista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
+                    .addComponent(jLabel16)
+                    .addComponent(textxy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(PanelNewElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -337,7 +351,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(PanelNewElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
@@ -617,7 +631,7 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ElementsAdesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DeleteButton))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelElementLayout = new javax.swing.GroupLayout(PanelElement);
@@ -632,6 +646,49 @@ public class Vista extends javax.swing.JFrame {
         );
 
         PANELS.addTab("Paquet", PanelElement);
+
+        FileChoser.setCurrentDirectory(new java.io.File("C:\\Users\\helewt\\Documents\\GitHub\\PROP_CAMIONS\\projecte_prop\\src\\CapaDades"));
+        FileChoser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FileChoserActionPerformed(evt);
+            }
+        });
+
+        ButtonGuardarDades.setText("Guardar dades");
+        ButtonGuardarDades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonGuardarDadesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(FileChoser, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(GuardarDades, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(142, 142, 142)
+                        .addComponent(ButtonGuardarDades)))
+                .addContainerGap(346, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(FileChoser, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GuardarDades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonGuardarDades))
+                .addGap(0, 154, Short.MAX_VALUE))
+        );
+
+        PANELS.addTab("tab4", jPanel3);
 
         jTextField1.setText("jTextField1");
 
@@ -693,6 +750,7 @@ public class Vista extends javax.swing.JFrame {
            
             x = evt.getX();
             y = evt.getY();
+            textxy.setText(textxy.getText()+ " " + x + "," + y);
             Graphics g2 = jPanel4.getGraphics();
             g2.setColor(Color.red);
             g2.fillRect(x, y, 10, 10);
@@ -747,7 +805,7 @@ public class Vista extends javax.swing.JFrame {
        DibuixarPunts();
             
             TextSolution.setText("");
-            for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + " ");
+            for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + "   ");
       
         
         
@@ -853,6 +911,22 @@ public class Vista extends javax.swing.JFrame {
             RadioAnnealing.setSelected(false);
         }
     }//GEN-LAST:event_RadioGeneticActionPerformed
+
+    private void FileChoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChoserActionPerformed
+        File fil = FileChoser.getSelectedFile();
+        cp.carregar_dades(fil.getAbsolutePath());
+    }//GEN-LAST:event_FileChoserActionPerformed
+
+    private void ButtonGuardarDadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGuardarDadesActionPerformed
+       
+        File fil = FileChoser.getCurrentDirectory();
+         String path = fil.getAbsolutePath()+GuardarDades.getText()+".txt";
+        cp.guardar_dades(path);
+    }//GEN-LAST:event_ButtonGuardarDadesActionPerformed
+
+    private void textxyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textxyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textxyActionPerformed
    
     
     
@@ -892,6 +966,7 @@ public class Vista extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddRelation;
+    private javax.swing.JButton ButtonGuardarDades;
     private javax.swing.JButton ButtonSolve;
     private javax.swing.JCheckBox CheckBoxDesactivar;
     private javax.swing.JTextField CoolingFactor;
@@ -900,6 +975,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextArea ElementsActius;
     private javax.swing.JTextField ElementsAdesactivar;
     private javax.swing.JTextArea ElementsInactius;
+    private javax.swing.JFileChooser FileChoser;
+    private javax.swing.JTextField GuardarDades;
     private javax.swing.JLabel IMAGEN;
     private javax.swing.JTextField InitialTemperature;
     private javax.swing.JLabel Jlabel3;
@@ -959,6 +1036,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
@@ -970,6 +1048,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField textxy;
     // End of variables declaration//GEN-END:variables
 }
 

@@ -170,8 +170,6 @@ public class CtrlPresentacio {
     }
          
     
-    
-    
     public  List<String> getNomElements(){
         return nom_elements;     
     }
@@ -188,6 +186,13 @@ public class CtrlPresentacio {
     }
     
     
+    public void carregar_dades (String nom){
+        cd.carregar_Elements_i_Adjacencies(nom);
+        
+    }
+    public void guardar_dades (String nom){
+        cd.guardar_Elements_i_Adjacencies(nom);
+    }
     
     
 }

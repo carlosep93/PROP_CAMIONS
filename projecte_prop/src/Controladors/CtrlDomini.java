@@ -137,32 +137,14 @@ public class CtrlDomini {
     
     
     //memoiraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    
-    public void guardar_adjacencies(){
-        gd.guardar_adjacencies(ciutat.getAdjacency());    
+     
+    public void guardar_Elements_i_Adjacencies(String path){
+        gd.GuardarDades(ciutat.getPunts(),ciutat.getAdjacency(), path);
     }
     
-    public ArrayList<ArrayList<Integer>> carregar_adjacencies(){
-         return gd.carregar_adjacencies();
+    public void carregar_Elements_i_Adjacencies(String path){
         
-    }
-    
-    public void guardar_elements(){
-        gd.guardar_elements(ciutat.getPunts());
-    }
- 
-    public ArrayList<Punt> carregar_elements(){
-        return gd.carregar_elements();
-    }
-    
-    public void guardar_Elements_i_Adjacencies(){
-        gd.guardar_adjacencies(ciutat.getAdjacency());
-        gd.guardar_elements(ciutat.getPunts());
-    }
-    
-    public void carregar_Elements_i_Adjacencies(){
-        gd.carregar_elements();
-        gd.carregar_adjacencies();
+      ciutat.setDades(gd.carregar_adjacencies(path),gd.carregar_elements(path));
     }
    // meomoriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end 
    

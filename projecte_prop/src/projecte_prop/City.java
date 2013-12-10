@@ -32,6 +32,11 @@ public class City {
        lli.add(P.getID(), pesos_resta);
    }
    
+   public void setDades (ArrayList <ArrayList<Integer>> llista, ArrayList<Punt> punts){
+       lli = llista;
+       lp = punts;
+   }
+     
    public void repPesos(int idPunt, Integer[] pesosNew){
        if(pesosNew.length == lli.get(idPunt).size()){
            for(int i = 0; i < pesosNew.length; ++i){
