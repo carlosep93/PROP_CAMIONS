@@ -920,7 +920,7 @@ public class Vista extends javax.swing.JFrame {
     private void ButtonGuardarDadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGuardarDadesActionPerformed
        
         File fil = FileChoser.getCurrentDirectory();
-         String path = fil.getAbsolutePath()+GuardarDades.getText()+".txt";
+         String path = fil.getAbsolutePath()+ "/" + GuardarDades.getText()+".txt";
         cp.guardar_dades(path);
     }//GEN-LAST:event_ButtonGuardarDadesActionPerformed
 
