@@ -81,6 +81,7 @@ public class CtrlDomini {
         InitialSolGenerator isg;
         if(isgI == 0) isg = new InitialSolGenerator_Random(ciutat);
         else{
+            
             Mst_Prim prim = new Mst_Prim(ciutat);
             isg = new InitialSolGenerator_TwoApp(prim);
         }
