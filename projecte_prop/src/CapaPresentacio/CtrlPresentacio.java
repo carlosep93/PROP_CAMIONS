@@ -57,7 +57,7 @@ public class CtrlPresentacio {
                     if(Roulet) TSI = 1;
                     int crossI = 0; //1 -> crosover edge
                     if(Edge) crossI = 1;
-                    int mutI = 3; // 0 -> rate 1-> swaprate 2-> little
+                    int mutI = mutate; // 0 -> rate 1-> swaprate 2-> little
                    
          ArrayList<String> Elems = new ArrayList<String>();           
          try {           
