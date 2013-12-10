@@ -6,6 +6,8 @@ import exception.ExceptionEnabled;
 import java.util.ArrayList;
 import projecte_prop.*;
 import CapaDades.Gestor_Dades;
+import java.util.List;
+import java.util.Map;
 
 
 public class CtrlDomini {
@@ -20,6 +22,7 @@ public class CtrlDomini {
         SolucioCreada = false;
         gd = new Gestor_Dades();
     }
+    
     
     public int getSolution() throws ExceptionExistence{
         if(!SolucioCreada){
@@ -128,30 +131,47 @@ public class CtrlDomini {
         return ciutat.getEnabled().size();
     }
     
-    public void guardar_adjacencies(){
-        gd.guardar_adjacencies(ciutat.getAdjacency());    
+    public Map.Entry < Integer,Integer > getXY(String s) {
+        int x = -1;
+        int y = -1;
+        for (int i=0;i<ciutat.getPunts().size();++i) {
+            if (s.equals(ciutat.getPunts().get(i).getNom())) {
+                x = ciutat.getPunts().get(i).getX();
+                y = ciutat.getPunts().get(i).getY();
+            }
+        }
+        Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
+        return aux;
     }
     
-    public ArrayList<ArrayList<Integer>> carregar_adjacencies(){
-         return gd.carregar_adjacencies();
-        
+    
+    
+    //memoiraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+     
+    public void guardar_Elements_i_Adjacencies(String path){
+        gd.GuardarDades(ciutat.getPunts(),ciutat.getAdjacency(), path);
     }
     
-    public void guardar_elements(){
-        gd.guardar_elements(ciutat.getPunts());
+    public void carregar_Elements_i_Adjacencies(String path){ 
+      ciutat = new City("bcn");
+      ciutat.setDades(gd.carregar_adjacencies(path),gd.carregar_elements(path));
     }
- 
-    public ArrayList<Punt> carregar_elements(){
-        return gd.carregar_elements();
+   // meomoriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end 
+   
+    
+    public Integer getCostSol(){
+        return sol.getCost(ciutat);
     }
     
-    public void guardar_Elements_i_Adjacencies(){
-        gd.guardar_adjacencies(ciutat.getAdjacency());
-        gd.guardar_elements(ciutat.getPunts());
-    }
-    
-    public void carregar_Elements_i_Adjacencies(){
-        
+    public List<Map.Entry < Integer,Integer > > ListPuntsXY(){
+        List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
+       
+        for ( int i=0; i<sol.size(); ++i){
+            Punt p = ciutat.getPunts().get(sol.getElementPos(i).getID());
+            Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(p.getX(),p.getY());
+            punts.add(aux);
+        }
+        return punts;
     }
     
     public Boolean SolucioGenerada(){
@@ -164,6 +184,14 @@ public class CtrlDomini {
         
         return ciutat.getAdjacency();
      }
+    
+    
+    
+    
+    
+    
+    
+    
     
     private int NomtoPos(String nom) throws ExceptionExistence{
         int idPunt = -1;
