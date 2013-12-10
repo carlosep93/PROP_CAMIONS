@@ -16,14 +16,13 @@ public class City {
          this.nom = nom;
     }
    //pre: 
-   public void addElement(Punt P, ArrayList<Integer> pesos_resta) {
-       
+   public void addElement(Punt P, ArrayList<Integer> pesos_resta){
        for(int i = 0; i < lp.size(); ++i){
-           if(!isEnabled(i)) pesos_resta.add(i, -1);
-       }
-       
-       for(int i = 0; i < lp.size(); ++i){
-           lli.get(i).add(pesos_resta.get(i));
+           if(isEnabled(i)) lli.get(i).add(pesos_resta.get(i));
+           else{
+               lli.get(i).add(-1);
+               pesos_resta.add(i, -1);
+           }
        }
        
        lp.add(P);
@@ -31,14 +30,26 @@ public class City {
        pesos_resta.add(P.getID(), 0);
        lli.add(P.getID(), pesos_resta);
    }
-   
+
+   public void rehabilitaElement(int id, ArrayList<Integer> pesos_resta){
+       enable(id);
+       for (int i = 0; i < size();++i){
+           if (lli.get(id).get(i) == -1 && lp.get(i).isEnabled()) {
+               lli.get(id).set(i,pesos_resta.get(0));
+               lli.get(i).set(id,pesos_resta.get(0));
+               pesos_resta.remove(0);
+           }
+       }
+       
+   }
+
    public void setDades (ArrayList <ArrayList<Integer>> llista, ArrayList<Punt> punts){
        lli = new ArrayList <ArrayList<Integer>>();
        lli = llista;
        lp = new ArrayList<Punt>();
        lp = punts;
    }
-     
+
    public void repPesos(int idPunt, Integer[] pesosNew){
        if(pesosNew.length == lli.get(idPunt).size()){
            for(int i = 0; i < pesosNew.length; ++i){
