@@ -455,7 +455,6 @@ public class Vista extends javax.swing.JFrame {
 
         StopConditionAnealing.setText("1000");
 
-        Random.setSelected(true);
         Random.setText("Random");
         Random.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -463,6 +462,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        TwoAp.setSelected(true);
         TwoAp.setText("TwoAp");
         TwoAp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -474,6 +474,7 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel21.setText("Mutació:");
 
+        MutateLittle.setSelected(true);
         MutateLittle.setText("Little");
         MutateLittle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -481,7 +482,6 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        MutateRate.setSelected(true);
         MutateRate.setText("Rate");
         MutateRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -649,6 +649,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        Edgesi.setSelected(true);
         Edgesi.setText("Si");
         Edgesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -656,7 +657,6 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        Edgeno.setSelected(true);
         Edgeno.setText("No");
         Edgeno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

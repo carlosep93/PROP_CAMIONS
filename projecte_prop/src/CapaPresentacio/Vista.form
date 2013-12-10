@@ -700,7 +700,6 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="Random">
                       <Properties>
-                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Random"/>
                       </Properties>
                       <Events>
@@ -709,6 +708,7 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="TwoAp">
                       <Properties>
+                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="TwoAp"/>
                       </Properties>
                       <Events>
@@ -727,6 +727,7 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="MutateLittle">
                       <Properties>
+                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Little"/>
                       </Properties>
                       <Events>
@@ -735,7 +736,6 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="MutateRate">
                       <Properties>
-                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Rate"/>
                       </Properties>
                       <Events>
@@ -1069,6 +1069,7 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="Edgesi">
                       <Properties>
+                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                       <Events>
@@ -1077,7 +1078,6 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="Edgeno">
                       <Properties>
-                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                       <Events>
