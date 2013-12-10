@@ -30,7 +30,7 @@ public class CtrlPresentacio {
     
     public ArrayList<String> solutionAnealing(){
                     
-                    int IsgI = 1;
+                    int IsgI = 0;
                     double tmp = 1000;
                     double fact = 0.03;
                     int parada = 25;
@@ -143,11 +143,11 @@ public class CtrlPresentacio {
     }
     
     public void addPunt(int x,int y,String nom,ArrayList<Integer> list) {
-        Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
-        punts.add(aux); //llista de punts amb x,y
-        nom_elements.add(nom);
         try {
             cd.addPunt(nom, x, y, list); //llista amb les distÃ ncies
+            Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x,y);
+            punts.add(aux); //llista de punts amb x,y
+            nom_elements.add(nom);
         }
         catch(ExceptionExistence e) {
             VistaError error = new VistaError(e.getMessage());

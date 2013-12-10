@@ -898,7 +898,9 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
            String aux = " ";
-           
+           ElementsInactius.setText(" ");
+           ElementsActius.setText(" ");
+           System.out.println("Activos: "+cp.getElementsActivats().size());
            for (int j=0; j<cp.getElementsActivats().size(); ++j) {
                if (cp.getElementsActivats().get(j).equals(ElementsAdesactivar.getText())) {
                    ElementsInactius.setText(ElementsInactius.getText() + ElementsAdesactivar.getText() + "\n");
@@ -909,7 +911,7 @@ public class Vista extends javax.swing.JFrame {
             ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
             aux = ElementsActius.getText();  
           }
-          ElementsAdesactivar.setText(" ");
+          ElementsAdesactivar.setText("");
         }               
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
