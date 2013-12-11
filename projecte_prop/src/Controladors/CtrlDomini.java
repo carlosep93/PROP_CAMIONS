@@ -26,6 +26,7 @@ import exception.ExceptionExistence;
 import exception.ExceptionEnabled;
 import java.util.ArrayList;
 import CapaDades.Gestor_Dades;
+import Domini.Element;
 import java.util.List;
 import java.util.Map;
 
@@ -75,7 +76,7 @@ public class CtrlDomini {
         return pesos;
     }
     
-   
+    
     public void modificaElement(String nom, Integer[] pesosNew) throws ExceptionExistence{
         int idPunt = NomtoPos(nom);
         
@@ -154,6 +155,14 @@ public class CtrlDomini {
         return en;
     }
     
+    public ArrayList<String> getElements(){
+        ArrayList<String> en = new ArrayList<String>();
+        for(int i=0; i<ciutat.getPunts().size(); ++i){
+            en.add(ciutat.getPunts().get(i).getNom());
+        }
+        return en;
+    }
+    
     public Integer numElementsActius(){        
         return ciutat.getEnabled().size();
     }
@@ -185,6 +194,29 @@ public class CtrlDomini {
     }
    // meomoriaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end 
    
+    public void modificarAdjacencies(String nom,ArrayList<Integer> adjac) throws ExceptionExistence{
+        ArrayList<Punt> elements = ciutat.getPunts();
+        int posicio = -1;
+        for(int i=0; i<elements.size(); ++i){
+            if(elements.get(i).getNom() == nom){
+                posicio = i;
+            break;
+            
+            }
+        }
+        if(posicio != -1) {
+            ArrayList<ArrayList<Integer>> sol = ciutat.getAdjacency();
+            sol.set(posicio, adjac);
+            for(int i=0; i<sol.size(); ++i){
+                for(int j=0; j<sol.size(); ++j){
+                    sol.get(i).set(posicio,adjac.get(i));
+                }
+            }
+            ciutat.setDades(sol, elements);
+        }
+         if(posicio == -1) throw new ExceptionExistence("No existeix el Paquet");
+        
+    }
     
     public Integer getCostSol(){
         return sol.getCost(ciutat);
@@ -207,8 +239,7 @@ public class CtrlDomini {
     
     public ArrayList<ArrayList<Integer>> getRelations() throws ExceptionExistence{
         
-        if(ciutat.size() == 0) throw new ExceptionExistence("No hi ha cap paquet");
-        
+        if(ciutat.size() == 0) throw new ExceptionExistence("No hi ha cap paquet");     
         return ciutat.getAdjacency();
      }
     

@@ -89,6 +89,26 @@ public class CtrlPresentacio {
         }
         return rel;
     }
+    
+    public Integer getPosicio(String nom){
+        for(int i =0; i<cd.getElements().size(); ++i){
+            if(cd.getElements().get(i) == nom) return i;       
+        }    
+        return -1;
+    }
+    
+    public ArrayList<String> getElements(){
+        return cd.getElements();
+    }
+    
+    public void modificarAdjacencies(String nom,ArrayList<Integer> adjac){
+        try{
+        cd.modificarAdjacencies(nom, adjac);
+        }
+        catch (ExceptionExistence e) {
+            VistaError error = new VistaError(e.getMessage());
+        }
+    }
             
     public void resetDomini() {
        
@@ -144,6 +164,11 @@ public class CtrlPresentacio {
         
         
         return res;
+    }
+    
+    public Boolean isEnabled(String nom){
+        for(int i=0; i < cd.getEnabled().size(); ++i) if(nom == cd.getEnabled().get(i)) return true;
+            return false;
     }
         
     public Integer numElementsActius(){
