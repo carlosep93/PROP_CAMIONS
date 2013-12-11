@@ -16,11 +16,11 @@ public class Crossover_Edge extends Crossover{
     @Override public Tour getChild(Tour parent1, Tour parent2){
         npunts = parent1.size();
         Tour child = new Tour();        
-        int ciutatActual = (int)(Math.random() * npunts);
+        int ciutatActual = parent1.getElementPos((int)Math.random() * npunts).getID();
         Punt E = new Punt(ciutatActual);
         
         ArrayList<ArrayList<Integer>> costs = startCosts(C, parent1, parent2);
-        boolean[] visitat = new boolean[npunts];
+        boolean[] visitat = new boolean[C.getPunts().size()];
         
         while(true){
             //borra la ciutat actual de les altres ocurrencies
@@ -34,11 +34,19 @@ public class Crossover_Edge extends Crossover{
             
             E = new Punt(ciutatActual);
             child.addElement(E);
+            
             visitat[ciutatActual] = true;
             if(!costs.get(ciutatActual).isEmpty()) ciutatActual = costs.get(ciutatActual).get(0);
             else{
                 boolean algun = false;
-                for(int i = 0; i < npunts; ++i) if(!visitat[i]){ ciutatActual = i; algun = true; }
+                int pos = parent1.getElementPos(0).getID();
+                for(int i = 0; i < npunts; ++i){
+                    if(!visitat[pos]){
+                        ciutatActual = pos;
+                        algun = true;
+                    }
+                    pos = parent1.getElementPos(i).getID();
+                }
                 if(!algun) break;
             }
             
@@ -50,12 +58,18 @@ public class Crossover_Edge extends Crossover{
         
         ArrayList<ArrayList<Integer>> costs = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> aux = new ArrayList<Integer>();
+        
+        Integer[] id = new Integer[npunts];
+        for(int i = 0; i < npunts; ++i){
+            id[i] = parent1.getElementPos(i).getID();
+        }
     
         for(int i = 0; i < npunts; ++i){
             costs.add(i, new ArrayList());
             
             //s'afegeixes les adjacencies del pare 1
-            int posActual = parent1.getPosElement(i);
+            int posActual = parent1.getPosElement(id[i]);
+            
             int idAnt, idSeg;
             if(posActual == 0) idAnt = parent1.getElementPos(npunts-1).getID();
             else idAnt = parent1.getElementPos(posActual-1).getID();            
@@ -67,7 +81,7 @@ public class Crossover_Edge extends Crossover{
             
             
             //s'afegeixen les adjacencies del pare 2
-            posActual = parent2.getPosElement(i);
+            posActual = parent1.getPosElement(id[i]);
             if(posActual == 0) idAnt = parent2.getElementPos(npunts-1).getID();
             else idAnt = parent2.getElementPos(posActual-1).getID();
             entraCiu(C, i, idAnt, costs);
