@@ -33,13 +33,13 @@ public class Mst_Prim extends Mst {
         }
         ArrayList<ArrayList<Integer>> mat = C.getAdjacency();
         getMST(mst,C);
-        //proba de mst
+        /*//proba de mst
         for(int i = 0;i < mst.size();++i) {
             for(int j = 0; j < mst.size();++j) {
                 System.out.print(" "+mst.get(i).get(j));
             }
             System.out.println();
-        }
+        }*/
         return mst;
     }
     
@@ -52,10 +52,10 @@ public class Mst_Prim extends Mst {
         PriorityQueue<Relation> pqr = new PriorityQueue(1,sort);
         boolean[] visited = new boolean[lp.size()];
         int nextdot = 0;
-        for(int i = 0; i < C.size(); ++i) System.out.println("el elemento "+ i+ " esta "+ C.isEnabled(i));
+        //for(int i = 0; i < C.size(); ++i) System.out.println("el elemento "+ i+ " esta "+ C.isEnabled(i));
         for(int i = 0; i < C.size(); ++i) {
             if (nextdot == -1) break;
-            System.out.println(nextdot);
+            //System.out.println(nextdot);
             if (C.isEnabled(nextdot)) {
                 addPQ(pqr,lli.get(nextdot),lp,nextdot);
                 if (!allvisited(visited)){
@@ -82,7 +82,6 @@ public class Mst_Prim extends Mst {
         while (!done && pqr.size() > 0){ 
             Relation R = pqr.poll();
             if (!visited[R.getID2()]) {
-                System.out.println();
                 mst.get(R.getID1()).remove(R.getID2());
                 mst.get(R.getID1()).add(R.getID2(),R.getValue());
                 mst.get(R.getID2()).set(R.getID1(),R.getValue());

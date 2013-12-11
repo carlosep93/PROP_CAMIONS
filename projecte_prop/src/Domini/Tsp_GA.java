@@ -62,7 +62,7 @@ public class Tsp_GA extends Tsp{
         CjtTours pop = new CjtTours(nTours);
         for(int i = 0; i < nTours; ++i){
             pop.addTour(i, t);
-            pop.getTour(i).swap((int)(Math.random()*nPunts), (int)(Math.random()*nPunts));
+            for(int ii = 0; ii < nPunts; ++ii) pop.getTour(i).swap((int)(Math.random()*nPunts), (int)(Math.random()*nPunts));
         }
         
         /*System.out.println("inicial <<<<<<<<<<<<<<<<<<<<<<<<<<");

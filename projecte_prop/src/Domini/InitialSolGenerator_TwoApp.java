@@ -26,7 +26,6 @@ public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
             }
         }
         getEpath(tree,path,ini);
-        System.out.println();
         ArrayList<Integer> active = C.getEnabledInt();
         boolean[] usable = new boolean[C.size()];
         for(int i = 0; i < active.size(); ++i) {
@@ -40,7 +39,6 @@ public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
         
     public void getEpath(ArrayList<List<Integer>> mst,List<Integer> l, int pos) {
         l.add(pos);
-        System.out.print(" " + pos);
         if(child(mst.get(pos))) {
             for(int i = 0; i < mst.size() ; ++i) {
                 if(mst.get(pos).get(i) > 0) {
@@ -65,7 +63,6 @@ public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
                 P = lp.get(l.get(0));
                 t.addElement(P);
                 usable[l.get(0)] = false;
-                System.out.print(" " + l.get(0));
                 l.remove(0);
             }
             else {
