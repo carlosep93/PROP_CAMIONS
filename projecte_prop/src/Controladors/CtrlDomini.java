@@ -1,6 +1,7 @@
 
 package Controladors;
 
+import Domini.Element;
 import Domini.Tsp_SA;
 import Domini.InitialSolGenerator;
 import Domini.Crossover_Edge;

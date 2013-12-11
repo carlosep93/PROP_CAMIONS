@@ -26,11 +26,9 @@ public class Mutate_Little extends Mutate{
                     
                 }        
             }
-            System.out.println("pos1: "+pos1+" pos2: "+pos2);
             ++pos1;
             while (pos2 > pos1 && pos1 >= 0) {
                 tour.swap(pos1, pos2);
-                System.out.println("Coste :"+tour.getCost(C));
                 ++pos1;
                 --pos2;
             }
