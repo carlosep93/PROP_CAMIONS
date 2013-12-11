@@ -55,7 +55,7 @@ public class Tsp_GA extends Tsp{
     @Override public Tour calSol(){
         
 
-        nPunts = C.getPunts().size();
+        nPunts = C.getEnabled().size();
         
         Tour t = isg.generateInitialSol();
         

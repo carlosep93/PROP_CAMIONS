@@ -50,6 +50,12 @@ public class CtrlDomini {
         return sol.getCost(ciutat);
     }
     
+    public void resetIdGlobal(){
+        Element en = new Element();
+        en.iniElements();
+        
+    }
+    
     public void addPunt(String nom, int x, int y, ArrayList<Integer> pesos_resta) throws ExceptionExistence{
         for(int i = 0; i < ciutat.size(); ++i){
             if(ciutat.getPunts().get(i).getNom().equals(nom)) throw new ExceptionExistence("Exiteix un paquet amb el mateix nom");
@@ -78,9 +84,9 @@ public class CtrlDomini {
     }
         
     public void eliminaElement(String nom) throws ExceptionExistence{
-        int idPunt = NomtoPos(nom);
-        
+        int idPunt = NomtoPos(nom); 
         ciutat.erase(idPunt);
+        
     }
     
     public void rehabilitaElement(String nom, ArrayList<Integer> pesos_resta) throws ExceptionExistence, ExceptionEnabled{
@@ -101,8 +107,9 @@ public class CtrlDomini {
         if(ciutat.size() == 0){
             throw new ExceptionExistence("No hi ha cap paquet");
         }
-        if(ciutat.getEnabled().size() == 0){
-            throw new ExceptionExistence("No hi ha cap paquet actiu");
+        
+        if(ciutat.getEnabled().size() < 2){
+            throw new ExceptionExistence("No hi ha suficients paquets!");
         }
         SolucioCreada = true;
 
@@ -141,9 +148,8 @@ public class CtrlDomini {
         return S;
     }
     
-    public ArrayList<String> getEnabled() throws ExceptionExistence{
+    public ArrayList<String> getEnabled() {
         ArrayList<String> en = ciutat.getEnabled();
-        if(en.isEmpty()) throw new ExceptionExistence("No hi ha cap paquet actiu");
         return en;
     }
     
@@ -205,13 +211,7 @@ public class CtrlDomini {
         return ciutat.getAdjacency();
      }
     
-    
-    
-    
-    
-    
-    
-    
+
     
     private int NomtoPos(String nom) throws ExceptionExistence{
         int idPunt = -1;

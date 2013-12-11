@@ -243,7 +243,7 @@ public class Tour {
 \post Retorna el nombre d'elements continguts al Tour
 */
     public int size(){
-        return nElements;
+        return cjtElem.size();
     }
     
     /** @brief Retorna el cost de recòrrer el Tour

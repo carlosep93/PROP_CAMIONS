@@ -42,7 +42,7 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         initComponents();
         setResizable(false);
-       // MutePanel.setVisible(false);
+        MutePanel.setVisible(false);
         setVisible(true);
         
     }
@@ -180,6 +180,12 @@ public class Vista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        PanelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelPrincipalMouseClicked(evt);
+            }
+        });
+
         jPanel4.setBorder(new javax.swing.border.MatteBorder(null));
 
         IMAGEN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -195,11 +201,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
 
         ButtonSolve.setText("Solve");
@@ -445,9 +451,9 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel7.setText("Temperatura Inicial:");
 
-        jLabel8.setText("Factor de Refredament:");
+        jLabel8.setText("Factor Refredament:");
 
-        jLabel9.setText("Conició de Parada:");
+        jLabel9.setText("Condició de Parada:");
 
         CoolingFactor.setText("0.03");
 
@@ -475,7 +481,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel21.setText("Mutació:");
 
         MutateLittle.setSelected(true);
-        MutateLittle.setText("Little");
+        MutateLittle.setText("TwoOpt");
         MutateLittle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MutateLittleActionPerformed(evt);
@@ -504,11 +510,10 @@ public class Vista extends javax.swing.JFrame {
         MutePanelLayout.setHorizontalGroup(
             MutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MutePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(MutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(MutationRateVar, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                     .addComponent(MutationSwap)))
@@ -524,7 +529,7 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(MutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(MutationSwap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -534,32 +539,33 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(StopConditionAnealing, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CoolingFactor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(InitialTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(MutePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Random)
-                            .addComponent(MutateRate))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TwoAp)
-                            .addComponent(MutateLittle)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(MutePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)))
-                .addContainerGap(560, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(MutateRate)
+                                .addGap(18, 18, 18)
+                                .addComponent(MutateLittle))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Random)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TwoAp))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(InitialTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9))
+                            .addGap(33, 33, 33)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(CoolingFactor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(StopConditionAnealing, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(551, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -586,9 +592,9 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(MutateLittle)
                     .addComponent(MutateRate))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(MutePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         TabAnealing.addTab("Anealing", jPanel2);
@@ -603,7 +609,7 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel3.setText("Roulette Wheel:");
 
-        jLabel4.setText("Tournament Size");
+        jLabel4.setText("Tournament Size:");
 
         jLabel5.setText("Edge Crossover:");
 
@@ -673,7 +679,6 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        Mutat2.setSelected(true);
         Mutat2.setText("Swap Rate");
         Mutat2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -681,7 +686,8 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        Mutat3.setText("Little");
+        Mutat3.setSelected(true);
+        Mutat3.setText("TwoOpt");
         Mutat3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Mutat3ActionPerformed(evt);
@@ -712,21 +718,20 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(Mutate1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Mutat3)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Roulettesi, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Edgesi, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ElitismSi, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addComponent(Mutat3)
+                                .addGap(5, 5, 5)
+                                .addComponent(Mutat2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Roulettesi, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Edgesi, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ElitismSi, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Elitismno)
                                     .addComponent(Rouletteno)
-                                    .addComponent(Edgeno)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(Mutat2))))
+                                    .addComponent(Edgeno)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label4)
@@ -742,21 +747,17 @@ public class Vista extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addGap(27, 27, 27)
-                                .addComponent(MutationRate))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(MutationRate, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel25)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addComponent(TournamentSize))
-                                    .addComponent(MS, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(370, Short.MAX_VALUE))
+                                    .addComponent(jLabel25))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(MS, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TournamentSize, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1014,45 +1015,7 @@ public class Vista extends javax.swing.JFrame {
         if (x != -1)
             g.fillRect(x, y, 10, 10);
     }     
-     
-    private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
-        if (active){
-           
-            Relacions = new ArrayList<Integer>();
-            numRelations = cp.numElementsActius();
-            ListNoms = cp.getElementsActivats();
-            actual = 0;
-            snom = ListNoms.size();
-            
-            for (int q=0; q<ListNoms.size(); ++q) System.out.println(ListNoms.get(q));
-            
-            System.out.println(numRelations);
-           
-            x = evt.getX();
-            y = evt.getY();
-            textxy.setText("xy =  " + x + "," + y);
-            Graphics g2 = jPanel4.getGraphics();
-            g2.setColor(Color.red);
-            g2.fillRect(x, y, 10, 10);
-    
-            String as = "Cap Relació";
-            if(numRelations>0) as= ListNoms.get(actual);
-            //++ actual;
-            NumRelacions.setText(String.valueOf(ListNoms.size()));
-            if(Relacions.size()==numRelations){
-            NumRelacions.setText("-----");
-            NomElementRelacio.setText("----");
-            
-        }
-            
-            NomElementRelacio.setText(as);
-            PanelNewElement.setVisible(true);
-            ProgresBar.setValue(0);
-           
-        }    
-        active = false;
-    }//GEN-LAST:event_IMAGENMouseClicked
-/**/
+     /**/
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -1139,6 +1102,11 @@ public class Vista extends javax.swing.JFrame {
            }
     }
     
+    private void actualitzarElementsBorrats(String nom){    
+               ElementsInactius.setText(ElementsInactius.getText() + nom + "\n");
+           }
+    
+    
     private void actualitzarAdjacencies(){
         TextRelations.setText("Massa Elements");
         if(cp.getElementsActivats().size()<100){
@@ -1183,33 +1151,32 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_ElementsAdesactivarActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+       
         if (CheckBoxDesactivar.isSelected()) {
-            cp.resetDomini(true);
+            int size = cp.getElementsActivats().size();
+            for(int i=0; i<size; ++i){
+            actualitzarElementsBorrats(cp.getElementsActivats().get(i));
+            
+            }
+            ElementsActius.setText("");
             x = -1;
             y = -1;
-            ElementsInactius.setText("");
-            ElementsActius.setText("");
+            cp.resetDomini();
         }
         else {
-           String aux = " ";
-           ElementsInactius.setText(" ");
-           ElementsActius.setText(" ");
-           System.out.println("Activos: "+cp.getElementsActivats().size());
+           
            for (int j=0; j<cp.getElementsActivats().size(); ++j) {
+               //si trobem l element (nom = correcte)
                if (cp.getElementsActivats().get(j).equals(ElementsAdesactivar.getText())) {
-                   ElementsInactius.setText(ElementsInactius.getText() + ElementsAdesactivar.getText() + "\n");
+                   
+                 actualitzarElementsBorrats(cp.getElementsActivats().get(j)); 
+                 cp.eliminaElement(cp.getElementsActivats().get(j)); 
+                 actualitzarAdjacencies();
+                 actualitzarElements();
+                ElementsAdesactivar.setText("");
+                if(cp.getElementsActivats().isEmpty()) ElementsActius.setText("");
                 }
-           }
-          cp.eliminaElement(ElementsAdesactivar.getText());
-          /*
-          for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
-            ElementsActius.setText(aux + cp.getElementsActivats().get(i) + "\n");
-            aux = ElementsActius.getText();  
-          }
-          */
-          actualitzarAdjacencies();
-          actualitzarElements();
-          ElementsAdesactivar.setText("");
+           }  
         }               
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
@@ -1258,51 +1225,13 @@ public class Vista extends javax.swing.JFrame {
         MutePanel.setVisible(true);
     }//GEN-LAST:event_MutateRateActionPerformed
 
-    private void Mutate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mutate1ActionPerformed
-        Mutat2.setSelected(false);
-        Mutat3.setSelected(false);
-    }//GEN-LAST:event_Mutate1ActionPerformed
-
-    private void EdgenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdgenoActionPerformed
-        Edgesi.setSelected(false);
-    }//GEN-LAST:event_EdgenoActionPerformed
-
-    private void EdgesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdgesiActionPerformed
-        Edgeno.setSelected(false);
-    }//GEN-LAST:event_EdgesiActionPerformed
-
-    private void ElitismnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElitismnoActionPerformed
-        ElitismSi.setSelected(false);
-    }//GEN-LAST:event_ElitismnoActionPerformed
-
-    private void ElitismSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElitismSiActionPerformed
-        Elitismno.setSelected(false);
-    }//GEN-LAST:event_ElitismSiActionPerformed
-
-    private void RoulettenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoulettenoActionPerformed
-        Roulettesi.setSelected(false);
-    }//GEN-LAST:event_RoulettenoActionPerformed
-
-    private void RoulettesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoulettesiActionPerformed
-        Rouletteno.setSelected(false);
-    }//GEN-LAST:event_RoulettesiActionPerformed
-
-    private void Mutat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mutat3ActionPerformed
-        Mutate1.setSelected(false);
-        Mutat2.setSelected(false);
-    }//GEN-LAST:event_Mutat3ActionPerformed
-
-    private void Mutat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mutat2ActionPerformed
-        Mutate1.setSelected(false);
-        Mutat3.setSelected(false);
-    }//GEN-LAST:event_Mutat2ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        
         //System.getProperty("line.separator")
         javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();      
         FileChoser.showOpenDialog(this);
         ResetVista();
+        cp.resetDomini();
         File fil = FileChoser.getSelectedFile();
         cp.carregar_dades(fil.getAbsolutePath());
         actualitzarAdjacencies();
@@ -1347,6 +1276,88 @@ public class Vista extends javax.swing.JFrame {
        }
         catch (IOException ex) {}
     }//GEN-LAST:event_AjudaActionPerformed
+
+    private void Mutat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mutat3ActionPerformed
+        Mutate1.setSelected(false);
+        Mutat2.setSelected(false);
+    }//GEN-LAST:event_Mutat3ActionPerformed
+
+    private void Mutat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mutat2ActionPerformed
+        Mutate1.setSelected(false);
+        Mutat3.setSelected(false);
+    }//GEN-LAST:event_Mutat2ActionPerformed
+
+    private void Mutate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mutate1ActionPerformed
+        Mutat2.setSelected(false);
+        Mutat3.setSelected(false);
+    }//GEN-LAST:event_Mutate1ActionPerformed
+
+    private void EdgenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdgenoActionPerformed
+        Edgesi.setSelected(false);
+    }//GEN-LAST:event_EdgenoActionPerformed
+
+    private void EdgesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdgesiActionPerformed
+        Edgeno.setSelected(false);
+    }//GEN-LAST:event_EdgesiActionPerformed
+
+    private void ElitismnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElitismnoActionPerformed
+        ElitismSi.setSelected(false);
+    }//GEN-LAST:event_ElitismnoActionPerformed
+
+    private void ElitismSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElitismSiActionPerformed
+        Elitismno.setSelected(false);
+    }//GEN-LAST:event_ElitismSiActionPerformed
+
+    private void RoulettenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoulettenoActionPerformed
+        Roulettesi.setSelected(false);
+    }//GEN-LAST:event_RoulettenoActionPerformed
+
+    private void RoulettesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoulettesiActionPerformed
+        Rouletteno.setSelected(false);
+    }//GEN-LAST:event_RoulettesiActionPerformed
+
+    private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
+        if (active){
+
+            Relacions = new ArrayList<Integer>();
+            numRelations = cp.numElementsActius();
+            ListNoms = cp.getElementsActivats();
+            actual = 0;
+            snom = ListNoms.size();
+
+            for (int q=0; q<ListNoms.size(); ++q) System.out.println(ListNoms.get(q));
+
+            System.out.println(numRelations);
+
+            x = evt.getX();
+            y = evt.getY();
+            textxy.setText("xy =  " + x + "," + y);
+            Graphics g2 = jPanel4.getGraphics();
+            g2.setColor(Color.red);
+            g2.fillRect(x, y, 10, 10);
+
+            String as = "Cap Relació";
+            if(numRelations>0) as= ListNoms.get(actual);
+            //++ actual;
+            NumRelacions.setText(String.valueOf(ListNoms.size()));
+            if(Relacions.size()==numRelations){
+                NumRelacions.setText("-----");
+                NomElementRelacio.setText("----");
+
+            }
+
+            NomElementRelacio.setText(as);
+            PanelNewElement.setVisible(true);
+            ProgresBar.setValue(0);
+
+        }
+        active = false;
+    }//GEN-LAST:event_IMAGENMouseClicked
+
+    private void PanelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPrincipalMouseClicked
+        Graphics g22 = jPanel4.getGraphics();
+        jPanel4.paint(g22);
+    }//GEN-LAST:event_PanelPrincipalMouseClicked
    
     
     

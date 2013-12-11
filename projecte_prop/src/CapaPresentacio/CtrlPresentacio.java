@@ -52,7 +52,7 @@ public class CtrlPresentacio {
      public ArrayList<String> solutionGenetic(int stop,int ng,int nt,double mr,
              int ts,double ms,int mutate,boolean Roulet,boolean Edge,boolean Elitism){
                     
-                    int IsgI = 0;  //twoAp -> 1                      
+                    int IsgI = 1;  //twoAp -> 1                      
                     int TSI = 0; // 0 -> random // 1 -> rouletwheel
                     if(Roulet) TSI = 1;
                     int crossI = 0; //1 -> crosover edge
@@ -90,20 +90,21 @@ public class CtrlPresentacio {
         return rel;
     }
             
-    public void resetDomini(boolean tot) {
-       if(tot) {
+    public void resetDomini() {
+       
          try {  
             System.out.println("Enabled "+ cd.getEnabled().size()); 
-            for (int i=0; i<cd.getEnabled().size();++i) {
-                cd.eliminaElement(cd.getEnabled().get(i));
+            int m = cd.getEnabled().size();
+            for (int i=0; i<m;++i) {
+                cd.eliminaElement(cd.getEnabled().get(cd.getEnabled().size()-1));
             }
-            cd.eliminaElement(cd.getEnabled().get(0));
+            //cd.eliminaElement(cd.getEnabled().get(0));
          }
          catch( ExceptionExistence e) {
              VistaError error = new VistaError(e.getMessage());
          }
         
-       }
+       cd.resetIdGlobal();
        punts = new ArrayList <Entry < Integer,Integer > >();
        nom_elements = new ArrayList <String>();
     }
@@ -138,12 +139,10 @@ public class CtrlPresentacio {
     
     public ArrayList<String> getElementsActivats(){
         ArrayList<String> res = new ArrayList<String>();
-        try{
+        
             res = cd.getEnabled();
-        }
-        catch(ExceptionExistence e) {
-            //VistaError error = new VistaError(e.getMessage());
-        }  
+        
+        
         return res;
     }
         
