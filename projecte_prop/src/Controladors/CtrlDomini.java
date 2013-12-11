@@ -222,6 +222,18 @@ public class CtrlDomini {
         return sol.getCost(ciutat);
     }
     
+    public String getinfo(String infode){  //Aqui no creu cap punt per no incrementar l id global
+        int pos=-1;
+        for(int i=0; i<ciutat.getPunts().size(); ++i){
+            if(ciutat.getPunts().get(i).getNom() == infode) pos = i;
+        }
+        String sol = infode;
+        sol += " x: " + Integer.toString(ciutat.getPunts().get(pos).getX());
+        sol += " y: " + Integer.toString(ciutat.getPunts().get(pos).getY());
+        sol += " Activat : " + Boolean.toString(ciutat.getPunts().get(pos).isEnabled());
+        return sol;
+    }
+    
     public List<Map.Entry < Integer,Integer > > ListPuntsXY(){
         List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
        

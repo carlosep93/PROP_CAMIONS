@@ -31,6 +31,8 @@ public class City {
        lli.add(P.getID(), pesos_resta);
    }
 
+   
+   
    public void rehabilitaElement(int id, ArrayList<Integer> pesos_resta){
        enable(id);
        for (int i = 0; i < size();++i){

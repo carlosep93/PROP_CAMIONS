@@ -97,6 +97,10 @@ public class CtrlPresentacio {
         return -1;
     }
     
+    public String getinfo(String infode){
+        return cd.getinfo(infode);
+    }
+    
     public ArrayList<String> getElements(){
         return cd.getElements();
     }

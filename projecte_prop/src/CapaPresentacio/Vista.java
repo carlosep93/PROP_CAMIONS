@@ -33,9 +33,9 @@ public class Vista extends javax.swing.JFrame {
     private CtrlPresentacio cp = new CtrlPresentacio();
     private boolean active = true;
     private boolean activeList = true;
-   
+    private String nom; 
     private int snom;
-    
+    private boolean primer;
     private ArrayList<Integer> Relacions = new ArrayList<Integer>();
     private ArrayList<String> ListNoms = new ArrayList<String>();
      ArrayList<Integer> adjac = new ArrayList<Integer>();
@@ -50,6 +50,7 @@ public class Vista extends javax.swing.JFrame {
         setVisible(true);
         PanelNewRelation.setVisible(false);
         BorrarEditar.setVisible(false);
+        InfoPanel.setVisible(false);
         
     }
 
@@ -168,10 +169,13 @@ public class Vista extends javax.swing.JFrame {
         DeleteButton = new javax.swing.JButton();
         CheckBoxDesactivar = new javax.swing.JCheckBox();
         Editar = new javax.swing.JButton();
+        Informacio = new javax.swing.JButton();
         PanelNewRelation = new javax.swing.JPanel();
         SpinnerNewRelation = new javax.swing.JSpinner();
         ButtonNewRelation = new javax.swing.JButton();
         TextNewRelation = new javax.swing.JTextField();
+        InfoPanel = new javax.swing.JPanel();
+        TextInfo = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         CarregarDades = new javax.swing.JMenu();
@@ -460,7 +464,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -860,6 +864,8 @@ public class Vista extends javax.swing.JFrame {
         ElementsInactius.setEditable(false);
         ElementsInactius.setColumns(20);
         ElementsInactius.setRows(5);
+        ElementsInactius.setMaximumSize(new java.awt.Dimension(2147483647, 94));
+        ElementsInactius.setMinimumSize(new java.awt.Dimension(4, 4));
         jScrollPane8.setViewportView(ElementsInactius);
 
         List.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -885,6 +891,42 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        Informacio.setText("Informació");
+        Informacio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InformacioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BorrarEditarLayout = new javax.swing.GroupLayout(BorrarEditar);
+        BorrarEditar.setLayout(BorrarEditarLayout);
+        BorrarEditarLayout.setHorizontalGroup(
+            BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BorrarEditarLayout.createSequentialGroup()
+                .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CheckBoxDesactivar)
+                    .addGroup(BorrarEditarLayout.createSequentialGroup()
+                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Informacio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
+                .addGap(28, 28, 28))
+        );
+        BorrarEditarLayout.setVerticalGroup(
+            BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BorrarEditarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CheckBoxDesactivar)
+                .addGap(6, 6, 6)
+                .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteButton)
+                    .addComponent(Editar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Informacio)
+                .addGap(5, 5, 5))
+        );
+
         PanelNewRelation.setEnabled(false);
 
         ButtonNewRelation.setText("Add");
@@ -894,51 +936,42 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        TextNewRelation.setEditable(false);
+
         javax.swing.GroupLayout PanelNewRelationLayout = new javax.swing.GroupLayout(PanelNewRelation);
         PanelNewRelation.setLayout(PanelNewRelationLayout);
         PanelNewRelationLayout.setHorizontalGroup(
             PanelNewRelationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelNewRelationLayout.createSequentialGroup()
-                .addComponent(TextNewRelation, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextNewRelation)
+                .addGap(12, 12, 12)
                 .addComponent(SpinnerNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonNewRelation)
-                .addGap(36, 36, 36))
+                .addComponent(ButtonNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PanelNewRelationLayout.setVerticalGroup(
             PanelNewRelationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelNewRelationLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(PanelNewRelationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SpinnerNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonNewRelation)
-                    .addComponent(TextNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(ButtonNewRelation))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout BorrarEditarLayout = new javax.swing.GroupLayout(BorrarEditar);
-        BorrarEditar.setLayout(BorrarEditarLayout);
-        BorrarEditarLayout.setHorizontalGroup(
-            BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BorrarEditarLayout.createSequentialGroup()
-                .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(CheckBoxDesactivar)
-            .addComponent(PanelNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        TextInfo.setEditable(false);
+
+        javax.swing.GroupLayout InfoPanelLayout = new javax.swing.GroupLayout(InfoPanel);
+        InfoPanel.setLayout(InfoPanelLayout);
+        InfoPanelLayout.setHorizontalGroup(
+            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TextInfo, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-        BorrarEditarLayout.setVerticalGroup(
-            BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BorrarEditarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CheckBoxDesactivar)
-                .addGap(6, 6, 6)
-                .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DeleteButton)
-                    .addComponent(Editar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(PanelNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        InfoPanelLayout.setVerticalGroup(
+            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout PanelElementsLayout = new javax.swing.GroupLayout(PanelElements);
@@ -948,22 +981,26 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(PanelElementsLayout.createSequentialGroup()
                 .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelElementsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(69, 69, 69)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(106, 106, 106)
+                            .addComponent(jLabel10)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanelElementsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelElementsLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(InfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PanelNewRelation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(525, 525, 525)))
+                .addGap(67, 67, 67))
         );
         PanelElementsLayout.setVerticalGroup(
             PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -976,14 +1013,18 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jLabel10))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane6))
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6)
+                            .addComponent(jScrollPane8)))
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane8)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanelNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -996,8 +1037,9 @@ public class Vista extends javax.swing.JFrame {
         PanelElementLayout.setVerticalGroup(
             PanelElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelElementLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(PanelElements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         PANELS.addTab("Paquet", PanelElement);
@@ -1099,7 +1141,7 @@ public class Vista extends javax.swing.JFrame {
        Graphics g3 = jPanel4.getGraphics();
        jPanel4.paint(g3);
       ArrayList<String> Elems = new ArrayList<String>();
-       
+      info.setText("");
       if(RadioAnnealing.isSelected()){
            boolean TwoAp2 = TwoAp.isSelected();
            boolean mut2 = MutateLittle.isSelected();
@@ -1423,12 +1465,12 @@ public class Vista extends javax.swing.JFrame {
         
         if(activeList){
         actualRelation = 0;
-        String nom = List.getSelectedValue().toString();
+        nom = List.getSelectedValue().toString();
+        
         PanelNewRelation.setVisible(true);
         adjac = cp.GetRelations().get(cp.getPosicio(nom));
         
-        for(int i=0; i<cp.GetRelations().size(); ++i){
-            
+        for(int i=0; i<cp.GetRelations().size(); ++i){     
             if(adjac.get(i) != 0 && cp.isEnabled(cp.getElements().get(i))){
                 TextNewRelation.setText(cp.getElements().get(i));
                 actualRelation = i;
@@ -1436,46 +1478,47 @@ public class Vista extends javax.swing.JFrame {
              }
         }
         activeList = false;
+        primer = true;
         }
     }//GEN-LAST:event_EditarActionPerformed
 
     private void ButtonNewRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNewRelationActionPerformed
             int value = Integer.parseInt(SpinnerNewRelation.getValue().toString()); 
-            String nom = List.getSelectedValue().toString();
+            
             boolean f = false;
         if(value >0){
+            adjac.set(actualRelation, value);
+            primer = false;
+            
+            if(actualRelation<adjac.size()){
                 
-                
-                while(actualRelation<adjac.size() && !f){ 
-                    
-                    int i = actualRelation;
-                    if(cp.isEnabled(cp.getElements().get(i)) && cp.getElements().get(i)!=nom){
-                      adjac.set(i, value);
-                   
-                      //xapuza
-                      if(actualRelation+1 < cp.getElements().size()){
-                       String nomAux = cp.getElements().get(actualRelation+1);
-                       if(cp.getElements().get(actualRelation+1)==nom && actualRelation+2 < cp.getElements().size()) 
-                           nomAux = cp.getElements().get(actualRelation+2);
-                      //xapuza end
-                      
-                       TextNewRelation.setText(nomAux);
-                      }
-                      
-                      f = true;
-                }
-                    ++actualRelation;
-             }
+            for(int i=actualRelation+1; i<cp.GetRelations().size(); ++i){     
+            if(adjac.get(i) != 0 && cp.isEnabled(cp.getElements().get(i))){
+                TextNewRelation.setText(cp.getElements().get(i));
+                actualRelation = i;
+                break;   
+             }      
+            }
+           }
          }
-       if (actualRelation==adjac.size()){
+       if (actualRelation>=adjac.size()-1){
+           adjac.set(actualRelation, value);
            actualRelation = 0;
            PanelNewRelation.setVisible(false);
            BorrarEditar.setVisible(false);
            cp.modificarAdjacencies(nom, adjac);
            actualitzarAdjacencies();
            activeList = true;
+           primer = true;
        }
     }//GEN-LAST:event_ButtonNewRelationActionPerformed
+
+    private void InformacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformacioActionPerformed
+        
+        InfoPanel.setVisible(true);
+        String infode = List.getSelectedValue().toString();
+        TextInfo.setText(cp.getinfo(infode));
+    }//GEN-LAST:event_InformacioActionPerformed
    
     
     
@@ -1532,6 +1575,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JRadioButton ElitismSi;
     private javax.swing.JRadioButton Elitismno;
     private javax.swing.JLabel IMAGEN;
+    private javax.swing.JPanel InfoPanel;
+    private javax.swing.JButton Informacio;
     private javax.swing.JTextField InitialTemperature;
     private javax.swing.JLabel Jlabel3;
     private javax.swing.JLabel Label4;
@@ -1572,6 +1617,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField StopCondition;
     private javax.swing.JTextField StopConditionAnealing;
     private javax.swing.JTabbedPane TabAnealing;
+    private javax.swing.JTextField TextInfo;
     private javax.swing.JTextField TextNewRelation;
     private javax.swing.JTextArea TextRelations;
     private javax.swing.JTextArea TextSolution;
