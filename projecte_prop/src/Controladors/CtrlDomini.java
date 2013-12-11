@@ -1,10 +1,29 @@
 
 package Controladors;
 
+import Domini.Tsp_SA;
+import Domini.InitialSolGenerator;
+import Domini.Crossover_Edge;
+import Domini.Mutate_Rate;
+import Domini.Mutate;
+import Domini.City;
+import Domini.Crossover_Simple;
+import Domini.TournamentSelection_Random;
+import Domini.Mutate_SwapRate;
+import Domini.Solution;
+import Domini.InitialSolGenerator_TwoApp;
+import Domini.Mutate_Little;
+import Domini.TournamentSelection;
+import Domini.InitialSolGenerator_Random;
+import Domini.Mst_Prim;
+import Domini.Punt;
+import Domini.Tsp;
+import Domini.TournamentSelection_RouletteWheel;
+import Domini.Tsp_GA;
+import Domini.Crossover;
 import exception.ExceptionExistence;
 import exception.ExceptionEnabled;
 import java.util.ArrayList;
-import projecte_prop.*;
 import CapaDades.Gestor_Dades;
 import java.util.List;
 import java.util.Map;

@@ -7,7 +7,7 @@ package Drivers_class;
 
 import java.util.List;
 import java.util.Scanner;
-import projecte_prop.Element;
+import Domini.Element;
 
 /**
  *

@@ -1,5 +1,5 @@
 
-package projecte_prop;
+package Domini;
 
 public class TournamentSelection_Random extends TournamentSelection{
     

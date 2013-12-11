@@ -6,7 +6,7 @@ package Stubs;
 
 import java.util.ArrayList;
 import java.util.List;
-import projecte_prop.Element;
+import Domini.Element;
 
 /**
  *

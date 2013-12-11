@@ -7,8 +7,8 @@ package Drivers_class;
  *
  * @author joanbarrosogarrido
  */
-import projecte_prop.CjtTours;
-import projecte_prop.Tour;
+import Domini.CjtTours;
+import Domini.Tour;
 import java.util.Scanner;
 
 

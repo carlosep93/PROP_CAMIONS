@@ -1,5 +1,5 @@
 
-package projecte_prop;
+package Domini;
 
 //quan usem el driver de TspGA:
 /*  import Stubs.CjtTours;

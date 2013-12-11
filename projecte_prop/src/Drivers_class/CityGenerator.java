@@ -3,12 +3,14 @@
  * and open the template in the editor.
  */
 package Drivers_class;
+import Domini.Tour;
+import Domini.InitialSolGenerator_TwoApp;
+import Domini.Mst_Prim;
 import java.util.Scanner;
-import projecte_prop.Punt;
-import projecte_prop.City;
+import Domini.Punt;
+import Domini.City;
 import java.util.ArrayList;
 import java.util.List;
-import projecte_prop.*;
 import java.util.Scanner;
 
 /**

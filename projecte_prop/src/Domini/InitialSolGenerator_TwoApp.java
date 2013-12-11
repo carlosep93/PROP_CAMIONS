@@ -1,4 +1,4 @@
-package projecte_prop;
+package Domini;
 
 import java.util.List;
 import java.util.ArrayList;

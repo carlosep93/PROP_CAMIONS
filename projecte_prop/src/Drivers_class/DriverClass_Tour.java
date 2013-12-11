@@ -1,8 +1,8 @@
 
 package Drivers_class;
 
-import projecte_prop.Tour;
-import projecte_prop.Element;
+import Domini.Tour;
+import Domini.Element;
 import Stubs.Relations;
 import java.util.Scanner;
 

@@ -1,5 +1,5 @@
 
-package projecte_prop;
+package Domini;
 
 public class Punt extends Element {
     private int x, y;

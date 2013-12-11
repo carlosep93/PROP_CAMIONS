@@ -8,8 +8,8 @@ package Drivers_class;
  *
  * @author joanbarrosogarrido
  */
-import projecte_prop.InitialSolGenerator_TwoApp;
-import projecte_prop.Tour;
+import Domini.InitialSolGenerator_TwoApp;
+import Domini.Tour;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;

@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
-import projecte_prop.Punt;
+import Domini.Punt;
 /**
  *
  * @author Pol

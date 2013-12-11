@@ -8,9 +8,8 @@ package Drivers_class;
  *
  * @author Carlos2
  */
-import projecte_prop.Tsp_SA;
-//import Stubs.Tour;
-import projecte_prop.Tour;
+import Domini.Tsp_SA;
+import Domini.Tour;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;

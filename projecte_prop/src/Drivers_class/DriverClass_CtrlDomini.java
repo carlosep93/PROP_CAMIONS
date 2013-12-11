@@ -6,9 +6,10 @@ package Drivers_class;
  */
 
 
+import Domini.City;
+import Domini.Punt;
 import Controladors.CtrlDomini;
 import exception.ExceptionExistence;
-import projecte_prop.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 

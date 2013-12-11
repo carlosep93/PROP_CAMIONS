@@ -4,9 +4,9 @@
  */
 package Drivers_class;
 import java.util.ArrayList;
-import projecte_prop.City;
-import projecte_prop.Relation;
-import projecte_prop.Punt;
+import Domini.City;
+import Domini.Relation;
+import Domini.Punt;
 /**
  *
  * @author joanbarrosogarrido

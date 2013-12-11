@@ -4,11 +4,11 @@
  */
 package Drivers_class;
 
-import projecte_prop.Solution;
+import Domini.Solution;
 import java.util.Scanner;
 
-import projecte_prop.Tour;
-import projecte_prop.Element;
+import Domini.Tour;
+import Domini.Element;
 /**
  *
  * @author pol

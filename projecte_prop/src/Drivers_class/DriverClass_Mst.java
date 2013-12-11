@@ -10,8 +10,8 @@ package Drivers_class;
  */
 
 import java.util.Scanner;
-import projecte_prop.Mst;
-import projecte_prop.Mst.*;
+import Domini.Mst;
+import Domini.Mst.*;
 
 
 

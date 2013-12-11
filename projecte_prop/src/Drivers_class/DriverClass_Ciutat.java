@@ -11,10 +11,10 @@ package Drivers_class;
 import java.util.Scanner;
 
 import projecte_prop.Ciutat;
-import projecte_prop.Element;
+import Domini.Element;
 import projecte_prop.Relations;
-import projecte_prop.Tour;
-import projecte_prop.Solution;
+import Domini.Tour;
+import Domini.Solution;
 
 import java.util.List;
 import java.util.ArrayList;

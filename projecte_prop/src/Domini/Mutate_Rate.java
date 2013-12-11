@@ -1,5 +1,5 @@
 
-package projecte_prop;
+package Domini;
 
 public class Mutate_Rate extends Mutate{
     

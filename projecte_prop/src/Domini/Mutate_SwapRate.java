@@ -1,5 +1,5 @@
 
-package projecte_prop;
+package Domini;
 
 public class Mutate_SwapRate extends Mutate{
     private City C;

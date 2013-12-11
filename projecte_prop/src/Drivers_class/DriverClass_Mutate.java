@@ -12,10 +12,10 @@ package Drivers_class;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import projecte_prop.Mutate;
-import projecte_prop.Tour;
+import Domini.Mutate;
+import Domini.Tour;
 import projecte_prop.Relations;
-import projecte_prop.Element;
+import Domini.Element;
 
 public class DriverClass_Mutate {
     

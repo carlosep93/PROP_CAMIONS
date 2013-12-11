@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 package Drivers_class;
-import projecte_prop.PQsort;
+import Domini.PQsort;
 import java.util.PriorityQueue;
-import projecte_prop.Relation;
+import Domini.Relation;
 
 /**
  *

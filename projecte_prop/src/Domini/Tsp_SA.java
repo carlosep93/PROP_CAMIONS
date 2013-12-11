@@ -1,5 +1,5 @@
 
-package projecte_prop;
+package Domini;
 
 /*import Stubs.Tour;
 import Stubs.CtrlDomini;

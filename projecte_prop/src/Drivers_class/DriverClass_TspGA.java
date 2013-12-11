@@ -5,9 +5,9 @@ package Drivers_class;
  * @author josep
  */
 
-import projecte_prop.Tsp_GA;
+import Domini.Tsp_GA;
 import java.util.Scanner;
-import projecte_prop.Tour;
+import Domini.Tour;
 //import Stubs.Tour;
 
 public class DriverClass_TspGA {

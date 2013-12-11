@@ -8,7 +8,7 @@ package CapaDades;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-import projecte_prop.Punt;
+import Domini.Punt;
 
 
 
