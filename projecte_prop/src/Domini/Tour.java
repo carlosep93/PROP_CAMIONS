@@ -120,8 +120,7 @@ public class Tour {
 \post S'ha esborrat l'Element de la posició pos i s'ha afegit al seu lloc l'Element E
 */
     public void replaceElementPos(Punt E, int pos){
-        cjtElem.remove(pos);
-        cjtElem.add(pos, E);
+        cjtElem.set(pos, E);
         cost = -1;
     }
     
