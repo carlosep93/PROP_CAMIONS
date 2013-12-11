@@ -87,7 +87,7 @@ public class Tsp_SA extends Tsp{
         if (newEnergy < energy) {
             return 1.0;
         }
-        return Math.exp ((energy - newEnergy)/ temperature);
+        return Math.exp (-1*((energy - newEnergy)/ temperature));
     }
 
 }
