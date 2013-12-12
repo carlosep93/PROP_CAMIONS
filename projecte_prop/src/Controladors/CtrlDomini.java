@@ -241,7 +241,7 @@ public class CtrlDomini {
     
     public List<Map.Entry < Integer,Integer > > ListPuntsXY(){
         List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
-        for ( int i=0; i<ciutat.size(); ++i){
+        for ( int i=0; i<sol.size(); ++i){
             Punt p = ciutat.getPunts().get(sol.getElementPos(i).getID());
             Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(p.getX(),p.getY());
             punts.add(aux);

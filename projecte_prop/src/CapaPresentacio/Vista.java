@@ -1159,10 +1159,13 @@ public class Vista extends javax.swing.JFrame {
         for (int i=0;i<cp.lpunts().size();++i) {
             g.setColor(Color.red);
             if(i==0) g.setColor(Color.white);
-            g.fillRect(cp.lpunts().get(i).getKey(),cp.lpunts().get(i).getValue(), 10, 10);
+            int x = cp.lpunts().get(i).getKey();
+            int y = cp.lpunts().get(i).getValue();
+            g.fillRect(x,y, 10, 10);
+            
         }
-        if (x != -1)
-            g.fillRect(x, y, 10, 10);
+        
+        if (x != -1)  g.fillRect(x, y, 10, 10);
     }
      /**/
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -1194,7 +1197,8 @@ public class Vista extends javax.swing.JFrame {
     
     private void ButtonSolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSolveActionPerformed
         Graphics g3 = jPanel4.getGraphics();
-            jPanel4.paint(g3);
+        jPanel4.paint(g3);
+        repaintJpanel4();
       ArrayList<String> Elems = new ArrayList<String>();
       info.setText("");
       if(RadioAnnealing.isSelected()){
@@ -1226,7 +1230,7 @@ public class Vista extends javax.swing.JFrame {
        }
       info.setText("Selecciona Algorisme");
       
-      if(RadioGenetic.isSelected() || RadioAnnealing.isSelected()){
+      if((RadioGenetic.isSelected() || RadioAnnealing.isSelected()) && !Elems.isEmpty() ){
           DibuixarPunts();
           cpaint(g3);
           if(Elems.isEmpty()) info.setText("");
@@ -1326,8 +1330,7 @@ public class Vista extends javax.swing.JFrame {
                  cp.eliminaElement(b); 
                  actualitzarAdjacencies();
                  actualitzarElements();
-                 Graphics g3 = jPanel4.getGraphics();
-                 repaintJpanel4();
+         
           }    
        TextInfo.setText("");
        PanelNewRelation.setVisible(false);
@@ -1492,7 +1495,8 @@ public class Vista extends javax.swing.JFrame {
         x = -1;
         y = -1;
         Graphics g3 = jPanel4.getGraphics();
-            jPanel4.paint(g3);
+        jPanel4.paint(g3);
+            cpaint(g3);
     }
     
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked

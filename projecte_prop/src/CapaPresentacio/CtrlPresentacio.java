@@ -174,6 +174,7 @@ public class CtrlPresentacio {
         for(int i=0; i < cd.getEnabled().size(); ++i) if(nom == cd.getEnabled().get(i)) return true;
             return false;
     }
+    
         
     public Integer numElementsActius(){
         return cd.numElementsActius();
@@ -200,9 +201,10 @@ public class CtrlPresentacio {
     
     public void carregar_dades (String nom){
         cd.carregar_Elements_i_Adjacencies(nom);
-        //punts = cd.PuntsXY();
+        punts = cd.PuntsXY();
         
     }
+    
     
     public void guardar_dades (String nom){
         cd.guardar_Elements_i_Adjacencies(nom);
