@@ -178,8 +178,8 @@ public class Vista extends javax.swing.JFrame {
         ButtonNewRelation = new javax.swing.JButton();
         TextNewRelation = new javax.swing.JTextField();
         InfoPanel = new javax.swing.JPanel();
-        TextInfo = new javax.swing.JTextField();
         CarregarAdjac = new javax.swing.JButton();
+        TextInfo = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         CarregarDades = new javax.swing.JMenu();
@@ -977,19 +977,15 @@ public class Vista extends javax.swing.JFrame {
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        TextInfo.setEditable(false);
-
         javax.swing.GroupLayout InfoPanelLayout = new javax.swing.GroupLayout(InfoPanel);
         InfoPanel.setLayout(InfoPanelLayout);
         InfoPanelLayout.setHorizontalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TextInfo, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         InfoPanelLayout.setVerticalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 22, Short.MAX_VALUE)
         );
 
         CarregarAdjac.setText("Carregar Adjacencies");
@@ -998,6 +994,8 @@ public class Vista extends javax.swing.JFrame {
                 CarregarAdjacActionPerformed(evt);
             }
         });
+
+        TextInfo.setEditable(false);
 
         javax.swing.GroupLayout PanelElementsLayout = new javax.swing.GroupLayout(PanelElements);
         PanelElements.setLayout(PanelElementsLayout);
@@ -1024,8 +1022,13 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(InfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PanelNewRelation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(452, 452, 452)
-                        .addComponent(CarregarAdjac)))
+                        .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelElementsLayout.createSequentialGroup()
+                                .addGap(452, 452, 452)
+                                .addComponent(CarregarAdjac))
+                            .addGroup(PanelElementsLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(67, 67, 67))
         );
         PanelElementsLayout.setVerticalGroup(
@@ -1045,15 +1048,18 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CarregarAdjac))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelElementsLayout.createSequentialGroup()
+                        .addComponent(CarregarAdjac)
+                        .addGap(32, 32, 32)
+                        .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelElementLayout = new javax.swing.GroupLayout(PanelElement);
@@ -1065,9 +1071,8 @@ public class Vista extends javax.swing.JFrame {
         PanelElementLayout.setVerticalGroup(
             PanelElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelElementLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(PanelElements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         PANELS.addTab("Paquet", PanelElement);
@@ -1143,8 +1148,10 @@ public class Vista extends javax.swing.JFrame {
 
 
     private void cpaint(Graphics g) {
-        g.setColor(Color.red);
+       
         for (int i=0;i<cp.lpunts().size();++i) {
+             g.setColor(Color.red);
+            if(i==0) g.setColor(Color.white);
             g.fillRect(cp.lpunts().get(i).getKey(),cp.lpunts().get(i).getValue(), 10, 10);
         }
         if (x != -1)
@@ -1166,9 +1173,10 @@ public class Vista extends javax.swing.JFrame {
 
     private void DibuixarPunts(){
          List<Map.Entry < Integer,Integer > > aux= cp.lpunts();
+         System.out.println(aux.size() + "<-------------");
          if (!aux.isEmpty()){
             Graphics g2 = jPanel4.getGraphics();
-            g2.setColor(Color.red);
+            g2.setColor(Color.BLACK);
             for (int i=1;i< aux.size();++i) {
                 g2.drawLine(aux.get(i-1).getKey(),aux.get(i-1).getValue(), 
                         aux.get(i).getKey(), aux.get(i).getValue());
@@ -1179,8 +1187,7 @@ public class Vista extends javax.swing.JFrame {
     }
     
     private void ButtonSolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSolveActionPerformed
-       Graphics g3 = jPanel4.getGraphics();
-       jPanel4.paint(g3);
+
       ArrayList<String> Elems = new ArrayList<String>();
       info.setText("");
       if(RadioAnnealing.isSelected()){
@@ -1210,15 +1217,19 @@ public class Vista extends javax.swing.JFrame {
            Elems = cp.solutionGenetic(stop,ng,nt,mr,ts,ms,mutate,Roulet,Edge,Elitism);
            
        }
-       info.setText("Solució trobada");
+      info.setText("Selecciona Algorisme");
+      
+      if(RadioGenetic.isSelected() || RadioAnnealing.isSelected()){
        if(Elems.isEmpty()) info.setText("");
-       DibuixarPunts();
-       cpaint(g3);
             TextSolution.setText("");
             for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + "   ");
             CostText.setText("" + cp.getCost());
-        
-        
+            info.setText("Solució trobada");
+            Graphics g3 = jPanel4.getGraphics();
+            jPanel4.paint(g3);
+            DibuixarPunts();
+            
+      }        
     }//GEN-LAST:event_ButtonSolveActionPerformed
 
     private void SaveNewElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveNewElementActionPerformed
@@ -1234,6 +1245,7 @@ public class Vista extends javax.swing.JFrame {
            actualitzarAdjacencies();
             
             NomElement.setText(null);
+            jCheckBox1.setSelected(false);
             PanelNewElement.setVisible(false);
             info.setText("Element Guardat");
             List.setListData(cp.getElementsActivats().toArray());
@@ -1307,10 +1319,12 @@ public class Vista extends javax.swing.JFrame {
                  cp.eliminaElement(b); 
                  actualitzarAdjacencies();
                  actualitzarElements();
+                 Graphics g3 = jPanel4.getGraphics();
+                 repaintJpanel4();
           }    
+       TextInfo.setText("");
        PanelNewRelation.setVisible(false);
-       BorrarEditar.setVisible(false);
-       TextInfo.setVisible(false);
+       BorrarEditar.setVisible(false); 
        }
        
     }//GEN-LAST:event_DeleteButtonActionPerformed
@@ -1333,8 +1347,8 @@ public class Vista extends javax.swing.JFrame {
         TextSolution.setText("");
         CostText.setText("");
         cp.ResetPunts();
-        //PanelNewElement.setVisible(false);
-       // jPanel4 = new javax.swing.JPanel();
+        PanelNewElement.setVisible(false);
+        jPanel4 = new javax.swing.JPanel();
     }
     
     private void textxyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textxyActionPerformed
@@ -1361,8 +1375,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_MutateRateActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       
-        //System.getProperty("line.separator")
+        
         javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();      
         int val  = FileChoser.showOpenDialog(this);
         if (val == JFileChooser.APPROVE_OPTION) {
@@ -1372,13 +1385,21 @@ public class Vista extends javax.swing.JFrame {
             cp.carregar_dades(fil.getAbsolutePath());
             actualitzarAdjacencies();
             actualitzarElements();
-            Graphics c = jPanel4.getGraphics();
-            jPanel4.paint(c);
+            ElementsInactius.setText("");
             Cancel();
+            Reload();
             info.setText("Fitxer Carregat");
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void Reload(){
+        /*
+        jPanel2.repaint();
+        jPanel1.repaint();
+        PanelElements.repaint();
+        */
+    }
+    
     private void Cancel(){
         Relacions = new  ArrayList<Integer>(); 
         x = -1;
@@ -1389,12 +1410,11 @@ public class Vista extends javax.swing.JFrame {
     
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         Cancel();
-        Graphics g3 = jPanel4.getGraphics();
-        jPanel4.paint(g3);
+        repaintJpanel4();
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();
+     javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();
         int val = FileChoser.showSaveDialog(this);
         if (val == JFileChooser.APPROVE_OPTION) {
             File fil = FileChoser.getSelectedFile();
@@ -1458,9 +1478,16 @@ public class Vista extends javax.swing.JFrame {
         Rouletteno.setSelected(false);
     }//GEN-LAST:event_RoulettesiActionPerformed
 
+    private void repaintJpanel4(){
+        x = -1;
+        y = -1;
+        Graphics g3 = jPanel4.getGraphics();
+            jPanel4.paint(g3);
+    }
+    
     private void IMAGENMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMAGENMouseClicked
         if (active){
-
+            //repaintJpanel4();
             Relacions = new ArrayList<Integer>();
             numRelations = cp.numElementsActius();
             ListNoms = cp.getElementsActivats();
@@ -1506,12 +1533,12 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelPrincipalMouseClicked
 
     private void ListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListMouseClicked
-
+        InfoPanel.setVisible(true);
         BorrarEditar.setVisible(true);  
     }//GEN-LAST:event_ListMouseClicked
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        InfoPanel.setVisible(false);
+        //InfoPanel.setVisible(false);
         if(activeList && cp.getElementsActivats().size()>1){
         actualRelation = 0;
         nom = List.getSelectedValue().toString();
@@ -1572,9 +1599,10 @@ public class Vista extends javax.swing.JFrame {
 
     private void InformacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformacioActionPerformed
         if(!cp.getElementsActivats().isEmpty()){
-        InfoPanel.setVisible(true);
         String infode = List.getSelectedValue().toString();
         TextInfo.setText(cp.getinfo(infode));
+       // 
+           System.out.println(TextInfo.getText());
         }
     }//GEN-LAST:event_InformacioActionPerformed
 
@@ -1583,7 +1611,6 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_NTActionPerformed
 
     private void PanelElementsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelElementsMouseClicked
-        InfoPanel.setVisible(false);
         if(activeList) BorrarEditar.setVisible(false);
     }//GEN-LAST:event_PanelElementsMouseClicked
 
@@ -1600,6 +1627,7 @@ public class Vista extends javax.swing.JFrame {
     }
     
     private void close(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_close
+        if(sortirGuardar()) System.exit(0); 
         if(!sortirGuardar()) { 
           javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();
         int val = FileChoser.showSaveDialog(this);
@@ -1609,7 +1637,7 @@ public class Vista extends javax.swing.JFrame {
         }   
             
         }
-        System.exit(0); 
+        
     }//GEN-LAST:event_close
 
     private void CarregarAdjacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarregarAdjacActionPerformed

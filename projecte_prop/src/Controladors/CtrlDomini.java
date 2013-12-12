@@ -225,26 +225,41 @@ public class CtrlDomini {
     public String getinfo(String infode){  //Aqui no creu cap punt per no incrementar l id global
         int pos=-1;
         for(int i=0; i<ciutat.getPunts().size(); ++i){
-            if(ciutat.getPunts().get(i).getNom() == infode) pos = i;
+            if(ciutat.getPunts().get(i).getNom().equals(infode)){
+                pos = i;
+                break;
+            }
         }
+        
         String sol = "Nom: " + infode;
         sol += ", xy: [" + Integer.toString(ciutat.getPunts().get(pos).getX()) +"][";
         sol +=Integer.toString(ciutat.getPunts().get(pos).getY());
         sol += "]  Activat : " + Boolean.toString(ciutat.getPunts().get(pos).isEnabled());
         return sol;
+        
     }
     
     public List<Map.Entry < Integer,Integer > > ListPuntsXY(){
         List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
-       
-        for ( int i=0; i<sol.size(); ++i){
+        for ( int i=0; i<ciutat.size(); ++i){
             Punt p = ciutat.getPunts().get(sol.getElementPos(i).getID());
             Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(p.getX(),p.getY());
             punts.add(aux);
         }
         return punts;
     }
-    
+    /*
+    public List<Map.Entry < Integer,Integer > > PuntsXY(){
+        List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
+       
+        for ( int i=0; i<ciutat.size(); ++i){
+            Punt p = ciutat.getPunts().get(i);
+            Map.Entry<Integer,Integer> aux = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(p.getX(),p.getY());
+            punts.add(aux);
+        }
+        return punts;
+    }
+    */
     public Boolean SolucioGenerada(){
         return SolucioCreada;
     }
