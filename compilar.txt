@@ -1,0 +1,6 @@
+
+Crear los .class:     javac -d ejecutables -cp src src\Main\Main.java
+
+Ejecutar los .class:  java -cp ejecutables Main.Main
+
+Crear un .jar:        Hay que crear un archivo manifest... Pendiente.
