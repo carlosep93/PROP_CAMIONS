@@ -248,7 +248,7 @@ public class CtrlDomini {
         }
         return punts;
     }
-    /*
+    
     public List<Map.Entry < Integer,Integer > > PuntsXY(){
         List<Map.Entry < Integer,Integer > > punts = new ArrayList <Map.Entry < Integer,Integer >>();
        
@@ -259,7 +259,7 @@ public class CtrlDomini {
         }
         return punts;
     }
-    */
+    
     public Boolean SolucioGenerada(){
         return SolucioCreada;
     }
