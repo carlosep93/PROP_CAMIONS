@@ -232,7 +232,7 @@ public class Vista extends javax.swing.JFrame {
             .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
 
-        ButtonSolve.setText("Solve");
+        ButtonSolve.setText("Solució");
         ButtonSolve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonSolveActionPerformed(evt);
@@ -426,7 +426,7 @@ public class Vista extends javax.swing.JFrame {
 
         CostText.setEditable(false);
 
-        jLabel12.setText("Tour");
+        jLabel12.setText("Ruta");
 
         jLabel14.setText("Cost");
 
@@ -446,7 +446,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1214,9 +1214,9 @@ public class Vista extends javax.swing.JFrame {
        if(Elems.isEmpty()) info.setText("");
        DibuixarPunts();
        cpaint(g3);
-            TextSolution.setText("El Tour es : ");
+            TextSolution.setText("");
             for(int i=0; i<Elems.size(); ++i) TextSolution.setText(TextSolution.getText() + Elems.get(i) + "   ");
-            CostText.setText("El Cost es : " +cp.getCost());
+            CostText.setText("" + cp.getCost());
         
         
     }//GEN-LAST:event_ButtonSolveActionPerformed

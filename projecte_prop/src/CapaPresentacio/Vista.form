@@ -177,7 +177,7 @@
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <EmptySpace pref="66" max="32767" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -318,7 +318,7 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="ButtonSolve">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Solve"/>
+                    <Property name="text" type="java.lang.String" value="Soluci&#xf3;"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSolveActionPerformed"/>
@@ -560,7 +560,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tour"/>
+                <Property name="text" type="java.lang.String" value="Ruta"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
