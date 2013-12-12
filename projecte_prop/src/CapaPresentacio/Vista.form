@@ -177,7 +177,7 @@
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -187,7 +187,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="236" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="242" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -667,7 +667,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="576" max="32767" attributes="0"/>
+                              <EmptySpace pref="589" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -937,7 +937,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="391" max="32767" attributes="0"/>
+                              <EmptySpace pref="404" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1208,7 +1208,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -1219,20 +1219,21 @@
                                       <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane6" min="-2" pref="311" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="InfoPanel" max="32767" attributes="0"/>
                                       <Component id="BorrarEditar" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                                       <Component id="PanelNewRelation" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="525" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="452" max="-2" attributes="0"/>
+                                  <Component id="CarregarAdjac" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
@@ -1262,7 +1263,10 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BorrarEditar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="BorrarEditar" min="-2" max="-2" attributes="0"/>
+                              <Component id="CarregarAdjac" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="PanelNewRelation" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1488,6 +1492,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="CarregarAdjac">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Carregar Adjacencies"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CarregarAdjacActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

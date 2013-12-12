@@ -179,6 +179,7 @@ public class Vista extends javax.swing.JFrame {
         TextNewRelation = new javax.swing.JTextField();
         InfoPanel = new javax.swing.JPanel();
         TextInfo = new javax.swing.JTextField();
+        CarregarAdjac = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         CarregarDades = new javax.swing.JMenu();
@@ -445,7 +446,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +456,7 @@ public class Vista extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelPrincipalLayout.setVerticalGroup(
@@ -598,7 +599,7 @@ public class Vista extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(CoolingFactor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(StopConditionAnealing, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -795,7 +796,7 @@ public class Vista extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(MS, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TournamentSize, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(391, Short.MAX_VALUE))
+                .addContainerGap(404, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -992,6 +993,13 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(TextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        CarregarAdjac.setText("Carregar Adjacencies");
+        CarregarAdjac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CarregarAdjacActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelElementsLayout = new javax.swing.GroupLayout(PanelElements);
         PanelElements.setLayout(PanelElementsLayout);
         PanelElementsLayout.setHorizontalGroup(
@@ -1007,17 +1015,18 @@ public class Vista extends javax.swing.JFrame {
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelElementsLayout.createSequentialGroup()
+                    .addGroup(PanelElementsLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(InfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PanelNewRelation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(525, 525, 525)))
+                        .addGap(452, 452, 452)
+                        .addComponent(CarregarAdjac)))
                 .addGap(67, 67, 67))
         );
         PanelElementsLayout.setVerticalGroup(
@@ -1038,7 +1047,9 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BorrarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CarregarAdjac))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PanelNewRelation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1242,7 +1253,7 @@ public class Vista extends javax.swing.JFrame {
     
     private void actualitzarAdjacencies(){
         TextRelations.setText("Massa Elements");
-        if(cp.getElementsActivats().size()<100){
+        if(cp.getElementsActivats().size()<=20){
         TextRelations.setText("");
             for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
                   for(int j=0; j< cp.getElementsActivats().size(); ++j){  
@@ -1601,6 +1612,16 @@ public class Vista extends javax.swing.JFrame {
         }
         System.exit(0); 
     }//GEN-LAST:event_close
+
+    private void CarregarAdjacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarregarAdjacActionPerformed
+        TextRelations.setText("");
+            for(int i=0; i< cp.getElementsActivats().size(); ++i){ 
+                  for(int j=0; j< cp.getElementsActivats().size(); ++j){  
+                      TextRelations.setText(TextRelations.getText() + cp.GetRelations().get(i).get(j) + "  ");            
+                  }
+                  TextRelations.setText(TextRelations.getText() + "\n");     
+             }
+    }//GEN-LAST:event_CarregarAdjacActionPerformed
    
     
     
@@ -1645,6 +1666,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton ButtonNewRelation;
     private javax.swing.JButton ButtonSolve;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JButton CarregarAdjac;
     private javax.swing.JMenu CarregarDades;
     private javax.swing.JCheckBox CheckBoxDesactivar;
     private javax.swing.JTextField CoolingFactor;
