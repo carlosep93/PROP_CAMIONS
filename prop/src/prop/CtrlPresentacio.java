@@ -27,11 +27,6 @@ public class CtrlPresentacio {
     private List<String> nom_elements = new ArrayList <String>();
     private CtrlDomini cd = new CtrlDomini("a"); 
     
-    public CtrlPresentacio() {
-        Genetic = true;
-        Vista vist = new Vista(this);
-        
-    } 
     
     public ArrayList<String> solutionAnealing(double tmp,double cool,int parada,double mutR,
             double mutS,boolean TwoAp2, boolean mut2){
@@ -189,7 +184,13 @@ public class CtrlPresentacio {
     public  List<String> getNomElements(){
         return nom_elements;     
     }
-      
+    
+    
+    public static void main(String[] args) {
+        Genetic = true;
+        Vista vist = new Vista();
+        
+    }   
 
     public List<Entry < Integer,Integer > > lpunts() {
         return punts;

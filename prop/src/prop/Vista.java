@@ -33,7 +33,7 @@ public class Vista extends javax.swing.JFrame {
     private int x = -1;
     private int y  = -1;
     private boolean linea2punts;
-    static CtrlPresentacio cp ;
+    private CtrlPresentacio cp = new CtrlPresentacio();
     private boolean active = true;
     private boolean activeList = true;
     private String nom; 
@@ -46,11 +46,9 @@ public class Vista extends javax.swing.JFrame {
     private int numRelations;
     private int actual;
     private int actualRelation;
-    
-    public Vista(CtrlPresentacio cP) {
+    public Vista() {
         initComponents();
         setResizable(false);
-        cp = cP;
         MutePanel.setVisible(false);
         setVisible(true);
         PanelNewRelation.setVisible(false);
@@ -1698,7 +1696,7 @@ public class Vista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista(new CtrlPresentacio()).setVisible(true);
+                new Vista().setVisible(true);
             }
         });
     }
