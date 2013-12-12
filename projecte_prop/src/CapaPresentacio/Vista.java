@@ -1,7 +1,6 @@
  package CapaPresentacio;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Graphics;
 import java.io.File;
@@ -9,6 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this template, choose Tools | Templates
@@ -193,7 +196,12 @@ public class Vista extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane5.setViewportView(jTextArea2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                close(evt);
+            }
+        });
 
         PanelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -216,11 +224,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
 
         ButtonSolve.setText("Solve");
@@ -645,6 +653,11 @@ public class Vista extends javax.swing.JFrame {
         NG.setText("1000");
 
         NT.setText("50");
+        NT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NTActionPerformed(evt);
+            }
+        });
 
         TournamentSize.setText("5");
 
@@ -849,6 +862,11 @@ public class Vista extends javax.swing.JFrame {
         PANELS.addTab("Opcions Algoritmes", PanelOpcions);
 
         PanelElements.setBorder(new javax.swing.border.MatteBorder(null));
+        PanelElements.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelElementsMouseClicked(evt);
+            }
+        });
 
         jLabel10.setText("LLista de Paquets Actius");
 
@@ -1046,8 +1064,9 @@ public class Vista extends javax.swing.JFrame {
 
         jTextField1.setText("jTextField1");
 
-        CarregarDades.setText("File");
+        CarregarDades.setText("Arxiu");
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Carregar Dades");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1056,6 +1075,7 @@ public class Vista extends javax.swing.JFrame {
         });
         CarregarDades.add(jMenuItem2);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Guardar Dades");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1064,7 +1084,8 @@ public class Vista extends javax.swing.JFrame {
         });
         CarregarDades.add(jMenuItem3);
 
-        jMenuItem1.setText("Exit");
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Sortir");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -1074,13 +1095,14 @@ public class Vista extends javax.swing.JFrame {
 
         jMenuBar1.add(CarregarDades);
 
-        MenuHelp.setText("Help");
+        MenuHelp.setText("Ajuda");
         MenuHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuHelpActionPerformed(evt);
             }
         });
 
+        Ajuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         Ajuda.setText("Ajuda");
         Ajuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1106,7 +1128,7 @@ public class Vista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
 
 
 
@@ -1120,7 +1142,16 @@ public class Vista extends javax.swing.JFrame {
     }     
      /**/
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        System.exit(0);
+      if(!sortirGuardar()) { 
+          javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();
+        int val = FileChoser.showSaveDialog(this);
+        if (val == JFileChooser.APPROVE_OPTION) {
+            File fil = FileChoser.getSelectedFile();
+            cp.guardar_dades(fil.getAbsolutePath()+ ".txt");
+        }   
+            
+        }
+        System.exit(0); 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void DibuixarPunts(){
@@ -1268,8 +1299,10 @@ public class Vista extends javax.swing.JFrame {
                  actualitzarElements();
           }    
        PanelNewRelation.setVisible(false);
-       BorrarEditar.setVisible(false); 
+       BorrarEditar.setVisible(false);
+       TextInfo.setVisible(false);
        }
+       
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void RadioAnnealingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioAnnealingActionPerformed
@@ -1321,18 +1354,19 @@ public class Vista extends javax.swing.JFrame {
        
         //System.getProperty("line.separator")
         javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();      
-        FileChoser.showOpenDialog(this);
-        ResetVista();
-        cp.resetDomini();
-        File fil = FileChoser.getSelectedFile();
-        cp.carregar_dades(fil.getAbsolutePath());
-        actualitzarAdjacencies();
-        actualitzarElements();
-        Graphics c = jPanel4.getGraphics();
-        jPanel4.paint(c);
-        Cancel();
-        info.setText("Fitxer Carregat");
-        
+        int val  = FileChoser.showOpenDialog(this);
+        if (val == JFileChooser.APPROVE_OPTION) {
+            ResetVista();
+            cp.resetDomini();
+            File fil = FileChoser.getSelectedFile();
+            cp.carregar_dades(fil.getAbsolutePath());
+            actualitzarAdjacencies();
+            actualitzarElements();
+            Graphics c = jPanel4.getGraphics();
+            jPanel4.paint(c);
+            Cancel();
+            info.setText("Fitxer Carregat");
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void Cancel(){
@@ -1351,11 +1385,12 @@ public class Vista extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();
-        FileChoser.showSaveDialog(this);
-        File fil = FileChoser.getSelectedFile();
-        cp.guardar_dades(fil.getAbsolutePath()+ ".txt");
-        info.setText("Fitxer Guardat");
-       
+        int val = FileChoser.showSaveDialog(this);
+        if (val == JFileChooser.APPROVE_OPTION) {
+            File fil = FileChoser.getSelectedFile();
+            cp.guardar_dades(fil.getAbsolutePath()+ ".txt");
+            info.setText("Fitxer Guardat");
+        }
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -1452,8 +1487,12 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_IMAGENMouseClicked
 
     private void PanelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPrincipalMouseClicked
+     /*
         Graphics g22 = jPanel4.getGraphics();
         jPanel4.paint(g22);
+        DibuixarPunts();
+        cpaint(g22);
+        */
     }//GEN-LAST:event_PanelPrincipalMouseClicked
 
     private void ListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListMouseClicked
@@ -1462,8 +1501,8 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_ListMouseClicked
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        
-        if(activeList){
+        InfoPanel.setVisible(false);
+        if(activeList && cp.getElementsActivats().size()>1){
         actualRelation = 0;
         nom = List.getSelectedValue().toString();
         
@@ -1484,41 +1523,84 @@ public class Vista extends javax.swing.JFrame {
 
     private void ButtonNewRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNewRelationActionPerformed
             int value = Integer.parseInt(SpinnerNewRelation.getValue().toString()); 
-            
+            for(int i=0; i<adjac.size();++i) System.out.println(adjac.get(i) + " - ");
             boolean f = false;
         if(value >0){
             adjac.set(actualRelation, value);
-            primer = false;
-            
+            System.out.println(actualRelation + " <------");
             if(actualRelation<adjac.size()){
                 
-            for(int i=actualRelation+1; i<cp.GetRelations().size(); ++i){     
-            if(adjac.get(i) != 0 && cp.isEnabled(cp.getElements().get(i))){
-                TextNewRelation.setText(cp.getElements().get(i));
-                actualRelation = i;
-                break;   
-             }      
+            for(int i=actualRelation; i<cp.GetRelations().size(); ++i){ 
+               
+            if(i+1 < adjac.size()  && (adjac.get(i+1) == 0 || !cp.isEnabled(cp.getElements().get(i+1))))  ++actualRelation;
+            else if(actualRelation== adjac.size()-1){
+                ++actualRelation;
+                break;
+            } 
+            else {
+                TextNewRelation.setText(cp.getElements().get(i+1));
+                actualRelation = i+1;
+                break;  
+             }
+            
             }
+          }
+            
+        System.out.println(actualRelation + " --> " +  adjac.size());
+        
+        if (actualRelation==adjac.size()){
+            if(adjac.size()==actualRelation-1)adjac.set(actualRelation, value);
+            actualRelation = 0;
+            PanelNewRelation.setVisible(false);
+            BorrarEditar.setVisible(false);
+            cp.modificarAdjacencies(nom, adjac);
+             actualitzarAdjacencies();
+            activeList = true;
            }
-         }
-       if (actualRelation>=adjac.size()-1){
-           adjac.set(actualRelation, value);
-           actualRelation = 0;
-           PanelNewRelation.setVisible(false);
-           BorrarEditar.setVisible(false);
-           cp.modificarAdjacencies(nom, adjac);
-           actualitzarAdjacencies();
-           activeList = true;
-           primer = true;
        }
     }//GEN-LAST:event_ButtonNewRelationActionPerformed
 
     private void InformacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformacioActionPerformed
-        
+        if(!cp.getElementsActivats().isEmpty()){
         InfoPanel.setVisible(true);
         String infode = List.getSelectedValue().toString();
         TextInfo.setText(cp.getinfo(infode));
+        }
     }//GEN-LAST:event_InformacioActionPerformed
+
+    private void NTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NTActionPerformed
+
+    private void PanelElementsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelElementsMouseClicked
+        InfoPanel.setVisible(false);
+        if(activeList) BorrarEditar.setVisible(false);
+    }//GEN-LAST:event_PanelElementsMouseClicked
+
+    private boolean sortirGuardar(){
+        String s2 = "Guardar";
+        String s1 = "Sortir";
+        Object[] options = {s1,s2};
+        int n = JOptionPane.showOptionDialog(new JFrame(),"Has Guardat?","Confirmacio guardar", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, s2);
+        
+        if(n == JOptionPane.YES_OPTION) return true;
+        else return false;
+   
+    }
+    
+    private void close(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_close
+        if(!sortirGuardar()) { 
+          javax.swing.JFileChooser FileChoser = new javax.swing.JFileChooser();
+        int val = FileChoser.showSaveDialog(this);
+        if (val == JFileChooser.APPROVE_OPTION) {
+            File fil = FileChoser.getSelectedFile();
+            cp.guardar_dades(fil.getAbsolutePath()+ ".txt");
+        }   
+            
+        }
+        System.exit(0); 
+    }//GEN-LAST:event_close
    
     
     

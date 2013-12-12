@@ -198,7 +198,7 @@ public class CtrlDomini {
         ArrayList<Punt> elements = ciutat.getPunts();
         int posicio = -1;
         for(int i=0; i<elements.size(); ++i){
-            if(elements.get(i).getNom() == nom){
+            if(elements.get(i).getNom().equals(nom)){
                 posicio = i;
             break;
             
@@ -227,10 +227,10 @@ public class CtrlDomini {
         for(int i=0; i<ciutat.getPunts().size(); ++i){
             if(ciutat.getPunts().get(i).getNom() == infode) pos = i;
         }
-        String sol = infode;
-        sol += " x: " + Integer.toString(ciutat.getPunts().get(pos).getX());
-        sol += " y: " + Integer.toString(ciutat.getPunts().get(pos).getY());
-        sol += " Activat : " + Boolean.toString(ciutat.getPunts().get(pos).isEnabled());
+        String sol = "Nom: " + infode;
+        sol += ", xy: [" + Integer.toString(ciutat.getPunts().get(pos).getX()) +"][";
+        sol +=Integer.toString(ciutat.getPunts().get(pos).getY());
+        sol += "]  Activat : " + Boolean.toString(ciutat.getPunts().get(pos).isEnabled());
         return sol;
     }
     
