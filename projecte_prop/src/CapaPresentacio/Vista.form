@@ -1356,15 +1356,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="DeleteButton" min="-2" pref="99" max="-2" attributes="0"/>
                                   <Component id="CheckBoxDesactivar" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="DeleteButton" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="Informacio" max="32767" attributes="0"/>
-                                          <Component id="Editar" pref="99" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Informacio" max="32767" attributes="0"/>
+                                  <Component id="Editar" pref="99" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
@@ -1373,15 +1371,16 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="CheckBoxDesactivar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="DeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="Editar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Informacio" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="Informacio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CheckBoxDesactivar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1398,7 +1397,7 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="CheckBoxDesactivar">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Desactivar tots"/>
+                        <Property name="text" type="java.lang.String" value="Borrar Tots"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="Editar">

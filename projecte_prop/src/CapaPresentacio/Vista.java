@@ -901,7 +901,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        CheckBoxDesactivar.setText("Desactivar tots");
+        CheckBoxDesactivar.setText("Borrar Tots");
 
         Editar.setText("Editar");
         Editar.addActionListener(new java.awt.event.ActionListener() {
@@ -923,26 +923,25 @@ public class Vista extends javax.swing.JFrame {
             BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BorrarEditarLayout.createSequentialGroup()
                 .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CheckBoxDesactivar)
-                    .addGroup(BorrarEditarLayout.createSequentialGroup()
-                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Informacio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
+                    .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CheckBoxDesactivar))
+                .addGap(18, 18, 18)
+                .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Informacio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
         );
         BorrarEditarLayout.setVerticalGroup(
             BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BorrarEditarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CheckBoxDesactivar)
-                .addGap(6, 6, 6)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DeleteButton)
                     .addComponent(Editar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Informacio)
+                .addGroup(BorrarEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Informacio)
+                    .addComponent(CheckBoxDesactivar))
                 .addGap(5, 5, 5))
         );
 
