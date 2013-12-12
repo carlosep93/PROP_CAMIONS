@@ -2,16 +2,15 @@
 package Domini;
 
 public class Mutate_SwapRate extends Mutate{
-    private City C;
+    
     private double mutationRate, mutationSwapProbability;
     
-    public Mutate_SwapRate(City C, double mutationRate, double mutationSwapProbability){
-        this.C = C;
+    public Mutate_SwapRate(double mutationRate, double mutationSwapProbability){
         this.mutationRate = mutationRate;
         this.mutationSwapProbability = mutationSwapProbability;
     }
     
-    @Override public Tour mutate(Tour tour){
+    @Override public Tour mutate(City C, Tour tour){
         Tour mutated=tour;
         double chance;
         int mida = tour.size();

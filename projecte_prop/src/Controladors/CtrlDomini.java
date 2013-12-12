@@ -116,32 +116,32 @@ public class CtrlDomini {
         SolucioCreada = true;
 
         InitialSolGenerator isg;
-        if(isgI == 0) isg = new InitialSolGenerator_Random(ciutat);
+        if(isgI == 0) isg = new InitialSolGenerator_Random();
         else{
             
-            Mst_Prim prim = new Mst_Prim(ciutat);
+            Mst_Prim prim = new Mst_Prim();
             isg = new InitialSolGenerator_TwoApp(prim);
         }
 
         TournamentSelection TS;
-        if(TSI == 0) TS = new TournamentSelection_Random(ciutat, TournamentSize);
-        else TS = new TournamentSelection_RouletteWheel(ciutat);
+        if(TSI == 0) TS = new TournamentSelection_Random(TournamentSize);
+        else TS = new TournamentSelection_RouletteWheel();
 
         Crossover cross;
-        if(crossI == 0) cross = new Crossover_Simple(ciutat);
-        else cross = new Crossover_Edge(ciutat);
+        if(crossI == 0) cross = new Crossover_Simple();
+        else cross = new Crossover_Edge();
 
         Mutate mut;
-        if(mutI == 0) mut = new Mutate_Rate(ciutat, MutationRate);
-        else if(mutI == 1) mut = new Mutate_SwapRate(ciutat, MutationRate, MutationSwapProbability);
-        else mut = new Mutate_Little(ciutat);
+        if(mutI == 0) mut = new Mutate_Rate(MutationRate);
+        else if(mutI == 1) mut = new Mutate_SwapRate(MutationRate, MutationSwapProbability);
+        else mut = new Mutate_Little();
 
         Tsp tsp;
-        if(tspI == 0) tsp = new Tsp_SA(ciutat, isg, mut, tmp, fact, parada);
-        else tsp = new Tsp_GA(ciutat, StopCondition, NGeneracions, NTours, isg, Elitism,
+        if(tspI == 0) tsp = new Tsp_SA(isg, mut, tmp, fact, parada);
+        else tsp = new Tsp_GA(StopCondition, NGeneracions, NTours, isg, Elitism,
                 TS, cross, mut);
 
-        sol.addTour(tsp.calSol());
+        sol.addTour(tsp.calSol(ciutat));
 
         ArrayList<String> S = new ArrayList<String>();
         for(int i = 0; i < sol.size(); ++i){

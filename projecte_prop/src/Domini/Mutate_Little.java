@@ -3,14 +3,10 @@ package Domini;
 
 public class Mutate_Little extends Mutate{
     
-    private City C;
-    
-    public Mutate_Little(City C){
-        this.C = C;
-    }
+    public Mutate_Little(){}
     
     
-    @Override public Tour mutate(Tour tour){
+    @Override public Tour mutate(City C, Tour tour){
         if (tour.size()>=1){ 
             int max = C.getCost(tour.getElementPos(0), tour.getElementPos(1));
             int aux;

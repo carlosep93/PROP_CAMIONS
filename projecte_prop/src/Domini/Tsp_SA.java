@@ -17,9 +17,8 @@ public class Tsp_SA extends Tsp{
     private InitialSolGenerator isg;
     private Mutate mut;
     
-    public Tsp_SA(City C, InitialSolGenerator isg, Mutate mut, double temp,
+    public Tsp_SA(InitialSolGenerator isg, Mutate mut, double temp,
             double cool, int p){
-        this.C = C;
         this.isg = isg;
         this.mut = mut;
         this.temperature = temp;
@@ -28,12 +27,13 @@ public class Tsp_SA extends Tsp{
     }
     
    
-    @Override public Tour calSol(){
+    @Override public Tour calSol(City C){
+        this.C = C;
         
         CjtTours ct = new CjtTours(3); //0: best, 1: actual, 2: nueva
         //genera una solució inicial i ompla el CjtTours amb aquesta
 
-        Tour ti = isg.generateInitialSol();
+        Tour ti = isg.generateInitialSol(C);
 
         /*System.out.println("inicial <<<<<<<<<<<<<<<<<<<<<<<<<<");
         for(int i = 0; i < ti.size(); ++i){
@@ -50,7 +50,7 @@ public class Tsp_SA extends Tsp{
         int tamany = ct.sizeCjtTours();
         while (temperature > 1 && n < p) {
 
-            ti = mut.mutate(ct.getTour(2));
+            ti = mut.mutate(C, ct.getTour(2));
 
             /*System.out.println("Solucion despues del mutate");
             for(int i = 0; i < ti.size(); ++i){

@@ -3,15 +3,13 @@ package Domini;
 
 public class Mutate_Rate extends Mutate{
     
-    private City C;
     private double mutationRate;
     
-    public Mutate_Rate(City C, double mutationRate){
-        this.C = C;
+    public Mutate_Rate(double mutationRate){
         this.mutationRate = mutationRate;
     }
     
-    @Override public Tour mutate(Tour tour){
+    @Override public Tour mutate(City C, Tour tour){
         int mida = tour.size();
         for(int i = 0; i < mida; ++i){
             if(Math.random() <= mutationRate){

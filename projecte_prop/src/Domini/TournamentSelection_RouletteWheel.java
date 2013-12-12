@@ -3,17 +3,13 @@ package Domini;
 
 public class TournamentSelection_RouletteWheel extends TournamentSelection{
     
-    City C;
-    
-    public TournamentSelection_RouletteWheel(City C){
-        this.C = C;
-    }
+    public TournamentSelection_RouletteWheel(){}
     
     /** @brief  Funció que retorna un dels Tours del CjtTours
         \pre    El CjtTours pop no és buit
         \post   Es retorna un dels Tours del CjtTours, com menor cost tenen els els Tours de CjtTours(són millors) tenen més probabilitats de ser escollits per ser retornats
     */
-    @Override public Tour selTour(CjtTours pop){
+    @Override public Tour selTour(City C, CjtTours pop){
         double limit, acom, totalFitness; int point;
         totalFitness = acom = 0;
         for(int i = 0; i < pop.sizeCjtTours(); ++i){

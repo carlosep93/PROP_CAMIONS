@@ -1,26 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Domini;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-/**
- *
- * @author joanbarrosogarrido
- */
 public class Mst_Prim extends Mst {
 
-    private City C;
     
-    public Mst_Prim(City C) {
-        this.C = C;
-    }
+    public Mst_Prim(){}
      
-    @Override
-    public ArrayList<List<Integer>> getMST(){
+    @Override public ArrayList<List<Integer>> getMST(City C){
         ArrayList<List<Integer>> mst = new ArrayList<List<Integer>>();
         List<Punt> lp = C.getPunts();
         List<Integer> aux = new ArrayList<Integer>();
@@ -100,11 +90,6 @@ public class Mst_Prim extends Mst {
             if (!visited[i]) v = visited[i];       //si no esta visitado, v toma el valor y por tanto se sale del loop.
          }
         return v; // si se ha salido del loop será  falso, si se ha recorrido entero y el último no era, será true.
-    }
-    
-    @Override
-    public City getCity(){
-        return C;
     }
 }
 

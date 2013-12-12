@@ -5,19 +5,15 @@ import java.util.ArrayList;
 
 public  class InitialSolGenerator_TwoApp extends InitialSolGenerator{
     
-   // private ArrayList<ArrayList<Integer> > mst;
     private Mst mst;
     
     public InitialSolGenerator_TwoApp(Mst mst) {
         this.mst = mst;
     }
     
-    @Override
-    public Tour generateInitialSol(){
-        ArrayList<List<Integer>> tree = mst.getMST();
+    @Override public Tour generateInitialSol(City C){
+        ArrayList<List<Integer>> tree = mst.getMST(C);
         List<Integer> path = new ArrayList<Integer>();
-        City C;
-        C = mst.getCity();
         int ini = 0;
         for(int i = 0; i < C.size(); ++i) {
             if (child(tree.get(i))){
