@@ -1,9 +1,0 @@
-Crear los .class:     javac -d ejecutables -cp src src\Main\Main.java
-
-Ejecutar los .class:  java -cp ejecutables Main.Main
-
-Crear un .jar:        jar cmfv manifest.txt prop.jar CapaDades CapaPresentacio Controladors Domini exception Main
-
-Archivo manifest:
-
-Main-Class: Main/Main
