@@ -159,6 +159,9 @@ public class Vista extends javax.swing.JFrame {
         Mutat3 = new javax.swing.JRadioButton();
         MS = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        GArandom = new javax.swing.JRadioButton();
+        GAtwoap = new javax.swing.JRadioButton();
         PanelElement = new javax.swing.JPanel();
         PanelElements = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -740,6 +743,22 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel25.setText("Mutation Swap:");
 
+        jLabel13.setText("Solució inicial ");
+
+        GArandom.setText("Random");
+        GArandom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GArandomActionPerformed(evt);
+            }
+        });
+
+        GAtwoap.setText("TwoAp");
+        GAtwoap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GAtwoapActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -748,37 +767,9 @@ public class Vista extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3))
-                                .addGap(45, 45, 45))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Mutate1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Mutat3)
-                                .addGap(5, 5, 5)
-                                .addComponent(Mutat2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Roulettesi, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Edgesi, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(ElitismSi, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Elitismno)
-                                    .addComponent(Rouletteno)
-                                    .addComponent(Edgeno)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label4)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1)
                             .addComponent(Jlabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -798,7 +789,39 @@ public class Vista extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(MS, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TournamentSize, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(TournamentSize, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(33, 33, 33)
+                                .addComponent(Mutate1))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(GArandom)
+                                .addGap(18, 18, 18)
+                                .addComponent(GAtwoap))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Mutat3)
+                                .addGap(5, 5, 5)
+                                .addComponent(Mutat2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Roulettesi, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Edgesi, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ElitismSi, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Elitismno)
+                                    .addComponent(Rouletteno)
+                                    .addComponent(Edgeno))))))
                 .addContainerGap(344, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -823,29 +846,38 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(NT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(MS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel25)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GArandom)
+                            .addComponent(GAtwoap))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ElitismSi)
-                        .addComponent(Elitismno)))
+                    .addComponent(ElitismSi)
+                    .addComponent(Elitismno))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(Roulettesi)
                     .addComponent(Rouletteno))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Edgeno)
-                    .addComponent(Edgesi)
-                    .addComponent(jLabel5))
-                .addGap(47, 47, 47)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Edgesi)
+                        .addComponent(Edgeno)))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Mutate1)
                     .addComponent(jLabel24)
                     .addComponent(Mutat2)
                     .addComponent(Mutat3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         TabAnealing.addTab("Genetic", jPanel1);
@@ -1215,6 +1247,7 @@ public class Vista extends javax.swing.JFrame {
            Elems = cp.solutionAnealing(initTemp,cool,stop,mutR,mutS,TwoAp2,mut2);
        }
        else if(RadioGenetic.isSelected()){
+           boolean isol = GAtwoap.isSelected();
            boolean Roulet = Roulettesi.isSelected();
            boolean Edge = Edgesi.isSelected();
            boolean Elitism = ElitismSi.isSelected();
@@ -1227,7 +1260,7 @@ public class Vista extends javax.swing.JFrame {
            int mutate = 1;
            if(Mutate1.isSelected()) mutate = 0;
            if(Mutat3.isSelected()) mutate = 3;
-           Elems = cp.solutionGenetic(stop,ng,nt,mr,ts,ms,mutate,Roulet,Edge,Elitism);
+           Elems = cp.solutionGenetic(stop,ng,nt,mr,ts,ms,mutate,isol,Roulet,Edge,Elitism);
            
        }
       info.setText("Selecciona Algorisme");
@@ -1665,6 +1698,14 @@ public class Vista extends javax.swing.JFrame {
                   TextRelations.setText(TextRelations.getText() + "\n");     
              }
     }//GEN-LAST:event_CarregarAdjacActionPerformed
+
+    private void GArandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GArandomActionPerformed
+         GAtwoap.setSelected(false);
+    }//GEN-LAST:event_GArandomActionPerformed
+
+    private void GAtwoapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GAtwoapActionPerformed
+        GArandom.setSelected(false);
+    }//GEN-LAST:event_GAtwoapActionPerformed
    
     
     
@@ -1721,6 +1762,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextArea ElementsInactius;
     private javax.swing.JRadioButton ElitismSi;
     private javax.swing.JRadioButton Elitismno;
+    private javax.swing.JRadioButton GArandom;
+    private javax.swing.JRadioButton GAtwoap;
     private javax.swing.JLabel IMAGEN;
     private javax.swing.JPanel InfoPanel;
     private javax.swing.JButton Informacio;
@@ -1781,6 +1824,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

@@ -55,9 +55,10 @@ public class CtrlPresentacio {
     }
     
      public ArrayList<String> solutionGenetic(int stop,int ng,int nt,double mr,
-             int ts,double ms,int mutate,boolean Roulet,boolean Edge,boolean Elitism){
+             int ts,double ms,int mutate,boolean isol,boolean Roulet,boolean Edge,boolean Elitism){
                     
-                    int IsgI = 1;  //twoAp -> 1                      
+                    int IsgI = 0;  //twoAp -> 1    
+                    if(isol) IsgI = 1;
                     int TSI = 0; // 0 -> random // 1 -> rouletwheel
                     if(Roulet) TSI = 1;
                     int crossI = 0; //1 -> crosover edge

@@ -14,7 +14,7 @@ public class Mutate_Little extends Mutate{
             int pos2 = 1;
             for (int i=1; i < tour.size()-1;++i) {
                 aux = C.getCost(tour.getElementPos(i), tour.getElementPos(i+1));
-                if (max <= aux && pos1 != i-1 && pos2 != i-1) {
+                if (max <= aux && pos2 != i-1) {
                     max = aux;
                     if (aux >=  C.getCost(tour.getElementPos(pos1), tour.getElementPos(pos1+1)))
                         pos1 = pos2;
