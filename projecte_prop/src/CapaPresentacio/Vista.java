@@ -745,6 +745,7 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel13.setText("Solució inicial ");
 
+        GArandom.setSelected(true);
         GArandom.setText("Random");
         GArandom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1477,9 +1478,9 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuHelpActionPerformed
 
     private void AjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjudaActionPerformed
-         System.out.println("holaaaaaa");
-         String bar = System.getProperty("file.separator");
-        String path = "src" + bar + "CapaDades" + bar + "Ajuda.pdf";
+      
+       String bar = System.getProperty("file.separator");
+       String path = System.getProperty("user.dir")+ bar + "CapaPresentacio"+ bar + "Ajuda.pdf";
        File fil = new File(path);
        try {
           Desktop.getDesktop().open(fil);
